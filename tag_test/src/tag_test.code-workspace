@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"name": "anchor_test",
+			"path": "../../anchor_test"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"cstring": "cpp"
+		}
+	}
+}
