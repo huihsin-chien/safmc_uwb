@@ -244,7 +244,7 @@ void loop() {
             expectedMsgId = POLL_ACK;
             float curRange;
             memcpy(&curRange, data + 1, 4);
-            Serial.print("range:");Serial.println(curRange/2.54);
+            Serial.print("range（inch):");Serial.println(curRange/2.54);
             transmitPoll();
             noteActivity();
         } else if (msgId == RANGE_FAILED) {
