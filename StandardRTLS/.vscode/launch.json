@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/jianh/OneDrive/Desktop/safmc/UWB_test/multiple_anchor_tag/tag/src",
-      "program": "c:/Users/jianh/OneDrive/Desktop/safmc/UWB_test/multiple_anchor_tag/tag/src/build/Debug/outDebug",
+      "cwd": "c:/Users/jianh/OneDrive/Desktop/safmc/UWB_test/StandardRTLS/StandardRTLSAnchorB_TWR/src",
+      "program": "c:/Users/jianh/OneDrive/Desktop/safmc/UWB_test/StandardRTLS/StandardRTLSAnchorB_TWR/src/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

@@ -107,6 +107,9 @@ void setup() {
     Serial.print("Network ID & Device Address: "); Serial.println(msg);
     DW1000Ng::getPrintableDeviceMode(msg);
     Serial.print("Device mode: "); Serial.println(msg);    
+    DW1000Ng::enableDebounceClock();
+    DW1000Ng::enableLedBlinking();
+    DW1000Ng::setGPIOMode(6, LED_MODE);
 }
 
 void loop() {
@@ -116,13 +119,18 @@ void loop() {
     DW1000Ng::setEUI(EUI);
 
     RangeInfrastructureResult res = DW1000NgRTLS::tagTwrLocalize(5000);
+    digitalWrite(0, HIGH);
     if(res.success){
         blink_rate = res.new_blink_rate;
-        Serial.println("res.success");    
+        Serial.println("res.success");  
     }
     else{
         Serial.println("res.fail");
         Serial.print("Error: tagTwrLocalize failed with blink_rate: ");
         Serial.println(blink_rate);
+        
     }
 }
+
+
+
