@@ -5,16 +5,59 @@
 
 // connection pins
 #if defined(ESP8266)
-const uint8_t PIN_SS = 15;
-const uint8_t PIN_RST = 16;
-const uint8_t PIN_IRQ = 5;
-#elif defined(ESP32)
-const uint8_t PIN_SS = 5;
-const uint8_t PIN_RST = 17;
-const uint8_t PIN_IRQ = 16;
+const uint8_t PIN_SS = 10;
+#else
+const uint8_t PIN_SS = SS; // spi select pin
+const uint8_t PIN_RST = 15;
 #endif
 
+device_configuration_t DEFAULT_CONFIG = {
+    false, true, true, true, false,
+    SFDMode::STANDARD_SFD,
+    Channel::CHANNEL_5,
+    DataRate::RATE_850KBPS,
+    PulseFrequency::FREQ_16MHZ,
+    PreambleLength::LEN_256,
+    PreambleCode::CODE_3
+};
+
+frame_filtering_configuration_t TAG_FRAME_FILTER_CONFIG = {
+    false, false, true, false, false, false, false, false
+};
+
+frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
+    false, false, true, false, false, false, false,
+    true /* This allows blink frames */
+};
+
+sleep_configuration_t SLEEP_CONFIG = {
+    false,  // onWakeUpRunADC   reg 0x2C:00
+    false,  // onWakeUpReceive
+    false,  // onWakeUpLoadEUI
+    true,   // onWakeUpLoadL64Param
+    true,   // preserveSleep
+    true,   // enableSLP    reg 0x2C:06
+    false,  // enableWakePIN
+    true    // enableWakeSPI
+};
+
+interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
+    true,   // interruptOnSent
+    true,   // interruptOnReceived
+    false,  // interruptOnReceiveFailed
+    false,  // interruptOnReceiveTimeout
+    false,  // interruptOnReceiveTimestampAvailable
+    false   // interruptOnAutomaticAcknowledgeTrigger
+};
+
 byte tag_short_address[] = {0x01, 0x01}; // 設定當前 tag 的短地址
+byte main_anchor_address[] = {0x01, 0x00};
+byte RANGING_RESPONSE = 0x60;
+
+int calculateRange(byte response_data[]) {
+    uint16_t range_raw = DW1000NgUtils::bytesAsValue(&response_data[10], 2);
+    return range_raw / 1000;
+}
 
 void setup() {
     Serial.begin(9600);
@@ -23,7 +66,7 @@ void setup() {
     Serial.println(F("DW1000Ng initialized ..."));
     DW1000Ng::applyConfiguration(DEFAULT_CONFIG);
     DW1000Ng::enableFrameFiltering(ANCHOR_FRAME_FILTER_CONFIG);
-    DW1000Ng::setEUI("AA:BB:CC:DD:EE:FF:00:01");
+    DW1000Ng::setEUI("AA:BB:CC:DD:EE:FF:00:04");
     DW1000Ng::setPreambleDetectionTimeout(64);
     DW1000Ng::setSfdDetectionTimeout(273);
     DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
@@ -56,7 +99,7 @@ void loop() {
                         // 處理測距響應
                         Serial.println("Ranging response received.");
                         // 計算距離並顯示
-                        double range = DW1000NgUtils::calculateRange(response_data);
+                        double range = calculateRange(response_data);
                         Serial.print("Range: ");
                         Serial.print(range);
                         Serial.println(" m");
