@@ -22,7 +22,6 @@ byte main_anchor_address[] = {0x01, 0x00};
 
 uint16_t next_anchor = 3;
 
-byte main_anchor_address[] = {0x01, 0x00};
 
 double range_self;
 
@@ -60,8 +59,6 @@ interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
     false,
     true
 };
-
-void handleInterrupt(); // Declare handleInterrupt function
 
 void setup() {
     delay(5000);

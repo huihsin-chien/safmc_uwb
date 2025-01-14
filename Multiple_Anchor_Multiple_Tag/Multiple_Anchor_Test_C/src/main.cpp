@@ -34,7 +34,8 @@ uint16_t blink_rate = 200;
 
 double range_self;
 
-Position position_self = {3,2.5};
+byte currentTagShortAddress[2];
+
 
 device_configuration_t DEFAULT_CONFIG = {
     false,
@@ -112,17 +113,23 @@ void transmitRangeReport() {
     DW1000Ng::startTransmit();
 }
  
-void loop() {
-//   Serial.println("In loop->C");
-     RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
-     if(result.success) {
-        // Serial.println("yee result is right!");
+
+void loop() {  
+    RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
+    if(result.success) {
         delay(4); // Tweak based on your hardware
         range_self = result.range;
+
+        // Get the tag short address from the received data
+        size_t recv_len = DW1000Ng::getReceivedDataLength();
+        byte recv_data[recv_len];
+        DW1000Ng::getReceivedData(recv_data, recv_len);
+        memcpy(currentTagShortAddress, &recv_data[16], 2); // position: see void transmitRangingInitiation(byte tag_eui[], byte tag_short_address[]);
+
         transmitRangeReport();
 
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
         rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm";
         Serial.println(rangeString);
-     }
+    }
 }
