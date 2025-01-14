@@ -155,7 +155,7 @@ void handleRanging(byte tag_shortAddress[]) {
       String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
       rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm";
       Serial.println(rangeString);
-    } else if(recv_data[9] == 0x60) {
+    } else if(recv_data[9] == 0x60 && recv_data[12] == tag_shortAddress[0] && recv_data[13] == tag1_shortAddress[2]) {
       double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
       String rangeReportString = "Range from: "; rangeReportString += recv_data[7];
       rangeReportString += " = "; rangeReportString += range;
