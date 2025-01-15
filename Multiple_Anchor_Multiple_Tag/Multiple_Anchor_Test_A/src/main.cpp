@@ -54,23 +54,12 @@ device_configuration_t DEFAULT_CONFIG = {
 };
 
 frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
-    false,
-    false,
-    true,
-    false,
-    false,
-    false,
-    false,
-    false
+    false, false, true, false, false, false, false, false
 };
 
 interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
-    true,
-    true,
-    true,
-    false,
-    true
-};
+    true, true,true, false, true
+    };
 
 void transmitRangeReport();
 void handleRanging(byte tag_shortAddress[]);
