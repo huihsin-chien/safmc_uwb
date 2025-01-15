@@ -162,7 +162,10 @@ namespace DW1000NgRTLS {
     RangeRequestResult tagRangeRequest() {
         DW1000NgRTLS::transmitTwrShortBlink();
         
-        if(!DW1000NgRTLS::waitForNextRangingStep()) return {false, 0};
+        if(!DW1000NgRTLS::waitForNextRangingStep()) {
+            return {false, 0};
+            Serial.println("Failed to receive Ranging Initiation");
+            }
         Serial.println("Received Ranging Initiation");
         size_t init_len = DW1000Ng::getReceivedDataLength();
         byte init_recv[init_len];
@@ -280,9 +283,7 @@ namespace DW1000NgRTLS {
             if(result.success)
                 return result;
         }
-        else {
-            Serial.println("Error in range request");
-        }
+        
         return {false, 0};
     }
 
