@@ -599,6 +599,11 @@ namespace DW1000Ng {
 	*/
 	void getPrintableNetworkIdAndShortAddress(char msgBuffer[]);
 	
+
+	///////////////////////////////////change start////////////////////////////////////////
+	void getShortAddress(byte cmd, uint16_t offset, byte data[], uint16_t data_size);
+	///////////////////////////////////change end////////////////////////////////////////
+
 	/** 
 	Generates a String representation of the main operational settings of the chip. This
 	includes data rate, pulse repetition frequency, preamble and channel settings.

@@ -1537,11 +1537,20 @@ namespace DW1000Ng {
 	}
 
 	void getPrintableNetworkIdAndShortAddress(char msgBuffer[]) {
-		byte data[LEN_PANADR];
-		_readBytesFromRegister(PANADR, NO_SUB, data, LEN_PANADR);
+		byte panadrData[LEN_PANADR];
+		_readBytesFromRegister(PANADR, NO_SUB, panadrData, LEN_PANADR);
 		sprintf(msgBuffer, "PAN: %02X, Short Address: %02X",
-						(uint16_t)((data[3] << 8) | data[2]), (uint16_t)((data[1] << 8) | data[0]));
+						(uint16_t)((panadrData[3] << 8) | panadrData[2]), (uint16_t)((panadrData[1] << 8) | panadrData[0]));
 	}
+
+	///////////////////////////////////change start////////////////////////////////////////	
+
+	void getShortAddress(byte cmd, uint16_t offset, byte data[], uint16_t data_size) {
+		byte panadrData[LEN_PANADR];
+		_readBytesFromRegister(PANADR, NO_SUB, panadrData, LEN_PANADR);
+	}
+
+	///////////////////////////////////change end////////////////////////////////////////
 
 	void getPrintableDeviceMode(char msgBuffer[]) {
 		uint16_t dr;

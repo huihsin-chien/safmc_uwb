@@ -22,6 +22,7 @@
  * SOFTWARE.
 */
 
+#include <iostream>
 #include <Arduino.h>
 #include "DW1000NgRTLS.hpp"
 #include "DW1000Ng.hpp"
@@ -170,6 +171,23 @@ namespace DW1000NgRTLS {
         if(!(init_len > 17 && init_recv[15] == RANGING_INITIATION)) {
             return { false, 0};
         }
+
+        //////////////////////////////////////////change start
+
+        // PAN identifier, short address register
+        constexpr uint16_t PANADR = 0x03;
+        constexpr uint16_t LEN_PANADR = 4;
+        // no sub-address for register write
+        constexpr uint16_t NO_SUB = 0xFF;
+
+        byte data[LEN_PANADR];
+		DW1000Ng::getShortAddress(PANADR, NO_SUB, data, LEN_PANADR);
+        std::cout<<"data: "<<data[0]<<"  "<<data[1]<<"  "<<data[2]<<"  "<<data[3]<<std::endl;
+        if(DW1000NgUtils::bytesAsValue(&init_recv[16], 2) != (uint16_t)((data[1] << 8) | data[0])){
+            return { false, 0};
+        }
+
+        //////////////////////////////////////////change end
 
         DW1000Ng::setDeviceAddress(DW1000NgUtils::bytesAsValue(&init_recv[16], 2));
         return { true, static_cast<uint16_t>(DW1000NgUtils::bytesAsValue(&init_recv[13], 2)) };
