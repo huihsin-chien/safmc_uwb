@@ -128,28 +128,17 @@ void loop() {
     
 }
 
-
 void handleRanging(byte tag_shortAddress[]) {
   if(DW1000NgRTLS::receiveFrame()){
+    // Serial.println("receiveFrame");
     size_t recv_len = DW1000Ng::getReceivedDataLength(); 
     byte recv_data[recv_len];
     DW1000Ng::getReceivedData(recv_data, recv_len);
   
-    // Check for Blink message and process the EUI
     if(recv_data[0] == BLINK)  {
-      Serial.println("Received blink");
-      
-      // Extract tag EUI
-      String tag_EUI = "";
-      for (int i = 2; i < 10; i++) {
-        tag_EUI += String(recv_data[i], HEX);
-        if (i != 9) tag_EUI += ":";
-      }
-      Serial.print("Tag EUI: "); Serial.println(tag_EUI);
-
+      Serial.println("recieved blink");
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission(); 
-      
       RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor);
       if(!result.success) return;
       range_self = result.range;
@@ -158,9 +147,8 @@ void handleRanging(byte tag_shortAddress[]) {
       rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from ";
       rangeString += recv_data[2];
       Serial.println(rangeString);
-      
     } else if(recv_data[9] == 0x60 && recv_data[16] == tag_shortAddress[0] && recv_data[17] == tag_shortAddress[1]) {
-      double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10], 2) / 1000.0);
+      double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
       String rangeReportString = "Range from: "; rangeReportString += recv_data[16];
       rangeReportString += " = "; rangeReportString += range;
       Serial.println(rangeReportString);
@@ -177,9 +165,11 @@ void handleRanging(byte tag_shortAddress[]) {
         Serial.println(positioning);
       }
     }
+    else if(recv_data[9] == 0x60){
+      Serial.println("recieved 0x60");
+    }
   }
 }
-
 
 /* using https://math.stackexchange.com/questions/884807/find-x-location-using-3-known-x-y-location-using-trilateration */
 void calculatePosition(double &x, double &y) {
@@ -194,4 +184,4 @@ void calculatePosition(double &x, double &y) {
 
     x = (C*E-F*B) / (E*A-B*D);
     y = (C*D-A*F) / (B*D-A*E);
-}
+} 
