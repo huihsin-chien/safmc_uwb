@@ -163,8 +163,8 @@ namespace DW1000NgRTLS {
         DW1000NgRTLS::transmitTwrShortBlink();
         
         if(!DW1000NgRTLS::waitForNextRangingStep()) {
-            return {false, 0};
             Serial.println("Failed to receive Ranging Initiation");
+            return {false, 0};
             }
         Serial.println("Received Ranging Initiation");
         size_t init_len = DW1000Ng::getReceivedDataLength();

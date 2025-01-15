@@ -119,15 +119,6 @@ void setup() {
     delay(5000);
 }
 
-void transmitRangeReport() {
-    byte rangingReport[] = {DATA, SHORT_SRC_AND_DEST, DW1000NgRTLS::increaseSequenceNumber(), 0,0, 0,0, 0,0, 0x60, 0,0 };
-    DW1000Ng::getNetworkId(&rangingReport[3]);
-    memcpy(&rangingReport[5], main_anchor_address, 2);
-    DW1000Ng::getDeviceAddress(&rangingReport[7]);
-    DW1000NgUtils::writeValueToBytes(&rangingReport[10], static_cast<uint16_t>((range_self*1000)), 2);
-    DW1000Ng::setTransmitData(rangingReport, sizeof(rangingReport));
-    DW1000Ng::startTransmit();
-}
 void handleRanging(byte tag_shortAddress[]);
 void calculatePosition(double &x, double &y);
 
