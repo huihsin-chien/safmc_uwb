@@ -1,3 +1,17 @@
+/*
+   This example code is in the Public Domain (or CC0 licensed, at your option.)
+
+   Unless required by applicable law or agreed to in writing, this
+   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+   CONDITIONS OF ANY KIND, either express or implied.
+*/
+
+/* 
+ * StandardRTLSAnchorMain_TWR.ino
+ * 
+ * This is an example master anchor in a RTLS using two way ranging ISO/IEC 24730-62_2013 messages
+ */
+
 #include <DW1000Ng.hpp>
 #include <DW1000NgUtils.hpp>
 #include <DW1000NgRanging.hpp>
@@ -54,16 +68,26 @@ device_configuration_t DEFAULT_CONFIG = {
 };
 
 frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
-    false, false, true, false, false, false, false, false
+    false,
+    false,
+    true,
+    false,
+    false,
+    false,
+    false,
+    false
 };
 
 interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
-    true, true,true, false, true
-    };
+    true,
+    true,
+    true,
+    false,
+    true
+};
 
-void transmitRangeReport();
-void handleRanging(byte tag_shortAddress[]);
-void calculatePosition(double &x, double &y);
+void handleInterrupt(); // Declare handleInterrupt function
+
 void setup() {
     delay(5000);
     Serial.begin(9600);
@@ -94,6 +118,18 @@ void setup() {
     delay(5000);
 }
 
+void transmitRangeReport() {
+    byte rangingReport[] = {DATA, SHORT_SRC_AND_DEST, DW1000NgRTLS::increaseSequenceNumber(), 0,0, 0,0, 0,0, 0x60, 0,0 };
+    DW1000Ng::getNetworkId(&rangingReport[3]);
+    memcpy(&rangingReport[5], main_anchor_address, 2);
+    DW1000Ng::getDeviceAddress(&rangingReport[7]);
+    DW1000NgUtils::writeValueToBytes(&rangingReport[10], static_cast<uint16_t>((range_self*1000)), 2);
+    DW1000Ng::setTransmitData(rangingReport, sizeof(rangingReport));
+    DW1000Ng::startTransmit();
+}
+void handleRanging(byte tag_shortAddress[]);
+void calculatePosition(double &x, double &y);
+
 void loop() {  
     // Handle ranging for tag1 and tag2
     handleRanging(tag1_shortAddress);
@@ -108,7 +144,7 @@ void handleRanging(byte tag_shortAddress[]) {
     DW1000Ng::getReceivedData(recv_data, recv_len);
 
     if(recv_data[0] == BLINK) {
-      Serial.print("recieve BLINK from tag ");Serial.println(tag_shortAddress[0]);
+      // Serial.println("weeee");
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission();
 
@@ -119,8 +155,7 @@ void handleRanging(byte tag_shortAddress[]) {
       String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
       rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm";
       Serial.println(rangeString);
-    } else if(recv_data[9] == 0x60 && recv_data[16] == tag_shortAddress[0] && recv_data[17] == tag_shortAddress[1]) {
-      Serial.print("recieve ranging report from ");Serial.println(tag_shortAddress[0]);
+    } else if(recv_data[9] == 0x60 && recv_data[12] == tag_shortAddress[0] && recv_data[13] == tag_shortAddress[1]) {
       double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
       String rangeReportString = "Range from: "; rangeReportString += recv_data[7];
       rangeReportString += " = "; rangeReportString += range;
@@ -138,20 +173,7 @@ void handleRanging(byte tag_shortAddress[]) {
         Serial.println(positioning);
       }
     }
-    else if(recv_data[9] = 0x60){
-      Serial.println("recv_data[16] is not short address");
-    }
   }
-}
-
-void transmitRangeReport() {
-    byte rangingReport[] = {DATA, SHORT_SRC_AND_DEST, DW1000NgRTLS::increaseSequenceNumber(), 0,0, 0,0, 0,0, 0x60, 0,0 };
-    DW1000Ng::getNetworkId(&rangingReport[3]);
-    memcpy(&rangingReport[5], main_anchor_address, 2);
-    DW1000Ng::getDeviceAddress(&rangingReport[7]);
-    DW1000NgUtils::writeValueToBytes(&rangingReport[10], static_cast<uint16_t>((range_self*1000)), 2);
-    DW1000Ng::setTransmitData(rangingReport, sizeof(rangingReport));
-    DW1000Ng::startTransmit();
 }
 
 /* using https://math.stackexchange.com/questions/884807/find-x-location-using-3-known-x-y-location-using-trilateration */
