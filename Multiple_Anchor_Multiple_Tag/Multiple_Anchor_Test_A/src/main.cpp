@@ -140,13 +140,13 @@ void loop() {
 
 void handleRanging(byte tag_shortAddress[]) {
   if(DW1000NgRTLS::receiveFrame()){
-    Serial.println("let's go~");
+    // Serial.println("let's go~");
     size_t recv_len = DW1000Ng::getReceivedDataLength();
     byte recv_data[recv_len];
     DW1000Ng::getReceivedData(recv_data, recv_len);
 
     if(recv_data[0] == BLINK) {
-      Serial.println("weeee");
+      // Serial.println("weeee");
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission();
 
