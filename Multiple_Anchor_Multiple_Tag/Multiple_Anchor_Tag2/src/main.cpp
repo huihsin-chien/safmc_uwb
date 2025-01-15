@@ -122,6 +122,7 @@ void setup() {
 }
 
 void loop() {
+    Serial.println("let's go~");
     DW1000Ng::deepSleep();
     delay(blink_rate);
     DW1000Ng::spiWakeup();

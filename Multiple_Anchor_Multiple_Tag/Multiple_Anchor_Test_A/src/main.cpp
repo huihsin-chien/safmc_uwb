@@ -12,6 +12,7 @@
  * This is an example master anchor in a RTLS using two way ranging ISO/IEC 24730-62_2013 messages
  */
 
+#include <Arduino.h>
 #include <DW1000Ng.hpp>
 #include <DW1000NgUtils.hpp>
 #include <DW1000NgRanging.hpp>
@@ -132,6 +133,7 @@ void calculatePosition(double &x, double &y);
 
 void loop() {  
     // Handle ranging for tag1 and tag2
+    Serial.println("Ranging for tag1 and tag2");
     handleRanging(tag1_shortAddress);
     handleRanging(tag2_shortAddress);
 }
