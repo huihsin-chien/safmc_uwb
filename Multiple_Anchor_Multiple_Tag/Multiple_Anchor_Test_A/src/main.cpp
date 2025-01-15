@@ -1,17 +1,3 @@
-/*
-   This example code is in the Public Domain (or CC0 licensed, at your option.)
-
-   Unless required by applicable law or agreed to in writing, this
-   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-   CONDITIONS OF ANY KIND, either express or implied.
-*/
-
-/* 
- * StandardRTLSAnchorMain_TWR.ino
- * 
- * This is an example master anchor in a RTLS using two way ranging ISO/IEC 24730-62_2013 messages
- */
-
 #include <Arduino.h>
 #include <DW1000Ng.hpp>
 #include <DW1000NgUtils.hpp>
@@ -76,7 +62,7 @@ frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
     false,
     false,
     false,
-    false
+    true /* This allows blink frames */
 };
 
 interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
@@ -132,17 +118,19 @@ void setup() {
 
 void handleRanging(byte tag_shortAddress[]);
 void calculatePosition(double &x, double &y);
-
+byte tag_shortAddress[2][2] = {{0x01, 0x01}, {0x02, 0x01}};
+bool tag_number = 0;
 void loop() {  
     // Handle ranging for tag1 and tag2
     // Serial.println("Ranging for tag1 and tag2");
     handleRanging(tag1_shortAddress);
-    // handleRanging(tag2_shortAddress);
+    handleRanging(tag2_shortAddress);
+    
 }
 
 void handleRanging(byte tag_shortAddress[]) {
   if(DW1000NgRTLS::receiveFrame()){
-    Serial.println("receiveFrame");
+    // Serial.println("receiveFrame");
     size_t recv_len = DW1000Ng::getReceivedDataLength();
     byte recv_data[recv_len];
     DW1000Ng::getReceivedData(recv_data, recv_len);
@@ -157,7 +145,8 @@ void handleRanging(byte tag_shortAddress[]) {
       range_self = result.range;
 
       String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm";
+      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from ";
+      rangeString += recv_data[2];
       Serial.println(rangeString);
     } else if(recv_data[9] == 0x60 && recv_data[16] == tag_shortAddress[0] && recv_data[17] == tag_shortAddress[1]) {
       double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
