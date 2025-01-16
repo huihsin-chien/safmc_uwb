@@ -251,7 +251,9 @@ namespace DW1000NgRTLS {
 
     RangeAcceptResult anchorRangeAccept(NextActivity next, uint16_t value) {
         double range;
-        if(!DW1000NgRTLS::receiveFrame()) return {false, 0};
+        if(!DW1000NgRTLS::receiveFrame()) {
+            Serial.println("No anchorRangeAccept frame received");
+            return {false, 0};}
 
         size_t poll_len = DW1000Ng::getReceivedDataLength();
         byte poll_data[poll_len];
@@ -263,7 +265,9 @@ namespace DW1000NgRTLS {
             DW1000NgRTLS::waitForTransmission();
             uint64_t timeResponseToPoll = DW1000Ng::getTransmitTimestamp();
             delayMicroseconds(1500);
-            if(!DW1000NgRTLS::receiveFrame()) return {false, 0};
+            if(!DW1000NgRTLS::receiveFrame()) {
+                Serial.println("No responseToPoll frame received");
+                return {false, 0};}
 
             size_t rfinal_len = DW1000Ng::getReceivedDataLength();
             byte rfinal_data[rfinal_len];

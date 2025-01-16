@@ -142,7 +142,14 @@ void loop() {
 
 
         if(recv_data[0] == BLINK) {
-            // Serial.println("weeee");
+            // Extract tag EUI
+            String tag_EUI = "";
+            for (uint8_t i = 2; i < 4; i++) {
+                tag_EUI += String(recv_data[i], HEX);
+                if (i != 9) tag_EUI += ":";
+            }
+            Serial.print("Tag EUI: "); Serial.println(tag_EUI);
+
             DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
             DW1000NgRTLS::waitForTransmission();
 

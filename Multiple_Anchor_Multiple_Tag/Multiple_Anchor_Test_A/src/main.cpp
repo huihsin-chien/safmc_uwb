@@ -73,8 +73,7 @@ interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
     true
 };
 
-void handleInterrupt(); // Declare handleInterrupt function
-
+char EUI[] = "AA:BB:CC:DD:EE:FF:00:01";
 void setup() {
     delay(5000);
     Serial.begin(9600);
@@ -83,7 +82,7 @@ void setup() {
     Serial.println(F("DW1000Ng initialized ..."));
     DW1000Ng::applyConfiguration(DEFAULT_CONFIG);
     DW1000Ng::enableFrameFiltering(ANCHOR_FRAME_FILTER_CONFIG);
-    DW1000Ng::setEUI("AA:BB:CC:DD:EE:FF:00:01");
+    DW1000Ng::setEUI(&EUI[0]);
     DW1000Ng::setPreambleDetectionTimeout(64);
     DW1000Ng::setSfdDetectionTimeout(273);
     DW1000Ng::setReceiveFrameWaitTimeoutPeriod(5000);
