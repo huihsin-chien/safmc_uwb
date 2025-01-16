@@ -1,18 +1,4 @@
-/*
-   This example code is in the Public Domain (or CC0 licensed, at your option.)
 
-   Unless required by applicable law or agreed to in writing, this
-   software is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
-   CONDITIONS OF ANY KIND, either express or implied.
-*/
-
-/* 
- * StandardRTLSAnchorMain_TWR.ino
- * 
- * This is an example master anchor in a RTLS using two way ranging ISO/IEC 24730-62_2013 messages
- */
-
-#include <Arduino.h>
 #include <DW1000Ng.hpp>
 #include <DW1000NgUtils.hpp>
 #include <DW1000NgRanging.hpp>
@@ -39,7 +25,7 @@ Position position_C = {3,2.5};
 boolean received_B = false;
 
 byte tag1_shortAddress[] = {0x01, 0x01};
-byte tag2_shortAddress[] = {0x02, 0x01};
+byte tag2_shortAddress[] = {0x02, 0x02};
 
 
 byte anchor_b[] = {0x02, 0x00};
@@ -76,16 +62,16 @@ frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
     false,
     false,
     false,
-    false
+    true
 };
 
-// interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
-//     true,
-//     true,
-//     true,
-//     false,
-//     true
-// };
+interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
+    true,
+    true,
+    true,
+    false,
+    true
+};
 
 void handleInterrupt(); // Declare handleInterrupt function
 
@@ -115,15 +101,13 @@ void setup() {
     Serial.print("Network ID & Device Address: "); Serial.println(msg);
     DW1000Ng::getPrintableDeviceMode(msg);
     Serial.print("Device mode: "); Serial.println(msg); 
-    
-    DW1000Ng::enableDebounceClock();
+    DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
     DW1000Ng::enableLedBlinking();
-    DW1000Ng::setGPIOMode(12, LED_MODE);
-    DW1000Ng::setGPIOMode(13, LED_MODE);
-    DW1000Ng::setGPIOMode(14, LED_MODE);
     DW1000Ng::setGPIOMode(15, LED_MODE);
+    DW1000Ng::setGPIOMode(14, LED_MODE);
+    DW1000Ng::setGPIOMode(13, LED_MODE);
+    DW1000Ng::setGPIOMode(12,   LED_MODE);
 
-    // DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
     delay(5000);
 }
 
@@ -141,7 +125,6 @@ void calculatePosition(double &x, double &y);
 
 void loop() {  
     // Handle ranging for tag1 and tag2
-    // Serial.println("Ranging for tag1 and tag2");
     handleRanging(tag1_shortAddress);
     // handleRanging(tag2_shortAddress);
 }
@@ -156,40 +139,51 @@ if(DW1000NgRTLS::receiveFrame()){
 
 
     if(recv_data[0] == BLINK) {
-        // Serial.println("weeee");
-        DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
-        DW1000NgRTLS::waitForTransmission();
+      
+      Serial.println("Received blink");
+      
+      // Extract tag EUI
+      String tag_EUI = "";
+      for (uint8_t i = 2; i < 10; i++) {
+        tag_EUI += String(recv_data[i], HEX);
+        if (i != 9) tag_EUI += ":";
+      }
+      Serial.print("Tag EUI: "); Serial.println(tag_EUI);
+
+      DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
+      DW1000NgRTLS::waitForTransmission();
+      // ranginginitiation 有成功
 
         RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor);
         if(!result.success) return;
         range_self = result.range;
 
-        String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-        rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm";
-        Serial.println(rangeString);
-
-    } else if(recv_data[9] == 0x60) {
-        double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
-        String rangeReportString = "Range from: "; rangeReportString += recv_data[7];
-        rangeReportString += " = "; rangeReportString += range;
-        Serial.println(rangeReportString);
-        if(received_B == false && recv_data[7] == anchor_b[0] && recv_data[8] == anchor_b[1]) {
-            range_B = range;
-            received_B = true;
-        } else if(received_B == true && recv_data[7] == anchor_c[0] && recv_data[8] == anchor_c[1]){
-            range_C = range;
-            double x,y;
-            calculatePosition(x,y);
-            String positioning = "Found position - x: ";
-            positioning += x; positioning +=" y: ";
-            positioning += y;
-            Serial.println(positioning);
-            received_B = false;
-        } else {
-            received_B = false;
-        }
+      String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
+      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from";
+      rangeString += recv_data[2]; rangeString += recv_data[3];
+      Serial.println(rangeString);
+    } else if(recv_data[9] == 0x60 && recv_data[2] == tag_shortAddress[0] && recv_data[3] == tag_shortAddress[1]) { // tag's EUI 位置需要再確認
+      double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
+      String rangeReportString = "Range from: "; rangeReportString += recv_data[7]; // anchor's device address?
+      rangeReportString += " = "; rangeReportString += range;
+      Serial.println(rangeReportString);
+      if(received_B == false && recv_data[7] == anchor_b[0] && recv_data[8] == anchor_b[1]) {
+        range_B = range;
+        received_B = true;
+      } else if(received_B == true && recv_data[7] == anchor_c[0] && recv_data[8] == anchor_c[1]){
+        range_C = range;
+        double x,y;
+        calculatePosition(x,y);
+        String positioning = "Found position - x: ";
+        positioning += x; positioning +=" y: ";
+        positioning += y;
+        Serial.println(positioning);
+      }
     }
-}
+    else if (recv_data[9]==0x60){
+      Serial.println("Received range report");
+    }
+  }
 }
 
 /* using https://math.stackexchange.com/questions/884807/find-x-location-using-3-known-x-y-location-using-trilateration */
