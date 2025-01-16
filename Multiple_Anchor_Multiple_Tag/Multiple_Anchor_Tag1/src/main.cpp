@@ -44,22 +44,22 @@ sleep_configuration_t SLEEP_CONFIG = {
 interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
     true,   // interruptOnSent
     true,   // interruptOnReceived
-    false,  // interruptOnReceiveFailed
-    false,  // interruptOnReceiveTimeout
-    false,  // interruptOnReceiveTimestampAvailable
-    false   // interruptOnAutomaticAcknowledgeTrigger
+    true,  // interruptOnReceiveFailed
+    true,  // interruptOnReceiveTimeout
+    true,  // interruptOnReceiveTimestampAvailable
+    true   // interruptOnAutomaticAcknowledgeTrigger
 };
 
-byte tag_short_address[] = {0x01, 0x01}; // 設定當前 tag 的短地址
-byte main_anchor_address[] = {0x01, 0x00};
-char EUI[] = "AA:BB:CC:DD:EE:FF:00:00";
+// byte tag1_short_address[] = {0x01, 0x01}; // 設定當前 tag 的短地址
+// byte main_anchor_address[] = {0x01, 0x00};
+char EUI[] = "AA:BB:CC:DD:EE:FF:01:01";
 // byte RANGING_RESPONSE = 0x60;
 volatile uint32_t blink_rate = 200;
 
-int calculateRange(byte response_data[]) {
-    uint16_t range_raw = DW1000NgUtils::bytesAsValue(&response_data[10], 2);
-    return range_raw / 1000;
-}
+// int calculateRange(byte response_data[]) {
+//     uint16_t range_raw = DW1000NgUtils::bytesAsValue(&response_data[10], 2);
+//     return range_raw / 1000;
+// }
 
 void setup() {
   delay(5000);
@@ -103,10 +103,10 @@ void setup() {
 
     DW1000Ng::enableDebounceClock();
     DW1000Ng::enableLedBlinking();
-    DW1000Ng::setGPIOMode(5, LED_MODE);
-    DW1000Ng::setGPIOMode(4, LED_MODE);
-    DW1000Ng::setGPIOMode(3, LED_MODE);
-    DW1000Ng::setGPIOMode(12,   LED_MODE);
+    DW1000Ng::setGPIOMode(15, LED_MODE);
+    DW1000Ng::setGPIOMode(14, LED_MODE);
+    DW1000Ng::setGPIOMode(13, LED_MODE);
+    DW1000Ng::setGPIOMode(12, LED_MODE);
 
     delay(5000); // 等待 5 秒
     // Serial.begin(9600);

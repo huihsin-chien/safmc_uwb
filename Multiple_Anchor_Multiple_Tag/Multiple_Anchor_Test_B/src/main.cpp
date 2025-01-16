@@ -52,13 +52,13 @@ frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
     false
 };
 
-interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
-    true,
-    true,
-    true,
-    false,
-    true
-};
+// interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
+//     true,
+//     true,
+//     true,
+//     false,
+//     true
+// };
 
 void setup() {
     delay(5000);
@@ -73,7 +73,7 @@ void setup() {
 
     DW1000Ng::setAntennaDelay(16436);
 
-    DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
+    // DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
 
     DW1000Ng::setPreambleDetectionTimeout(64);
     DW1000Ng::setSfdDetectionTimeout(273);
@@ -89,8 +89,16 @@ void setup() {
     DW1000Ng::getPrintableNetworkIdAndShortAddress(msg);
     Serial.print("Network ID & Device Address: "); Serial.println(msg);
     DW1000Ng::getPrintableDeviceMode(msg);
-    Serial.print("Device mode: "); Serial.println(msg);   
-    DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
+    Serial.print("Device mode: "); Serial.println(msg); 
+
+    DW1000Ng::enableDebounceClock();
+    DW1000Ng::enableLedBlinking();
+    DW1000Ng::setGPIOMode(12, LED_MODE);
+    DW1000Ng::setGPIOMode(13, LED_MODE);
+    DW1000Ng::setGPIOMode(14, LED_MODE);
+    DW1000Ng::setGPIOMode(15,LED_MODE);
+
+    // DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
     delay(5000); 
 }
 

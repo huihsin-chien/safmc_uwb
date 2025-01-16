@@ -50,9 +50,9 @@ interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
     false   // interruptOnAutomaticAcknowledgeTrigger
 };
 
-byte tag_short_address[] = {0x01, 0x02}; // 設定當前 tag 的短地址
-byte main_anchor_address[] = {0x01, 0x00};
-char EUI[] = "AA:BB:CC:DD:EE:FF:00:10";
+// byte tag1_short_address[] = {0x01, 0x01}; // 設定當前 tag 的短地址
+// byte main_anchor_address[] = {0x01, 0x00};
+char EUI[] = "AA:BB:CC:DD:EE:FF:01:02";
 // byte RANGING_RESPONSE = 0x60;
 volatile uint32_t blink_rate = 200;
 
@@ -100,15 +100,15 @@ void setup() {
     Serial.print("Network ID & Device Address: "); Serial.println(msg);
     DW1000Ng::getPrintableDeviceMode(msg);
     Serial.print("Device mode: "); Serial.println(msg);   
-    delay(5000); // 等待 5 秒
 
     DW1000Ng::enableDebounceClock();
     DW1000Ng::enableLedBlinking();
     DW1000Ng::setGPIOMode(5, LED_MODE);
     DW1000Ng::setGPIOMode(4, LED_MODE);
     DW1000Ng::setGPIOMode(3, LED_MODE);
-    DW1000Ng::setGPIOMode(12,   LED_MODE);
+    DW1000Ng::setGPIOMode(12,LED_MODE);
 
+    delay(5000); // 等待 5 秒
     // Serial.begin(9600);
     // Serial.println(F("### arduino-DW1000Ng-ranging-tag ###"));
     // DW1000Ng::initializeNoInterrupt(PIN_SS, PIN_RST);

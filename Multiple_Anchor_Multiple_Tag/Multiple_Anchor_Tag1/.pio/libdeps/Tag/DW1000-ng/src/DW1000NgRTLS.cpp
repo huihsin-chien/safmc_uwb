@@ -42,7 +42,6 @@ namespace DW1000NgRTLS {
         DW1000Ng::getEUI(&Blink[2]);
         DW1000Ng::setTransmitData(Blink, sizeof(Blink));
         DW1000Ng::startTransmit();
-        Serial.println("Blink sent");
     }
 
     void transmitRangingInitiation(byte tag_eui[], byte tag_short_address[]) {
@@ -163,7 +162,7 @@ namespace DW1000NgRTLS {
         DW1000NgRTLS::transmitTwrShortBlink();
         
         if(!DW1000NgRTLS::waitForNextRangingStep()) return {false, 0};
-        Serial.println("Received Ranging Initiation");
+
         size_t init_len = DW1000Ng::getReceivedDataLength();
         byte init_recv[init_len];
         DW1000Ng::getReceivedData(init_recv, init_len);
@@ -279,9 +278,6 @@ namespace DW1000NgRTLS {
 
             if(result.success)
                 return result;
-        }
-        else {
-            Serial.println("Error in range request");
         }
         return {false, 0};
     }
