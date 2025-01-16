@@ -42,7 +42,6 @@
  * Arduino driver library (source file) for the Decawave DW1000Ng UWB transceiver Module.
  */
 
-#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -1776,9 +1775,6 @@ namespace DW1000Ng {
 			DW1000NgUtils::setBit(_sysctrl, LEN_SYS_CTRL, WAIT4RESP_BIT, true);
 
 		DW1000NgUtils::setBit(_sysctrl, LEN_SYS_CTRL, TXSTRT_BIT, true);
-		// std::cout << "SYS_CTRL: " << SYS_CTRL<< std::endl;
-		// std::cout << "NO_SUB: " << NO_SUB<< std::endl;
-		// std::cout << "LEN_SYS_CTRL: " << LEN_SYS_CTRL<< std::endl;
 		_writeBytesToRegister(SYS_CTRL, NO_SUB, _sysctrl, LEN_SYS_CTRL);
 	}
 

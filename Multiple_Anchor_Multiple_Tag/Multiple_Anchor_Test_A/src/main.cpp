@@ -1,4 +1,4 @@
-#include <Arduino.h>
+
 #include <DW1000Ng.hpp>
 #include <DW1000NgUtils.hpp>
 #include <DW1000NgRanging.hpp>
@@ -25,7 +25,7 @@ Position position_C = {3,2.5};
 boolean received_B = false;
 
 byte tag1_shortAddress[] = {0x01, 0x01};
-byte tag2_shortAddress[] = {0x02, 0x01};
+byte tag2_shortAddress[] = {0x02, 0x02};
 
 
 byte anchor_b[] = {0x02, 0x00};
@@ -62,7 +62,7 @@ frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
     false,
     false,
     false,
-    true /* This allows blink frames */
+    true
 };
 
 interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
@@ -72,36 +72,24 @@ interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
     false,
     true
 };
-char EUI[] = "AA:BB:CC:DD:EE:FF:00:01";
+
 void handleInterrupt(); // Declare handleInterrupt function
 
 void setup() {
     delay(5000);
-     // DEBUG monitoring
     Serial.begin(9600);
-    Serial.println(F("### DW1000Ng-arduino-ranging-anchorMain ###"));
-    // initialize the driver
-    #if defined(ESP8266)
-    DW1000Ng::initializeNoInterrupt(PIN_SS);
-    #else
+    Serial.println(F("### arduino-DW1000Ng-ranging-anchor-A ###"));
     DW1000Ng::initializeNoInterrupt(PIN_SS, PIN_RST);
-    #endif
     Serial.println(F("DW1000Ng initialized ..."));
-    // general configuration
     DW1000Ng::applyConfiguration(DEFAULT_CONFIG);
     DW1000Ng::enableFrameFiltering(ANCHOR_FRAME_FILTER_CONFIG);
-    
-    DW1000Ng::setEUI(&EUI[0]);    //deleted EUI's const
-
+    DW1000Ng::setEUI("AA:BB:CC:DD:EE:FF:00:01");
     DW1000Ng::setPreambleDetectionTimeout(64);
     DW1000Ng::setSfdDetectionTimeout(273);
     DW1000Ng::setReceiveFrameWaitTimeoutPeriod(5000);
-
     DW1000Ng::setNetworkId(RTLS_APP_ID);
     DW1000Ng::setDeviceAddress(1);
-	
     DW1000Ng::setAntennaDelay(16436);
-    
     Serial.println(F("Committed configuration ..."));
     // DEBUG chip info and registers pretty printed
     char msg[128];
@@ -112,44 +100,69 @@ void setup() {
     DW1000Ng::getPrintableNetworkIdAndShortAddress(msg);
     Serial.print("Network ID & Device Address: "); Serial.println(msg);
     DW1000Ng::getPrintableDeviceMode(msg);
-    Serial.print("Device mode: "); Serial.println(msg);   
-    delay(5000); 
+    Serial.print("Device mode: "); Serial.println(msg); 
+    DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
+    DW1000Ng::enableLedBlinking();
+    DW1000Ng::setGPIOMode(15, LED_MODE);
+    DW1000Ng::setGPIOMode(14, LED_MODE);
+    DW1000Ng::setGPIOMode(13, LED_MODE);
+    DW1000Ng::setGPIOMode(12,   LED_MODE);
+
+    delay(5000);
 }
 
+void transmitRangeReport() {
+    byte rangingReport[] = {DATA, SHORT_SRC_AND_DEST, DW1000NgRTLS::increaseSequenceNumber(), 0,0, 0,0, 0,0, 0x60, 0,0 };
+    DW1000Ng::getNetworkId(&rangingReport[3]);
+    memcpy(&rangingReport[5], main_anchor_address, 2);
+    DW1000Ng::getDeviceAddress(&rangingReport[7]);
+    DW1000NgUtils::writeValueToBytes(&rangingReport[10], static_cast<uint16_t>((range_self*1000)), 2);
+    DW1000Ng::setTransmitData(rangingReport, sizeof(rangingReport));
+    DW1000Ng::startTransmit();
+}
 void handleRanging(byte tag_shortAddress[]);
 void calculatePosition(double &x, double &y);
-byte tag_shortAddress[2][2] = {{0x01, 0x01}, {0x02, 0x01}};
-bool tag_number = 0;
+
 void loop() {  
     // Handle ranging for tag1 and tag2
-    // Serial.println("Ranging for tag1 and tag2");
     handleRanging(tag1_shortAddress);
     handleRanging(tag2_shortAddress);
-    
 }
 
 void handleRanging(byte tag_shortAddress[]) {
   if(DW1000NgRTLS::receiveFrame()){
-    // Serial.println("receiveFrame");
-    size_t recv_len = DW1000Ng::getReceivedDataLength(); 
+    // Serial.println("let's go~");
+    size_t recv_len = DW1000Ng::getReceivedDataLength();
     byte recv_data[recv_len];
     DW1000Ng::getReceivedData(recv_data, recv_len);
-  
-    if(recv_data[0] == BLINK)  {
-      Serial.println("recieved blink");
+
+    if(recv_data[0] == BLINK) {
+      
+      Serial.println("Received blink");
+      
+      // Extract tag EUI
+      String tag_EUI = "";
+      for (uint8_t i = 2; i < 10; i++) {
+        tag_EUI += String(recv_data[i], HEX);
+        if (i != 9) tag_EUI += ":";
+      }
+      Serial.print("Tag EUI: "); Serial.println(tag_EUI);
+
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
-      DW1000NgRTLS::waitForTransmission(); 
+      DW1000NgRTLS::waitForTransmission();
+      // ranginginitiation 有成功
+
       RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor);
       if(!result.success) return;
       range_self = result.range;
 
       String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from ";
-      rangeString += recv_data[2];
+      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from";
+      rangeString += recv_data[2]; rangeString += recv_data[3];
       Serial.println(rangeString);
-    } else if(recv_data[9] == 0x60 && recv_data[16] == tag_shortAddress[0] && recv_data[17] == tag_shortAddress[1]) {
+    } else if(recv_data[9] == 0x60 && recv_data[2] == tag_shortAddress[0] && recv_data[3] == tag_shortAddress[1]) { // tag's EUI 位置需要再確認
       double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
-      String rangeReportString = "Range from: "; rangeReportString += recv_data[16];
+      String rangeReportString = "Range from: "; rangeReportString += recv_data[7]; // anchor's device address?
       rangeReportString += " = "; rangeReportString += range;
       Serial.println(rangeReportString);
       if(received_B == false && recv_data[7] == anchor_b[0] && recv_data[8] == anchor_b[1]) {
@@ -165,8 +178,8 @@ void handleRanging(byte tag_shortAddress[]) {
         Serial.println(positioning);
       }
     }
-    else if(recv_data[9] == 0x60){
-      Serial.println("recieved 0x60");
+    else if (recv_data[9]==0x60){
+      Serial.println("Received range report");
     }
   }
 }
@@ -184,4 +197,4 @@ void calculatePosition(double &x, double &y) {
 
     x = (C*E-F*B) / (E*A-B*D);
     y = (C*D-A*F) / (B*D-A*E);
-} 
+}

@@ -134,6 +134,7 @@ namespace DW1000NgRTLS {
             yield();
             #endif
         }
+        Serial.println("Rangin init Transmit done");
         DW1000Ng::clearTransmitStatus();
     }
 

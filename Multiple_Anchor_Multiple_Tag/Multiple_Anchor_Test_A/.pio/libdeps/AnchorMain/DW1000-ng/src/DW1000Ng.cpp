@@ -1723,6 +1723,7 @@ namespace DW1000Ng {
 	}
 
 	void startTransmit(TransmitMode mode) {
+		
 		memset(_sysctrl, 0, LEN_SYS_CTRL);
 		DW1000NgUtils::setBit(_sysctrl, LEN_SYS_CTRL, SFCST_BIT, !_frameCheck);
 		if(mode == TransmitMode::DELAYED)

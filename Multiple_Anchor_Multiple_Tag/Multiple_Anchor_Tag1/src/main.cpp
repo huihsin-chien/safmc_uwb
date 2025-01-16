@@ -52,7 +52,7 @@ interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
 
 byte tag_short_address[] = {0x01, 0x01}; // 設定當前 tag 的短地址
 byte main_anchor_address[] = {0x01, 0x00};
-char EUI[] = "AA:BB:CC:DD:EE:FF:00:00";
+char EUI[] = "AA:BB:CC:DD:EE:FF:01:01";
 // byte RANGING_RESPONSE = 0x60;
 volatile uint32_t blink_rate = 200;
 
