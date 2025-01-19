@@ -96,7 +96,14 @@ void transmitRangeReport() {
     memcpy(&rangingReport[5], main_anchor_address, 2);
     DW1000Ng::getDeviceAddress(&rangingReport[7]);
     DW1000NgUtils::writeValueToBytes(&rangingReport[10], static_cast<uint16_t>((range_self*1000)), 2);
+
+    // Serial.print("Tag's short address: "); Serial.print(currentTagShortaddress[0], HEX); Serial.println(currentTagShortaddress[1], HEX);
+    
     memcpy(&rangingReport[16], currentTagShortaddress, 2); // Add tag short address to the report
+    Serial.println("Range report: ");
+    for(size_t i = 0; i < 18; i++) {
+        Serial.print(rangingReport[i], HEX); Serial.print(" ");
+    }
     DW1000Ng::setTransmitData(rangingReport, sizeof(rangingReport));
     DW1000Ng::startTransmit();
     Serial.println("Transmitting range report");

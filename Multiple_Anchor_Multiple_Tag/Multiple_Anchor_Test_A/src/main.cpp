@@ -28,7 +28,8 @@ double range_self;
 double range_B;
 double range_C;
 
-boolean received_B = false;
+boolean received_B1 = false;
+boolean received_B2 = false;
 
 byte tag1_shortAddress[] = {0x01, 0x01};
 byte tag2_shortAddress[] = {0x02, 0x02};
@@ -173,14 +174,18 @@ void handleRanging(byte tag_shortAddress[]) {
       Serial.println(rangeString);
     } 
     else if(recv_data[9] == 0x60 && recv_data[12] == tag1_recommendation) { // tag1's short address
+      Serial.println("Received range report");
+      for (uint16_t i = 0; i < 20; i++) {
+        Serial.print(i);Serial.print(": 0x"); Serial.print(recv_data[i], HEX);Serial.print(" ");
+      }
       double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
       String rangeReportString = "Range from: "; rangeReportString += recv_data[7]; // anchor's device address?
       rangeReportString += " = "; rangeReportString += range;
       Serial.println(rangeReportString);
-      if(received_B == false && recv_data[7] == anchor_b[0] && recv_data[8] == anchor_b[1]) {
+      if(received_B1 == false && recv_data[7] == anchor_b[0] && recv_data[8] == anchor_b[1]) {
         range_B = range;
-        received_B = true;
-      } else if(received_B == true && recv_data[7] == anchor_c[0] && recv_data[8] == anchor_c[1]){
+        received_B1 = true;
+      } else if(received_B1 == true && recv_data[7] == anchor_c[0] && recv_data[8] == anchor_c[1]){
         range_C = range;
         double x,y;
         calculatePosition(x,y);
@@ -191,14 +196,18 @@ void handleRanging(byte tag_shortAddress[]) {
       }
     }
     else if(recv_data[9] == 0x60 && recv_data[12] == tag2_recommendation) { // tag2's short address
+      Serial.println("Received range report");
+      for (uint16_t i = 0; i < 20; i++) {
+        Serial.print(i);Serial.print(": 0x"); Serial.print(recv_data[i], HEX);Serial.print(" ");
+      }
       double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
       String rangeReportString = "Range from: "; rangeReportString += recv_data[7]; // anchor's device address?
       rangeReportString += " = "; rangeReportString += range;
       Serial.println(rangeReportString);
-      if(received_B == false && recv_data[7] == anchor_b[0] && recv_data[8] == anchor_b[1]) {
+      if(received_B2 == false && recv_data[7] == anchor_b[0] && recv_data[8] == anchor_b[1]) {
         range_B = range;
-        received_B = true;
-      } else if(received_B == true && recv_data[7] == anchor_c[0] && recv_data[8] == anchor_c[1]){
+        received_B2 = true;
+      } else if(received_B2 == true && recv_data[7] == anchor_c[0] && recv_data[8] == anchor_c[1]){
         range_C = range;
         double x,y;
         calculatePosition(x,y);
@@ -213,8 +222,8 @@ void handleRanging(byte tag_shortAddress[]) {
     //   Serial.print("Anchor: "); Serial.print(recv_data[7]);
     //   // print all received data
     //   Serial.print("Received length: ");Serial.println(recv_len);
-    //   for (uint16_t i = 0; i < 18; i++) {
-    //     Serial.print(i);Serial.print(": 0x"); Serial.print(recv_data[i], HEX);
+    //   for (uint16_t i = 0; i < 20; i++) {
+    //     Serial.print(i);Serial.print(": 0x"); Serial.print(recv_data[i], HEX);Serial.print(" ");
     //   }
 
     //   double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
