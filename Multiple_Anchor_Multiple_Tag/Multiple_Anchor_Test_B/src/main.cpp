@@ -24,7 +24,7 @@ uint16_t next_anchor = 3;
 
 double range_self;
 
-byte currentTagEUI[8]; // Array to store the tag's EUI (8 bytes)
+byte currentTagShortaddress[2]; // Array to store the tag's EUI (8 bytes)
 
 device_configuration_t DEFAULT_CONFIG = {
     false,
@@ -48,16 +48,15 @@ frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
     false,
     false,
     false,
-    true /* This allows blink frames */
+    false
 };
-
-interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
-    true,
-    true,
-    true,
-    false,
-    true
-};
+// interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
+//     true,
+//     true,
+//     true,
+//     false,
+//     true
+// };
 
 void setup() {
     delay(5000);
@@ -70,14 +69,16 @@ void setup() {
     DW1000Ng::setEUI("AA:BB:CC:DD:EE:FF:00:02");
     DW1000Ng::setNetworkId(RTLS_APP_ID);
 
-    DW1000Ng::setAntennaDelay(16436);
-
-    DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
+    // DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
 
     DW1000Ng::setPreambleDetectionTimeout(64);
     DW1000Ng::setSfdDetectionTimeout(273);
     DW1000Ng::setReceiveFrameWaitTimeoutPeriod(5000);
-    
+    DW1000Ng::setNetworkId(RTLS_APP_ID);
+    DW1000Ng::setDeviceAddress(2);
+	
+    DW1000Ng::setAntennaDelay(16436);
+
     Serial.println(F("Committed configuration ..."));
     // DEBUG chip info and registers pretty printed
     char msg[128];
@@ -89,7 +90,6 @@ void setup() {
     Serial.print("Network ID & Device Address: "); Serial.println(msg);
     DW1000Ng::getPrintableDeviceMode(msg);
     Serial.print("Device mode: "); Serial.println(msg);   
-    DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
     delay(5000); 
 }
 
@@ -99,7 +99,7 @@ void transmitRangeReport() {
     memcpy(&rangingReport[5], main_anchor_address, 2);
     DW1000Ng::getDeviceAddress(&rangingReport[7]);
     DW1000NgUtils::writeValueToBytes(&rangingReport[10], static_cast<uint16_t>((range_self*1000)), 2);
-    memcpy(&rangingReport[16], currentTagEUI, 8); // Add tag EUI to the report
+    memcpy(&rangingReport[16], currentTagShortaddress, 2); // Add tag short address to the report
     DW1000Ng::setTransmitData(rangingReport, sizeof(rangingReport));
     DW1000Ng::startTransmit();
     Serial.println("Transmitting range report");
@@ -115,12 +115,23 @@ void loop() {
         size_t recv_len = DW1000Ng::getReceivedDataLength();
         byte recv_data[recv_len];
         DW1000Ng::getReceivedData(recv_data, recv_len);
-        memcpy(currentTagEUI, &recv_data[2], 8); // EUI starts at position 2 (assuming EUI is 8 bytes long)
+        memcpy(currentTagShortaddress, &recv_data[7], 2); // EUI starts at position 2 (assuming EUI is 8 bytes long)
+        // Serial.print("Received data: ");
+        // for (size_t i = 0; i < recv_len; i++) {
+        //     Serial.print(recv_data[i], HEX);
+        //     Serial.print(" ");
+        // }
+        // Serial.println();
+        Serial.print("Tag's short address: ");
+        Serial.print(recv_data[7], HEX);Serial.println(recv_data[8], HEX);
+        // recv_data[7] and recv_data[8] contain the tag's short address
 
         transmitRangeReport();
 
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-        rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm";
+        rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from";
+        rangeString += recv_data[7]; rangeString += recv_data[8];
         Serial.println(rangeString);
     }
 }
+

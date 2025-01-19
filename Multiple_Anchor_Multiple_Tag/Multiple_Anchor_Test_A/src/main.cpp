@@ -19,9 +19,16 @@ const uint8_t PIN_RST = 15;
 const uint8_t PIN_SS = SS; // spi select pin
 #endif
 
+char EUI[] = "AA:BB:CC:DD:EE:FF:00:01";
+
 Position position_self = {0,0};
 Position position_B = {3,0};
 Position position_C = {3,2.5};
+
+double range_self;
+double range_B;
+double range_C;
+
 boolean received_B = false;
 
 byte tag1_shortAddress[] = {0x01, 0x01};
@@ -31,10 +38,6 @@ byte tag2_shortAddress[] = {0x02, 0x02};
 byte anchor_b[] = {0x02, 0x00};
 uint16_t next_anchor = 2;
 byte anchor_c[] = {0x03, 0x00};
-
-double range_self;
-double range_B;
-double range_C;
 
 
 
@@ -65,15 +68,14 @@ frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
     true
 };
 
-interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
-    true,
-    true,
-    true,
-    false,
-    true
-};
+// interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
+//     true,
+//     true,
+//     true,
+//     false,
+//     true
+// };
 
-char EUI[] = "AA:BB:CC:DD:EE:FF:00:01";
 void setup() {
     delay(5000);
     Serial.begin(9600);
@@ -100,7 +102,7 @@ void setup() {
     Serial.print("Network ID & Device Address: "); Serial.println(msg);
     DW1000Ng::getPrintableDeviceMode(msg);
     Serial.print("Device mode: "); Serial.println(msg); 
-    DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
+    // DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
     DW1000Ng::enableLedBlinking();
     DW1000Ng::setGPIOMode(15, LED_MODE);
     DW1000Ng::setGPIOMode(14, LED_MODE);
@@ -110,15 +112,6 @@ void setup() {
     delay(5000);
 }
 
-void transmitRangeReport() {
-    byte rangingReport[] = {DATA, SHORT_SRC_AND_DEST, DW1000NgRTLS::increaseSequenceNumber(), 0,0, 0,0, 0,0, 0x60, 0,0 };
-    DW1000Ng::getNetworkId(&rangingReport[3]);
-    memcpy(&rangingReport[5], main_anchor_address, 2);
-    DW1000Ng::getDeviceAddress(&rangingReport[7]);
-    DW1000NgUtils::writeValueToBytes(&rangingReport[10], static_cast<uint16_t>((range_self*1000)), 2);
-    DW1000Ng::setTransmitData(rangingReport, sizeof(rangingReport));
-    DW1000Ng::startTransmit();
-}
 void handleRanging(byte tag_shortAddress[]);
 void calculatePosition(double &x, double &y);
 
@@ -140,13 +133,21 @@ void handleRanging(byte tag_shortAddress[]) {
       Serial.println("Received blink");
       
       // Extract tag EUI
-      String tag_EUI = "";
-      for (uint8_t i = 2; i < 10; i++) {
+      /*String tag_EUI = "";
+      for (uint8_t i = 2; i < 4; i++) {
         tag_EUI += String(recv_data[i], HEX);
-        if (i != 9) tag_EUI += ":";
+        if (i != 3) tag_EUI += ":";
       }
-      Serial.print("Tag EUI: "); Serial.println(tag_EUI);
-
+      Serial.print("Tag EUI: "); Serial.println(tag_EUI);*/
+      Serial.print("Tag EUI: "); Serial.print(recv_data[2]); Serial.println(recv_data[3]);
+      
+      if (recv_data[2] == 1 && recv_data[3] == 1) {
+        tag_shortAddress = tag1_shortAddress;
+      } 
+      else if (recv_data[2] == 2 && recv_data[3] == 2) {
+        tag_shortAddress = tag2_shortAddress;
+      }
+      Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission();
       // ranginginitiation 有成功
@@ -159,7 +160,8 @@ void handleRanging(byte tag_shortAddress[]) {
       rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from";
       rangeString += recv_data[2]; rangeString += recv_data[3];
       Serial.println(rangeString);
-    } else if(recv_data[9] == 0x60 && recv_data[2] == tag_shortAddress[0] && recv_data[3] == tag_shortAddress[1]) { // tag's EUI 位置需要再確認
+    } 
+    else if(recv_data[9] == 0x60 && recv_data[16] == tag_shortAddress[0] && recv_data[17] == tag_shortAddress[1]) { // tag's short address
       double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
       String rangeReportString = "Range from: "; rangeReportString += recv_data[7]; // anchor's device address?
       rangeReportString += " = "; rangeReportString += range;
@@ -179,6 +181,11 @@ void handleRanging(byte tag_shortAddress[]) {
     }
     else if (recv_data[9]==0x60){
       Serial.println("Received range report");
+      Serial.print("Anchor: "); Serial.print(recv_data[7]);
+      double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
+      String rangeReportString = "Range from: "; rangeReportString += recv_data[16];rangeReportString += recv_data[17]; // anchor's device address?
+      rangeReportString += "Range = "; rangeReportString += range;
+      Serial.println(rangeReportString);
     }
   }
 }
