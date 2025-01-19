@@ -50,7 +50,7 @@ interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
     false   // interruptOnAutomaticAcknowledgeTrigger
 };
 
-byte tag_short_address[] = {0x01, 0x02}; // 設定當前 tag 的短地址
+byte tag_short_address[] = {0x02, 0x02}; // 設定當前 tag 的短地址
 byte main_anchor_address[] = {0x01, 0x00};
 char EUI[] = "AA:BB:CC:DD:EE:FF:02:02";
 // byte RANGING_RESPONSE = 0x60;
@@ -106,7 +106,7 @@ void setup() {
     DW1000Ng::setGPIOMode(15, LED_MODE);
     DW1000Ng::setGPIOMode(14, LED_MODE);
     DW1000Ng::setGPIOMode(13, LED_MODE);
-    DW1000Ng::setGPIOMode(12,LED_MODE);
+    DW1000Ng::setGPIOMode(12,   LED_MODE);
 
     delay(5000); // 等待 5 秒
     // Serial.begin(9600);
