@@ -34,7 +34,7 @@ uint16_t blink_rate = 200;
 
 double range_self;
 
-byte currentTagShortAddress[2];
+byte currentTagEUI[8]; // Array to store the tag's EUI (8 bytes)
 
 
 device_configuration_t DEFAULT_CONFIG = {
@@ -59,7 +59,7 @@ frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
     false,
     false,
     false,
-    true /* This allows blink frames */
+    false 
 };
 
 void setup() {
@@ -117,8 +117,10 @@ void transmitRangeReport() {
     memcpy(&rangingReport[5], main_anchor_address, 2);
     DW1000Ng::getDeviceAddress(&rangingReport[7]);
     DW1000NgUtils::writeValueToBytes(&rangingReport[10], static_cast<uint16_t>((range_self*1000)), 2);
+    memcpy(&rangingReport[16], currentTagEUI, 8); // Add tag EUI to the report
     DW1000Ng::setTransmitData(rangingReport, sizeof(rangingReport));
     DW1000Ng::startTransmit();
+    Serial.println("Transmitting range report");
 }
  
 
@@ -129,15 +131,17 @@ void loop() {
         range_self = result.range;
 
         // Get the tag short address from the received data
-        // size_t recv_len = DW1000Ng::getReceivedDataLength();
-        // byte recv_data[recv_len];
-        // DW1000Ng::getReceivedData(recv_data, recv_len);
+        size_t recv_len = DW1000Ng::getReceivedDataLength();
+        byte recv_data[recv_len];
+        DW1000Ng::getReceivedData(recv_data, recv_len);
         // memcpy(currentTagShortAddress, &recv_data[16], 2); // position: see void transmitRangingInitiation(byte tag_eui[], byte tag_short_address[]);
+        memcpy(currentTagEUI, &recv_data[2], 8); // EUI starts at position 2 (assuming EUI is 8 bytes long)
 
         transmitRangeReport();
 
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
         rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm";
+        rangeString += recv_data[2]; rangeString += recv_data[3];
         Serial.println(rangeString);
     }
 }
