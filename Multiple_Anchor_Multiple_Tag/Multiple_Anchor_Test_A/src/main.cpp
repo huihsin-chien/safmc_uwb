@@ -189,6 +189,11 @@ void handleRanging(byte tag_shortAddress[]) {
     else if (recv_data[9]==0x60){
       Serial.println("Received range report");
       Serial.print("Anchor: "); Serial.print(recv_data[7]);
+      // print all received data
+      for (uint16_t i = 0; i < recv_len; i++) {
+        Serial.print(" 0x"); Serial.print(recv_data[i], HEX);
+      }
+
       double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
       String rangeReportString = "Range from: "; rangeReportString += recv_data[16];rangeReportString += recv_data[17]; // anchor's device address?
       rangeReportString += "Range = "; rangeReportString += range;
