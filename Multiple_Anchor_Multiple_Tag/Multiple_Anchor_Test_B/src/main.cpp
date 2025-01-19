@@ -11,15 +11,12 @@ typedef struct Position {
 // connection pins
 #if defined(ESP8266)
 const uint8_t PIN_SS = 15;
-const uint8_t PIN_RST = 16;
-const uint8_t PIN_IRQ = 5;
-#elif defined(ESP32)
+#else
 const uint8_t PIN_RST = 15;
 const uint8_t PIN_SS = SS; // spi select pin
 #endif
-
+char EUI[] = "AA:BB:CC:DD:EE:FF:00:02";
 byte main_anchor_address[] = {0x01, 0x00};
-
 uint16_t next_anchor = 3;
 
 double range_self;
@@ -66,7 +63,7 @@ void setup() {
     Serial.println(F("DW1000Ng initialized ..."));
     DW1000Ng::applyConfiguration(DEFAULT_CONFIG);
     DW1000Ng::enableFrameFiltering(ANCHOR_FRAME_FILTER_CONFIG);
-    DW1000Ng::setEUI("AA:BB:CC:DD:EE:FF:00:02");
+    DW1000Ng::setEUI(EUI);
     DW1000Ng::setNetworkId(RTLS_APP_ID);
 
     // DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);

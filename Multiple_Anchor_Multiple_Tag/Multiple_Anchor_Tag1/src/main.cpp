@@ -26,7 +26,6 @@ frame_filtering_configuration_t TAG_FRAME_FILTER_CONFIG = {
 };
 
 
-
 sleep_configuration_t SLEEP_CONFIG = {
     false,  // onWakeUpRunADC   reg 0x2C:00
     false,  // onWakeUpReceive
@@ -39,17 +38,16 @@ sleep_configuration_t SLEEP_CONFIG = {
 };
 
 
-
-byte tag_short_address[] = {0x01, 0x01}; // 設定當前 tag 的短地址
-byte main_anchor_address[] = {0x01, 0x00};
+// byte tag_short_address[] = {0x01, 0x01}; // 設定當前 tag 的短地址
+// byte main_anchor_address[] = {0x01, 0x00};
 char EUI[] = "AA:BB:CC:DD:EE:FF:01:01";
 // byte RANGING_RESPONSE = 0x60;
-volatile uint32_t blink_rate = 200;
+volatile uint32_t blink_rate = 50;
 
-int calculateRange(byte response_data[]) {
-    uint16_t range_raw = DW1000NgUtils::bytesAsValue(&response_data[10], 2);
-    return range_raw / 1000;
-}
+// int calculateRange(byte response_data[]) {
+//     uint16_t range_raw = DW1000NgUtils::bytesAsValue(&response_data[10], 2);
+//     return range_raw / 1000;
+// }
 
 void setup() {
   delay(5000);
@@ -93,20 +91,19 @@ void setup() {
 
     DW1000Ng::enableDebounceClock();
     DW1000Ng::enableLedBlinking();
-    DW1000Ng::setGPIOMode(5, LED_MODE);
-    DW1000Ng::setGPIOMode(4, LED_MODE);
-    DW1000Ng::setGPIOMode(3, LED_MODE);
-    DW1000Ng::setGPIOMode(12,   LED_MODE);
+    DW1000Ng::setGPIOMode(15, LED_MODE);
+    DW1000Ng::setGPIOMode(14, LED_MODE);
+    DW1000Ng::setGPIOMode(13, LED_MODE);
+    DW1000Ng::setGPIOMode(12, LED_MODE);
 
     delay(5000); // 等待 5 秒
 }
 
 void loop() {
-    Serial.println("let's go~");
+    // Serial.println("let's go~");
     DW1000Ng::deepSleep();
     delay(blink_rate);
     DW1000Ng::spiWakeup();
-    DW1000Ng::setEUI(EUI);
 
     RangeInfrastructureResult res = DW1000NgRTLS::tagTwrLocalize(1500);
     if(res.success){
