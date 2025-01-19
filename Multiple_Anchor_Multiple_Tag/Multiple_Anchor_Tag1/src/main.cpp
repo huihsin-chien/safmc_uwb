@@ -25,10 +25,10 @@ frame_filtering_configuration_t TAG_FRAME_FILTER_CONFIG = {
     false, false, true, false, false, false, false, false
 };
 
-frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
-    false, false, true, false, false, false, false,
-    true /* This allows blink frames */
-};
+// frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
+//     false, false, true, false, false, false, false,
+//     true /* This allows blink frames */
+// };
 
 sleep_configuration_t SLEEP_CONFIG = {
     false,  // onWakeUpRunADC   reg 0x2C:00
@@ -41,25 +41,20 @@ sleep_configuration_t SLEEP_CONFIG = {
     true    // enableWakeSPI
 };
 
-interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
-    true,   // interruptOnSent
-    true,   // interruptOnReceived
-    true,  // interruptOnReceiveFailed
-    true,  // interruptOnReceiveTimeout
-    true,  // interruptOnReceiveTimestampAvailable
-    true   // interruptOnAutomaticAcknowledgeTrigger
-};
+// interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
+//     true,   // interruptOnSent
+//     true,   // interruptOnReceived
+//     true,  // interruptOnReceiveFailed
+//     true,  // interruptOnReceiveTimeout
+//     true,  // interruptOnReceiveTimestampAvailable
+//     true   // interruptOnAutomaticAcknowledgeTrigger
+// };
 
-<<<<<<< HEAD
-// byte tag1_short_address[] = {0x01, 0x01}; // 設定當前 tag 的短地址
+// byte tag_short_address[] = {0x01, 0x01}; // 設定當前 tag 的短地址
 // byte main_anchor_address[] = {0x01, 0x00};
-=======
-byte tag_short_address[] = {0x01, 0x01}; // 設定當前 tag 的短地址
-byte main_anchor_address[] = {0x01, 0x00};
->>>>>>> 1db50b44c39860878c1da2ce43de6526e0e6243b
 char EUI[] = "AA:BB:CC:DD:EE:FF:01:01";
 // byte RANGING_RESPONSE = 0x60;
-volatile uint32_t blink_rate = 200;
+volatile uint32_t blink_rate = 50;
 
 // int calculateRange(byte response_data[]) {
 //     uint16_t range_raw = DW1000NgUtils::bytesAsValue(&response_data[10], 2);
@@ -127,11 +122,10 @@ void setup() {
 }
 
 void loop() {
-    Serial.println("let's go~");
+    // Serial.println("let's go~");
     DW1000Ng::deepSleep();
     delay(blink_rate);
     DW1000Ng::spiWakeup();
-    DW1000Ng::setEUI(EUI);
 
     RangeInfrastructureResult res = DW1000NgRTLS::tagTwrLocalize(1500);
     if(res.success){

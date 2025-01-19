@@ -11,15 +11,12 @@ typedef struct Position {
 // connection pins
 #if defined(ESP8266)
 const uint8_t PIN_SS = 15;
-const uint8_t PIN_RST = 16;
-const uint8_t PIN_IRQ = 5;
-#elif defined(ESP32)
+#else
 const uint8_t PIN_RST = 15;
 const uint8_t PIN_SS = SS; // spi select pin
 #endif
-
+char EUI[] = "AA:BB:CC:DD:EE:FF:00:02";
 byte main_anchor_address[] = {0x01, 0x00};
-
 uint16_t next_anchor = 3;
 
 double range_self;
@@ -67,7 +64,7 @@ void setup() {
     Serial.println(F("DW1000Ng initialized ..."));
     DW1000Ng::applyConfiguration(DEFAULT_CONFIG);
     DW1000Ng::enableFrameFiltering(ANCHOR_FRAME_FILTER_CONFIG);
-    DW1000Ng::setEUI("AA:BB:CC:DD:EE:FF:00:02");
+    DW1000Ng::setEUI(EUI);
     DW1000Ng::setNetworkId(RTLS_APP_ID);
 
     DW1000Ng::setAntennaDelay(16436);
@@ -77,7 +74,7 @@ void setup() {
     DW1000Ng::setPreambleDetectionTimeout(64);
     DW1000Ng::setSfdDetectionTimeout(273);
     DW1000Ng::setReceiveFrameWaitTimeoutPeriod(5000);
-    
+    DW1000Ng::setDeviceAddress(2);
     Serial.println(F("Committed configuration ..."));
     // DEBUG chip info and registers pretty printed
     char msg[128];
@@ -119,11 +116,11 @@ void loop() {
         delay(2); // Tweak based on your hardware
         range_self = result.range;
 
-        // Get the tag EUI from the received data
-        size_t recv_len = DW1000Ng::getReceivedDataLength();
-        byte recv_data[recv_len];
-        DW1000Ng::getReceivedData(recv_data, recv_len);
-        memcpy(currentTagEUI, &recv_data[2], 8); // EUI starts at position 2 (assuming EUI is 8 bytes long)
+        // // Get the tag EUI from the received data
+        // size_t recv_len = DW1000Ng::getReceivedDataLength();
+        // byte recv_data[recv_len];
+        // DW1000Ng::getReceivedData(recv_data, recv_len);
+        // memcpy(currentTagEUI, &recv_data[2], 8); // EUI starts at position 2 (assuming EUI is 8 bytes long)
 
         transmitRangeReport();
 

@@ -129,10 +129,10 @@ void loop() {
         range_self = result.range;
 
         // Get the tag short address from the received data
-        size_t recv_len = DW1000Ng::getReceivedDataLength();
-        byte recv_data[recv_len];
-        DW1000Ng::getReceivedData(recv_data, recv_len);
-        memcpy(currentTagShortAddress, &recv_data[16], 2); // position: see void transmitRangingInitiation(byte tag_eui[], byte tag_short_address[]);
+        // size_t recv_len = DW1000Ng::getReceivedDataLength();
+        // byte recv_data[recv_len];
+        // DW1000Ng::getReceivedData(recv_data, recv_len);
+        // memcpy(currentTagShortAddress, &recv_data[16], 2); // position: see void transmitRangingInitiation(byte tag_eui[], byte tag_short_address[]);
 
         transmitRangeReport();
 

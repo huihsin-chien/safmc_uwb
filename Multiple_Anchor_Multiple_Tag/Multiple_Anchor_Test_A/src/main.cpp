@@ -14,11 +14,12 @@ typedef struct Position {
 const uint8_t PIN_SS = 15;
 const uint8_t PIN_RST = 16;
 const uint8_t PIN_IRQ = 5;
-#elif defined(ESP32)
+#else
 const uint8_t PIN_RST = 15;
 const uint8_t PIN_SS = SS; // spi select pin
 #endif
 
+char EUI[] = "AA:BB:CC:DD:EE:FF:00:01";
 Position position_self = {0,0};
 Position position_B = {3,0};
 Position position_C = {3,2.5};
@@ -35,8 +36,6 @@ byte anchor_c[] = {0x03, 0x00};
 double range_self;
 double range_B;
 double range_C;
-
-
 
 byte main_anchor_address[] = {0x01, 0x00};
 
@@ -79,11 +78,16 @@ void setup() {
     delay(5000);
     Serial.begin(9600);
     Serial.println(F("### arduino-DW1000Ng-ranging-anchor-A ###"));
+    // initialize the driver
+    #if defined(ESP8266)
+    DW1000Ng::initializeNoInterrupt(PIN_SS);
+    #else
     DW1000Ng::initializeNoInterrupt(PIN_SS, PIN_RST);
+    #endif
     Serial.println(F("DW1000Ng initialized ..."));
     DW1000Ng::applyConfiguration(DEFAULT_CONFIG);
     DW1000Ng::enableFrameFiltering(ANCHOR_FRAME_FILTER_CONFIG);
-    DW1000Ng::setEUI("AA:BB:CC:DD:EE:FF:00:01");
+    DW1000Ng::setEUI(EUI);
     DW1000Ng::setPreambleDetectionTimeout(64);
     DW1000Ng::setSfdDetectionTimeout(273);
     DW1000Ng::setReceiveFrameWaitTimeoutPeriod(5000);
@@ -111,15 +115,15 @@ void setup() {
     delay(5000);
 }
 
-void transmitRangeReport() {
-    byte rangingReport[] = {DATA, SHORT_SRC_AND_DEST, DW1000NgRTLS::increaseSequenceNumber(), 0,0, 0,0, 0,0, 0x60, 0,0 };
-    DW1000Ng::getNetworkId(&rangingReport[3]);
-    memcpy(&rangingReport[5], main_anchor_address, 2);
-    DW1000Ng::getDeviceAddress(&rangingReport[7]);
-    DW1000NgUtils::writeValueToBytes(&rangingReport[10], static_cast<uint16_t>((range_self*1000)), 2);
-    DW1000Ng::setTransmitData(rangingReport, sizeof(rangingReport));
-    DW1000Ng::startTransmit();
-}
+// void transmitRangeReport() {
+//     byte rangingReport[] = {DATA, SHORT_SRC_AND_DEST, DW1000NgRTLS::increaseSequenceNumber(), 0,0, 0,0, 0,0, 0x60, 0,0 };
+//     DW1000Ng::getNetworkId(&rangingReport[3]);
+//     memcpy(&rangingReport[5], main_anchor_address, 2);
+//     DW1000Ng::getDeviceAddress(&rangingReport[7]);
+//     DW1000NgUtils::writeValueToBytes(&rangingReport[10], static_cast<uint16_t>((range_self*1000)), 2);
+//     DW1000Ng::setTransmitData(rangingReport, sizeof(rangingReport));
+//     DW1000Ng::startTransmit();
+// }
 void handleRanging(byte tag_shortAddress[]);
 void calculatePosition(double &x, double &y);
 
@@ -130,25 +134,27 @@ void loop() {
 }
 
 void handleRanging(byte tag_shortAddress[]) {
-  Serial.println("Ranging for tag");
-if(DW1000NgRTLS::receiveFrame()){
+  // Serial.println("Ranging for tag");
+  if(DW1000NgRTLS::receiveFrame()){
     // Serial.println("let's go~");
     size_t recv_len = DW1000Ng::getReceivedDataLength();
     byte recv_data[recv_len];
     DW1000Ng::getReceivedData(recv_data, recv_len);
-
+    for(uint8_t i = 0; i < recv_len; i++) {
+      Serial.print("Data");Serial.print(i);Serial.print(recv_data[i], HEX); Serial.print(" ");
+    }
 
     if(recv_data[0] == BLINK) {
       
       Serial.println("Received blink");
       
       // Extract tag EUI
-      String tag_EUI = "";
-      for (uint8_t i = 2; i < 10; i++) {
-        tag_EUI += String(recv_data[i], HEX);
-        if (i != 9) tag_EUI += ":";
-      }
-      Serial.print("Tag EUI: "); Serial.println(tag_EUI);
+      // String tag_EUI = "";
+      // for (uint8_t i = 2; i < 4; i++) {
+      //   tag_EUI += String(recv_data[i], HEX);
+      //   if (i != 3) tag_EUI += ":";
+      // }
+      // Serial.print("Tag EUI: "); Serial.println(tag_EUI);
 
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission();
@@ -162,7 +168,7 @@ if(DW1000NgRTLS::receiveFrame()){
       rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from";
       rangeString += recv_data[2]; rangeString += recv_data[3];
       Serial.println(rangeString);
-    } else if(recv_data[9] == 0x60 && recv_data[2] == tag_shortAddress[0] && recv_data[3] == tag_shortAddress[1]) { // tag's EUI 位置需要再確認
+    } else if(recv_data[9] == 0x60 /*&& recv_data[2] == tag_shortAddress[0] && recv_data[3] == tag_shortAddress[1]*/) { // tag's EUI 位置需要再確認
       double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
       String rangeReportString = "Range from: "; rangeReportString += recv_data[7]; // anchor's device address?
       rangeReportString += " = "; rangeReportString += range;
