@@ -49,6 +49,7 @@
 
 #include <Arduino.h>
 #include <DW1000Ng.hpp>
+#include <HardwareSerial.h>
 
 // #if defined(ESP8266)
 // //const uint8_t PIN_RST = 5; // reset pin
@@ -80,9 +81,16 @@ device_configuration_t DEFAULT_CONFIG = {
 
 void transmit();
 
+#define TXD1 17
+#define RXD1 18
+
+HardwareSerial customSerial(1);  // 创建一个名为customSerial的新实例，关联到UART2
+
+
 void setup() {
   // DEBUG monitoring
   Serial.begin(9600);
+  customSerial.begin(9600, SERIAL_8N1, RXD1, TXD1);  // 初始化UART2，波特率为9600
   Serial.println(F("### DW1000Ng-arduino-sender-test ###"));
   // initialize the driver
   DW1000Ng::initializeNoInterrupt(PIN_SS);
@@ -111,9 +119,9 @@ void setup() {
   
   DW1000Ng::enableDebounceClock();
   DW1000Ng::enableLedBlinking();
-  DW1000Ng::setGPIOMode(5, LED_MODE);
-  DW1000Ng::setGPIOMode(4, LED_MODE);
-  DW1000Ng::setGPIOMode(3, LED_MODE);
+  DW1000Ng::setGPIOMode(15, LED_MODE);
+  DW1000Ng::setGPIOMode(14, LED_MODE);
+  DW1000Ng::setGPIOMode(13, LED_MODE);
   DW1000Ng::setGPIOMode(12,   LED_MODE);
 
   // start a transmission
@@ -152,4 +160,7 @@ void loop() {
     Serial.print("ARDUINO delay sent [ms] ... "); Serial.println(millis() - delaySent);
     uint64_t newSentTime = DW1000Ng::getTransmitTimestamp();
     Serial.print("Processed packet ... #"); Serial.println(sentNum);
+    customSerial.println("Hello, UART2!");  // 使用customSerial发送数据
 }
+
+
