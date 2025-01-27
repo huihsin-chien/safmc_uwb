@@ -255,7 +255,7 @@ namespace DW1000NgRTLS {
         size_t poll_len = DW1000Ng::getReceivedDataLength();
         byte poll_data[poll_len];
         DW1000Ng::getReceivedData(poll_data, poll_len);
-
+        
         if(poll_len > 9 && poll_data[9] == RANGING_TAG_POLL) {
             uint64_t timePollReceived = DW1000Ng::getReceiveTimestamp();
             DW1000NgRTLS::transmitResponseToPoll(&poll_data[7]);

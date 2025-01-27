@@ -27,7 +27,7 @@ const uint8_t PIN_SS = SS; // spi select pin
 
 // Extended Unique Identifier register. 64-bit device identifier. Register file: 0x01
 char EUI[] = "AA:BB:CC:DD:EE:FF:00:03"; 
-
+byte currentTagShortaddress[2];
 byte main_anchor_address[] = {0x01, 0x00};
 
 uint16_t blink_rate = 200;
@@ -136,7 +136,7 @@ void loop() {
         DW1000Ng::getReceivedData(recv_data, recv_len);
         // memcpy(currentTagShortAddress, &recv_data[16], 2); // position: see void transmitRangingInitiation(byte tag_eui[], byte tag_short_address[]);
         memcpy(currentTagEUI, &recv_data[2], 8); // EUI starts at position 2 (assuming EUI is 8 bytes long)
-
+        memcpy(currentTagShortaddress, &recv_data[2], 2);
         transmitRangeReport();
 
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
