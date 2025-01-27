@@ -41,8 +41,8 @@ byte anchor_c[] = {0x03, 0x00};
 
 byte main_anchor_address[] = {0x01, 0x00};
 
-double tag1_recommendation = 0;
-double tag2_recommendation = 0;
+byte tag1_recommendation ;
+byte tag2_recommendation;
 
 device_configuration_t DEFAULT_CONFIG = {
     false,
@@ -173,6 +173,7 @@ void handleRanging(byte tag_shortAddress[]) {
       Serial.println(rangeString);
     } 
     else if(recv_data[9] == 0x60 && recv_data[12] == tag1_recommendation) { // tag1's short address
+      Serial.print("tag1_recommendation="); Serial.println(tag1_recommendation);
       double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
       String rangeReportString = "Range from: "; rangeReportString += recv_data[7]; // anchor's device address?
       rangeReportString += " = "; rangeReportString += range;
@@ -191,6 +192,7 @@ void handleRanging(byte tag_shortAddress[]) {
       }
     }
     else if(recv_data[9] == 0x60 && recv_data[12] == tag2_recommendation) { // tag2's short address
+      Serial.print("tag2_recommendation="); Serial.println(tag2_recommendation);
       double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
       String rangeReportString = "Range from: "; rangeReportString += recv_data[7]; // anchor's device address?
       rangeReportString += " = "; rangeReportString += range;
@@ -208,6 +210,7 @@ void handleRanging(byte tag_shortAddress[]) {
         Serial.println(positioning);
       }
     }
+    
     // else if (recv_data[9]==0x60){
     //   Serial.println("Received range report");
     //   Serial.print("Anchor: "); Serial.print(recv_data[7]);
