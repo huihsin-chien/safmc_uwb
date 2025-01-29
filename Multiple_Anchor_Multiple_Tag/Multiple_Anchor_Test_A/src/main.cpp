@@ -38,6 +38,11 @@ byte anchor_b[] = {0x02, 0x00};
 uint16_t next_anchor = 2;
 byte anchor_c[] = {0x03, 0x00};
 
+// ranging counter (per second)
+uint16_t successRangingCount_1 = 0;
+uint16_t successRangingCount_2 = 0;
+uint32_t rangingCountPeriod = 0;
+float samplingRate = 0;
 
 byte main_anchor_address[] = {0x01, 0x00};
 
@@ -69,13 +74,6 @@ frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
     true
 };
 
-// interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
-//     true,
-//     true,
-//     true,
-//     false,
-//     true
-// };
 
 void setup() {
     delay(5000);
@@ -109,11 +107,12 @@ void setup() {
     DW1000Ng::getPrintableDeviceMode(msg);
     Serial.print("Device mode: "); Serial.println(msg); 
     // DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
-    DW1000Ng::enableLedBlinking();
-    DW1000Ng::setGPIOMode(15, LED_MODE);
-    DW1000Ng::setGPIOMode(14, LED_MODE);
-    DW1000Ng::setGPIOMode(13, LED_MODE);
-    DW1000Ng::setGPIOMode(12,   LED_MODE);
+      DW1000Ng::enableDebounceClock();
+      DW1000Ng::enableLedBlinking();
+      DW1000Ng::setGPIOMode(6, LED_MODE);
+      DW1000Ng::setGPIOMode(8, LED_MODE);
+      DW1000Ng::setGPIOMode(10, LED_MODE);
+      DW1000Ng::setGPIOMode(12,   LED_MODE);
 
     delay(5000);
 }
@@ -136,8 +135,8 @@ void handleRanging(byte tag_shortAddress[]) {
     DW1000Ng::getReceivedData(recv_data, recv_len);
 
     if(recv_data[0] == BLINK) {
-      
-      Serial.println("Received blink");
+      uint32_t curMillis = millis();
+      // Serial.println("Received blink");
       
       // Extract tag EUI
       /*String tag_EUI = "";
@@ -148,14 +147,6 @@ void handleRanging(byte tag_shortAddress[]) {
       Serial.print("Tag EUI: "); Serial.println(tag_EUI);*/
       Serial.print("Tag EUI: "); Serial.print(recv_data[2]); Serial.println(recv_data[3]);
       
-      if (recv_data[2] == 1 && recv_data[3] == 1) {
-        tag_shortAddress = tag1_shortAddress;
-        tag1_recommendation = recv_data[12];
-      } 
-      else if (recv_data[2] == 2 && recv_data[3] == 2) {
-        tag_shortAddress = tag2_shortAddress;
-        tag2_recommendation = recv_data[12];
-      }
       Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission();
@@ -163,68 +154,37 @@ void handleRanging(byte tag_shortAddress[]) {
       RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor);
       if(!result.success) return;
       range_self = result.range;
-      Serial.println("Data from tag: ");
-      for (uint16_t i = 0; i < 18; i++) {
-        Serial.print(" 0x"); Serial.print(recv_data[i], HEX);
-      }
+      // Serial.println("Data from tag: ");
+      // for (uint16_t i = 0; i < 18; i++) {
+      //   Serial.print(" 0x"); Serial.print(recv_data[i], HEX);
+      // }
       String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from";
+      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from ";
       rangeString += recv_data[2]; rangeString += recv_data[3];
       Serial.println(rangeString);
-    } 
-    else if(recv_data[9] == 0x60 && recv_data[12] == tag1_recommendation) { // tag1's short address
-      Serial.print("tag1_recommendation="); Serial.println(tag1_recommendation);
-      double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
-      String rangeReportString = "Range from: "; rangeReportString += recv_data[7]; // anchor's device address?
-      rangeReportString += " = "; rangeReportString += range;
-      Serial.println(rangeReportString);
-      if(received_B == false && recv_data[7] == anchor_b[0] && recv_data[8] == anchor_b[1]) {
-        range_B = range;
-        received_B = true;
-      } else if(received_B == true && recv_data[7] == anchor_c[0] && recv_data[8] == anchor_c[1]){
-        range_C = range;
-        double x,y;
-        calculatePosition(x,y);
-        String positioning = "Found position of Tag1 - x: ";
-        positioning += x; positioning +=" y: ";
-        positioning += y;
-        Serial.println(positioning);
-      }
-    }
-    else if(recv_data[9] == 0x60 && recv_data[12] == tag2_recommendation) { // tag2's short address
-      Serial.print("tag2_recommendation="); Serial.println(tag2_recommendation);
-      double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
-      String rangeReportString = "Range from: "; rangeReportString += recv_data[7]; // anchor's device address?
-      rangeReportString += " = "; rangeReportString += range;
-      Serial.println(rangeReportString);
-      if(received_B == false && recv_data[7] == anchor_b[0] && recv_data[8] == anchor_b[1]) {
-        range_B = range;
-        received_B = true;
-      } else if(received_B == true && recv_data[7] == anchor_c[0] && recv_data[8] == anchor_c[1]){
-        range_C = range;
-        double x,y;
-        calculatePosition(x,y);
-        String positioning = "Found position of Tag2 - x: ";
-        positioning += x; positioning +=" y: ";
-        positioning += y;
-        Serial.println(positioning);
-      }
-    }
-    
-    // else if (recv_data[9]==0x60){
-    //   Serial.println("Received range report");
-    //   Serial.print("Anchor: "); Serial.print(recv_data[7]);
-    //   // print all received data
-    //   Serial.print("Received length: ");Serial.println(recv_len);
-    //   for (uint16_t i = 0; i < 18; i++) {
-    //     Serial.print(i);Serial.print(": 0x"); Serial.print(recv_data[i], HEX);
-    //   }
 
-    //   double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
-    //   String rangeReportString = "Range from: "; rangeReportString += recv_data[16];rangeReportString += recv_data[17]; // anchor's device address?
-    //   rangeReportString += "Range = "; rangeReportString += range;
-    //   Serial.println(rangeReportString);
-    // }
+      if (recv_data[2] == 0 && recv_data[3] == 0) {
+        // tag_shortAddress = tag1_shortAddress;
+        // tag1_recommendation = recv_data[12];
+        successRangingCount_1++;
+        samplingRate = (1000.0f * successRangingCount_1) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 1: "); Serial.print(samplingRate); Serial.println(" Hz");
+      } 
+      else if (recv_data[2] == 2 && recv_data[3] == 2) {
+        // tag_shortAddress = tag2_shortAddress;
+        // tag2_recommendation = recv_data[12];
+        successRangingCount_2++;
+        samplingRate = (1000.0f * successRangingCount_2) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 2: "); Serial.print(samplingRate); Serial.println(" Hz");
+      }
+
+      if (curMillis - rangingCountPeriod > 1000) {
+          rangingCountPeriod = curMillis;
+          successRangingCount_1 = 0;
+          successRangingCount_2 = 0;
+      }
+    } 
+
   }
 }
 
