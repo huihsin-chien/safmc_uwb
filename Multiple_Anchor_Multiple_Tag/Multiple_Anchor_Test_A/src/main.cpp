@@ -28,17 +28,23 @@ double range_self;
 double range_B;
 double range_C;
 
-boolean received_B1 = false;
-boolean received_B2 = false;
+boolean received_B = false;
 
 byte tag1_shortAddress[] = {0x01, 0x01};
 byte tag2_shortAddress[] = {0x02, 0x02};
+byte tag3_shortAddress[] = {0x03, 0x03};
 
 
 byte anchor_b[] = {0x02, 0x00};
 uint16_t next_anchor = 2;
 byte anchor_c[] = {0x03, 0x00};
 
+// ranging counter (per second)
+uint16_t successRangingCount_1 = 0;
+uint16_t successRangingCount_2 = 0;
+uint16_t successRangingCount_3 = 0;
+uint32_t rangingCountPeriod = 0;
+float samplingRate = 0;
 
 byte main_anchor_address[] = {0x01, 0x00};
 
@@ -71,13 +77,6 @@ frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
     true
 };
 
-// interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
-//     true,
-//     true,
-//     true,
-//     false,
-//     true
-// };
 
 void setup() {
     delay(5000);
@@ -111,27 +110,26 @@ void setup() {
     DW1000Ng::getPrintableDeviceMode(msg);
     Serial.print("Device mode: "); Serial.println(msg); 
     // DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
-    DW1000Ng::enableLedBlinking();
-    DW1000Ng::setGPIOMode(15, LED_MODE);
-    DW1000Ng::setGPIOMode(14, LED_MODE);
-    DW1000Ng::setGPIOMode(13, LED_MODE);
-    DW1000Ng::setGPIOMode(12,   LED_MODE);
-    pinMode(buzzpin, OUTPUT);  
+      DW1000Ng::enableDebounceClock();
+      DW1000Ng::enableLedBlinking();
+      DW1000Ng::setGPIOMode(6, LED_MODE);
+      DW1000Ng::setGPIOMode(8, LED_MODE);
+      DW1000Ng::setGPIOMode(10, LED_MODE);
+      DW1000Ng::setGPIOMode(12,   LED_MODE);
 
     delay(5000);
 }
 
-void handleRanging(byte tag_shortAddress[]);
+void handleRanging();
 void calculatePosition(double &x, double &y);
 
 void loop() {  
-    // Handle ranging for tag1 and tag2
-    handleRanging(tag1_shortAddress);
-    handleRanging(tag2_shortAddress);
+    handleRanging();
 }
 
-void handleRanging(byte tag_shortAddress[]) {
+void handleRanging() {
   // Serial.println("Ranging for tag");
+  byte tag_shortAddress[2];
   if(DW1000NgRTLS::receiveFrame()){
     // Serial.println("let's go~");
     size_t recv_len = DW1000Ng::getReceivedDataLength();
@@ -139,8 +137,8 @@ void handleRanging(byte tag_shortAddress[]) {
     DW1000Ng::getReceivedData(recv_data, recv_len);
 
     if(recv_data[0] == BLINK) {
-      
-      Serial.println("Received blink");
+      uint32_t curMillis = millis();
+      // Serial.println("Received blink");
       
       // Extract tag EUI
       /*String tag_EUI = "";
@@ -150,15 +148,22 @@ void handleRanging(byte tag_shortAddress[]) {
       }
       Serial.print("Tag EUI: "); Serial.println(tag_EUI);*/
       Serial.print("Tag EUI: "); Serial.print(recv_data[2]); Serial.println(recv_data[3]);
-      
-      if (recv_data[2] == 1 && recv_data[3] == 1) {
-        tag_shortAddress = tag1_shortAddress;
-        tag1_recommendation = recv_data[12];
-      } 
-      else if (recv_data[2] == 2 && recv_data[3] == 2) {
-        tag_shortAddress = tag2_shortAddress;
-        tag2_recommendation = recv_data[12];
+
+      if (recv_data[2] == 0 && recv_data[3] == 0) {
+        tag_shortAddress[0] = tag1_shortAddress[0];
+        tag_shortAddress[1] = tag1_shortAddress[1];
+        successRangingCount_1++;
+      } else if (recv_data[2] == 2 && recv_data[3] == 2) {
+        tag_shortAddress[0] = tag2_shortAddress[0];
+        tag_shortAddress[1] = tag2_shortAddress[1];
+        successRangingCount_2++;
+      }else if (recv_data[2] == 3 && recv_data[3] == 3) {
+        tag_shortAddress[0] = tag3_shortAddress[0];
+        tag_shortAddress[1] = tag3_shortAddress[1];
+        successRangingCount_3++;
       }
+
+      
       Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission();
@@ -166,12 +171,12 @@ void handleRanging(byte tag_shortAddress[]) {
       RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor);
       if(!result.success) return;
       range_self = result.range;
-      Serial.println("Data from tag: ");
-      for (uint16_t i = 0; i < 18; i++) {
-        Serial.print(" 0x"); Serial.print(recv_data[i], HEX);
-      }
+      // Serial.println("Data from tag: ");
+      // for (uint16_t i = 0; i < 18; i++) {
+      //   Serial.print(" 0x"); Serial.print(recv_data[i], HEX);
+      // }
       String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from";
+      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from ";
       rangeString += recv_data[2]; rangeString += recv_data[3];
       Serial.println(rangeString);
     } 
@@ -230,11 +235,21 @@ void handleRanging(byte tag_shortAddress[]) {
     //     Serial.print(i);Serial.print(": 0x"); Serial.print(recv_data[i], HEX);Serial.print(" ");
     //   }
 
-    //   double range = static_cast<double>(DW1000NgUtils::bytesAsValue(&recv_data[10],2) / 1000.0);
-    //   String rangeReportString = "Range from: "; rangeReportString += recv_data[16];rangeReportString += recv_data[17]; // anchor's device address?
-    //   rangeReportString += "Range = "; rangeReportString += range;
-    //   Serial.println(rangeReportString);
-    // }
+      if (curMillis - rangingCountPeriod > 1000) {
+        
+        samplingRate = (1000.0f * successRangingCount_1) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 1: "); Serial.print(samplingRate); Serial.println(" Hz");
+        samplingRate = (1000.0f * successRangingCount_2) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 2: "); Serial.print(samplingRate); Serial.println(" Hz");
+        samplingRate = (1000.0f * successRangingCount_3) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 3: "); Serial.print(samplingRate); Serial.println(" Hz");
+          rangingCountPeriod = curMillis;
+          successRangingCount_1 = 0;
+          successRangingCount_2 = 0;
+          successRangingCount_3 = 0;
+      }
+    } 
+
   }
 }
 

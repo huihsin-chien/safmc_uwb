@@ -255,11 +255,11 @@ namespace DW1000NgRTLS {
         size_t poll_len = DW1000Ng::getReceivedDataLength();
         byte poll_data[poll_len];
         DW1000Ng::getReceivedData(poll_data, poll_len);
-        Serial.println("Poll message: ");
-        for (size_t i = 0; i < poll_len; i++) {
-            Serial.print(poll_data[i], HEX);
-            Serial.print(" ");
-        }
+        // Serial.println("Poll message: ");
+        // for (size_t i = 0; i < poll_len; i++) {
+        //     Serial.print(poll_data[i], HEX);
+        //     Serial.print(" ");
+        // }
 
 
         if(poll_len > 9 && poll_data[9] == RANGING_TAG_POLL) {

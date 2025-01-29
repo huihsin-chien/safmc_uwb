@@ -21,6 +21,13 @@ uint16_t next_anchor = 3;
 
 double range_self;
 
+// ranging counter (per second)
+uint16_t successRangingCount_1 = 0;
+uint16_t successRangingCount_2 = 0;
+uint16_t successRangingCount_3 = 0;
+uint32_t rangingCountPeriod = 0;
+float samplingRate = 0;
+
 byte currentTagShortaddress[2]; // Array to store the tag's EUI (8 bytes)
 
 device_configuration_t DEFAULT_CONFIG = {
@@ -87,6 +94,13 @@ void setup() {
     Serial.print("Network ID & Device Address: "); Serial.println(msg);
     DW1000Ng::getPrintableDeviceMode(msg);
     Serial.print("Device mode: "); Serial.println(msg);   
+
+    DW1000Ng::enableDebounceClock();
+    DW1000Ng::enableLedBlinking();
+    DW1000Ng::setGPIOMode(6, LED_MODE);
+    DW1000Ng::setGPIOMode(8, LED_MODE);
+    DW1000Ng::setGPIOMode(10, LED_MODE);
+    DW1000Ng::setGPIOMode(12,   LED_MODE);
     delay(5000); 
 }
 
@@ -100,18 +114,19 @@ void transmitRangeReport() {
     // Serial.print("Tag's short address: "); Serial.print(currentTagShortaddress[0], HEX); Serial.println(currentTagShortaddress[1], HEX);
     
     memcpy(&rangingReport[16], currentTagShortaddress, 2); // Add tag short address to the report
-    Serial.println("Range report: ");
-    for(size_t i = 0; i < 18; i++) {
-        Serial.print(rangingReport[i], HEX); Serial.print(" ");
-    }
+    // Serial.println("Range report: ");
+    // for(size_t i = 0; i < 18; i++) {
+    //     Serial.print(rangingReport[i], HEX); Serial.print(" ");
+    // }
     DW1000Ng::setTransmitData(rangingReport, sizeof(rangingReport));
     DW1000Ng::startTransmit();
-    Serial.println("Transmitting range report");
+    // Serial.println("Transmitting range report");
 }
 
 void loop() {  
     RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor);
     if(result.success) {
+        uint32_t curMillis = millis();
         delay(2); // Tweak based on your hardware
         range_self = result.range;
 
@@ -126,16 +141,40 @@ void loop() {
         //     Serial.print(" ");
         // }
         // Serial.println();
-        Serial.print("Tag's short address: ");
-        Serial.print(recv_data[7], HEX);Serial.println(recv_data[8], HEX);
+        // Serial.print("Tag's short address: ");
+        // Serial.print(recv_data[7], HEX);Serial.println(recv_data[8], HEX);
         // recv_data[7] and recv_data[8] contain the tag's short address
 
-        transmitRangeReport();
+        // transmitRangeReport();
 
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
         rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from";
         rangeString += recv_data[7]; rangeString += recv_data[8];
         Serial.println(rangeString);
+        if(recv_data[7] == 0x01 && recv_data[8] == 0x01){
+            successRangingCount_1++;
+        }
+        else if ( recv_data[7] == 0x02 && recv_data[8] == 0x02){
+            successRangingCount_2++;
+        }
+        else if ( recv_data[7] == 0x03 && recv_data[8] == 0x03){
+            successRangingCount_3++;
+        }
+
+        if (curMillis - rangingCountPeriod > 1000) {
+            
+        samplingRate = (1000.0f * successRangingCount_1) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 1: "); Serial.print(samplingRate); Serial.println(" Hz");
+        samplingRate = (1000.0f * successRangingCount_2) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 2: "); Serial.print(samplingRate); Serial.println(" Hz");
+        samplingRate = (1000.0f * successRangingCount_3) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 3: "); Serial.print(samplingRate); Serial.println(" Hz");
+            rangingCountPeriod = curMillis;
+            successRangingCount_1 = 0;
+            successRangingCount_2 = 0;
+            successRangingCount_3 = 0;
+        }
+
     }
 }
 

@@ -29,8 +29,14 @@ const uint8_t PIN_SS = SS; // spi select pin
 char EUI[] = "AA:BB:CC:DD:EE:FF:00:03"; 
 byte currentTagShortaddress[2];
 byte main_anchor_address[] = {0x01, 0x00};
+// ranging counter (per second)
+uint16_t successRangingCount_1 = 0;
+uint16_t successRangingCount_2 = 0;
+uint16_t successRangingCount_3 = 0;
+uint32_t rangingCountPeriod = 0;
+float samplingRate = 0;
 
-uint16_t blink_rate = 200;
+uint16_t blink_rate = 50;
 
 double range_self;
 
@@ -103,10 +109,10 @@ void setup() {
 
     DW1000Ng::enableDebounceClock();
     DW1000Ng::enableLedBlinking();
-    DW1000Ng::setGPIOMode(12, LED_MODE);
-    DW1000Ng::setGPIOMode(13, LED_MODE);
-    DW1000Ng::setGPIOMode(14, LED_MODE);
-    DW1000Ng::setGPIOMode(15, LED_MODE);
+    DW1000Ng::setGPIOMode(6, LED_MODE);
+    DW1000Ng::setGPIOMode(8, LED_MODE);
+    DW1000Ng::setGPIOMode(10, LED_MODE);
+    DW1000Ng::setGPIOMode(12,   LED_MODE);
 
     delay(5000);
 }
@@ -120,13 +126,14 @@ void transmitRangeReport() {
     memcpy(&rangingReport[16], currentTagEUI, 8); // Add tag EUI to the report
     DW1000Ng::setTransmitData(rangingReport, sizeof(rangingReport));
     DW1000Ng::startTransmit();
-    Serial.println("Transmitting range report");
+    // Serial.println("Transmitting range report");
 }
  
 
 void loop() {  
     RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
     if(result.success) {
+        uint32_t curMillis = millis();
         delay(4); // Tweak based on your hardware
         range_self = result.range;
 
@@ -137,11 +144,38 @@ void loop() {
         // memcpy(currentTagShortAddress, &recv_data[16], 2); // position: see void transmitRangingInitiation(byte tag_eui[], byte tag_short_address[]);
         memcpy(currentTagEUI, &recv_data[2], 8); // EUI starts at position 2 (assuming EUI is 8 bytes long)
         memcpy(currentTagShortaddress, &recv_data[2], 2);
-        transmitRangeReport();
+        // transmitRangeReport();
 
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
         rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm";
-        rangeString += recv_data[2]; rangeString += recv_data[3];
+        rangeString += recv_data[7]; rangeString += recv_data[8];
         Serial.println(rangeString);
+        if(recv_data[7] == 0x01 && recv_data[8] == 0x01){
+            successRangingCount_1++;
+        }
+        else if ( recv_data[7] == 0x02 && recv_data[8] == 0x02){
+            successRangingCount_2++;
+        }
+        else if ( recv_data[7] == 0x03 && recv_data[8] == 0x03){
+            successRangingCount_3++;
+        }
+        if (curMillis - rangingCountPeriod > 1000) {
+            
+        samplingRate = (1000.0f * successRangingCount_1) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 1: "); Serial.print(samplingRate); Serial.println(" Hz");
+        samplingRate = (1000.0f * successRangingCount_2) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 2: "); Serial.print(samplingRate); Serial.println(" Hz");
+        samplingRate = (1000.0f * successRangingCount_3) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 3: "); Serial.print(samplingRate); Serial.println(" Hz");
+            rangingCountPeriod = curMillis;
+            successRangingCount_1 = 0;
+            successRangingCount_2 = 0;
+            successRangingCount_3 = 0;
+
+        }
+
+
     }
 }
+
+

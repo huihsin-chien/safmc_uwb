@@ -147,6 +147,12 @@ void setup() {
     transmitPoll();
     noteActivity();
     Serial.println("setup end");
+    DW1000Ng::enableDebounceClock();
+    DW1000Ng::enableLedBlinking();
+    DW1000Ng::setGPIOMode(15, LED_MODE);
+    DW1000Ng::setGPIOMode(14, LED_MODE);
+    DW1000Ng::setGPIOMode(13, LED_MODE);
+    DW1000Ng::setGPIOMode(12,   LED_MODE);
     delay(10000) ;
 }
 
