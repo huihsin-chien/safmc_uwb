@@ -44,6 +44,7 @@ byte main_anchor_address[] = {0x01, 0x00};
 
 double tag1_recommendation = 0;
 double tag2_recommendation = 0;
+int buzzpin = 2;
 
 device_configuration_t DEFAULT_CONFIG = {
     false,
@@ -115,6 +116,7 @@ void setup() {
     DW1000Ng::setGPIOMode(14, LED_MODE);
     DW1000Ng::setGPIOMode(13, LED_MODE);
     DW1000Ng::setGPIOMode(12,   LED_MODE);
+    pinMode(buzzpin, OUTPUT);  
 
     delay(5000);
 }
@@ -189,6 +191,7 @@ void handleRanging(byte tag_shortAddress[]) {
         range_C = range;
         double x,y;
         calculatePosition(x,y);
+        digitalWrite(buzzpin, HIGH);delay(1000);digitalWrite(buzzpin, LOW);
         String positioning = "Found position of Tag1 - x: ";
         positioning += x; positioning +=" y: ";
         positioning += y;
@@ -211,6 +214,7 @@ void handleRanging(byte tag_shortAddress[]) {
         range_C = range;
         double x,y;
         calculatePosition(x,y);
+        digitalWrite(buzzpin, HIGH);delay(1000);digitalWrite(buzzpin, LOW);
         String positioning = "Found position of Tag2 - x: ";
         positioning += x; positioning +=" y: ";
         positioning += y;

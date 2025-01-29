@@ -147,6 +147,7 @@ void setup() {
     transmitPoll();
     noteActivity();
     Serial.println("setup end");
+    
     delay(10000) ;
 }
 

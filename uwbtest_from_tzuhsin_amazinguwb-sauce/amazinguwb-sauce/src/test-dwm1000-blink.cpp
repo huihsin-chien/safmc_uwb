@@ -111,10 +111,10 @@ void setup() {
   
   DW1000Ng::enableDebounceClock();
   DW1000Ng::enableLedBlinking();
-  DW1000Ng::setGPIOMode(5, LED_MODE);
-  DW1000Ng::setGPIOMode(4, LED_MODE);
-  DW1000Ng::setGPIOMode(3, LED_MODE);
-  DW1000Ng::setGPIOMode(12,   LED_MODE);
+  DW1000Ng::setGPIOMode(15, LED_MODE);
+  DW1000Ng::setGPIOMode(14, LED_MODE);
+  DW1000Ng::setGPIOMode(13, LED_MODE);
+  DW1000Ng::setGPIOMode(12, LED_MODE);
 
   // start a transmission
   transmit();
