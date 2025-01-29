@@ -32,6 +32,7 @@ boolean received_B = false;
 
 byte tag1_shortAddress[] = {0x01, 0x01};
 byte tag2_shortAddress[] = {0x02, 0x02};
+byte tag3_shortAddress[] = {0x03, 0x03};
 
 
 byte anchor_b[] = {0x02, 0x00};
@@ -41,6 +42,7 @@ byte anchor_c[] = {0x03, 0x00};
 // ranging counter (per second)
 uint16_t successRangingCount_1 = 0;
 uint16_t successRangingCount_2 = 0;
+uint16_t successRangingCount_3 = 0;
 uint32_t rangingCountPeriod = 0;
 float samplingRate = 0;
 
@@ -117,17 +119,16 @@ void setup() {
     delay(5000);
 }
 
-void handleRanging(byte tag_shortAddress[]);
+void handleRanging();
 void calculatePosition(double &x, double &y);
 
 void loop() {  
-    // Handle ranging for tag1 and tag2
-    handleRanging(tag1_shortAddress);
-    handleRanging(tag2_shortAddress);
+    handleRanging();
 }
 
-void handleRanging(byte tag_shortAddress[]) {
+void handleRanging() {
   // Serial.println("Ranging for tag");
+  byte tag_shortAddress[2];
   if(DW1000NgRTLS::receiveFrame()){
     // Serial.println("let's go~");
     size_t recv_len = DW1000Ng::getReceivedDataLength();
@@ -146,6 +147,21 @@ void handleRanging(byte tag_shortAddress[]) {
       }
       Serial.print("Tag EUI: "); Serial.println(tag_EUI);*/
       Serial.print("Tag EUI: "); Serial.print(recv_data[2]); Serial.println(recv_data[3]);
+
+      if (recv_data[2] == 0 && recv_data[3] == 0) {
+        tag_shortAddress[0] = tag1_shortAddress[0];
+        tag_shortAddress[1] = tag1_shortAddress[1];
+        successRangingCount_1++;
+      } else if (recv_data[2] == 2 && recv_data[3] == 2) {
+        tag_shortAddress[0] = tag2_shortAddress[0];
+        tag_shortAddress[1] = tag2_shortAddress[1];
+        successRangingCount_2++;
+      }else if (recv_data[2] == 3 && recv_data[3] == 3) {
+        tag_shortAddress[0] = tag3_shortAddress[0];
+        tag_shortAddress[1] = tag3_shortAddress[1];
+        successRangingCount_3++;
+      }
+
       
       Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
@@ -163,25 +179,18 @@ void handleRanging(byte tag_shortAddress[]) {
       rangeString += recv_data[2]; rangeString += recv_data[3];
       Serial.println(rangeString);
 
-      if (recv_data[2] == 0 && recv_data[3] == 0) {
-        // tag_shortAddress = tag1_shortAddress;
-        // tag1_recommendation = recv_data[12];
-        successRangingCount_1++;
+      if (curMillis - rangingCountPeriod > 1000) {
+        
         samplingRate = (1000.0f * successRangingCount_1) / (curMillis - rangingCountPeriod);
         Serial.print("Sampling rate 1: "); Serial.print(samplingRate); Serial.println(" Hz");
-      } 
-      else if (recv_data[2] == 2 && recv_data[3] == 2) {
-        // tag_shortAddress = tag2_shortAddress;
-        // tag2_recommendation = recv_data[12];
-        successRangingCount_2++;
         samplingRate = (1000.0f * successRangingCount_2) / (curMillis - rangingCountPeriod);
         Serial.print("Sampling rate 2: "); Serial.print(samplingRate); Serial.println(" Hz");
-      }
-
-      if (curMillis - rangingCountPeriod > 1000) {
+        samplingRate = (1000.0f * successRangingCount_3) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 3: "); Serial.print(samplingRate); Serial.println(" Hz");
           rangingCountPeriod = curMillis;
           successRangingCount_1 = 0;
           successRangingCount_2 = 0;
+          successRangingCount_3 = 0;
       }
     } 
 

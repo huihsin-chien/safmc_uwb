@@ -32,6 +32,7 @@ byte main_anchor_address[] = {0x01, 0x00};
 // ranging counter (per second)
 uint16_t successRangingCount_1 = 0;
 uint16_t successRangingCount_2 = 0;
+uint16_t successRangingCount_3 = 0;
 uint32_t rangingCountPeriod = 0;
 float samplingRate = 0;
 
@@ -148,22 +149,29 @@ void loop() {
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
         rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm";
         rangeString += recv_data[7]; rangeString += recv_data[8];
-        Serial.print(rangeString);
+        Serial.println(rangeString);
         if(recv_data[7] == 0x01 && recv_data[8] == 0x01){
             successRangingCount_1++;
-            samplingRate = (1000.0f * successRangingCount_1) / (curMillis - rangingCountPeriod);
-            Serial.print("Sampling rate 1: "); Serial.print(samplingRate); Serial.println(" Hz");
         }
         else if ( recv_data[7] == 0x02 && recv_data[8] == 0x02){
             successRangingCount_2++;
-            samplingRate = (1000.0f * successRangingCount_2) / (curMillis - rangingCountPeriod);
-            Serial.print("Sampling rate 2: "); Serial.print(samplingRate); Serial.println(" Hz");
         }
-
+        else if ( recv_data[7] == 0x03 && recv_data[8] == 0x03){
+            successRangingCount_3++;
+        }
         if (curMillis - rangingCountPeriod > 1000) {
+            
+        samplingRate = (1000.0f * successRangingCount_1) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 1: "); Serial.print(samplingRate); Serial.println(" Hz");
+        samplingRate = (1000.0f * successRangingCount_2) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 2: "); Serial.print(samplingRate); Serial.println(" Hz");
+        samplingRate = (1000.0f * successRangingCount_3) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 3: "); Serial.print(samplingRate); Serial.println(" Hz");
             rangingCountPeriod = curMillis;
             successRangingCount_1 = 0;
             successRangingCount_2 = 0;
+            successRangingCount_3 = 0;
+
         }
 
 

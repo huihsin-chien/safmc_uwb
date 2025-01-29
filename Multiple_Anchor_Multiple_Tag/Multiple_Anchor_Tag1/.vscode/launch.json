@@ -18,7 +18,7 @@
             "cwd": "c:/Users/jianh/OneDrive/Desktop/safmc/UWB_test/Multiple_Anchor_Multiple_Tag/Multiple_Anchor_Tag1/src",
             "program": "c:/Users/jianh/OneDrive/Desktop/safmc/UWB_test/Multiple_Anchor_Multiple_Tag/Multiple_Anchor_Tag1/src/build/Debug/outDebug",
             "MIMode": "gdb",
-            "miDebuggerPath": "C:/Users/jianh/.platformio/packages/toolchain-xtensa-esp32s3/bin/xtensa-esp32s3-elf-gdb.exe",
+            "miDebuggerPath": "gdb",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
