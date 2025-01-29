@@ -11,4 +11,4 @@ else:
     print("可用的串口设备如下：")
     for comport in ports_list:
         print(list(comport)[0])
-        print(list(comport)[1])
+        # print(list(comport)[1])
