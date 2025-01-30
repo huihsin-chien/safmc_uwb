@@ -161,9 +161,9 @@ void setup() {
     // anchor starts in receiving mode, awaiting a ranging poll message
       DW1000Ng::enableDebounceClock();
     DW1000Ng::enableLedBlinking();
-    DW1000Ng::setGPIOMode(15, LED_MODE);
-    DW1000Ng::setGPIOMode(14, LED_MODE);
-    DW1000Ng::setGPIOMode(13, LED_MODE);
+    DW1000Ng::setGPIOMode(6, LED_MODE);
+    DW1000Ng::setGPIOMode(8, LED_MODE);
+    DW1000Ng::setGPIOMode(10, LED_MODE);
     DW1000Ng::setGPIOMode(12, LED_MODE);
 
     receiver();
