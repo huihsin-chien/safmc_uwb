@@ -81,7 +81,7 @@ uint64_t timeRangeSent;
 byte data[LEN_DATA];
 // watchdog and reset period
 uint32_t lastActivity;
-uint32_t resetPeriod = 250;
+uint32_t resetPeriod = 2;
 // reply times (same on both sides for symm. ranging)
 uint16_t replyDelayTimeUS = 3000;
 
@@ -99,13 +99,13 @@ device_configuration_t DEFAULT_CONFIG = {
     PreambleCode::CODE_3
 };
 
-// interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
-//     true,
-//     true,
-//     true,
-//     false,
-//     true
-// };
+interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
+    true,
+    true,
+    true,
+    false,
+    true
+};
 
 void handleSent();
 void handleReceived();
@@ -114,7 +114,7 @@ void noteActivity();
 
 void setup() {
     // DEBUG monitoring
-    delay(10000);
+    delay(5000);
     Serial.begin(9600);
     Serial.println(F("### DW1000Ng-arduino-ranging-tag ###"));
     // initialize the driver
@@ -122,10 +122,10 @@ void setup() {
     Serial.println("DW1000Ng initialized ...");
     // general configuration
     DW1000Ng::applyConfiguration(DEFAULT_CONFIG);
-	// DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
+	DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
 
-    DW1000Ng::setDeviceAddress(3);  //tag
-    DW1000Ng::setNetworkId(10);
+    DW1000Ng::setDeviceAddress(5);  //tag    // 設定 Device ID
+    DW1000Ng::setNetworkId(10);     // 設定 PAN ID         
     
     DW1000Ng::setAntennaDelay(16436);
     
@@ -144,18 +144,18 @@ void setup() {
     DW1000Ng::attachSentHandler(handleSent);
     DW1000Ng::attachReceivedHandler(handleReceived);
     // anchor starts by transmitting a POLL message
-    transmitPoll();
-    noteActivity();
-    Serial.println("setup end");
-        
+
     DW1000Ng::enableDebounceClock();
     DW1000Ng::enableLedBlinking();
     DW1000Ng::setGPIOMode(6, LED_MODE);
     DW1000Ng::setGPIOMode(8, LED_MODE);
     DW1000Ng::setGPIOMode(10, LED_MODE);
-    DW1000Ng::setGPIOMode(12,   LED_MODE);
-    
-    delay(10000) ;
+    DW1000Ng::setGPIOMode(12, LED_MODE);
+
+    transmitPoll();
+    noteActivity();
+    Serial.println("setup end");
+    delay(2000) ;
 }
 
 void noteActivity() {
@@ -219,7 +219,6 @@ void loop() {
         if (millis() - lastActivity > resetPeriod) {
             resetInactive();
         }
-        Serial.println("!sentAck && !receivedAck");
         return;
     }
     // continue on any success confirmation
@@ -240,7 +239,6 @@ void loop() {
             //Serial.print("Received wrong message # "); Serial.println(msgId);
             expectedMsgId = POLL_ACK;
             transmitPoll();
-            Serial.println("msgID != expectedMsg");
             return;
         }
         if (msgId == POLL_ACK) {
@@ -254,7 +252,7 @@ void loop() {
             expectedMsgId = POLL_ACK;
             float curRange;
             memcpy(&curRange, data + 1, 4);
-            Serial.print("range（inch):");Serial.println(curRange/2.54);
+            Serial.print("range:");Serial.println(curRange/2.54);
             transmitPoll();
             noteActivity();
         } else if (msgId == RANGE_FAILED) {

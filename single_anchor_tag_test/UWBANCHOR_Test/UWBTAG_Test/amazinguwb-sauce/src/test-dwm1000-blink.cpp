@@ -113,13 +113,13 @@ device_configuration_t DEFAULT_CONFIG = {
     PreambleCode::CODE_3
 };
 
-interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
-    true,
-    true,
-    true,
-    false,
-    true
-};
+// interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
+//     true,
+//     true,
+//     true,
+//     false,
+//     true
+// };
 
 void handleSent();
 void handleReceived();
@@ -137,7 +137,7 @@ void setup() {
     Serial.println(F("DW1000Ng initialized ..."));
     // general configuration
     DW1000Ng::applyConfiguration(DEFAULT_CONFIG);
-	DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
+	// DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
 
     DW1000Ng::setDeviceAddress(2);      //anchor
     DW1000Ng::setNetworkId(10);

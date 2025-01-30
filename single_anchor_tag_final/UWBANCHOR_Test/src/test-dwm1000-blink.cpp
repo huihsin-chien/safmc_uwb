@@ -91,7 +91,7 @@ uint64_t timeComputedRange;
 byte data[LEN_DATA];
 // watchdog and reset period
 uint32_t lastActivity;
-uint32_t resetPeriod = 250;
+uint32_t resetPeriod = 2;
 // reply times (same on both sides for symm. ranging)
 uint16_t replyDelayTimeUS = 3000;
 // ranging counter (per second)
@@ -113,13 +113,13 @@ device_configuration_t DEFAULT_CONFIG = {
     PreambleCode::CODE_3
 };
 
-// interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
-//     true,
-//     true,
-//     true,
-//     false,
-//     true
-// };
+interrupt_configuration_t DEFAULT_INTERRUPT_CONFIG = {
+    true,
+    true,
+    true,
+    false,
+    true
+};
 
 void handleSent();
 void handleReceived();
@@ -128,7 +128,7 @@ void noteActivity();
 
 
 void setup() {
-    delay(10000);
+    delay(5000);
     // DEBUG monitoring
     Serial.begin(9600);
     Serial.println(F("### DW1000Ng-arduino-ranging-anchor ###"));
@@ -137,9 +137,9 @@ void setup() {
     Serial.println(F("DW1000Ng initialized ..."));
     // general configuration
     DW1000Ng::applyConfiguration(DEFAULT_CONFIG);
-	// DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
+	DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
 
-    DW1000Ng::setDeviceAddress(2);      //anchor
+    DW1000Ng::setDeviceAddress(8);      //anchor
     DW1000Ng::setNetworkId(10);
 	
     DW1000Ng::setAntennaDelay(16436);
@@ -159,19 +159,21 @@ void setup() {
     DW1000Ng::attachSentHandler(handleSent);
     DW1000Ng::attachReceivedHandler(handleReceived);
     // anchor starts in receiving mode, awaiting a ranging poll message
-   
-    receiver();
-    noteActivity();
-    // for first time ranging frequency computation
-    rangingCountPeriod = millis();
-    Serial.println("setup end");
     
     DW1000Ng::enableDebounceClock();
     DW1000Ng::enableLedBlinking();
     DW1000Ng::setGPIOMode(6, LED_MODE);
     DW1000Ng::setGPIOMode(8, LED_MODE);
     DW1000Ng::setGPIOMode(10, LED_MODE);
-    DW1000Ng::setGPIOMode(12,   LED_MODE);
+    DW1000Ng::setGPIOMode(12, LED_MODE);
+
+
+    receiver();
+    noteActivity();
+    // for first time ranging frequency computation
+    rangingCountPeriod = millis();
+    Serial.println("setup end");
+    delay(2000);
 }
 
 void noteActivity() {
@@ -228,7 +230,6 @@ void loop() {
     // i++;
     // Serial.println("sentAck-> " + sentAck );
     // Serial.println("receivedAck-> " + receivedAck);
-
     int32_t curMillis = millis();
     if (!sentAck && !receivedAck) {
         // Serial.println("firstIF");
@@ -255,7 +256,7 @@ void loop() {
         // get message and parse
         DW1000Ng::getReceivedData(data, LEN_DATA);
         byte msgId = data[0];
-        Serial.println("msgId-> " + msgId);
+        // Serial.println("msgId-> " + msgId);
         if (msgId != expectedMsgId) {
             // unexpected message, start over again (except if already POLL)
             protocolFailed = true;
