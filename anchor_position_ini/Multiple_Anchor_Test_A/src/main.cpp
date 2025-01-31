@@ -1,23 +1,6 @@
-#include <DW1000Ng.hpp>
-#include <DW1000NgUtils.hpp>
-#include <DW1000NgRanging.hpp>
-#include <DW1000NgRTLS.hpp>
+#include <uwb_common.cpp>
+#include <uwb_common.hpp>
 
-// Struct to hold position coordinates
-typedef struct Position {
-    double x;
-    double y;
-} Position;
-
-// Connection pins
-#if defined(ESP8266)
-const uint8_t PIN_SS = 15;
-const uint8_t PIN_RST = 16;
-const uint8_t PIN_IRQ = 5;
-#else
-const uint8_t PIN_RST = 15;
-const uint8_t PIN_SS = SS; // SPI select pin
-#endif
 
 // Device EUI
 char EUI[] = "AA:BB:CC:DD:EE:FF:00:01";
@@ -29,7 +12,7 @@ Position position_self = {0, 0};
 double range_self;
 double range_B;
 double range_C;
-
+uint16_t self_device_address =1;
 // Flags to indicate if data from other devices has been received
 boolean received_B = false;
 
@@ -42,9 +25,6 @@ byte anchor_b[] = {0x02, 0x00};
 uint16_t next_anchor = 2;
 byte anchor_c[] = {0x03, 0x00};
 
-// Main anchor address
-byte main_anchor_address[] = {0x01, 0x00};
-
 // ranging counter (per second)
 uint16_t successRangingCount = 0;
 uint32_t rangingCountPeriod = 0;
@@ -53,36 +33,8 @@ float samplingRate = 0;
 byte tag1_recommendation ;
 byte tag2_recommendation;
 
-device_configuration_t DEFAULT_CONFIG = {
-    false,
-    true,
-    true,
-    true,
-    false,
-    SFDMode::STANDARD_SFD,
-    Channel::CHANNEL_5,
-    DataRate::RATE_850KBPS,
-    PulseFrequency::FREQ_16MHZ,
-    PreambleLength::LEN_256,
-    PreambleCode::CODE_3
-};
 
-frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
-    false,
-    false,
-    true,
-    false,
-    false,
-    false,
-    false,
-    true
-};
 
-enum class State{
-  built_coord_1,
-  built_coord_2,
-  self_calibration
-};
 void handleRanging_coord_1();
 void handleRanging_coord_2();
 
@@ -138,46 +90,10 @@ class StateMachine{
 };
 
 
-
 void setup() {
     delay(5000);
     Serial.begin(9600);
-    Serial.println(F("### arduino-DW1000Ng-ranging-anchor-A ###"));
-    // initialize the driver
-    #if defined(ESP8266)
-    DW1000Ng::initializeNoInterrupt(PIN_SS);
-    #else
-    DW1000Ng::initializeNoInterrupt(PIN_SS, PIN_RST);
-    #endif
-    Serial.println(F("DW1000Ng initialized ..."));
-    DW1000Ng::applyConfiguration(DEFAULT_CONFIG);
-    DW1000Ng::enableFrameFiltering(ANCHOR_FRAME_FILTER_CONFIG);
-    DW1000Ng::setEUI(&EUI[0]);
-    DW1000Ng::setPreambleDetectionTimeout(64);
-    DW1000Ng::setSfdDetectionTimeout(273);
-    DW1000Ng::setReceiveFrameWaitTimeoutPeriod(5000);
-    DW1000Ng::setNetworkId(RTLS_APP_ID);
-    DW1000Ng::setDeviceAddress(1);
-    DW1000Ng::setAntennaDelay(16436);
-    Serial.println(F("Committed configuration ..."));
-    // DEBUG chip info and registers pretty printed
-    char msg[128];
-    DW1000Ng::getPrintableDeviceIdentifier(msg);
-    Serial.print("Device ID: "); Serial.println(msg);
-    DW1000Ng::getPrintableExtendedUniqueIdentifier(msg);
-    Serial.print("Unique ID: "); Serial.println(msg);
-    DW1000Ng::getPrintableNetworkIdAndShortAddress(msg);
-    Serial.print("Network ID & Device Address: "); Serial.println(msg);
-    DW1000Ng::getPrintableDeviceMode(msg);
-    Serial.print("Device mode: "); Serial.println(msg); 
-    // DW1000Ng::applyInterruptConfiguration(DEFAULT_INTERRUPT_CONFIG);
-    DW1000Ng::enableDebounceClock();
-    DW1000Ng::enableLedBlinking();
-    DW1000Ng::setGPIOMode(6, LED_MODE);
-    DW1000Ng::setGPIOMode(8, LED_MODE);
-    DW1000Ng::setGPIOMode(10, LED_MODE);
-    DW1000Ng::setGPIOMode(12, LED_MODE);
-
+    setupUWB(&EUI[0], self_device_address, ANCHOR_FRAME_FILTER_CONFIG); // 2 is the device address of the anchorB
     delay(5000);
 }
 StateMachine anchorStateMachine;
