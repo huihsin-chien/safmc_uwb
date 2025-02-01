@@ -13,7 +13,7 @@ output_folder = r"C:\Users\jianh\OneDrive\Desktop\safmc\UWB_test\Serial_testing"
 os.makedirs(output_folder, exist_ok=True)
 
 # Regular expression to match the pattern in the data
-data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s*RX power:\s*(-?[0-9.]+)\s*dBm\s*from([0-9]+)\s*Sampling:\s*([0-9.]+)\s*Hz')
+data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s*RX power:\s*(-?[0-9.]+)\s*dBm\s*distance from anchor/tag:([0-9]+)\s*Sampling:\s*([0-9.]+)\s*Hz\s*Anchor:([0-9]+)\s*:([0-9]+)')
 
 # Function to handle serial reading and file writing for each COM port
 def handle_serial_data(serial_port):
@@ -25,7 +25,7 @@ def handle_serial_data(serial_port):
     with open(filename, mode='w', newline='') as file:
         csv_writer = csv.writer(file)
         # Write header row for the CSV file
-        csv_writer.writerow(["timestamp", "range_m", "rx_power_dBm", "from", "sampling_Hz"])
+        csv_writer.writerow(["timestamp", "range_m", "rx_power_dBm", "from", "sampling_Hz", "Anchor"])
         
         while True:
             try:
@@ -41,15 +41,16 @@ def handle_serial_data(serial_port):
                         rx_power_dBm = match.group(2)
                         from_address = match.group(3)
                         sampling_rate = match.group(4)
-
+                        anchor_1 = match.group(5)
+                        anchor_2 = match.group(6)
                         # Add a timestamp to the data for tracking
                         timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
 
                         # Append the parsed data to the CSV file
-                        csv_writer.writerow([timestamp, range_m, rx_power_dBm, from_address, sampling_rate])
+                        csv_writer.writerow([timestamp, range_m, rx_power_dBm, from_address, sampling_rate, f"{anchor_1}:{anchor_2}"])
 
                         # Optionally print the extracted data
-                        print(f"[{serial_port}] {timestamp}: Range = {range_m} m, RX Power = {rx_power_dBm} dBm, From = {from_address}, Sampling = {sampling_rate} Hz")
+                        print(f"[{serial_port}] {timestamp}: Range = {range_m} m, RX Power = {rx_power_dBm} dBm, From = {from_address}, Sampling = {sampling_rate} Hz, Anchor = {anchor_1}:{anchor_2}")
             except KeyboardInterrupt:
                 print(f"Stopped by user on {serial_port}")
                 break
