@@ -22,6 +22,17 @@ for ser in ser_list:
     else:
         print("COM open failed.")
 
+while True:
+    try:
+        for ser in ser_list:
+            data = ser.readline()
+            print(ser.port, ":", data.decode().strip())
+    except KeyboardInterrupt:
+        print("KeyboardInterrupt")
+        for ser in ser_list:
+            ser.close()
+        break
+    
 # 不能重複開啟同一個COM，因為會讓 ESP32 程式重啟
 # while True:
 #     if  time.time() - current_time >= 20: # search for ports every 1 secon
@@ -54,13 +65,3 @@ for ser in ser_list:
 #             for ser in ser_list:
 #                 ser.close()
 #             break
-while True:
-    try:
-        for ser in ser_list:
-            data = ser.readline()
-            print(ser.port, ":", data.decode().strip())
-    except KeyboardInterrupt:
-        print("KeyboardInterrupt")
-        for ser in ser_list:
-            ser.close()
-        break
