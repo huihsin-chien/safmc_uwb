@@ -97,9 +97,11 @@ void handleRanging_coord_2(){
 
 
     String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-    rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from ";
-    rangeString += recv_data[2]; rangeString += recv_data[3];
-    rangeString += "\t Sampling: "; rangeString += samplingRate; rangeString += " Hz";
+    rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance from anchor/tag:";
+    rangeString += recv_data[7]; rangeString += recv_data[8];
+    rangeString += "\t Sampling: "; rangeString += samplingRate; rangeString += " Hz    Anchor:";
+    rangeString  += EUI[18]; EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];   
+       
     Serial.println(rangeString);
     successRangingCount++;
     if (curMillis - rangingCountPeriod > 1000) {

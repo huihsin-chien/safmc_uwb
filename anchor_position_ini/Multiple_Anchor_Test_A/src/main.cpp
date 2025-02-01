@@ -129,7 +129,7 @@ void handleRanging_coord_1() {
       //   Serial.print(" 0x"); Serial.print(recv_data[i], HEX);
       // }
       String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from";
+      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm    distance from anchor/tag:";
       rangeString += recv_data[2]; rangeString += recv_data[3];
       Serial.println(rangeString);
       anchorStateMachine.addSampleCount();  // todo: 分別收到哪個 anchor 的記數
@@ -166,9 +166,9 @@ void handleRanging_coord_2() {
       if(!result.success) return;
       range_self = result.range;
       String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from";
+      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance from anchor/tag:";
       rangeString += recv_data[2]; rangeString += recv_data[3];
-      rangeString += "\t Sampling: "; rangeString += samplingRate; rangeString += " Hz";
+      rangeString += "\t Sampling: "; rangeString += samplingRate; rangeString += " Hz    Anchor:" ; rangeString  += EUI[18]; EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];   
       Serial.println(rangeString);
       uint32_t curMillis = millis();
       successRangingCount++;
