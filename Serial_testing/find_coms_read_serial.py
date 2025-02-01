@@ -3,19 +3,19 @@ import serial.tools.list_ports
 
 ports_list = list(serial.tools.list_ports.comports())
 if len(ports_list) <= 0:
-    print("无串口设备。")
+    print("No serial port device.")
 else:
-    print("可用的串口设备如下：")
+    print("Available serial port devices:")
     for comport in ports_list:
         print(list(comport)[0])
         print(list(comport)[1])
 
-serial_port = input("请输入串口号：")
+serial_port = input("please enter the serial port wanted to open:")
 ser = serial.Serial(serial_port,baudrate= 9600)
 if ser.is_open:
-    print("串口已打开。")
+    print("COM opened successfully.")
 else:
-    print("串口未打开。")
+    print("COM open failed.")
 
 while True:
     try:
