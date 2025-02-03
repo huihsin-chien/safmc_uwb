@@ -2,9 +2,7 @@
 #include <uwb_common.hpp>
 
 char EUI[] = "AA:BB:CC:DD:EE:FF:00:01";
-Position position_self = {0,0};
-Position position_B = {3,0};
-Position position_C = {3,2.5};
+Position position_self = {0,0,0};
 
 double range_self;
 double range_B;

@@ -18,6 +18,7 @@ const uint8_t PIN_RST = 15;
 typedef struct Position {
     double x;
     double y;
+    double z;
 } Position;
 
 byte main_anchor_address[] = {0x01, 0x00};
@@ -26,7 +27,8 @@ byte main_anchor_address[] = {0x01, 0x00};
 enum class State {
     built_coord_1,
     built_coord_2,
-    self_calibration
+    self_calibration,
+    flying
 };
 
 // Common configuration structures
@@ -36,7 +38,6 @@ extern frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG;
 extern sleep_configuration_t SLEEP_CONFIG;
 
 void setupUWB(const char* EUI, uint16_t device_address);
-void handleRanging(uint32_t& range_self, uint8_t* currentTagShortaddress);
 void tagTWR(uint32_t blink_rate);
 
 #endif // UWB_COMMON_HPP

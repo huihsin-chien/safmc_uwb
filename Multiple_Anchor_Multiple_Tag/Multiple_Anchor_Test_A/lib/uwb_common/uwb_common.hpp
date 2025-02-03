@@ -18,6 +18,7 @@ const uint8_t PIN_RST = 15;
 typedef struct Position {
     double x;
     double y;
+    double z;
 } Position;
 
 byte main_anchor_address[] = {0x01, 0x00};
