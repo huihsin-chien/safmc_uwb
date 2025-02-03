@@ -124,10 +124,9 @@ void handleRanging_coord_2(){
 
 
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-        rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance from anchor/tag:";
+        rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
         rangeString += recv_data[7]; rangeString += recv_data[8];
-           
-        
+        rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
         Serial.println(rangeString);
         
 
@@ -173,9 +172,9 @@ void handleRanging_self_calibration(){
 
 
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-        rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance from anchor/tag:";
+        rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
         rangeString += recv_data[7]; rangeString += recv_data[8];
-        
+        rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
         Serial.println(rangeString);
         
 
@@ -227,8 +226,9 @@ void handleRanging_flying() {
  
 
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-        rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from";
-        rangeString += recv_data[7]; rangeString += recv_data[8];
+      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
+      rangeString += recv_data[7]; rangeString += recv_data[8];
+      rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
         Serial.println(rangeString);
         if(recv_data[7] == 0x01 && recv_data[8] == 0x01){
             successRangingCount[1]++;

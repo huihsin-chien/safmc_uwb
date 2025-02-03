@@ -64,9 +64,9 @@ class StateMachine{
           if(sample_count == 100 || (millis() - startTime) > 12000){
             state = State::built_coord_2;
             sample_count = 0;
-            successRangingCount[1] = 0;
-            successRangingCount[2] = 0;
-            successRangingCount[3] = 0;
+            for(int i = 0; i < 8; i++){
+              successRangingCount[i] = 0;
+            }
             startTime = millis();
             Serial.println("State changed to built_coord_2");
           }
@@ -140,11 +140,11 @@ void handleRanging_coord_1() {
         tag_shortAddress[0] = (byte)0x03;
         tag_shortAddress[1] = (byte)0x00;
         successRangingCount[2]++;
-      }else{
-        return;
+      }else{ // if received other anchor blink
+        return; 
       }
 
-      Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
+      // Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission();
       // ranginginitiation 有成功
@@ -152,18 +152,18 @@ void handleRanging_coord_1() {
       if(!result.success) return;
       range_self = result.range;
       String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance from anchor/tag:";
+      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
       rangeString += recv_data[2]; rangeString += recv_data[3];
-      rangeString += "\t Sampling: "; rangeString += samplingRate; rangeString += " Hz    Anchor:" ; rangeString  += EUI[18]; EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];   
+      rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
       Serial.println(rangeString);
 
 
       if (curMillis - rangingCountPeriod > 1000) {
         
         samplingRate = (1000.0f * successRangingCount[1]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate AnchorB: "); Serial.print(samplingRate); Serial.println(" Hz");
+        Serial.print("AnchorB Sampling rate: "); Serial.print(samplingRate); Serial.println(" Hz");
         samplingRate = (1000.0f * successRangingCount[2]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate AnchorC: "); Serial.print(samplingRate); Serial.println(" Hz");
+        Serial.print("AnchorC Sampling rate: "); Serial.print(samplingRate); Serial.println(" Hz");
         rangingCountPeriod = curMillis;
         successRangingCount[1] = 0;
         successRangingCount[2] = 0;
@@ -181,7 +181,7 @@ void handleRanging_coord_2() {
 
     if(recv_data[0] == BLINK) {
       uint32_t curMillis = millis();
-      Serial.print("Tag EUI: "); Serial.print(recv_data[2]); Serial.println(recv_data[3]);
+      // Serial.print("Tag EUI: "); Serial.print(recv_data[2]); Serial.println(recv_data[3]);
 
       if (recv_data[2] == 3 && recv_data[3] == 0) { // if received AnchorC blink
         tag_shortAddress[0] = (byte)0x03;
@@ -191,7 +191,7 @@ void handleRanging_coord_2() {
         return;
       }
 
-      Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
+      // Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission();
       // ranginginitiation 有成功
@@ -199,16 +199,16 @@ void handleRanging_coord_2() {
       if(!result.success) return;
       range_self = result.range;
       String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance from anchor/tag:";
+      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
       rangeString += recv_data[2]; rangeString += recv_data[3];
-      rangeString += "\t Sampling: "; rangeString += samplingRate; rangeString += " Hz    Anchor:" ; rangeString  += EUI[18]; EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];   
+      rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
       Serial.println(rangeString);
 
 
       if (curMillis - rangingCountPeriod > 1000) {
         
         samplingRate = (1000.0f * successRangingCount[2]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate AnchorC: "); Serial.print(samplingRate); Serial.println(" Hz");
+        Serial.print("AnchorC Sampling rate: "); Serial.print(samplingRate); Serial.println(" Hz");
         rangingCountPeriod = curMillis;
         successRangingCount[2] = 0;
       }
@@ -226,7 +226,7 @@ void handleRanging_otherAnchor(){
 
     if(recv_data[0] == BLINK) {
       uint32_t curMillis = millis();
-      Serial.print("Tag EUI: "); Serial.print(recv_data[2]); Serial.println(recv_data[3]);
+      // Serial.print("Tag EUI: "); Serial.print(recv_data[2]); Serial.println(recv_data[3]);
 
       if (recv_data[2] == 4 && recv_data[3] == 0) { // if received AnchorD blink
         tag_shortAddress[0] = (byte)0x04;
@@ -249,20 +249,17 @@ void handleRanging_otherAnchor(){
         tag_shortAddress[1] = (byte)0x00;
         successRangingCount[7]++;}
 
-      Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
+      // Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission();
       // ranginginitiation 有成功
       RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor);
       if(!result.success) return;
       range_self = result.range;
-      // Serial.println("Data from tag: ");
-      // for (uint16_t i = 0; i < 18; i++) {
-      //   Serial.print(" 0x"); Serial.print(recv_data[i], HEX);
-      // }
       String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from ";
+      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
       rangeString += recv_data[2]; rangeString += recv_data[3];
+      rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
       Serial.println(rangeString);
 
       if (curMillis - rangingCountPeriod > 1000) {
@@ -297,7 +294,7 @@ void handleRanging() { // for tag, need to be modified
 
     if(recv_data[0] == BLINK) {
       uint32_t curMillis = millis();
-      Serial.print("Tag EUI: "); Serial.print(recv_data[2]); Serial.println(recv_data[3]);
+      // Serial.print("Tag EUI: "); Serial.print(recv_data[2]); Serial.println(recv_data[3]);
 
       if (recv_data[2] == 0 && recv_data[3] == 0) { // if received tag1 blink
         tag_shortAddress[0] = tag1_shortAddress[0];
@@ -313,7 +310,7 @@ void handleRanging() { // for tag, need to be modified
         successRangingCount[3]++;
       }
 
-      Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
+      // Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission();
       // ranginginitiation 有成功
@@ -325,8 +322,9 @@ void handleRanging() { // for tag, need to be modified
       //   Serial.print(" 0x"); Serial.print(recv_data[i], HEX);
       // }
       String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm from ";
+      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
       rangeString += recv_data[2]; rangeString += recv_data[3];
+      rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
       Serial.println(rangeString);
 
       if (curMillis - rangingCountPeriod > 1000) {

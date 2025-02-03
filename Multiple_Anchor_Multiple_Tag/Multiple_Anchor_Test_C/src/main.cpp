@@ -123,8 +123,9 @@ void handleRanging_self_calibration() {
         memcpy(currentTagShortaddress, &recv_data[2], 2);
    
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-        rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm";
+        rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
         rangeString += recv_data[7]; rangeString += recv_data[8];
+        rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
         Serial.println(rangeString);
         if(recv_data[7] == 0x01 && recv_data[8] == 0x01){
             successRangingCount_1++;
@@ -170,8 +171,9 @@ void ranging() {
         memcpy(currentTagShortaddress, &recv_data[2], 2);
    
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-        rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm";
+        rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
         rangeString += recv_data[7]; rangeString += recv_data[8];
+        rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
         Serial.println(rangeString);
         if(recv_data[7] == 0x01 && recv_data[8] == 0x01){
             successRangingCount_1++;
@@ -184,12 +186,12 @@ void ranging() {
         }
         if (curMillis - rangingCountPeriod > 1000) {
             
-        samplingRate = (1000.0f * successRangingCount_1) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate 1: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount_2) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate 2: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount_3) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate 3: "); Serial.print(samplingRate); Serial.println(" Hz");
+            samplingRate = (1000.0f * successRangingCount_1) / (curMillis - rangingCountPeriod);
+            Serial.print("Sampling rate 1: "); Serial.print(samplingRate); Serial.println(" Hz");
+            samplingRate = (1000.0f * successRangingCount_2) / (curMillis - rangingCountPeriod);
+            Serial.print("Sampling rate 2: "); Serial.print(samplingRate); Serial.println(" Hz");
+            samplingRate = (1000.0f * successRangingCount_3) / (curMillis - rangingCountPeriod);
+            Serial.print("Sampling rate 3: "); Serial.print(samplingRate); Serial.println(" Hz");
             rangingCountPeriod = curMillis;
             successRangingCount_1 = 0;
             successRangingCount_2 = 0;

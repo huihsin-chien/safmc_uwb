@@ -93,11 +93,11 @@ class StateMachine{
 void setup() {
     delay(5000);
     Serial.begin(9600);
-    setupUWB(&EUI[0], self_device_address, ANCHOR_FRAME_FILTER_CONFIG); // 2 is the device address of the anchorB
+    setupUWB(&EUI[0], self_device_address, ANCHOR_FRAME_FILTER_CONFIG);
     delay(5000);
 }
+
 StateMachine anchorStateMachine;
-void handleRanging(byte tag_shortAddress[]);
 void calculatePosition(double &x, double &y);
 
 void loop() {  

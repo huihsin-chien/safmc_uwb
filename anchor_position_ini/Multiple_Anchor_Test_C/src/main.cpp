@@ -10,7 +10,7 @@ uint16_t self_device_address = 3;
 void setup() {
     delay(5000);
     Serial.begin(9600);
-    setupUWB(&EUI[0], self_device_address, TAG_FRAME_FILTER_CONFIG); // 2 is the device address of the anchorB
+    setupUWB(&EUI[0], self_device_address, TAG_FRAME_FILTER_CONFIG); 
     delay(5000); 
 }
 
