@@ -37,8 +37,8 @@ class StateMachine{
             handleRanging_coord_2();  
           break;
         case State::self_calibration:
-            // handleRanging_self_calibration();
-            handleRanging_flying();
+            handleRanging_self_calibration();
+            // handleRanging_flying();
             break;
         case State::flying:
             handleRanging_flying();

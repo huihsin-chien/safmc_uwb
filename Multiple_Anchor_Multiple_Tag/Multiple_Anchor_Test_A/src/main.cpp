@@ -50,8 +50,8 @@ class StateMachine{
           handleRanging_coord_2();
           break;
         case State::self_calibration:
-          // handleRanging_otherAnchor();
-          handleRanging();
+          handleRanging_otherAnchor();
+          // handleRanging();
           break;
         case State::flying:
           handleRanging();
@@ -263,15 +263,15 @@ void handleRanging_otherAnchor(){
       Serial.println(rangeString);
 
       if (curMillis - rangingCountPeriod > 1000) {
-        samplingRate = (1000.0f * successRangingCount[4]) / (curMillis - rangingCountPeriod);
+        samplingRate = (1000.0f * successRangingCount[3]) / (curMillis - rangingCountPeriod);
         Serial.print("Sampling rate AnchorD: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[5]) / (curMillis - rangingCountPeriod);
+        samplingRate = (1000.0f * successRangingCount[4]) / (curMillis - rangingCountPeriod);
         Serial.print("Sampling rate AnchorE: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[6]) / (curMillis - rangingCountPeriod);
+        samplingRate = (1000.0f * successRangingCount[5]) / (curMillis - rangingCountPeriod);
         Serial.print("Sampling rate AnchorF: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[7]) / (curMillis - rangingCountPeriod);
+        samplingRate = (1000.0f * successRangingCount[6]) / (curMillis - rangingCountPeriod);
         Serial.print("Sampling rate AnchorG: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[8]) / (curMillis - rangingCountPeriod);
+        samplingRate = (1000.0f * successRangingCount[7]) / (curMillis - rangingCountPeriod);
         Serial.print("Sampling rate AnchorH: "); Serial.print(samplingRate); Serial.println(" Hz");
         rangingCountPeriod = curMillis;
         successRangingCount[4] = 0;
