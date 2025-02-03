@@ -37,7 +37,6 @@ extern frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG;
 extern sleep_configuration_t SLEEP_CONFIG;
 
 void setupUWB(const char* EUI, uint16_t device_address);
-void handleRanging(uint32_t& range_self, uint8_t* currentTagShortaddress);
 void tagTWR(uint32_t blink_rate);
 
 #endif // UWB_COMMON_HPP

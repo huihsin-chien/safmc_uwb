@@ -31,6 +31,7 @@ uint16_t blink_rate = 200;
 void handleRanging_coord_1();
 void handleRanging_coord_2();
 void handleRanging_otherAnchor();
+void handleRanging();
 class StateMachine{
   private:
     State state;
@@ -51,9 +52,12 @@ class StateMachine{
         case State::self_calibration:
           handleRanging_otherAnchor();
           break;
+        case State::flying:
+          handleRanging();
+          break;
       }
     }
-    void update(){
+    void update(){ // sample_count haven't been implemented in ranging function
       switch(state){
         case State::built_coord_1:
           if(sample_count == 100 || (millis() - startTime) > 12000){
@@ -70,9 +74,9 @@ class StateMachine{
           if(sample_count == 100 || (millis() - startTime) > 50000){
             state = State::self_calibration;
             sample_count = 0;
-            successRangingCount[1] = 0;
-            successRangingCount[2] = 0;
-            successRangingCount[3] = 0;
+            for(int i = 0; i < 8; i++){
+              successRangingCount[i] = 0;
+            }
             startTime = millis();
             Serial.println("State changed to self_calibration");
           }
@@ -93,7 +97,7 @@ class StateMachine{
     State getState(){
       return state;
     }
-    void addSampleCount(){
+    void addSampleCount(){ 
       sample_count++;
     }
   
@@ -226,23 +230,23 @@ void handleRanging_otherAnchor(){
       if (recv_data[2] == 4 && recv_data[3] == 0) { // if received AnchorD blink
         tag_shortAddress[0] = (byte)0x04;
         tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[4]++;
+        successRangingCount[3]++;
       } else if (recv_data[2] == 5 && recv_data[3] == 0) { // if received AnchorE blink
         tag_shortAddress[0] = (byte)0x05;
         tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[5]++;
+        successRangingCount[4]++;
       }else if (recv_data[2] == 6 && recv_data[3] == 0) { // if received AnchorF blink
         tag_shortAddress[0] = (byte)0x06;
         tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[6]++;
+        successRangingCount[5]++;
       } else if (recv_data[2] == 7 && recv_data[3] == 0) { // if received AnchorG blink
         tag_shortAddress[0] = (byte)0x07;
         tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[7]++;
+        successRangingCount[6]++;
       }else if (recv_data[2] == 8 && recv_data[3] == 0) { // if received AnchorH blink
         tag_shortAddress[0] = (byte)0x08;
         tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[8]++;}
+        successRangingCount[7]++;}
 
       Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
@@ -281,7 +285,7 @@ void handleRanging_otherAnchor(){
     } 
   }
 }
-void handleRanging() {
+void handleRanging() { // for tag, need to be modified
 
   byte tag_shortAddress[2];
   if(DW1000NgRTLS::receiveFrame()){
