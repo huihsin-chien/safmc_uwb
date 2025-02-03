@@ -7,8 +7,7 @@ import os
 import threading
 
 # Define the folder where you want to store the data
-output_folder = r"C:\Users\jianh\OneDrive\Desktop\safmc\UWB_test\Serial_testing"  # Adjust for your OS
-
+output_folder = r"C:\Users\jianh\OneDrive\Desktop\safmc\UWB_test\Serial_testing"  # r for raw string literal
 # Create the folder if it doesn't exist
 os.makedirs(output_folder, exist_ok=True)
 
