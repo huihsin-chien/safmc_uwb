@@ -50,7 +50,8 @@ class StateMachine{
           handleRanging_coord_2();
           break;
         case State::self_calibration:
-          handleRanging_otherAnchor();
+          // handleRanging_otherAnchor();
+          handleRanging();
           break;
         case State::flying:
           handleRanging();
@@ -129,7 +130,7 @@ void handleRanging_coord_1() {
 
     if(recv_data[0] == BLINK) {
       uint32_t curMillis = millis();
-      Serial.print("Tag EUI: "); Serial.print(recv_data[2]); Serial.println(recv_data[3]);
+      // Serial.print("Tag EUI: "); Serial.print(recv_data[2]); Serial.println(recv_data[3]);
 
       if (recv_data[2] == 2 && recv_data[3] == 0) { // if received AnchorB blink
         tag_shortAddress[0] = (byte)0x02;
