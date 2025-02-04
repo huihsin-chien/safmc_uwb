@@ -68,7 +68,9 @@ else:
         print(f"{list(comport)[0]} - {list(comport)[1]}")
 
 # Ask the user to enter the COM ports they want to use (separated by commas)
-selected_ports = input("Please enter the serial ports you want to open (e.g., COM3,COM4): ").split(',')
+selected_ports = input("Please enter the serial ports you want to open (e.g., COM3,COM4), or a for All: ").split(',')
+if 'a' in selected_ports:
+    selected_ports = [comport[0] for comport in ports_list]
 
 # Start a separate thread for each selected COM port
 threads = []
