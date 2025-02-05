@@ -49,7 +49,7 @@ class Position:
         return ((self.x - other.x) ** 2 + (self.y - other.y) ** 2 + (self.z - other.z) ** 2) ** 0.5
 
 class UWBdata(Position):
-    def __init__(self, x: float, y:float, z:float, EUI: str, name:str, pooling_data = {"01:01":[], "02:02":[], "03:03":[]}): #pooling_data is a dictionary with key as the tag name and value as the list of distance and timestamp 
+    def __init__(self, x: float, y:float, z:float, EUI: str, name:str, pooling_data:dict = {"01:01":[], "02:02":[], "03:03":[]}): #pooling_data is a dictionary with key as the tag name and value as the list of distance and timestamp 
         super().__init__(x, y, z)
         self.EUI = EUI
         self.name = name
@@ -79,8 +79,8 @@ class UWBdata(Position):
         # else:
         #     super().__setitem__(index, value)
     
-    def pool_distance(self): 
-        pooled_data = {}
+    def pool_distance(self) -> dict:
+        pooled_data:dict = {}
         for tag_name in self.pooling_data:
             pooled_data[tag_name] = 0
             for tagData in self.pooling_data[tag_name]:
@@ -91,14 +91,14 @@ class UWBdata(Position):
     def store_pooling_data(self, tag_name, range_m, timeStamp):
         self.pooling_data[tag_name].append([range_m, timeStamp])
         for tagData in self.pooling_data[tag_name]:
-            if tagData[1] - timeStamp > 10: # i want to set 0.5 sec as the threshold
-                #remove the tag
+            if tagData[0] - timeStamp > 10: # i want to set 0.5 sec as the threshold
+                #remove the tagData from the list
                 self.pooling_data[tag_name].remove(tagData)
             else:
                 return
 
 
-def create_UWBdata(x:float, y:float, z:float, EUI:str, name:str, pooling_data:dict):
+def create_UWBdata(x:float, y:float, z:float, EUI:str, name:str, pooling_data:dict)->UWBdata:
     return UWBdata(x, y, z, EUI, name, pooling_data)
 
 def create_Position(x, y, z):
