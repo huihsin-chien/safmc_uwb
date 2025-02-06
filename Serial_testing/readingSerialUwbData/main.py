@@ -81,18 +81,21 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
             line = ser.readline().decode('utf-8').strip()
             if line:
                 match = data_pattern.search(line)
-                print(f"{serial_port}: {line}")
+                print(f"{serial_port}: {line}!")
                 if match:
                     range_m = float(match.group(1))
                     power = float(match.group(2))
                     from_address = match.group(3)
                     anchor_key = f"{match.group(4)}:{match.group(5)}"
                     timestamp = time.time()
+                    print("Matched!")
                     print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
                 
                     with lock:
+                        print("Lock acquired.")
                         for anchor in anchor_list:
-                            if anchor.EUI == anchor_key:
+                            if anchor_key in anchor.EUI:
+                                print(f"Storing data to {anchor.name}")
                                 anchor.store_pooling_data(from_address, range_m, timestamp)
 
                     # 將數據加入 queue
@@ -123,17 +126,17 @@ def main():
         csv_writer.writerow(["timestamp", "x", "y", "z"])
 
 
-    data_pattern = re.compile(r'Range: \s([0-9.]+)\s* m\s+RX power: \s*(-?[0-9.]+)\s* dBm distance between anchor/tag:([0-9]+)\s* from Anchor ([0-9]+):([0-9]+)')
+    data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
     # Range: 0.00 m      RX power: -59.80 dBm distance between anchor/tag:30 from Anchor 00:01
 
     ports_list = list(serial.tools.list_ports.comports())
     for port in ports_list:
         print(port[0])
     anchor_list = [
-        UWBdata(0, 0, 0, "01:01", "AnchorA", output_folder),
-        UWBdata(0, 0, 0, "02:02", "AnchorB", output_folder),
-        UWBdata(0, 0, 0, "03:03", "AnchorC", output_folder),
-        UWBdata(0, 0, 0, "04:04", "AnchorD", output_folder),
+        UWBdata(0, 0, 0, "00:01", "AnchorA", output_folder),
+        UWBdata(0, 0, 0, "00:02", "AnchorB", output_folder),
+        UWBdata(0, 0, 0, "00:03", "AnchorC", output_folder),
+        UWBdata(0, 0, 0, "00:04", "AnchorD", output_folder),
     ]
 
     if not ports_list:
