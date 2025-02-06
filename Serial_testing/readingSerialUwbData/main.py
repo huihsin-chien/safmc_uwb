@@ -32,7 +32,7 @@ class UWBdata(Position):
         # 初始化每個 anchor 的 CSV 檔案
         with open(self.output_file, mode='w', newline='') as file:
             csv_writer = csv.writer(file)
-            csv_writer.writerow(["timestamp", "tag_name", "range_m"])
+            csv_writer.writerow(["timestamp", "tag_name", "range_m", "sample_rate"])
 
     def store_pooling_data(self, tag_name, range_m, timestamp):
         """儲存 UWB 距離數據，並移除過期數據"""
@@ -75,12 +75,14 @@ def multilateration(anchor_list, multilateration_file):
 def handle_serial_data(serial_port, data_pattern, anchor_list):
     """處理每個 COM 連接，讀取並解析 UWB 數據"""
     ser = serial.Serial(serial_port, baudrate=9600, timeout=1)
-    
+    this_anchor = None
+    anchor_finded = False
     while True:
         try:
             line = ser.readline().decode('utf-8').strip()
             if line:
                 match = data_pattern.search(line)
+                match_sample = re.search(r'Sampling rate\s*([0-9]+):\s*([0-9.]+)\s*Hz', line) #Sampling rate 1: 4.48 Hz
                 print(f"{serial_port}: {line}!")
                 if match:
                     range_m = float(match.group(1))
@@ -91,15 +93,28 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
                     print("Matched!")
                     print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
                 
-                    with lock:
+                    with lock: # todo: 找出這個anchor key對應的anchor，以後就不用每次都用迴圈寫入
                         print("Lock acquired.")
-                        for anchor in anchor_list:
-                            if anchor_key in anchor.EUI:
-                                print(f"Storing data to {anchor.name}")
-                                anchor.store_pooling_data(from_address, range_m, timestamp)
+                        if not anchor_finded:
+                            for anchor in anchor_list:
+                                if anchor_key in anchor.EUI:
+                                    this_anchor = anchor
+                                    anchor_finded = True
+                                    print(f"Storing data to {anchor.name}")
+                                    anchor.store_pooling_data(from_address, range_m, timestamp)
+                        else:
+                            this_anchor.store_pooling_data(from_address, range_m, timestamp)
 
                     # 將數據加入 queue
                     data_queue.put((anchor_key, from_address, range_m, timestamp))
+                elif match_sample:
+                    print("Matched sample rate!")
+                    target_tag = match_sample.group(1)
+                    sample_rate = float(match_sample.group(2))
+
+                    with open(this_anchor.output_file, mode='a', newline='') as file:
+                        csv_writer = csv.writer(file)
+                        csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), f"Sample rate {target_tag}",None ,None ,sample_rate])
 
         except KeyboardInterrupt:
             print(f"Stopped {serial_port}")
@@ -115,7 +130,8 @@ def processing_thread(anchor_list, multilateration_file):
 
 def main():
     output_folder = r"C:\Users\jianh\OneDrive\Desktop\safmc\UWB_test\Serial_testing\readingSerialUwbData\output"
-    multilateration_file = os.path.join(output_folder, "multilateration_results.csv")
+    start_main_timestamp = time.strftime('%Y%m%d_%H%M%S')
+    multilateration_file = os.path.join(output_folder, f"multilateration_results_{start_main_timestamp}.csv")
 
     # 建立資料夾
     os.makedirs(output_folder, exist_ok=True)
