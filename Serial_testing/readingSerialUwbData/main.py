@@ -86,6 +86,7 @@ def multilateration(anchor_list, multilateration_file):
     """計算最新的 3D 位置"""
     with lock:  # 確保多執行緒安全存取
         # 取得每個 tag 與每個anchor的距離。假設我想要tag1的位置，我需要anchor1, anchor2, anchor3的距離
+        print("enter multilateration")
         distances = {anchor.EUI: anchor.get_pooled_distances() for anchor in anchor_list}
         tag_distances_to_anchor = {}
         for anchor_EUI in distances:
@@ -95,7 +96,7 @@ def multilateration(anchor_list, multilateration_file):
                 tag_distances_to_anchor[tag][anchor_EUI] = pooled_range # 且要依照anchor的EUI順序
 
 
-    # 假設只是輸出當前數據，實際應該實作 multilateration 演算法
+    
     anchor_locations = list(np.array([anchor_list[0].x,anchor_list[0].y,anchor_list[0].z],[anchor_list[1].x, anchor_list[1].y, anchor_list[1].z],[anchor_list[2].x, anchor_list[2].y, anchor_list[2].z],[anchor_list[3].x, anchor_list[3].y, anchor_list[3].z]))
     tag_pos = {}
     for tag in tag_distances_to_anchor:
