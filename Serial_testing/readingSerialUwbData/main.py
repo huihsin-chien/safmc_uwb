@@ -5,12 +5,26 @@ import csv
 import time
 import os
 import threading
-import queue
+# import queue
+from scipy.optimize import minimize
+import numpy as np
 
 # 全域變數
-data_queue = queue.Queue()  # 儲存所有 thread 接收的 UWB 資料
+# data_queue = queue.Queue()  # 儲存所有 thread 接收的 UWB 資料
 lock = threading.Lock()  # 確保多執行緒存取安全
 
+class stateMachine:
+    def __init__(self):
+        self.status = "build_coord_1"
+    def update(self):
+        if self.status == "built_coord_1":
+            self.status = "built_coord_2"
+        elif self.status == "built_coord_2":
+            self.status == "self_calibration"
+        elif self.status == "self_calibration":
+            self.status == "flying"
+
+state_machine = stateMachine()
 class Position:
     def __init__(self, x, y, z):
         self.x = x
@@ -51,32 +65,57 @@ class UWBdata(Position):
             csv_writer = csv.writer(file)
             csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp)), tag_name, range_m])
 
-    def get_pooled_distances(self):
+    def get_pooled_distances(self)->dict: # key: tag, value: avg_distance
         """回傳平均距離"""
         return {tag: sum(r for r, _ in data) / len(data) for tag, data in self.pooling_data.items() if data}
+
+def gps_solve(distances_to_station, stations_coordinates):
+	def error(x, c, r):
+		return sum([(np.linalg.norm(x - c[i]) - r[i]) ** 2 for i in range(len(c))])
+
+	l = len(stations_coordinates)
+	S = sum(distances_to_station)
+	# compute weight vector for initial guess
+	W = [((l - 1) * S) / (S - w) for w in distances_to_station]
+	# get initial guess of point location
+	x0 = sum([W[i] * stations_coordinates[i] for i in range(l)])
+	# optimize distance from signal origin to border of spheres
+	return minimize(error, x0, args=(stations_coordinates, distances_to_station), method='Nelder-Mead').x
 
 def multilateration(anchor_list, multilateration_file):
     """計算最新的 3D 位置"""
     with lock:  # 確保多執行緒安全存取
-        distances = {anchor.name: anchor.get_pooled_distances() for anchor in anchor_list}
+        # 取得每個 tag 與每個anchor的距離。假設我想要tag1的位置，我需要anchor1, anchor2, anchor3的距離
+        distances = {anchor.EUI: anchor.get_pooled_distances() for anchor in anchor_list}
+        tag_distances_to_anchor = {}
+        for anchor_EUI in distances:
+            for tag, pooled_range in distances[anchor_EUI].items():
+                if tag not in tag_distances_to_anchor:
+                    tag_distances_to_anchor[tag] = {}
+                tag_distances_to_anchor[tag][anchor_EUI] = pooled_range # 且要依照anchor的EUI順序
 
-    print("計算位置：", distances)
-    
+
     # 假設只是輸出當前數據，實際應該實作 multilateration 演算法
-    pos = Position(0, 0, 0)  # 這裡應該實作真正的 multilateration 計算
+    anchor_locations = list(np.array([anchor_list[0].x,anchor_list[0].y,anchor_list[0].z],[anchor_list[1].x, anchor_list[1].y, anchor_list[1].z],[anchor_list[2].x, anchor_list[2].y, anchor_list[2].z],[anchor_list[3].x, anchor_list[3].y, anchor_list[3].z]))
+    tag_pos = {}
+    for tag in tag_distances_to_anchor:
+        tag_pos[tag] = Position(*gps_solve(list(tag_distances_to_anchor[tag].values()), anchor_locations))
+        print(f"Tag {tag} position: {tag_pos[tag]}")
 
     # 將 multilateration 結果寫入 CSV 檔案
     with open(multilateration_file, mode='a', newline='') as file:
         csv_writer = csv.writer(file)
-        csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S'), pos.x, pos.y, pos.z])
+        # csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S'), pos.x, pos.y, pos.z])
+        for tag, pos in tag_pos.items():
+            csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), tag, pos.x, pos.y, pos.z])
+    return tag_pos
 
-    return pos
 
 def handle_serial_data(serial_port, data_pattern, anchor_list):
     """處理每個 COM 連接，讀取並解析 UWB 數據"""
     ser = serial.Serial(serial_port, baudrate=9600, timeout=1)
     this_anchor = None
-    anchor_finded = False
+    anchor_find = False
     while True:
         try:
             line = ser.readline().decode('utf-8').strip()
@@ -93,9 +132,9 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
                     print("Matched!")
                     print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
                 
-                    with lock: # todo: 找出這個anchor key對應的anchor，以後就不用每次都用迴圈寫入
+                    with lock: 
                         print("Lock acquired.")
-                        if not anchor_finded:
+                        if not anchor_find:
                             for anchor in anchor_list:
                                 if anchor_key in anchor.EUI:
                                     this_anchor = anchor
@@ -105,8 +144,8 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
                         else:
                             this_anchor.store_pooling_data(from_address, range_m, timestamp)
 
-                    # 將數據加入 queue
-                    data_queue.put((anchor_key, from_address, range_m, timestamp))
+                    # # 將數據加入 queue
+                    # data_queue.put((anchor_key, from_address, range_m, timestamp))
                 elif match_sample:
                     print("Matched sample rate!")
                     target_tag = match_sample.group(1)
@@ -115,6 +154,8 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
                     with open(this_anchor.output_file, mode='a', newline='') as file:
                         csv_writer = csv.writer(file)
                         csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), f"Sample rate {target_tag}",None ,None ,sample_rate])
+                elif anchor_find and this_anchor.EUI == "00:01" and "State changed" in line:
+                    state_machine.update()
 
         except KeyboardInterrupt:
             print(f"Stopped {serial_port}")
@@ -173,10 +214,14 @@ def main():
     # 啟動處理執行緒
     processing = threading.Thread(target=processing_thread, args=(anchor_list, multilateration_file), daemon=True)
     processing.start()
+    
 
     for thread in threads:
         thread.join() # join 是等待執行緒結束
         print("Thread joined.")
+
+def build_3D_coord():
+    pass
 
 if __name__ == "__main__":
     main()
