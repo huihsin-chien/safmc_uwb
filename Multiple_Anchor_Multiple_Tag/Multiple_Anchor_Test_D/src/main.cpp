@@ -50,7 +50,7 @@ class StateMachine{
     void update(){
       switch(state){
         case State::built_coord_1:
-          if(sample_count == 100 || (millis() - startTime) > 12000){
+          if(sample_count == 100 || (millis() - startTime) > 20000){
             state = State::built_coord_2;
             // sample_count = 0;
             // startTime = millis();

@@ -59,7 +59,7 @@ class StateMachine{
     void update(){ // sample_count haven't been implemented in ranging function
       switch(state){
         case State::built_coord_1:
-          if(sample_count == 100 || (millis() - startTime) > 12000){
+          if(sample_count == 100 || (millis() - startTime) > 20000){
             state = State::built_coord_2;
             sample_count = 0;
             for(int i = 0; i < 8; i++){
