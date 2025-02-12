@@ -8,6 +8,7 @@ import threading
 # import queue
 from scipy.optimize import minimize
 import numpy as np
+from datetime import datetime # for timestamp
 
 # 全域變數
 # data_queue = queue.Queue()  # 儲存所有 thread 接收的 UWB 資料
@@ -154,7 +155,8 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
 
                     with open(this_anchor.output_file, mode='a', newline='') as file:
                         csv_writer = csv.writer(file)
-                        csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), f"Sample rate {target_tag}",None ,None ,sample_rate])
+                        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')  # 獲取包含微秒的時間戳
+                        csv_writer.writerow([timestamp, f"Sample rate {target_tag}", None, None, sample_rate])
                 elif anchor_find and this_anchor.EUI == "00:01" and "State changed" in line:
                     state_machine.update()
 
