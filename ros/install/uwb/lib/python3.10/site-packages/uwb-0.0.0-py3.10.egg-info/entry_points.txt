@@ -1,0 +1,3 @@
+[console_scripts]
+uwb = uwb.uwb:main
+
