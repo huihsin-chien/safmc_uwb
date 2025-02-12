@@ -25,9 +25,9 @@ class stateMachine:
         if self.status == "built_coord_1":
             self.status = "built_coord_2"
         elif self.status == "built_coord_2":
-            self.status == "self_calibration"
+            self.status = "self_calibration"
         elif self.status == "self_calibration":
-            self.status == "flying"
+            self.status = "flying"
 
 state_machine = stateMachine()
 class Position:
@@ -225,7 +225,7 @@ def main(args=None):
 
     uwbNode_publisher = UWBNodePublisher()
     
-    output_folder = r"C:\Users\jianh\OneDrive\Desktop\safmc\UWB_test\Serial_testing\readingSerialUwbData\output"
+    output_folder = os.path.join(os.getcwd(), "../../../test")
     start_main_timestamp = time.strftime('%Y%m%d_%H%M%S')
     multilateration_file = os.path.join(output_folder, f"multilateration_results_{start_main_timestamp}.csv")
 
