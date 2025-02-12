@@ -1,0 +1,20 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from msg_folder/msg/UwbMsg.msg
+// generated code does not contain a copyright notice
+
+
+module msg_folder {
+  module msg {
+    struct UwbMsg {
+      float range;
+
+      float power;
+
+      string from_address;
+
+      uint16 anchor_key_x;
+
+      uint16 anchor_key_y;
+    };
+  };
+};
