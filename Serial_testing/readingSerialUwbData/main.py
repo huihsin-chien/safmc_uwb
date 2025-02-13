@@ -5,6 +5,7 @@ import csv
 import time
 import os
 import threading
+import build_3D_coord
 # import queue
 from scipy.optimize import minimize
 import numpy as np
@@ -48,6 +49,11 @@ class UWBdata(Position):
         with open(self.output_file, mode='w', newline='') as file:
             csv_writer = csv.writer(file)
             csv_writer.writerow(["timestamp", "tag_name", "range_m", "sample_rate"])
+
+    def setXYZ(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
 
     def store_pooling_data(self, tag_name, range_m, timestamp):
         """儲存 UWB 距離數據，並移除過期數據"""
@@ -98,18 +104,19 @@ def multilateration(anchor_list, multilateration_file):
     with lock:  # 確保多執行緒安全存取
         # 取得每個 tag 與每個anchor的距離。假設我想要tag1的位置，我需要anchor1, anchor2, anchor3的距離
         print("enter multilateration")
-        distances = {anchor.EUI: anchor.get_pooled_distances() for anchor in anchor_list}
-        tag_distances_to_anchor = {}
+        distances = {anchor.EUI: anchor.get_pooled_distances() for anchor in anchor_list} #key: anchor, value: {tag: avg_distance}
+        tag_distances_to_anchor = {} #key: tag, value: {anchor: pooled_range}
         for anchor_EUI in distances:
             for tag, pooled_range in distances[anchor_EUI].items():
                 if tag not in tag_distances_to_anchor:
                     tag_distances_to_anchor[tag] = {}
-                tag_distances_to_anchor[tag][anchor_EUI] = pooled_range # 且要依照anchor的EUI順序
+                tag_distances_to_anchor[tag][anchor_EUI] = pooled_range
 
 
     
-    anchor_locations = list(np.array([anchor_list[0].x,anchor_list[0].y,anchor_list[0].z],[anchor_list[1].x, anchor_list[1].y, anchor_list[1].z],[anchor_list[2].x, anchor_list[2].y, anchor_list[2].z],[anchor_list[3].x, anchor_list[3].y, anchor_list[3].z]))
+    anchor_locations = list(np.array([[anchor_list[0].x,anchor_list[0].y,anchor_list[0].z],[anchor_list[1].x, anchor_list[1].y, anchor_list[1].z],[anchor_list[2].x, anchor_list[2].y, anchor_list[2].z],[anchor_list[3].x, anchor_list[3].y, anchor_list[3].z]]))
     tag_pos = {}
+    print(tag_distances_to_anchor)
     for tag in tag_distances_to_anchor:
         tag_pos[tag] = Position(*gps_solve(list(tag_distances_to_anchor[tag].values()), anchor_locations))
         print(f"Tag {tag} position: {tag_pos[tag]}")
@@ -150,7 +157,6 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
                             for anchor in anchor_list:
                                 if anchor_key in anchor.EUI:
                                     this_anchor = anchor
-                                    anchor_finded = True
                                     print(f"Storing data to {anchor.name}")
                                     anchor.store_pooling_data(from_address, range_m, timestamp)
                         else:
@@ -187,7 +193,6 @@ def main():
     start_main_timestamp = time.strftime('%Y%m%d_%H%M%S')
     multilateration_file = os.path.join(output_folder, f"multilateration_results_{start_main_timestamp}.csv")
 
-    # 建立資料夾
     os.makedirs(output_folder, exist_ok=True)
     
     # 初始化 multilateration CSV 檔案
@@ -233,8 +238,7 @@ def main():
         thread.join() # join 是等待執行緒結束
         print("Thread joined.")
 
-def build_3D_coord():
-    pass
+
 
 if __name__ == "__main__":
     main()
