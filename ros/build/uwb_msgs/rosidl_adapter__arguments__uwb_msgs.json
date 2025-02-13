@@ -1,0 +1,6 @@
+{
+  "package_name": "uwb_msgs",
+  "non_idl_tuples": [
+    "/workspace/safmc_uwb/ros/src/uwb_msgs:msg/Range.msg"
+  ]
+}
