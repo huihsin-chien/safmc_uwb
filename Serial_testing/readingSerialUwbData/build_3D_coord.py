@@ -4,7 +4,7 @@ clean_anchorABCD_distance_data = {
     ("A", "B"): 3,
     ("A", "C"): 3,
     ("A", "D"): 3,
-    ("B", "C"): 3,
+    ("B", "C"): 4.242640687119286,
     ("B", "D"): 4.242640687119286,
     ("C", "D"): 4.242640687119286
 }
@@ -36,7 +36,84 @@ def ClassicalMDS(D, dim):   ## can this handle data with noise?
     # https://en.wikipedia.org/wiki/Multidimensional_scaling 
     
 def align_coordinates(X): # Rodrigues' rotation formula
+    #reference: https://openhome.cc/Gossip/WebGL/Rodrigues.html
+    # https://www.cnblogs.com/wtyuan/p/12324495.html
+    # https://geek-docs.com/numpy/numpy-ask-answer/460_numpy_calculate_rotation_matrix_to_align_two_vectors_in_3d_space.html
+    '''
+    此程式將 X[0] 當作原點，X[1] 當作 x 軸，X[2]當作 z 軸，進行座標對齊
+    1. 以 X[0] (anchor0）為原點，平移所有座標向量
+    2. 以 X[0]X[1] 為基準向量（x,0,0），旋轉所有座標向量(anchor1 做為X軸）
+    3. 以X[0]X[3]為基準向量（0,0,z），旋轉所有座標向量（anchor3 做為Z軸）
+    '''
     X_aligned = X - X[0]
+
+    # 2. 以 X[0]X[1] 為基準向量（x,0,0），旋轉所有座標向量
+    u = [1, 0, 0]
+    v = X_aligned[1]
+    X_1_norm = np.linalg.norm(v)
+    u = np.array(u) / np.linalg.norm(u)
+    v = np.array(v) / np.linalg.norm(v)
+    w = np.cross(u, v)
+
+    w_norm = np.linalg.norm(w)
+    if w_norm == 0:
+        print("Error: vectors are parallel!")
+        exit()
+    w = w / w_norm
+    cos_theta = np.dot(u, v)  # u · v = |u||v|cos(theta), and both are normalized
+    theta = -1 * np.arccos(np.clip(cos_theta, -1.0, 1.0))  # Ensure cos_theta is in valid range
+    I = np.identity(3)
+    W = np.matrix([[0, -w[2], w[1]],
+                [w[2], 0, -w[0]],
+                [-w[1], w[0], 0]])
+    R = I + np.sin(theta) * W + (1 - np.cos(theta)) * np.dot(W, W)
+    X_aligned[1] = (np.dot(R, v).A1)*X_1_norm  # Convert to 1D array
+    X_aligned[2] = np.dot(R, X_aligned[2]).A1
+    X_aligned[3] = np.dot(R, X_aligned[3]).A1
+
+    from mpl_toolkits.mplot3d import Axes3D
+    import matplotlib.pyplot as plt 
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.quiver(0, 0, 0, X_aligned[1][0], X_aligned[1][1], X_aligned[1][2], length=1, color='r', label='X_aligned[1]')
+    ax.quiver(0, 0, 0, X_aligned[2][0], X_aligned[2][1], X_aligned[2][2], length=1, color='b', label='X_aligned[2]')
+    ax.quiver(0, 0, 0, X_aligned[3][0], X_aligned[3][1], X_aligned[3][2], length=1, color='y', label='X_aligned[3]')
+    # ax.quiver(0, 0, 0, w[0], w[1], w[2], length=1, color='g', label     = 'rotation axis')
+    plt.legend()
+    plt.show()
+
+    # 3. 以X[0]X[3]為基準向量（0,0,z），旋轉所有座標向量
+    u = [0, 0, 1]
+    v = X_aligned[3]
+    X_3_norm = np.linalg.norm(v)
+    u = np.array(u) / np.linalg.norm(u)
+    v = np.array(v) / np.linalg.norm(v)
+    w = np.cross(u, v)
+
+    w_norm = np.linalg.norm(w)
+    if w_norm == 0:
+        print("Error: vectors are parallel!")
+        exit()
+    w = w / w_norm
+    cos_theta = np.dot(u, v)  # u · v = |u||v|cos(theta), and both are normalized
+    theta = -1 * np.arccos(np.clip(cos_theta, -1.0, 1.0))  # Ensure cos_theta is in valid range
+    I = np.identity(3)
+    W = np.matrix([[0, -w[2], w[1]],
+                [w[2], 0, -w[0]],
+                [-w[1], w[0], 0]])
+    R = I + np.sin(theta) * W + (1 - np.cos(theta)) * np.dot(W, W)
+    X_aligned[3] = (np.dot(R, v).A1)*X_3_norm  # Convert to 1D array
+    X_aligned[1] = np.dot(R, X_aligned[1]).A1
+    X_aligned[2] = np.dot(R, X_aligned[2]).A1
+    
+    fig = plt.figure()
+    ax = fig.add_subplot(111, projection='3d')
+    ax.quiver(0, 0, 0, X_aligned[1][0], X_aligned[1][1], X_aligned[1][2], length=1, color='r', label='X_aligned[1]')
+    ax.quiver(0, 0, 0, X_aligned[2][0], X_aligned[2][1], X_aligned[2][2], length=1, color='b', label='X_aligned[2]')
+    ax.quiver(0, 0, 0, X_aligned[3][0], X_aligned[3][1], X_aligned[3][2], length=1, color='y', label='X_aligned[3]')
+    # ax.quiver(0, 0, 0, w[0], w[1], w[2], length=1, color='g', label     = 'rotation axis')
+    plt.legend()
+    plt.show()
 
 
     return X_aligned
@@ -51,32 +128,8 @@ def build_3D_coord(anchorABCD_distance = clean_anchorABCD_distance_data, dim = 3
     """
     D = build_distance_matrix(anchorABCD_distance)
     X = ClassicalMDS(D, dim)
-    # print("Initial 3D coordinates:", X)
     X = align_coordinates(X)
     print(X)
 
 if __name__ == "__main__":
     build_3D_coord()
-
-
-
-
-
-
-def align_coordinates_3d(X):
-    X_aligned = X - X[0]
-    angle_z = np.arctan2(X_aligned[1, 1], X_aligned[1, 0])
-    Rz = np.array([
-        [np.cos(-angle_z), -np.sin(-angle_z), 0],
-        [np.sin(-angle_z), np.cos(-angle_z), 0],
-        [0, 0, 1]
-    ])
-    X_aligned = X_aligned.dot(Rz)
-    angle_x = np.arctan2(X_aligned[2, 2], X_aligned[2, 1])
-    Rx = np.array([
-        [1, 0, 0],
-        [0, np.cos(-angle_x), -np.sin(-angle_x)],
-        [0, np.sin(-angle_x), np.cos(-angle_x)]
-    ])
-    X_aligned = X_aligned.dot(Rx)
-    return X_aligned
