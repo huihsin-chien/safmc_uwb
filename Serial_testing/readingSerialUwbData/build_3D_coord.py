@@ -32,13 +32,12 @@ def ClassicalMDS(D, dim):   ## can this handle data with noise?
     L = np.diag(eigvals[idx[:dim]]) # select the top dim eigvals
     X_sub = np.dot(V, np.sqrt(L))
     return X_sub
+
     # refer to https://tomohiroliu22.medium.com/%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92-%E5%AD%B8%E7%BF%92%E7%AD%86%E8%A8%98%E7%B3%BB%E5%88%97-68-%E5%A4%9A%E7%B6%AD%E6%A8%99%E5%BA%A6-multidimensional-scaling-caeb1e8c04a3
     # https://en.wikipedia.org/wiki/Multidimensional_scaling 
     
+
 def align_coordinates(X): # Rodrigues' rotation formula
-    #reference: https://openhome.cc/Gossip/WebGL/Rodrigues.html
-    # https://www.cnblogs.com/wtyuan/p/12324495.html
-    # https://geek-docs.com/numpy/numpy-ask-answer/460_numpy_calculate_rotation_matrix_to_align_two_vectors_in_3d_space.html
     '''
     此程式將 X[0] 當作原點，X[1] 當作 x 軸，X[2]當作 z 軸，進行座標對齊
     1. 以 X[0] (anchor0）為原點，平移所有座標向量
@@ -70,18 +69,8 @@ def align_coordinates(X): # Rodrigues' rotation formula
     X_aligned[1] = (np.dot(R, v).A1)*X_1_norm  # Convert to 1D array
     X_aligned[2] = np.dot(R, X_aligned[2]).A1
     X_aligned[3] = np.dot(R, X_aligned[3]).A1
-
-    from mpl_toolkits.mplot3d import Axes3D
-    import matplotlib.pyplot as plt 
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
-    ax.quiver(0, 0, 0, X_aligned[1][0], X_aligned[1][1], X_aligned[1][2], length=1, color='r', label='X_aligned[1]')
-    ax.quiver(0, 0, 0, X_aligned[2][0], X_aligned[2][1], X_aligned[2][2], length=1, color='b', label='X_aligned[2]')
-    ax.quiver(0, 0, 0, X_aligned[3][0], X_aligned[3][1], X_aligned[3][2], length=1, color='y', label='X_aligned[3]')
-    # ax.quiver(0, 0, 0, w[0], w[1], w[2], length=1, color='g', label     = 'rotation axis')
-    plt.legend()
-    plt.show()
-
+    # plot3D(X_aligned)
+    
     # 3. 以X[0]X[3]為基準向量（0,0,z），旋轉所有座標向量
     u = [0, 0, 1]
     v = X_aligned[3]
@@ -105,31 +94,42 @@ def align_coordinates(X): # Rodrigues' rotation formula
     X_aligned[3] = (np.dot(R, v).A1)*X_3_norm  # Convert to 1D array
     X_aligned[1] = np.dot(R, X_aligned[1]).A1
     X_aligned[2] = np.dot(R, X_aligned[2]).A1
-    
+    # plot3D(X_aligned)
+    return X_aligned
+
+    #reference: https://openhome.cc/Gossip/WebGL/Rodrigues.html
+    # https://www.cnblogs.com/wtyuan/p/12324495.html
+    # https://geek-docs.com/numpy/numpy-ask-answer/460_numpy_calculate_rotation_matrix_to_align_two_vectors_in_3d_space.html
+
+
+def plot3D(X):
+    from mpl_toolkits.mplot3d import Axes3D
+    import matplotlib.pyplot as plt 
     fig = plt.figure()
     ax = fig.add_subplot(111, projection='3d')
-    ax.quiver(0, 0, 0, X_aligned[1][0], X_aligned[1][1], X_aligned[1][2], length=1, color='r', label='X_aligned[1]')
-    ax.quiver(0, 0, 0, X_aligned[2][0], X_aligned[2][1], X_aligned[2][2], length=1, color='b', label='X_aligned[2]')
-    ax.quiver(0, 0, 0, X_aligned[3][0], X_aligned[3][1], X_aligned[3][2], length=1, color='y', label='X_aligned[3]')
-    # ax.quiver(0, 0, 0, w[0], w[1], w[2], length=1, color='g', label     = 'rotation axis')
+    ax.scatter(X[:,0], X[:,1], X[:,2],c=['#d62728', '#9467bd', '#8c564b', '#e377c2'], label='anchor')
     plt.legend()
     plt.show()
 
-
-    return X_aligned
-
-
-
-def build_3D_coord(anchorABCD_distance = clean_anchorABCD_distance_data, dim = 3):
+def build_3D_coord(anchorABCD_distance, dim = 3) -> tuple[np.ndarray, dict]:
     """
     1. 使用乾淨的 UWB 距離數據，建構距離矩陣
     2. MDS 降維得到初步局部座標
     3.  align_coordinates 進行座標對齊
+    return 2D array of 3D coordinates
     """
     D = build_distance_matrix(anchorABCD_distance)
     X = ClassicalMDS(D, dim)
     X = align_coordinates(X)
+    
     print(X)
+    position = {
+        "A": X[0],
+        "B": X[1],
+        "C": X[2],
+        "D": X[3]
+    }
+    return X, position
 
-if __name__ == "__main__":
-    build_3D_coord()
+# if __name__ == "__main__":
+#     build_3D_coord(clean_anchorABCD_distance_data)
