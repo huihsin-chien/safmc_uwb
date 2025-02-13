@@ -66,9 +66,19 @@ class UWBdata(Position):
             csv_writer = csv.writer(file)
             csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp)), tag_name, range_m])
 
-    def get_pooled_distances(self)->dict: # key: tag, value: avg_distance
-        """回傳平均距離"""
-        return {tag: sum(r for r, _ in data) / len(data) for tag, data in self.pooling_data.items() if data}
+    def get_pooled_distances(self) -> dict:  # key: tag, value: avg_distance
+        """回傳平均距離且濾除第一四分位數與第三四分位數以外的數據"""
+        result = {}
+        for tag, data in self.pooling_data.items():
+            if data:
+                distances = [r for r, _ in data]
+                q1 = np.percentile(distances, 25)
+                q3 = np.percentile(distances, 75)
+                filtered_distances = [r for r in distances if q1 <= r <= q3]
+                if filtered_distances:
+                    avg_distance = sum(filtered_distances) / len(filtered_distances)
+                    result[tag] = avg_distance
+        return result
 
 def gps_solve(distances_to_station, stations_coordinates):
 	def error(x, c, r):
@@ -173,7 +183,7 @@ def processing_thread(anchor_list, multilateration_file):
         multilateration(anchor_list, multilateration_file)
 
 def main():
-    output_folder = r"C:\Users\jianh\OneDrive\Desktop\safmc\UWB_test\Serial_testing\readingSerialUwbData\output"
+    output_folder = r"\output"
     start_main_timestamp = time.strftime('%Y%m%d_%H%M%S')
     multilateration_file = os.path.join(output_folder, f"multilateration_results_{start_main_timestamp}.csv")
 
