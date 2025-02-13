@@ -54,7 +54,7 @@ class StateMachine{
             startTime = millis();
             DW1000Ng::spiWakeup();
             DW1000Ng::setDeviceAddress(self_device_address);
-            Serial.println("change to built_coord_2");
+            Serial.println("State changed to built_coord_2");
           }
           break;
         case State::built_coord_2:
