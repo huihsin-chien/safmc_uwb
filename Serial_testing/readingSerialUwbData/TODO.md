@@ -2,6 +2,7 @@
 
 * [X]  record sampling rate in csv files
 * [ ]  implement multilateration
+* [ ]  multilateration: 有蟲
 * [ ]  handle self-calibration state machine
   * [ ]  built_coord_1: 得到距離 dAB + dAC
   * [ ]  built_coord_2: 得到距離 dBC，(之後應該要再多加一個amchor D 用來建立 3D 坐標系)，計算出 3D 座標
