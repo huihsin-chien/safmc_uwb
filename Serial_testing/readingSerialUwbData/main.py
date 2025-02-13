@@ -5,9 +5,11 @@ import csv
 import time
 import os
 import threading
+import build_3D_coord
 # import queue
 from scipy.optimize import minimize
 import numpy as np
+from datetime import datetime # for timestamp
 
 # 全域變數
 # data_queue = queue.Queue()  # 儲存所有 thread 接收的 UWB 資料
@@ -20,9 +22,9 @@ class stateMachine:
         if self.status == "built_coord_1":
             self.status = "built_coord_2"
         elif self.status == "built_coord_2":
-            self.status == "self_calibration"
+            self.status = "self_calibration"
         elif self.status == "self_calibration":
-            self.status == "flying"
+            self.status = "flying"
 
 state_machine = stateMachine()
 class Position:
@@ -48,6 +50,11 @@ class UWBdata(Position):
             csv_writer = csv.writer(file)
             csv_writer.writerow(["timestamp", "tag_name", "range_m", "sample_rate"])
 
+    def setXYZ(self, x, y, z):
+        self.x = x
+        self.y = y
+        self.z = z
+
     def store_pooling_data(self, tag_name, range_m, timestamp):
         """儲存 UWB 距離數據，並移除過期數據"""
         if tag_name not in self.pooling_data:
@@ -65,11 +72,23 @@ class UWBdata(Position):
             csv_writer = csv.writer(file)
             csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp)), tag_name, range_m])
 
-    def get_pooled_distances(self)->dict: # key: tag, value: avg_distance
-        """回傳平均距離"""
-        return {tag: sum(r for r, _ in data) / len(data) for tag, data in self.pooling_data.items() if data}
+    def get_pooled_distances(self) -> dict:  # key: tag, value: avg_distance
+        """回傳平均距離且濾除第一四分位數與第三四分位數以外的數據"""
+        result = {}
+        for tag, data in self.pooling_data.items():
+            if data:
+                print(f"Original data for {tag}: {data}, avg: {sum([r for r, _ in data]) / len(data)}")
+                distances = [r for r, _ in data]
+                q1 = np.percentile(distances, 25)
+                q3 = np.percentile(distances, 75)
+                filtered_distances = [r for r in distances if q1 <= r <= q3]
+                if filtered_distances:
+                    avg_distance = sum(filtered_distances) / len(filtered_distances)
+                    result[tag] = avg_distance
+                print(f"Filtered data for {tag}: {filtered_distances}, avg: {avg_distance}")
+        return result
 
-def gps_solve(distances_to_station, stations_coordinates):
+def gps_solve(distances_to_station, stations_coordinates): #https://github.com/glucee/Multilateration/blob/master/Python/example.py
 	def error(x, c, r):
 		return sum([(np.linalg.norm(x - c[i]) - r[i]) ** 2 for i in range(len(c))])
 
@@ -84,21 +103,23 @@ def gps_solve(distances_to_station, stations_coordinates):
 
 def multilateration(anchor_list, multilateration_file):
     """計算最新的 3D 位置"""
+    print("enter multilateration without lock")
     with lock:  # 確保多執行緒安全存取
         # 取得每個 tag 與每個anchor的距離。假設我想要tag1的位置，我需要anchor1, anchor2, anchor3的距離
         print("enter multilateration")
-        distances = {anchor.EUI: anchor.get_pooled_distances() for anchor in anchor_list}
-        tag_distances_to_anchor = {}
+        distances = {anchor.EUI: anchor.get_pooled_distances() for anchor in anchor_list} #key: anchor, value: {tag: avg_distance}
+        tag_distances_to_anchor = {} #key: tag, value: {anchor: pooled_range}
         for anchor_EUI in distances:
             for tag, pooled_range in distances[anchor_EUI].items():
                 if tag not in tag_distances_to_anchor:
                     tag_distances_to_anchor[tag] = {}
-                tag_distances_to_anchor[tag][anchor_EUI] = pooled_range # 且要依照anchor的EUI順序
+                tag_distances_to_anchor[tag][anchor_EUI] = pooled_range
 
 
     
-    anchor_locations = list(np.array([anchor_list[0].x,anchor_list[0].y,anchor_list[0].z],[anchor_list[1].x, anchor_list[1].y, anchor_list[1].z],[anchor_list[2].x, anchor_list[2].y, anchor_list[2].z],[anchor_list[3].x, anchor_list[3].y, anchor_list[3].z]))
+    anchor_locations = list(np.array([[anchor_list[0].x,anchor_list[0].y,anchor_list[0].z],[anchor_list[1].x, anchor_list[1].y, anchor_list[1].z],[anchor_list[2].x, anchor_list[2].y, anchor_list[2].z],[anchor_list[3].x, anchor_list[3].y, anchor_list[3].z]]))
     tag_pos = {}
+    print(tag_distances_to_anchor)
     for tag in tag_distances_to_anchor:
         tag_pos[tag] = Position(*gps_solve(list(tag_distances_to_anchor[tag].values()), anchor_locations))
         print(f"Tag {tag} position: {tag_pos[tag]}")
@@ -111,7 +132,6 @@ def multilateration(anchor_list, multilateration_file):
             csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), tag, pos.x, pos.y, pos.z])
     return tag_pos
 
-
 def handle_serial_data(serial_port, data_pattern, anchor_list):
     """處理每個 COM 連接，讀取並解析 UWB 數據"""
     ser = serial.Serial(serial_port, baudrate=9600, timeout=1)
@@ -123,23 +143,24 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
             if line:
                 match = data_pattern.search(line)
                 match_sample = re.search(r'Sampling rate\s*([0-9]+):\s*([0-9.]+)\s*Hz', line) #Sampling rate 1: 4.48 Hz
-                print(f"{serial_port}: {line}!")
+                if line != "let's go~":
+                    print(f"{serial_port}: {line}")
+                
                 if match:
                     range_m = float(match.group(1))
                     power = float(match.group(2))
                     from_address = match.group(3)
                     anchor_key = f"{match.group(4)}:{match.group(5)}"
                     timestamp = time.time()
-                    print("Matched!")
+                    # print("Matched!")
                     print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
                 
                     with lock: 
-                        print("Lock acquired.")
+                        # print("Lock acquired.")
                         if not anchor_find:
                             for anchor in anchor_list:
                                 if anchor_key in anchor.EUI:
                                     this_anchor = anchor
-                                    anchor_finded = True
                                     print(f"Storing data to {anchor.name}")
                                     anchor.store_pooling_data(from_address, range_m, timestamp)
                         else:
@@ -148,18 +169,26 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
                     # # 將數據加入 queue
                     # data_queue.put((anchor_key, from_address, range_m, timestamp))
                 elif match_sample:
-                    print("Matched sample rate!")
+                    # print("Matched sample rate!")
                     target_tag = match_sample.group(1)
                     sample_rate = float(match_sample.group(2))
 
                     with open(this_anchor.output_file, mode='a', newline='') as file:
                         csv_writer = csv.writer(file)
-                        csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), f"Sample rate {target_tag}",None ,None ,sample_rate])
-                elif anchor_find and this_anchor.EUI == "00:01" and "State changed" in line:
-                    state_machine.update()
+                        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')  # 獲取包含微秒的時間戳
+                        csv_writer.writerow([timestamp, f"Sample rate {target_tag}", None, None, sample_rate])
+                if "built_coord_2" in line:
+                    state_machine.status = "built_coord_2"
+                    
+                if "self_calibration" in line:
+                    state_machine.status = "self_calibration"
+
+                if "flying" in line:
+                    state_machine.status = "flying"
+
 
         except KeyboardInterrupt:
-            print(f"Stopped {serial_port}")
+            # print(f"Stopped {serial_port}")
             break
 
     ser.close()
@@ -167,22 +196,23 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
 def processing_thread(anchor_list, multilateration_file):
     """每 0.1 秒處理一次數據並計算位置"""
     while True:
-        time.sleep(0.1)  # 讓處理頻率穩定
-        multilateration(anchor_list, multilateration_file)
+        print(f"Current state: {state_machine.status}")  # 調試輸出
+        time.sleep(1)
+        if state_machine.status == "flying":
+            time.sleep(0.1)  # 讓處理頻率穩定
+            multilateration(anchor_list, multilateration_file)
 
 def main():
-    output_folder = r"C:\Users\jianh\OneDrive\Desktop\safmc\UWB_test\Serial_testing\readingSerialUwbData\output"
+    output_folder = r"\output"
     start_main_timestamp = time.strftime('%Y%m%d_%H%M%S')
     multilateration_file = os.path.join(output_folder, f"multilateration_results_{start_main_timestamp}.csv")
 
-    # 建立資料夾
     os.makedirs(output_folder, exist_ok=True)
     
     # 初始化 multilateration CSV 檔案
     with open(multilateration_file, mode='w', newline='') as file:
         csv_writer = csv.writer(file)
         csv_writer.writerow(["timestamp", "x", "y", "z"])
-
 
     data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
     # Range: 0.00 m      RX power: -59.80 dBm distance between anchor/tag:30 from Anchor 00:01
@@ -219,10 +249,9 @@ def main():
 
     for thread in threads:
         thread.join() # join 是等待執行緒結束
-        print("Thread joined.")
+        # print("Thread joined.")
 
-def build_3D_coord():
-    pass
+
 
 if __name__ == "__main__":
     main()

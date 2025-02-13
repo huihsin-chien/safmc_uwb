@@ -46,7 +46,7 @@ Range: 0.34 m    RX power: inf dBm distance between anchor/tag:30 from Anchor 00
 Range: 0.02 m    RX power: -64.60 dBm distance between anchor/tag:30 from Anchor 00:01
 Range: 0.05 m    RX power: -65.11 dBm distance between anchor/tag:30 from Anchor 00:01
 Range: 0.04 m    RX power: -68.16 dBm distance between anchor/tag:30 from Anchor 00:01
-AnchorC Sampling rate: 2.35 Hz
+AnchorC te: 2.35 Hz
 Range: 0.02 m    RX power: -64.84 dBm distance between anchor/tag:30 from Anchor 00:01
 Range: 0.05 m    RX power: -70.09 dBm distance between anchor/tag:30 from Anchor 00:01
 Range: 0.05 m    RX power: -67.83 dBm distance between anchor/tag:30 from Anchor 00:01

@@ -1,0 +1,910 @@
+### arduino-DW1000Ng-ranging-anchor-###
+DW1000Ng initialized ...
+Committed configuration ...
+Device ID: DECA - model: 1, version: 3, revision: 0
+Unique ID: AA:BB:CC:DD:EE:FF:00:03
+Network ID & Device Address: PAN: 609A, Short Address: 03
+Device mode: Data rate: 850 kb/s, PRF: 16 MHz, Preamble: 256 symbols, Channel: #5, Preamble code #3
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+change to built_coord_2
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+result is right!
+let's go~
+let's go~
+let's go~
+result is right!
+let's go~
+State changed to self_calibration
+Range: 0.00 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 0.02Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.22 m    RX power: -67.05 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.27 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.02 m    RX power: -72.64 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 2.58Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -62.53 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.25 m    RX power: -67.87 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.21 m    RX power: -62.84 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -70.93 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.02 m    RX power: -72.64 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.02 m    RX power: -72.64 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.06 m    RX power: -80.61 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.07 m    RX power: -64.36 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -61.84 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.27 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -66.41 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 10.14Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -66.02 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.07 m    RX power: -68.14 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.21 m    RX power: -62.84 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.04 m    RX power: -68.16 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 3.67Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -68.21 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.01 m    RX power: -66.87 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -64.13 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -60.61 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.72 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 4.57Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.23 m    RX power: -62.95 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.06 m    RX power: -75.49 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.03 m    RX power: -68.85 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -61.62 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 3.07Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.53 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.04 m    RX power: -69.44 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.02 m    RX power: -62.09 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.52 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 3.34Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -62.10 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -66.79 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.30 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.21 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.37 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 3.58Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -61.65 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -70.33 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 1.61Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -65.27 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -70.18 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.24 m    RX power: -64.64 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -61.94 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.21 m    RX power: -62.71 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.84 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.36 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.84 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -64.78 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.55 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.13 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 10.03Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.01 m    RX power: -71.85 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.23 m    RX power: -61.62 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -66.05 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.04 m    RX power: -69.41 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -60.76 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.28 m    RX power: -64.64 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.81 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -64.24 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.24 m    RX power: -63.72 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.53 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.29 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 10.01Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -61.61 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.28 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.01 m    RX power: -70.71 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -64.28 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.26 m    RX power: -66.93 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -60.61 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.21 m    RX power: -63.81 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 6.05Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.27 m    RX power: -70.28 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -64.83 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -90.20 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.16 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.27 m    RX power: -61.59 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 4.61Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.23 m    RX power: -60.89 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -60.44 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -64.83 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.22 m    RX power: -63.38 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.34 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.24 m    RX power: -63.10 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -60.33 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 6.55Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.17 m    RX power: -62.23 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.61 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -66.81 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -66.39 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.28 m    RX power: -64.03 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.10 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.24 m    RX power: -67.73 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 4.58Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -63.16 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -67.04 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -61.76 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.16 m    RX power: -62.60 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -64.29 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -75.44 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.35 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 6.20Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -65.31 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.01 m    RX power: -67.62 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.14 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.27 m    RX power: -72.08 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.75 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 4.20Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.24 m    RX power: -62.79 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -66.02 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.16 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.03 m    RX power: -66.09 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -61.71 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.03 m    RX power: -65.78 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.63 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 6.04Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.04 m    RX power: -63.98 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.13 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.07 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.64 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.32 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -65.93 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -68.28 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 6.51Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -65.27 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.36 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.23 m    RX power: -64.93 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.01 m    RX power: -65.59 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.69 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.53 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.03 m    RX power: -68.91 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -64.29 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.01 m    RX power: -67.10 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.53 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -65.38 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.30 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 9.11Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.23 m    RX power: -66.93 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.12 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.03 m    RX power: -67.41 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.01 m    RX power: -72.64 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.29 m    RX power: -64.17 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -64.65 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.20 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 6.36Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -61.67 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.03 m    RX power: -70.71 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.01 m    RX power: -68.16 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -61.88 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.22 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.25 m    RX power: -63.07 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -64.49 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 7.61Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.24 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -61.95 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 1.04Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -65.29 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.28 m    RX power: -71.85 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.98 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -65.53 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.04 m    RX power: -65.53 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.30 m    RX power: -74.87 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.72 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 5.75Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -66.02 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -65.23 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -65.44 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 2.36Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.52 m    RX power: -90.55 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -68.66 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.01 m    RX power: -64.64 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.25 m    RX power: -68.87 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.02 m    RX power: -73.56 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.31 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -60.90 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 6.45Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -61.26 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -64.29 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.02 m    RX power: -67.00 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.13 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.55 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 4.62Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -62.71 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -66.10 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -64.31 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.17 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.02 m    RX power: -74.57 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.47 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -61.62 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.52 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.96 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.32 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.56 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 10.22Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.02 m    RX power: -73.21 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -64.16 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.96 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.26 m    RX power: -68.56 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.92 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.96 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.01 m    RX power: -63.98 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -61.02 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 7.14Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -63.92 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -60.74 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.14 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.84 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.31 m    RX power: -69.25 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.29 m    RX power: -66.21 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 5.98Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -61.48 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -61.70 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -61.62 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.72 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.26 m    RX power: -66.43 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.25 m    RX power: -67.71 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -68.66 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -65.53 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 7.51Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -61.13 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.86 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -63.39 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.25 m    RX power: -64.95 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -60.08 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -66.54 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.23 m    RX power: -66.07 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -65.74 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate of  AnchorD: 6.20Hz    Anchor:00:03
+Sampling rate of  AnchorE: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorF: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorG: 0.00Hz    Anchor:00:03
+Sampling rate of  AnchorH: 0.00Hz    Anchor:00:03
+Range: 0.00 m    RX power: -61.00 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.53 m    RX power: inf dBm distance between anchor/tag:40 from Anchor 00:03
+State changed to flying
+Range: 0.00 m    RX power: -61.14 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -64.62 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -62.59 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.29 m    RX power: -71.10 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -71.54 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.00 m    RX power: -66.45 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.24 m    RX power: -72.74 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate 1: 0.00 Hz
+Sampling rate 2: 0.00 Hz
+Sampling rate 3: 0.00 Hz
+Range: 0.00 m    RX power: -74.87 dBm distance between anchor/tag:40 from Anchor 00:03
+Range: 0.26 m    RX power: -72.74 dBm distance between anchor/tag:40 from Anchor 00:03
+Sampling rate 1: 0.00 Hz
+Sampling rate 2: 0.00 Hz
+Sampling rate 3: 0.00 Hz
+Range: 0.00 m    RX power: -62.16 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.25 m    RX power: -66.10 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -67.46 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -61.37 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.01 m    RX power: -63.93 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.34 m    RX power: -77.58 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -67.47 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.33 m    RX power: -75.85 dBm distance between anchor/tag:20663 from Anchor 00:03
+Sampling rate 1: 0.00 Hz
+Sampling rate 2: 0.00 Hz
+Sampling rate 3: 0.00 Hz
+Range: 0.00 m    RX power: -65.89 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -66.93 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.24 m    RX power: -66.97 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -64.66 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -63.05 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.01 m    RX power: -61.84 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -64.64 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.02 m    RX power: -60.66 dBm distance between anchor/tag:20663 from Anchor 00:03
+Sampling rate 1: 0.00 Hz
+Sampling rate 2: 0.00 Hz
+Sampling rate 3: 0.00 Hz
+Range: 0.00 m    RX power: -66.09 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -71.69 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.36 m    RX power: -76.44 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -63.55 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.52 m    RX power: inf dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -62.63 dBm distance between anchor/tag:20663 from Anchor 00:03
+Sampling rate 1: 0.00 Hz
+Sampling rate 2: 0.00 Hz
+Sampling rate 3: 0.00 Hz
+Range: 0.00 m    RX power: -68.50 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -65.99 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -62.59 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.01 m    RX power: -75.44 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: inf dBm distance between anchor/tag:20663 from Anchor 00:03
+Sampling rate 1: 0.00 Hz
+Sampling rate 2: 0.00 Hz
+Sampling rate 3: 0.00 Hz
+Range: 0.03 m    RX power: -62.60 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.31 m    RX power: -63.18 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.15 m    RX power: -86.48 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -67.05 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -59.65 dBm distance between anchor/tag:20663 from Anchor 00:03
+Sampling rate 1: 0.00 Hz
+Sampling rate 2: 0.00 Hz
+Sampling rate 3: 0.00 Hz
+Range: 0.04 m    RX power: -76.44 dBm distance between anchor/tag:20663 from Anchor 00:03
+Sampling rate 1: 0.00 Hz
+Sampling rate 2: 0.00 Hz
+Sampling rate 3: 0.00 Hz
+Range: 0.00 m    RX power: -60.83 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -66.28 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -60.54 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -68.16 dBm distance between anchor/tag:20663 from Anchor 00:03
+Sampling rate 1: 0.00 Hz
+Sampling rate 2: 0.00 Hz
+Sampling rate 3: 0.00 Hz
+Range: 0.00 m    RX power: -63.55 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.24 m    RX power: -70.73 dBm distance between anchor/tag:20663 from Anchor 00:03
+Range: 0.00 m    RX power: -62.83 dBm distance between anchor/tag:20663 from Anchor 00:03
+Sampling rate 1: 0.00 Hz
+Sampling rate 2: 0.00 Hz
+Sampling rate 3: 0.00 Hz
+Range: 0.00 m    RX power: -65.14 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -63.67 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.24 m    RX power: -64.33 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -63.29 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.29 m    RX power: -74.87 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -62.91 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.25 m    RX power: -67.42 dBm distance between anchor/tag:33 from Anchor 00:03
+Sampling rate 1: 2.84 Hz
+Sampling rate 2: 0.95 Hz
+Sampling rate 3: 2.84 Hz
+Range: 0.30 m    RX power: -74.57 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -63.53 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -63.54 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.32 m    RX power: -75.44 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -62.49 dBm distance between anchor/tag:22 from Anchor 00:03
+Sampling rate 1: 1.85 Hz
+Sampling rate 2: 0.92 Hz
+Sampling rate 3: 1.85 Hz
+Range: 0.00 m    RX power: -68.66 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -61.43 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.00 m    RX power: -64.89 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -67.92 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -64.00 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.00 m    RX power: -70.33 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -64.33 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -62.62 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.04 m    RX power: -75.49 dBm distance between anchor/tag:11 from Anchor 00:03
+Sampling rate 1: 5.03 Hz
+Sampling rate 2: 1.68 Hz
+Sampling rate 3: 0.84 Hz
+Range: 0.52 m    RX power: inf dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -64.89 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.68 m    RX power: inf dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -61.86 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.24 m    RX power: -66.16 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -61.33 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.53 m    RX power: inf dBm distance between anchor/tag:33 from Anchor 00:03
+Sampling rate 1: 0.99 Hz
+Sampling rate 2: 1.97 Hz
+Sampling rate 3: 3.95 Hz
+Range: 0.00 m    RX power: -61.12 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.25 m    RX power: -69.94 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -65.06 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -63.30 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.25 m    RX power: -64.70 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.52 m    RX power: inf dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -63.34 dBm distance between anchor/tag:22 from Anchor 00:03
+Sampling rate 1: 0.93 Hz
+Sampling rate 2: 2.79 Hz
+Sampling rate 3: 2.79 Hz
+Range: 0.01 m    RX power: -74.35 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.29 m    RX power: -67.49 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.09 m    RX power: -80.61 dBm distance between anchor/tag:11 from Anchor 00:03
+Sampling rate 1: 1.80 Hz
+Sampling rate 2: 0.00 Hz
+Sampling rate 3: 0.90 Hz
+Range: 0.74 m    RX power: inf dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -71.10 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -64.50 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.00 m    RX power: -63.17 dBm distance between anchor/tag:22 from Anchor 00:03
+Sampling rate 1: 0.78 Hz
+Sampling rate 2: 1.57 Hz
+Sampling rate 3: 0.78 Hz
+Range: 0.00 m    RX power: inf dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -60.04 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.00 m    RX power: -66.02 dBm distance between anchor/tag:22 from Anchor 00:03
+Sampling rate 1: 0.77 Hz
+Sampling rate 2: 1.53 Hz
+Sampling rate 3: 0.00 Hz
+Range: 0.00 m    RX power: -61.91 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.00 m    RX power: -67.62 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -61.14 dBm distance between anchor/tag:22 from Anchor 00:03
+Sampling rate 1: 0.92 Hz
+Sampling rate 2: 1.84 Hz
+Sampling rate 3: 0.00 Hz
+Range: 0.27 m    RX power: -68.28 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.20 m    RX power: -64.59 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -63.59 dBm distance between anchor/tag:11 from Anchor 00:03
+Sampling rate 1: 0.83 Hz
+Sampling rate 2: 0.00 Hz
+Sampling rate 3: 1.66 Hz
+Range: 0.36 m    RX power: -76.49 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -70.93 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.00 m    RX power: -68.37 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -62.60 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -65.52 dBm distance between anchor/tag:11 from Anchor 00:03
+Sampling rate 1: 2.75 Hz
+Sampling rate 2: 0.92 Hz
+Sampling rate 3: 0.92 Hz
+Range: 0.00 m    RX power: -68.95 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.37 m    RX power: -77.58 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -63.68 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -61.47 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.22 m    RX power: -65.44 dBm distance between anchor/tag:33 from Anchor 00:03
+Sampling rate 1: 1.95 Hz
+Sampling rate 2: 0.97 Hz
+Sampling rate 3: 1.95 Hz
+Range: 0.00 m    RX power: -66.15 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.23 m    RX power: -65.44 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -64.56 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.22 m    RX power: -66.98 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -68.28 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.03 m    RX power: -73.85 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -64.51 dBm distance between anchor/tag:11 from Anchor 00:03
+Sampling rate 1: 3.58 Hz
+Sampling rate 2: 0.00 Hz
+Sampling rate 3: 1.43 Hz
+Range: 0.00 m    RX power: -59.89 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.00 m    RX power: -66.01 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.00 m    RX power: -63.52 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.63 m    RX power: inf dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -65.23 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.25 m    RX power: -66.65 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -62.14 dBm distance between anchor/tag:22 from Anchor 00:03
+Sampling rate 1: 1.98 Hz
+Sampling rate 2: 2.96 Hz
+Sampling rate 3: 1.98 Hz
+Range: 0.18 m    RX power: -63.40 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.23 m    RX power: -68.21 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -60.67 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.00 m    RX power: -60.54 dBm distance between anchor/tag:22 from Anchor 00:03
+Sampling rate 1: 0.00 Hz
+Sampling rate 2: 1.83 Hz
+Sampling rate 3: 1.83 Hz
+Range: 0.24 m    RX power: -63.97 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -61.91 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.28 m    RX power: -68.66 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -61.44 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.22 m    RX power: -67.47 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -65.55 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -61.36 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.26 m    RX power: -68.13 dBm distance between anchor/tag:33 from Anchor 00:03
+Sampling rate 1: 0.92 Hz
+Sampling rate 2: 2.75 Hz
+Sampling rate 3: 3.66 Hz
+Range: 0.27 m    RX power: -69.66 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -64.24 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.24 m    RX power: -66.87 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -61.59 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.00 m    RX power: -67.47 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.26 m    RX power: -64.29 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.01 m    RX power: -76.49 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.30 m    RX power: -68.95 dBm distance between anchor/tag:33 from Anchor 00:03
+Sampling rate 1: 0.89 Hz
+Sampling rate 2: 2.68 Hz
+Sampling rate 3: 3.57 Hz
+Range: 0.00 m    RX power: -65.17 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.25 m    RX power: -64.28 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.21 m    RX power: -65.62 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -61.89 dBm distance between anchor/tag:22 from Anchor 00:03
+Sampling rate 1: 0.94 Hz
+Sampling rate 2: 0.94 Hz
+Sampling rate 3: 1.88 Hz
+Range: 0.00 m    RX power: -63.50 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.00 m    RX power: -62.23 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.00 m    RX power: -69.94 dBm distance between anchor/tag:11 from Anchor 00:03
+Sampling rate 1: 0.81 Hz
+Sampling rate 2: 1.61 Hz
+Sampling rate 3: 0.00 Hz
+Range: 0.00 m    RX power: -63.52 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.00 m    RX power: -60.50 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.26 m    RX power: -63.70 dBm distance between anchor/tag:33 from Anchor 00:03
+Sampling rate 1: 0.00 Hz
+Sampling rate 2: 1.32 Hz
+Sampling rate 3: 0.66 Hz
+Range: 0.00 m    RX power: -65.45 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -66.01 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.00 m    RX power: -63.70 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -60.41 dBm distance between anchor/tag:22 from Anchor 00:03
+Sampling rate 1: 1.02 Hz
+Sampling rate 2: 1.02 Hz
+Sampling rate 3: 0.00 Hz
+Range: 0.52 m    RX power: inf dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -65.58 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.04 m    RX power: -71.71 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.27 m    RX power: -65.82 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: inf dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.00 m    RX power: -65.45 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.22 m    RX power: -65.69 dBm distance between anchor/tag:33 from Anchor 00:03
+Sampling rate 1: 2.87 Hz
+Sampling rate 2: 0.00 Hz
+Sampling rate 3: 3.82 Hz
+Range: 0.31 m    RX power: -65.05 dBm distance between anchor/tag:33 from Anchor 00:03
+Range: 0.02 m    RX power: -72.80 dBm distance between anchor/tag:11 from Anchor 00:03
+Range: 0.00 m    RX power: -61.98 dBm distance between anchor/tag:22 from Anchor 00:03
+Range: 0.32 m    RX power: -73.56 dBm distance between anchor/tag:33 from Anchor 00:03
