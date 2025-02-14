@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/msg_folder__rosidl_generator_py.dir/rosidl_generator_py/msg_folder/msg/_uwb_msg_s.c.o"
-  "CMakeFiles/msg_folder__rosidl_generator_py.dir/rosidl_generator_py/msg_folder/msg/_uwb_msg_s.c.o.d"
+  "CMakeFiles/msg_folder__rosidl_generator_py.dir/rosidl_generator_py/msg_folder/msg/_pose_s.c.o"
+  "CMakeFiles/msg_folder__rosidl_generator_py.dir/rosidl_generator_py/msg_folder/msg/_pose_s.c.o.d"
+  "CMakeFiles/msg_folder__rosidl_generator_py.dir/rosidl_generator_py/msg_folder/msg/_range_s.c.o"
+  "CMakeFiles/msg_folder__rosidl_generator_py.dir/rosidl_generator_py/msg_folder/msg/_range_s.c.o.d"
   "rosidl_generator_py/msg_folder/libmsg_folder__rosidl_generator_py.pdb"
   "rosidl_generator_py/msg_folder/libmsg_folder__rosidl_generator_py.so"
 )

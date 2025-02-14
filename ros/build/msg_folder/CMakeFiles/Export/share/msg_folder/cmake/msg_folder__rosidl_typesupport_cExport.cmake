@@ -54,7 +54,7 @@ endif()
 add_library(msg_folder::msg_folder__rosidl_typesupport_c SHARED IMPORTED)
 
 set_target_properties(msg_folder::msg_folder__rosidl_typesupport_c PROPERTIES
-  INTERFACE_LINK_LIBRARIES "msg_folder::msg_folder__rosidl_generator_c"
+  INTERFACE_LINK_LIBRARIES "msg_folder::msg_folder__rosidl_generator_c;geometry_msgs::geometry_msgs__rosidl_typesupport_c;std_msgs::std_msgs__rosidl_typesupport_c"
 )
 
 if(CMAKE_VERSION VERSION_LESS 2.8.12)

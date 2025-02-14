@@ -4,3 +4,5 @@ msg_folder.egg-info/PKG-INFO
 msg_folder.egg-info/SOURCES.txt
 msg_folder.egg-info/dependency_links.txt
 msg_folder.egg-info/top_level.txt
+msg_folder/msg/__init__.py
+msg_folder/msg/_uwb_msg.py

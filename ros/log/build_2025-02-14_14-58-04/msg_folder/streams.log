@@ -1,0 +1,20 @@
+[0.039s] Invoking command in '/home/Judy/safmc_uwb/ros/build/msg_folder': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/Judy/safmc_uwb/ros_enfu/install/uwb /usr/bin/cmake --build /home/Judy/safmc_uwb/ros/build/msg_folder -- -j12 -l12
+[0.047s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.240s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.243s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.248s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.494s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.527s] -- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.822s] [31mCMake Error at /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:53 (message):
+[0.822s]   ament_package_xml() package name 'msg_folder' in '/package.xml' does not
+[0.822s]   match current PROJECT_NAME 'uwb_msgs'.  You must call project() with the
+[0.823s]   same package name before.
+[0.823s] Call Stack (most recent call first):
+[0.823s]   /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:226 (ament_package_xml)
+[0.823s]   CMakeLists.txt:18 (rosidl_generate_interfaces)
+[0.823s] 
+[0.823s] [0m
+[0.824s] -- Configuring incomplete, errors occurred!
+[0.824s] See also "/home/Judy/safmc_uwb/ros/build/msg_folder/CMakeFiles/CMakeOutput.log".
+[0.832s] gmake: *** [Makefile:963: cmake_check_build_system] Error 1
+[0.836s] Invoked command in '/home/Judy/safmc_uwb/ros/build/msg_folder' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble:/home/Judy/safmc_uwb/ros_enfu/install/uwb /usr/bin/cmake --build /home/Judy/safmc_uwb/ros/build/msg_folder -- -j12 -l12

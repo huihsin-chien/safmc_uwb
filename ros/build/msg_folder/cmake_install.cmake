@@ -97,7 +97,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmsg_folder__rosidl_typesupport_fastrtps_c.so")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmsg_folder__rosidl_typesupport_fastrtps_c.so"
-         OLD_RPATH "/opt/ros/humble/lib:/home/Judy/safmc_uwb/ros/build/msg_folder:"
+         OLD_RPATH "/home/Judy/safmc_uwb/ros/build/msg_folder:/opt/ros/humble/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libmsg_folder__rosidl_typesupport_fastrtps_c.so")
@@ -356,11 +356,19 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/msg_folder/msg" TYPE FILE FILES "/home/Judy/safmc_uwb/ros/build/msg_folder/rosidl_adapter/msg_folder/msg/UwbMsg.idl")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/msg_folder/msg" TYPE FILE FILES "/home/Judy/safmc_uwb/ros/build/msg_folder/rosidl_adapter/msg_folder/msg/Range.idl")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/msg_folder/msg" TYPE FILE FILES "/home/Judy/safmc_uwb/ros/src/msg_folder/msg/UwbMsg.msg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/msg_folder/msg" TYPE FILE FILES "/home/Judy/safmc_uwb/ros/build/msg_folder/rosidl_adapter/msg_folder/msg/Pose.idl")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/msg_folder/msg" TYPE FILE FILES "/home/Judy/safmc_uwb/ros/src/msg_folder/msg/Range.msg")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/msg_folder/msg" TYPE FILE FILES "/home/Judy/safmc_uwb/ros/src/msg_folder/msg/Pose.msg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -584,6 +592,10 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/msg_folder/cmake" TYPE FILE FILES "/home/Judy/safmc_uwb/ros/build/msg_folder/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/msg_folder/cmake" TYPE FILE FILES "/home/Judy/safmc_uwb/ros/build/msg_folder/ament_cmake_export_include_directories/ament_cmake_export_include_directories-extras.cmake")
 endif()
 
@@ -597,10 +609,6 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/msg_folder/cmake" TYPE FILE FILES "/home/Judy/safmc_uwb/ros/build/msg_folder/rosidl_cmake/rosidl_cmake_export_typesupport_targets-extras.cmake")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/msg_folder/cmake" TYPE FILE FILES "/home/Judy/safmc_uwb/ros/build/msg_folder/ament_cmake_export_dependencies/ament_cmake_export_dependencies-extras.cmake")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
