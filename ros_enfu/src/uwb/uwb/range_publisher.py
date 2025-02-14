@@ -13,9 +13,10 @@ class PositionPublisher(Node):
 
         super().__init__('position_publisher')
 
-        port = None  # TODO 從 params.yaml 讀取
-
-        self.ser = serial.Serial(port, baudrate=9600, timeout=1)
+        ports = []  # TODO 從 params.yaml 讀取
+        self.sers = []
+        for port in ports:
+            self.sers.append(serial.Serial(port, baudrate=9600, timeout=1))
 
         # TODO
         qos_profile = QoSProfile(
@@ -40,30 +41,32 @@ class PositionPublisher(Node):
 
     def update(self):
         # TODO self.ser.reset_input_buffer()
-        line = self.ser.readline()
-        line = self.ser.readline().decode('utf-8').strip()
 
-        if not line:
-            return
-        range_data_match = self.range_data_pattern.search(line)
-        sample_rate_data_match = self.range_data_pattern.search(line)
+        for ser in self.sers:
+            line = self.ser.readline()
+            line = self.ser.readline().decode('utf-8').strip()
 
-        if range_data_match:
-            range = float(range_data_match.group(1))  # TODO inf?
-            power = float(range_data_match.group(2))  # TODO inf?
-            from_id: str = range_data_match.group(3)
-            to_id: str = range_data_match.group(4)
+            if not line:
+                return
+            range_data_match = self.range_data_pattern.search(line)
+            sample_rate_data_match = self.range_data_pattern.search(line)
 
-            msg = Range()
-            msg.range = range
-            msg.power = power
-            msg.from_id = from_id
-            msg.to_id = to_id
-            self.publisher.publish(msg)
+            if range_data_match:
+                range = float(range_data_match.group(1))  # TODO inf?
+                power = float(range_data_match.group(2))  # TODO inf?
+                from_id: str = range_data_match.group(3)
+                to_id: str = range_data_match.group(4)
 
-        if sample_rate_data_match:
-            rate: str = float(range_data_match.group(1))  # TODO inf?
-            anchor_id: str = range_data_match.group(2)
+                msg = Range()
+                msg.range = range
+                msg.power = power
+                msg.from_id = from_id
+                msg.to_id = to_id
+                self.publisher.publish(msg)
+
+            if sample_rate_data_match:
+                rate: str = float(range_data_match.group(1))  # TODO inf?
+                anchor_id: str = range_data_match.group(2)
 
 
 def main(args=None):
