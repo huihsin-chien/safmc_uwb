@@ -1,6 +1,7 @@
 {
   "package_name": "msg_folder",
   "non_idl_tuples": [
-    "/home/Judy/safmc_uwb/ros/src/msg_folder:msg/UwbMsg.msg"
+    "/home/Judy/safmc_uwb/ros/src/msg_folder:msg/Range.msg",
+    "/home/Judy/safmc_uwb/ros/src/msg_folder:msg/Pose.msg"
   ]
 }

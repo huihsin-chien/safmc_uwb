@@ -1,0 +1,7 @@
+{
+  "package_name": "uwb_msgs",
+  "non_idl_tuples": [
+    "/home/Judy/safmc_uwb/ros/src/msg_folder:msg/Range.msg",
+    "/home/Judy/safmc_uwb/ros/src/msg_folder:msg/Pose.msg"
+  ]
+}

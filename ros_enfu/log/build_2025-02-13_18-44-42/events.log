@@ -1,0 +1,120 @@
+[0.000000] (-) TimerEvent: {}
+[0.000341] (uwb) JobQueued: {'identifier': 'uwb', 'dependencies': OrderedDict()}
+[0.000369] (uwb_msgs) JobQueued: {'identifier': 'uwb_msgs', 'dependencies': OrderedDict()}
+[0.000388] (uwb) JobStarted: {'identifier': 'uwb'}
+[0.005154] (uwb_msgs) JobStarted: {'identifier': 'uwb_msgs'}
+[0.099819] (-) TimerEvent: {}
+[0.135735] (uwb_msgs) JobProgress: {'identifier': 'uwb_msgs', 'progress': 'cmake'}
+[0.136012] (uwb_msgs) Command: {'cmd': ['/usr/bin/cmake', '/workspace/safmc_uwb/ros/src/uwb_msgs', '-DCMAKE_INSTALL_PREFIX=/workspace/safmc_uwb/ros/install/uwb_msgs'], 'cwd': '/workspace/safmc_uwb/ros/build/uwb_msgs', 'env': OrderedDict([('HOSTNAME', 'a26e13bd7583'), ('GIT_ASKPASS', '/vscode/vscode-server/bin/linux-x64/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/extensions/git/dist/askpass.sh'), ('SHLVL', '2'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('BROWSER', '/vscode/vscode-server/bin/linux-x64/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/bin/helpers/browser.sh'), ('HOME', '/home/user'), ('OLDPWD', '/workspace/safmc_uwb/ros/src'), ('TERM_PROGRAM_VERSION', '1.96.2'), ('VSCODE_IPC_HOOK_CLI', '/tmp/vscode-ipc-87935dc3-2200-4820-b3bd-e115c7be4d03.sock'), ('DEBUGPY_ADAPTER_ENDPOINTS', '/tmp/noConfigDebugAdapterEndpoints-2765dd6f6483dc79d6d1/debuggerAdapterEndpoint.txt'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/vscode/vscode-server/bin/linux-x64/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/vscode/vscode-server/bin/linux-x64/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/node'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/home/user/.vscode-server/extensions/ms-python.debugpy-2025.0.0-linux-x64/bundled/libs/debugpy'), ('COLORTERM', 'truecolor'), ('REMOTE_CONTAINERS', 'true'), ('ROS_DISTRO', 'humble'), ('REMOTE_CONTAINERS_IPC', '/tmp/vscode-remote-containers-ipc-cb06e396-3ad0-40ec-80dd-5625de81e1e7.sock'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('NVIDIA_DRIVER_CAPABILITIES', 'all'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/vscode/vscode-server/bin/linux-x64/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/bin/remote-cli:/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/user/.local/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/user/.vscode-server/extensions/ms-python.debugpy-2025.0.0-linux-x64/bundled/scripts/noConfigScripts'), ('REMOTE_CONTAINERS_SOCKETS', '["/tmp/vscode-ssh-auth-cb06e396-3ad0-40ec-80dd-5625de81e1e7.sock","/home/user/.gnupg/S.gpg-agent"]'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('VSCODE_GIT_IPC_HANDLE', '/tmp/vscode-git-aba0144230.sock'), ('TERM_PROGRAM', 'vscode'), ('SSH_AUTH_SOCK', '/tmp/vscode-ssh-auth-cb06e396-3ad0-40ec-80dd-5625de81e1e7.sock'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/workspace/safmc_uwb/ros/build/uwb_msgs'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.199894] (-) TimerEvent: {}
+[0.213742] (uwb_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.264955] (uwb_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.271162] (uwb_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.299988] (-) TimerEvent: {}
+[0.315018] (uwb_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.318969] (uwb_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.319246] (uwb_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.319671] (uwb_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.321771] (uwb_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.343538] (uwb) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/uwb', 'build', '--build-base', '/workspace/safmc_uwb/ros/build/uwb/build', 'install', '--record', '/workspace/safmc_uwb/ros/build/uwb/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/workspace/safmc_uwb/ros/src/uwb', 'env': {'HOSTNAME': 'a26e13bd7583', 'GIT_ASKPASS': '/vscode/vscode-server/bin/linux-x64/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/extensions/git/dist/askpass.sh', 'SHLVL': '2', 'LD_LIBRARY_PATH': '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'BROWSER': '/vscode/vscode-server/bin/linux-x64/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/bin/helpers/browser.sh', 'HOME': '/home/user', 'OLDPWD': '/workspace/safmc_uwb/ros/src', 'TERM_PROGRAM_VERSION': '1.96.2', 'VSCODE_IPC_HOOK_CLI': '/tmp/vscode-ipc-87935dc3-2200-4820-b3bd-e115c7be4d03.sock', 'DEBUGPY_ADAPTER_ENDPOINTS': '/tmp/noConfigDebugAdapterEndpoints-2765dd6f6483dc79d6d1/debuggerAdapterEndpoint.txt', 'ROS_PYTHON_VERSION': '3', 'VSCODE_GIT_ASKPASS_MAIN': '/vscode/vscode-server/bin/linux-x64/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/extensions/git/dist/askpass-main.js', 'VSCODE_GIT_ASKPASS_NODE': '/vscode/vscode-server/bin/linux-x64/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/node', 'PYDEVD_DISABLE_FILE_VALIDATION': '1', 'BUNDLED_DEBUGPY_PATH': '/home/user/.vscode-server/extensions/ms-python.debugpy-2025.0.0-linux-x64/bundled/libs/debugpy', 'COLORTERM': 'truecolor', 'REMOTE_CONTAINERS': 'true', 'ROS_DISTRO': 'humble', 'REMOTE_CONTAINERS_IPC': '/tmp/vscode-remote-containers-ipc-cb06e396-3ad0-40ec-80dd-5625de81e1e7.sock', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'NVIDIA_DRIVER_CAPABILITIES': 'all', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/vscode/vscode-server/bin/linux-x64/fabdb6a30b49f79a7aba0f2ad9df9b399473380f/bin/remote-cli:/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/home/user/.local/bin:/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/user/.vscode-server/extensions/ms-python.debugpy-2025.0.0-linux-x64/bundled/scripts/noConfigScripts', 'REMOTE_CONTAINERS_SOCKETS': '["/tmp/vscode-ssh-auth-cb06e396-3ad0-40ec-80dd-5625de81e1e7.sock","/home/user/.gnupg/S.gpg-agent"]', 'DISPLAY': ':1', 'LANG': 'en_US.UTF-8', 'VSCODE_GIT_IPC_HANDLE': '/tmp/vscode-git-aba0144230.sock', 'TERM_PROGRAM': 'vscode', 'SSH_AUTH_SOCK': '/tmp/vscode-ssh-auth-cb06e396-3ad0-40ec-80dd-5625de81e1e7.sock', 'AMENT_PREFIX_PATH': '/opt/ros/humble', 'DEBIAN_FRONTEND': 'noninteractive', 'SHELL': '/bin/bash', 'VSCODE_GIT_ASKPASS_EXTRA_ARGS': '', 'PWD': '/workspace/safmc_uwb/ros/build/uwb', 'PYTHONPATH': '/workspace/safmc_uwb/ros/build/uwb/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1'}, 'shell': False}
+[0.372442] (uwb_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.379169] (uwb_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.379320] (uwb_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.379608] (uwb_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.381445] (uwb_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.400021] (-) TimerEvent: {}
+[0.465984] (uwb) StdoutLine: {'line': b'running egg_info\n'}
+[0.466379] (uwb) StdoutLine: {'line': b'creating ../../build/uwb/uwb.egg-info\n'}
+[0.466476] (uwb) StdoutLine: {'line': b'writing ../../build/uwb/uwb.egg-info/PKG-INFO\n'}
+[0.466594] (uwb) StdoutLine: {'line': b'writing dependency_links to ../../build/uwb/uwb.egg-info/dependency_links.txt\n'}
+[0.466682] (uwb) StdoutLine: {'line': b'writing entry points to ../../build/uwb/uwb.egg-info/entry_points.txt\n'}
+[0.466716] (uwb) StdoutLine: {'line': b'writing requirements to ../../build/uwb/uwb.egg-info/requires.txt\n'}
+[0.466754] (uwb) StdoutLine: {'line': b'writing top-level names to ../../build/uwb/uwb.egg-info/top_level.txt\n'}
+[0.466779] (uwb) StdoutLine: {'line': b"writing manifest file '../../build/uwb/uwb.egg-info/SOURCES.txt'\n"}
+[0.467577] (uwb) StdoutLine: {'line': b"reading manifest file '../../build/uwb/uwb.egg-info/SOURCES.txt'\n"}
+[0.467903] (uwb) StdoutLine: {'line': b"writing manifest file '../../build/uwb/uwb.egg-info/SOURCES.txt'\n"}
+[0.467970] (uwb) StdoutLine: {'line': b'running build\n'}
+[0.468009] (uwb) StdoutLine: {'line': b'running build_py\n'}
+[0.468043] (uwb) StdoutLine: {'line': b'creating /workspace/safmc_uwb/ros/build/uwb/build\n'}
+[0.468090] (uwb) StdoutLine: {'line': b'creating /workspace/safmc_uwb/ros/build/uwb/build/lib\n'}
+[0.468121] (uwb) StdoutLine: {'line': b'creating /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb\n'}
+[0.468145] (uwb) StdoutLine: {'line': b'copying uwb/range_publisher.py -> /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb\n'}
+[0.468180] (uwb) StdoutLine: {'line': b'copying uwb/__init__.py -> /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb\n'}
+[0.468215] (uwb) StdoutLine: {'line': b'copying uwb/position_publisher.py -> /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb\n'}
+[0.468257] (uwb) StdoutLine: {'line': b'running install\n'}
+[0.468429] (uwb) StdoutLine: {'line': b'running install_lib\n'}
+[0.468783] (uwb) StdoutLine: {'line': b'creating /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb\n'}
+[0.468819] (uwb) StdoutLine: {'line': b'copying /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb/range_publisher.py -> /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb\n'}
+[0.468861] (uwb) StdoutLine: {'line': b'copying /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb/__init__.py -> /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb\n'}
+[0.468897] (uwb) StdoutLine: {'line': b'copying /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb/position_publisher.py -> /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb\n'}
+[0.469123] (uwb) StdoutLine: {'line': b'byte-compiling /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/range_publisher.py to range_publisher.cpython-310.pyc\n'}
+[0.469512] (uwb) StdoutLine: {'line': b'byte-compiling /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/__init__.py to __init__.cpython-310.pyc\n'}
+[0.469581] (uwb) StdoutLine: {'line': b'byte-compiling /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/position_publisher.py to position_publisher.cpython-310.pyc\n'}
+[0.469631] (uwb) StdoutLine: {'line': b'running install_data\n'}
+[0.469677] (uwb) StdoutLine: {'line': b'creating /workspace/safmc_uwb/ros/install/uwb/share/ament_index\n'}
+[0.469709] (uwb) StdoutLine: {'line': b'creating /workspace/safmc_uwb/ros/install/uwb/share/ament_index/resource_index\n'}
+[0.469749] (uwb) StdoutLine: {'line': b'creating /workspace/safmc_uwb/ros/install/uwb/share/ament_index/resource_index/packages\n'}
+[0.469773] (uwb) StdoutLine: {'line': b'copying resource/uwb -> /workspace/safmc_uwb/ros/install/uwb/share/ament_index/resource_index/packages\n'}
+[0.469811] (uwb) StdoutLine: {'line': b'copying package.xml -> /workspace/safmc_uwb/ros/install/uwb/share/uwb\n'}
+[0.469835] (uwb) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.470797] (uwb) StdoutLine: {'line': b'Copying ../../build/uwb/uwb.egg-info to /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb-0.0.0-py3.10.egg-info\n'}
+[0.471102] (uwb) StdoutLine: {'line': b'running install_scripts\n'}
+[0.482870] (uwb) StdoutLine: {'line': b"writing list of installed files to '/workspace/safmc_uwb/ros/build/uwb/install.log'\n"}
+[0.488406] (uwb_msgs) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.495857] (uwb) CommandEnded: {'returncode': 0}
+[0.500099] (-) TimerEvent: {}
+[0.503298] (uwb) JobEnded: {'identifier': 'uwb', 'rc': 0}
+[0.548163] (uwb_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[0.550394] (uwb_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.554986] (uwb_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.585004] (uwb_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.600194] (-) TimerEvent: {}
+[0.608683] (uwb_msgs) StdoutLine: {'line': b'-- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[0.700285] (-) TimerEvent: {}
+[0.721120] (uwb_msgs) StderrLine: {'line': b'\x1b[31mCMake Error at /opt/ros/humble/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:59 (message):\n'}
+[0.721297] (uwb_msgs) StderrLine: {'line': b'  execute_process(/usr/bin/python3 -m rosidl_adapter --package-name uwb_msgs\n'}
+[0.721366] (uwb_msgs) StderrLine: {'line': b'  --arguments-file\n'}
+[0.721428] (uwb_msgs) StderrLine: {'line': b'  /workspace/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter__arguments__uwb_msgs.json\n'}
+[0.721489] (uwb_msgs) StderrLine: {'line': b'  --output-dir\n'}
+[0.721548] (uwb_msgs) StderrLine: {'line': b'  /workspace/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs\n'}
+[0.721608] (uwb_msgs) StderrLine: {'line': b'  --output-file\n'}
+[0.721678] (uwb_msgs) StderrLine: {'line': b'  /workspace/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs.idls)\n'}
+[0.721734] (uwb_msgs) StderrLine: {'line': b'  returned error code 1:\n'}
+[0.721788] (uwb_msgs) StderrLine: {'line': b'\n'}
+[0.721842] (uwb_msgs) StderrLine: {'line': b"  Error processing 'range float64' of 'uwb_msgs/Range': ''range' is an\n"}
+[0.721896] (uwb_msgs) StderrLine: {'line': b"  invalid message name.  It should have the pattern '^[A-Z][A-Za-z0-9]*$''\n"}
+[0.721949] (uwb_msgs) StderrLine: {'line': b'\n'}
+[0.722002] (uwb_msgs) StderrLine: {'line': b'  Traceback (most recent call last):\n'}
+[0.722054] (uwb_msgs) StderrLine: {'line': b'\n'}
+[0.722106] (uwb_msgs) StderrLine: {'line': b'    File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main\n'}
+[0.722159] (uwb_msgs) StderrLine: {'line': b'      return _run_code(code, main_globals, None,\n'}
+[0.722210] (uwb_msgs) StderrLine: {'line': b'    File "/usr/lib/python3.10/runpy.py", line 86, in _run_code\n'}
+[0.722263] (uwb_msgs) StderrLine: {'line': b'      exec(code, run_globals)\n'}
+[0.722315] (uwb_msgs) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/__main__.py", line 19, in <module>\n'}
+[0.722367] (uwb_msgs) StderrLine: {'line': b'      sys.exit(main())\n'}
+[0.722418] (uwb_msgs) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/main.py", line 53, in main\n'}
+[0.722470] (uwb_msgs) StderrLine: {'line': b'      abs_idl_file = convert_to_idl(\n'}
+[0.722521] (uwb_msgs) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/__init__.py", line 19, in convert_to_idl\n'}
+[0.722572] (uwb_msgs) StderrLine: {'line': b'      return convert_msg_to_idl(\n'}
+[0.722623] (uwb_msgs) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/msg/__init__.py", line 28, in convert_msg_to_idl\n'}
+[0.722685] (uwb_msgs) StderrLine: {'line': b'      msg = parse_message_string(package_name, input_file.stem, content)\n'}
+[0.722737] (uwb_msgs) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 520, in parse_message_string\n'}
+[0.722790] (uwb_msgs) StderrLine: {'line': b'      Type(type_string, context_package_name=pkg_name),\n'}
+[0.722841] (uwb_msgs) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 277, in __init__\n'}
+[0.722893] (uwb_msgs) StderrLine: {'line': b'      super(Type, self).__init__(\n'}
+[0.722951] (uwb_msgs) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 205, in __init__\n'}
+[0.723002] (uwb_msgs) StderrLine: {'line': b'      raise InvalidResourceName(\n'}
+[0.723053] (uwb_msgs) StderrLine: {'line': b'\n'}
+[0.723104] (uwb_msgs) StderrLine: {'line': b"  rosidl_adapter.parser.InvalidResourceName: 'range' is an invalid message\n"}
+[0.723155] (uwb_msgs) StderrLine: {'line': b"  name.  It should have the pattern '^[A-Z][A-Za-z0-9]*$'\n"}
+[0.723206] (uwb_msgs) StderrLine: {'line': b'\n'}
+[0.723257] (uwb_msgs) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[0.723308] (uwb_msgs) StderrLine: {'line': b'  /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:130 (rosidl_adapt_interfaces)\n'}
+[0.723364] (uwb_msgs) StderrLine: {'line': b'  CMakeLists.txt:17 (rosidl_generate_interfaces)\n'}
+[0.723415] (uwb_msgs) StderrLine: {'line': b'\n'}
+[0.723466] (uwb_msgs) StderrLine: {'line': b'\x1b[0m\n'}
+[0.723517] (uwb_msgs) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[0.723576] (uwb_msgs) StdoutLine: {'line': b'See also "/workspace/safmc_uwb/ros/build/uwb_msgs/CMakeFiles/CMakeOutput.log".\n'}
+[0.725065] (uwb_msgs) CommandEnded: {'returncode': 1}
+[0.735662] (uwb_msgs) JobEnded: {'identifier': 'uwb_msgs', 'rc': 1}
+[0.746314] (-) EventReactorShutdown: {}

@@ -1,0 +1,3 @@
+[console_scripts]
+range_publisher = uwb.range_publisher:main
+

@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "uwb_msgs__py",
+		"source" : "/workspace/safmc_uwb/ros/build/uwb_msgs/uwb_msgs__py"
+	}
+}

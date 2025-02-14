@@ -1,0 +1,144 @@
+[0.139s] Invoking command in '/workspace/safmc_uwb/ros/build/uwb_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble /usr/bin/cmake --build /workspace/safmc_uwb/ros/build/uwb_msgs -- -j16 -l16
+[0.175s] [  0%] Built target ament_cmake_python_copy_uwb_msgs
+[0.176s] [  3%] Built target uwb_msgs__cpp
+[0.177s] [ 12%] Built target uwb_msgs__rosidl_generator_c
+[0.188s] [ 41%] Built target uwb_msgs__rosidl_typesupport_fastrtps_cpp
+[0.189s] [ 41%] Built target uwb_msgs__rosidl_typesupport_c
+[0.189s] [ 41%] Built target uwb_msgs__rosidl_typesupport_introspection_cpp
+[0.189s] [ 51%] Built target uwb_msgs__rosidl_typesupport_fastrtps_c
+[0.190s] [ 61%] Built target uwb_msgs__rosidl_typesupport_cpp
+[0.192s] [ 70%] Built target uwb_msgs__rosidl_typesupport_introspection_c
+[0.204s] [ 70%] Built target uwb_msgs
+[0.217s] [ 74%] Built target uwb_msgs__py
+[0.233s] [ 80%] Built target uwb_msgs__rosidl_generator_py
+[0.245s] [ 87%] Built target uwb_msgs__rosidl_typesupport_c__pyext
+[0.247s] [ 93%] Built target uwb_msgs__rosidl_typesupport_fastrtps_c__pyext
+[0.249s] [100%] Built target uwb_msgs__rosidl_typesupport_introspection_c__pyext
+[0.309s] running egg_info
+[0.309s] writing uwb_msgs.egg-info/PKG-INFO
+[0.309s] writing dependency_links to uwb_msgs.egg-info/dependency_links.txt
+[0.309s] writing top-level names to uwb_msgs.egg-info/top_level.txt
+[0.311s] reading manifest file 'uwb_msgs.egg-info/SOURCES.txt'
+[0.311s] writing manifest file 'uwb_msgs.egg-info/SOURCES.txt'
+[0.328s] [100%] Built target ament_cmake_python_build_uwb_msgs_egg
+[0.336s] Invoked command in '/workspace/safmc_uwb/ros/build/uwb_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble /usr/bin/cmake --build /workspace/safmc_uwb/ros/build/uwb_msgs -- -j16 -l16
+[0.341s] Invoking command in '/workspace/safmc_uwb/ros/build/uwb_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble /usr/bin/cmake --install /workspace/safmc_uwb/ros/build/uwb_msgs
+[0.346s] -- Install configuration: ""
+[0.346s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/ament_index/resource_index/rosidl_interfaces/uwb_msgs
+[0.346s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs
+[0.346s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg
+[0.346s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail
+[0.346s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__functions.h
+[0.346s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__type_support.h
+[0.346s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__struct.h
+[0.346s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__functions.c
+[0.346s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/range.h
+[0.346s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_generator_c__visibility_control.h
+[0.346s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/library_path.sh
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/library_path.dsv
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_generator_c.so
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__rosidl_typesupport_fastrtps_c.h
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_fastrtps_c.so
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__type_support.c
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__rosidl_typesupport_introspection_c.h
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_introspection_c.so
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_c.so
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__struct.hpp
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__builder.hpp
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__traits.hpp
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__type_support.hpp
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/range.hpp
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/dds_fastrtps
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__rosidl_typesupport_fastrtps_cpp.hpp
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_fastrtps_cpp.so
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs
+[0.347s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__rosidl_typesupport_introspection_cpp.hpp
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__type_support.cpp
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_introspection_cpp.so
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_cpp.so
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/pythonpath.sh
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/pythonpath.dsv
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs-0.0.0-py3.10.egg-info
+[0.348s] -- Installing: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs-0.0.0-py3.10.egg-info/PKG-INFO
+[0.348s] -- Installing: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs-0.0.0-py3.10.egg-info/dependency_links.txt
+[0.348s] -- Installing: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs-0.0.0-py3.10.egg-info/top_level.txt
+[0.348s] -- Installing: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs-0.0.0-py3.10.egg-info/SOURCES.txt
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/_uwb_msgs_s.ep.rosidl_typesupport_introspection_c.c
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/libuwb_msgs__rosidl_generator_py.so
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/_range.py
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/_range_s.c
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/__init__.py
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/_uwb_msgs_s.ep.rosidl_typesupport_c.c
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/__init__.py
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/_uwb_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+[0.348s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[0.367s] Listing '/workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs'...
+[0.367s] Listing '/workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg'...
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_generator_py.so
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/msg/Range.idl
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/msg/Range.msg
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/ament_index/resource_index/package_run_dependencies/uwb_msgs
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/ament_index/resource_index/parent_prefix_path/uwb_msgs
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/ament_prefix_path.sh
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/ament_prefix_path.dsv
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/path.sh
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/path.dsv
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/local_setup.bash
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/local_setup.sh
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/local_setup.zsh
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/local_setup.dsv
+[0.370s] -- Installing: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/package.dsv
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/ament_index/resource_index/packages/uwb_msgs
+[0.370s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_cExport.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_cExport-noconfig.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_introspection_cExport.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_cExport.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_cExport-noconfig.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_cppExport.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_introspection_cppExport.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_cppExport.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_pyExport.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_pyExport-noconfig.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/rosidl_cmake-extras.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/ament_cmake_export_targets-extras.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgsConfig.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgsConfig-version.cmake
+[0.371s] -- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/package.xml
+[0.372s] Invoked command in '/workspace/safmc_uwb/ros/build/uwb_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble /usr/bin/cmake --install /workspace/safmc_uwb/ros/build/uwb_msgs
