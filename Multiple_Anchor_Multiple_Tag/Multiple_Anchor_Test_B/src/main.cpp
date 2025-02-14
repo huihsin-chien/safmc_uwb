@@ -3,7 +3,7 @@
 char EUI[] = "AA:BB:CC:DD:EE:FF:00:02";
 uint16_t next_anchor = 3;
 
-uint32_t blink_rate = 200;
+uint32_t blink_rate = 50;
 uint16_t self_device_address = 2;
 double range_self;
 

@@ -24,7 +24,7 @@ byte anchor_c[] = {0x03, 0x00};
 uint16_t successRangingCount[8] = {0};
 uint32_t rangingCountPeriod = 0;
 float samplingRate = 0;
-uint16_t blink_rate = 200;
+uint16_t blink_rate = 50;
 
 void handleRanging_coord_1();
 void handleRanging_coord_2();

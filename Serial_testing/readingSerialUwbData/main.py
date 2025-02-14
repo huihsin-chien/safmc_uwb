@@ -85,21 +85,26 @@ class UWBdata(Position):
                 if filtered_distances:
                     avg_distance = sum(filtered_distances) / len(filtered_distances)
                     result[tag] = avg_distance
-                print(f"Filtered data for {tag}: {filtered_distances}, avg: {avg_distance}")
+                    print(f"Filtered data for {tag}: {filtered_distances}, avg: {avg_distance}")
+                else:
+                    print(f"No data for {tag}")
         return result
 
 def gps_solve(distances_to_station, stations_coordinates): #https://github.com/glucee/Multilateration/blob/master/Python/example.py
-	def error(x, c, r):
-		return sum([(np.linalg.norm(x - c[i]) - r[i]) ** 2 for i in range(len(c))])
+    def error(x, c, r):
+        return sum([(np.linalg.norm(x - c[i]) - r[i]) ** 2 for i in range(len(c))])
 
-	l = len(stations_coordinates)
-	S = sum(distances_to_station)
-	# compute weight vector for initial guess
-	W = [((l - 1) * S) / (S - w) for w in distances_to_station]
-	# get initial guess of point location
-	x0 = sum([W[i] * stations_coordinates[i] for i in range(l)])
-	# optimize distance from signal origin to border of spheres
-	return minimize(error, x0, args=(stations_coordinates, distances_to_station), method='Nelder-Mead').x
+    l = len(stations_coordinates)
+    S = sum(distances_to_station)
+    # compute weight vector for initial guess
+    if (S - w !=0 for w in distances_to_station) :
+        W = [((l - 1) * S) / (S - w ) for w in distances_to_station]
+    else :
+        print("Error: Only one distance provided")
+    # get initial guess of point location
+    x0 = sum([W[i] * stations_coordinates[i] for i in range(l)])
+    # optimize distance from signal origin to border of spheres
+    return minimize(error, x0, args=(stations_coordinates, distances_to_station), method='Nelder-Mead').x
 
 def multilateration(anchor_list, multilateration_file):
     """計算最新的 3D 位置"""
