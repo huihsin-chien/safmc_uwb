@@ -6,7 +6,6 @@ import time
 import os
 import threading
 import build_3D_coord
-# import queue
 from scipy.optimize import minimize
 import numpy as np
 from datetime import datetime # for timestamp
@@ -31,6 +30,8 @@ class stateMachine:
         if self.status == "built_coord_1":
             self.status = "built_coord_2"
         elif self.status == "built_coord_2":
+            self.status = "built_coord_3"
+        elif self.status == "built_coord_3":
             self.status = "self_calibration"
         elif self.status == "self_calibration":
             self.status = "flying"
@@ -163,7 +164,63 @@ class UWBdata(Position):
                         distance_between_anchors_and_anchors["BC"].append(range_m)
                     elif from_address == "40":
                         distance_between_anchors_and_anchors["BD"].append(range_m)
-            
+
+        elif state_machine.status == "built_coord_3":
+            if self.EUI == "00:01":
+                data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
+                match = data_pattern.search(line)
+                print(f"{serial_port}: {line}")
+                if match:
+                    range_m = float(match.group(1))
+                    power = float(match.group(2))
+                    from_address = match.group(3)
+                    anchor_key = f"{match.group(4)}:{match.group(5)}"
+                    timestamp = time.time()
+                    # print("Matched!")
+                    print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
+
+                    if from_address == "20":
+                        distance_between_anchors_and_anchors["AB"].append(range_m)
+                    elif from_address == "30":
+                        distance_between_anchors_and_anchors["AC"].append(range_m)
+                    elif from_address == "40":
+                        distance_between_anchors_and_anchors["AD"].append(range_m)     
+
+            elif self.EUI == "00:02":
+                data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
+                match = data_pattern.search(line)
+                print(f"{serial_port}: {line}")
+                if match:
+                    range_m = float(match.group(1))
+                    power = float(match.group(2))
+                    from_address = match.group(3)
+                    anchor_key = f"{match.group(4)}:{match.group(5)}"
+                    timestamp = time.time()
+                    # print("Matched!")
+                    print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
+
+                    if from_address == "30":
+                        distance_between_anchors_and_anchors["BC"].append(range_m)
+                    elif from_address == "40":
+                        distance_between_anchors_and_anchors["BD"].append(range_m)
+
+            elif self.EUI == "00:03":
+                # todo: store dCD
+                data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
+                match = data_pattern.search(line)
+                print(f"{serial_port}: {line}")
+                if match:
+                    range_m = float(match.group(1))
+                    power = float(match.group(2))
+                    from_address = match.group(3)
+                    anchor_key = f"{match.group(4)}:{match.group(5)}"
+                    timestamp = time.time()
+                    # print("Matched!")
+                    print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
+
+                    if from_address == "40":
+                        distance_between_anchors_and_anchors["CD"].append(range_m)
+
         elif state_machine.status == "self_calibration":
             
             #todo: store dAE, dAF, dAG, dAH
