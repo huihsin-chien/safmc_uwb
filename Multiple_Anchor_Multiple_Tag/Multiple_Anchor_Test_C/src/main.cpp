@@ -18,6 +18,7 @@ double range_self;
 
 byte currentTagEUI[8]; // Array to store the tag's EUI (8 bytes)
 
+void handleRanging_coord_3();
 void handleRanging_self_calibration();
 void ranging_flying();
 class StateMachine{
@@ -38,6 +39,9 @@ class StateMachine{
         case State::built_coord_2:
             tagTWR(blink_rate, &EUI[0]);
           break;
+        case State::built_coord_3:
+            handleRanging_coord_3();
+        break;
         case State::self_calibration:
             handleRanging_self_calibration();
             break;
@@ -51,16 +55,12 @@ class StateMachine{
         case State::built_coord_1:
           if(sample_count == 100 || (millis() - startTime) > 20000){
             state = State::built_coord_2;
-            // sample_count = 0;
-            // startTime = millis();
-            // DW1000Ng::spiWakeup();
-            // DW1000Ng::setDeviceAddress(self_device_address);
             Serial.println("State changed to built_coord_2");
           }
           break;
         case State::built_coord_2:
             if(sample_count == 100 || (millis() - startTime) > 50000){
-                state = State::self_calibration;
+                state = State::built_coord_3;
                 sample_count = 0;
                 for(int i = 0; i < 8; i++){
                 successRangingCount[i] = 0;
@@ -68,8 +68,19 @@ class StateMachine{
                 DW1000Ng::spiWakeup();
                 DW1000Ng::setDeviceAddress(self_device_address);
                 startTime = millis();
-                Serial.println("State changed to self_calibration");
+                Serial.println("State changed to built_coord_3");
             }
+          break;
+        case State::built_coord_3:
+          if(sample_count == 100 || (millis() - startTime) > 50000){
+            state = State::self_calibration;
+            sample_count = 0;
+            for(int i = 0; i < 8; i++){
+              successRangingCount[i] = 0;
+            }
+            startTime = millis();
+            Serial.println("State changed to self_calibration");
+          }
           break;
         case State::self_calibration:
           if(sample_count == 100 || (millis() - startTime) > 50000){
@@ -104,6 +115,47 @@ void loop() {
   anchorTagStateMachine.update();
   anchorTagStateMachine.ranging();
 }
+
+void handleRanging_coord_3(){
+  RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
+  if(result.success) {
+      
+      uint32_t curMillis = millis();
+      delay(2); // Tweak based on your hardware
+      range_self = result.range;
+
+      // Get the tag EUI from the received data
+      size_t recv_len = DW1000Ng::getReceivedDataLength();
+      byte recv_data[recv_len];
+      DW1000Ng::getReceivedData(recv_data, recv_len);
+      memcpy(currentTagShortaddress, &recv_data[7], 2); // EUI starts at position 2 (assuming EUI is 8 bytes long)
+      if ( recv_data[7] == 0x04 && recv_data[8] == 0x00){
+          successRangingCount[1]++;}
+      else{
+          return;
+      }
+
+
+      String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
+      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
+      rangeString += recv_data[7]; rangeString += recv_data[8];
+      rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
+      Serial.println(rangeString);
+      
+
+      if (curMillis - rangingCountPeriod > 1000) {
+
+          samplingRate = (1000.0f * successRangingCount[1]) / (curMillis - rangingCountPeriod);
+          rangeString = "Sampling rate of  AnchorD: "; rangeString+=(samplingRate); rangeString+=("Hz    Anchor:");
+          rangeString  += EUI[18]; rangeString+=EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
+          Serial.println(rangeString);
+          rangingCountPeriod = curMillis;
+          successRangingCount[1] = 0;
+      }
+
+  }
+}
+
 void handleRanging_self_calibration() {  
     RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
     if(result.success) {
