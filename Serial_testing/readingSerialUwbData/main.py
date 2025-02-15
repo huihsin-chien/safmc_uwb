@@ -26,15 +26,16 @@ distance_between_anchors_and_anchors = {
 # 四分位數 Z-score 標準差等 要選哪一種
 def clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors):
     for key in distance_between_anchors_and_anchors:
-        distance_between_anchors_and_anchors[key] = remove_outliers_and_average(distance_between_anchors_and_anchors[key])
-def  remove_outliers_and_average(data): # 四分位數？
+        distance_between_anchors_and_anchors[key] = quartile_and_average(distance_between_anchors_and_anchors[key])
+        
+def  quartile_and_average(data): # 四分位數？
+    # remove 0 in data
+    data = [d for d in data if d != 0]
     q1 = np.percentile(data, 25)
     q3 = np.percentile(data, 75)
-    iqr = q3 - q1
-    lower_bound = q1 - 1.5 * iqr
-    upper_bound = q3 + 1.5 * iqr
-    return [d for d in data if lower_bound <= d <= upper_bound]
-
+    filtered_data = [d for d in data if q1 <= d <= q3]
+    avg_distance = sum(filtered_data) / len(filtered_data)
+    return avg_distance
 
 
 class stateMachine:
