@@ -6,7 +6,6 @@ import time
 import os
 import threading
 import build_3D_coord
-# import queue
 from scipy.optimize import minimize
 import numpy as np
 from datetime import datetime # for timestamp
@@ -22,18 +21,35 @@ distance_between_anchors_and_anchors = {
     "CD": list(),
 } # key: anchor1, anchor2, value: distance 
 
+# 清洗distance_between_anchors_and_anchors數據，刪掉離群值
+# https://medium.com/@prateekchauhan923/how-to-identify-and-remove-outliers-a-step-by-step-tutorial-with-python-738a103ae666
+# 四分位數 Z-score 標準差等 要選哪一種
+def clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors):
+    for key in distance_between_anchors_and_anchors:
+        distance_between_anchors_and_anchors[key] = remove_outliers_and_average(distance_between_anchors_and_anchors[key])
+def  remove_outliers_and_average(data): # 四分位數？
+    q1 = np.percentile(data, 25)
+    q3 = np.percentile(data, 75)
+    iqr = q3 - q1
+    lower_bound = q1 - 1.5 * iqr
+    upper_bound = q3 + 1.5 * iqr
+    return [d for d in data if lower_bound <= d <= upper_bound]
+
 
 
 class stateMachine:
     def __init__(self):
         self.status = "build_coord_1"
-    # def update(self):
-    #     if self.status == "built_coord_1":
-    #         self.status = "built_coord_2"
-    #     elif self.status == "built_coord_2":
-    #         self.status = "self_calibration"
-    #     elif self.status == "self_calibration":
-    #         self.status = "flying"
+    def update(self):
+        if self.status == "built_coord_1":
+            self.status = "built_coord_2"
+        elif self.status == "built_coord_2":
+            self.status = "built_coord_3"
+        elif self.status == "built_coord_3":
+            clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors)   
+            self.status = "self_calibration"
+        elif self.status == "self_calibration":
+            self.status = "flying"
 
 state_machine = stateMachine()
 class Position:
@@ -163,7 +179,63 @@ class UWBdata(Position):
                         distance_between_anchors_and_anchors["BC"].append(range_m)
                     elif from_address == "40":
                         distance_between_anchors_and_anchors["BD"].append(range_m)
-            
+
+        elif state_machine.status == "built_coord_3":
+            if self.EUI == "00:01":
+                data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
+                match = data_pattern.search(line)
+                print(f"{serial_port}: {line}")
+                if match:
+                    range_m = float(match.group(1))
+                    power = float(match.group(2))
+                    from_address = match.group(3)
+                    anchor_key = f"{match.group(4)}:{match.group(5)}"
+                    timestamp = time.time()
+                    # print("Matched!")
+                    print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
+
+                    if from_address == "20":
+                        distance_between_anchors_and_anchors["AB"].append(range_m)
+                    elif from_address == "30":
+                        distance_between_anchors_and_anchors["AC"].append(range_m)
+                    elif from_address == "40":
+                        distance_between_anchors_and_anchors["AD"].append(range_m)     
+
+            elif self.EUI == "00:02":
+                data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
+                match = data_pattern.search(line)
+                print(f"{serial_port}: {line}")
+                if match:
+                    range_m = float(match.group(1))
+                    power = float(match.group(2))
+                    from_address = match.group(3)
+                    anchor_key = f"{match.group(4)}:{match.group(5)}"
+                    timestamp = time.time()
+                    # print("Matched!")
+                    print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
+
+                    if from_address == "30":
+                        distance_between_anchors_and_anchors["BC"].append(range_m)
+                    elif from_address == "40":
+                        distance_between_anchors_and_anchors["BD"].append(range_m)
+
+            elif self.EUI == "00:03":
+                # todo: store dCD
+                data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
+                match = data_pattern.search(line)
+                print(f"{serial_port}: {line}")
+                if match:
+                    range_m = float(match.group(1))
+                    power = float(match.group(2))
+                    from_address = match.group(3)
+                    anchor_key = f"{match.group(4)}:{match.group(5)}"
+                    timestamp = time.time()
+                    # print("Matched!")
+                    print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
+
+                    if from_address == "40":
+                        distance_between_anchors_and_anchors["CD"].append(range_m)
+
         elif state_machine.status == "self_calibration":
             
             #todo: store dAE, dAF, dAG, dAH
@@ -344,7 +416,10 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
                 # No, according to the first anchor who changed state
                 if "built_coord_2" in line:
                     state_machine.status = "built_coord_2"
-                    
+
+                if "built_coord_3" in line:
+                    state_machine.status = "built_coord_3"  
+                    clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors)   
                 if "self_calibration" in line:
                     state_machine.status = "self_calibration"
 
