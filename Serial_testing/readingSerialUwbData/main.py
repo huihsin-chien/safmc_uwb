@@ -24,18 +24,6 @@ distance_between_anchors_and_anchors = {
 # 清洗distance_between_anchors_and_anchors數據，刪掉離群值
 # https://medium.com/@prateekchauhan923/how-to-identify-and-remove-outliers-a-step-by-step-tutorial-with-python-738a103ae666
 # 四分位數 Z-score 標準差等 要選哪一種
-def clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors):
-    for key in distance_between_anchors_and_anchors:
-        distance_between_anchors_and_anchors[key] = remove_outliers_and_average(distance_between_anchors_and_anchors[key])
-def  remove_outliers_and_average(data): # 四分位數？
-    q1 = np.percentile(data, 25)
-    q3 = np.percentile(data, 75)
-    iqr = q3 - q1
-    lower_bound = q1 - 1.5 * iqr
-    upper_bound = q3 + 1.5 * iqr
-    return [d for d in data if lower_bound <= d <= upper_bound]
-
-
 
 class stateMachine:
     def __init__(self):
@@ -46,7 +34,6 @@ class stateMachine:
         elif self.status == "built_coord_2":
             self.status = "built_coord_3"
         elif self.status == "built_coord_3":
-            clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors)   
             self.status = "self_calibration"
         elif self.status == "self_calibration":
             self.status = "flying"
@@ -106,7 +93,7 @@ class UWBdata(Position):
                 distances = [r for r, _ in data]
                 q1 = np.percentile(distances, 25)
                 q3 = np.percentile(distances, 75)
-                filtered_distances = [r for r in distances if q1 <= r <= q3]
+                filtered_distances = [r for r in distances if q1 <= r <= q3 and r != 0]
                 if filtered_distances:
                     avg_distance = sum(filtered_distances) / len(filtered_distances)
                     result[tag] = avg_distance
@@ -419,7 +406,6 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
 
                 if "built_coord_3" in line:
                     state_machine.status = "built_coord_3"  
-                    clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors)   
                 if "self_calibration" in line:
                     state_machine.status = "self_calibration"
 
