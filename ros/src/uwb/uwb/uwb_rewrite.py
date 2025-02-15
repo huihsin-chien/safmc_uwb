@@ -17,6 +17,7 @@ import csv
 
 # 用於統計上排除極值
 import numpy as np
+from typing import Optional, Tuple
 
 # 用於多點定位
 from scipy import minimize
@@ -100,6 +101,7 @@ class UWBDataMatrix:
         self.anchors = { anchor.eui: anchor for anchor in anchors }
         self.tags = { tag.eui: tag for tag in tags }
         self.data = { tag.eui: { anchor.eui: [] for anchor in anchors } for tag in tags }
+        
 
         # 如果要為了 Debug 而儲存資料，則建立檔案
         if SAVE_DATA:
@@ -114,7 +116,7 @@ class UWBDataMatrix:
                     csv_writer.writerow(["timestamp", "tag_eui", "distance", "sample_rate"]) # 標題
             
             # 建立檔案，用以儲存定位結果
-            self.multilateration_file = os.path.join(output_folder, f"multilateration_results_{self.timestamp_str}.csv")
+            self.multilateration_file = os.path.join(DATA_FOLDER, f"multilateration_results_{self.timestamp_str}.csv")
             with open(self.multilateration_file, mode='w', newline='') as file:
                 csv_writer = csv.writer(file)
                 csv_writer.writerow(["timestamp", "x", "y", "z"])
@@ -122,24 +124,24 @@ class UWBDataMatrix:
     # 將測量資訊加入資料庫
     def add_measurement(self, tag_eui: str, anchor_eui: str, distance: float) -> None:
         self.data[tag_eui][anchor_eui].append(UWBData(distance))
+        timestamp_str = time.strftime('%Y-%m-%d %H:%M:%S', time.time())
         if SAVE_DATA:
             anchor_eui_encoded = anchor_eui.replace(":", "-")
-            anchor_file_path = os.path.join(DATA_FOLDER, f"Anchor{anchor_eui_encoded}_{self.timestamp}.csv")
+            anchor_file_path = os.path.join(DATA_FOLDER, f"Anchor{anchor_eui_encoded}_{timestamp_str}.csv")
             with open(anchor_file_path, mode='a') as file:
                 csv_writer = csv.writer(file)
-                timestamp_str = time.strftime('%Y-%m-%d %H:%M:%S', time.time())
-                csv_writer.writerow([timestamp_str, tag_eui, distance, sample_rate[anchor_eui]])
+                """原本寫的sample_rate[anchor_eui], 我猜你想講的是self.anchor_sample_rate[anchor_eui]"""
+                csv_writer.writerow([timestamp_str, tag_eui, distance, self.anchor_sample_rate[anchor_eui]])
 
     # 清除過時的測量資訊
     def clear_outdated_measurements(self, tag_eui: str, anchor_eui: str) -> None:
         measurements = self.data[tag_eui][anchor_eui]
-        while len(x) > 0 and measurements[0].timestamp < time.time() - self.time_threshold:
+        while len(measurements) > 0 and measurements[0].timestamp < time.time() - self.time_threshold:
             self.data[tag_eui][anchor_eui].pop(0)
 
-    # 取得去除極值的測量資訊
-    def get_distance(self, tag_eui: str, anchor_eui: str) -> float or None:
+    def get_distance(self, tag_eui: str, anchor_eui: str) -> Optional[float]:
         # 清除過時資訊
-        clear_outdated_measurements(tag_eui, anchor_eui)
+        self.clear_outdated_measurements(tag_eui, anchor_eui)
 
         # 去除極值
         measurements = self.data[tag_eui][anchor_eui]
@@ -172,6 +174,8 @@ class UWBPublisher(Node):
     serials: list[serial.Serial] = []
     uwb_data_matrix: UWBDataMatrix = None
     state_machine: stateMachine = None
+    
+    
     def __init__(self):
         super().__init__('position_publisher')
 
@@ -180,7 +184,7 @@ class UWBPublisher(Node):
             os.makedirs(DATA_FOLDER, exist_ok=True)
 
             # 儲存多點定位（multilateration）的結果
-            self.multilateration_file = os.path.join(output_folder, f"multilateration_results_{time.strftime('%Y%m%d_%H%M%S')}.csv")
+            self.multilateration_file = os.path.join(DATA_FOLDER, f"multilateration_results_{time.strftime('%Y%m%d_%H%M%S')}.csv")
             with open(self.multilateration_file, mode='w', newline='') as file:
                 csv_writer = csv.writer(file)
                 csv_writer.writerow(["timestamp", "x", "y", "z"]) # 標題
@@ -206,11 +210,11 @@ class UWBPublisher(Node):
         )
 
         # 設定 UWB Data Matrix
-        anchors = [Anchor(1, "00:01"), Anchor(2, "00:02"), Anchor(3, "00:03"), Anchor(4, "00:04"), \
-            Anchor(5, "00:05"), Anchor(6, "00:06"), Anchor(7, "00:07"), Anchor(8, "00:08")]
-        tags = [Tag(1, "01:01"), Tag(2, "02:02"), Tag(3, "03:03"), Tag(4, "04:04"), \
+        """ 我印象中id跟eui的關係是這樣:D 要再確認"""
+        self.anchors = [Anchor(i*10, f"00:0{i+1}") for i in range(8)]
+        self.tags = [Tag(1, "01:01"), Tag(2, "02:02"), Tag(3, "03:03"), Tag(4, "04:04"), \
             Tag(5, "05:05"), Tag(6, "06:06"), Tag(7, "07:07"), Tag(8, "08:08")]
-        self.uwb_data_matrix = UWBDataMatrix(time_threshold=0.5, anchors=anchors, tags=tags)
+        self.uwb_data_matrix = UWBDataMatrix(time_threshold=0.5, anchors=self.anchors, tags=self.tags)
         
         # 設定狀態機
         self.state_machine = stateMachine()
@@ -220,10 +224,17 @@ class UWBPublisher(Node):
         self.timer1 = self.create_timer(0.05, self.read_serial)
         self.timer2 = self.create_timer(0.05, self.publish_tag_position)
     
+    def get_anchor_eui(self, anchor_id):
+        anchor = next((a for a in self.anchors if a.idx == anchor_id), None)
+        if not anchor:
+            print(f"Anchor {anchor_id} not found")
+            return None
+        return anchor.eui
+    
     # 透過 USB Serial 讀取 UWB 裝置距離
     def read_serial(self) -> None:
-        for serial_connection: serial.Serial in self.serials: # 逐一讀取每個 Serial Port
-            lines = [line.decode("utf-8").strip() for serial_connection.readlines()]
+        for serial_connection in self.serials: # 逐一讀取每個 Serial Port
+            lines = [line.decode("utf-8").strip() for line in serial_connection.readlines()]
             for line in lines: # 逐一讀取每一行資料
                 if not line:
                     continue
@@ -236,10 +247,11 @@ class UWBPublisher(Node):
                 sample_rate_data_match = sample_rate_data_regexp.search(line)
 
                 if range_data_match: # 對於距離資料，新增測距結果到 UWB Data Matrix
-                    distance, power, from_id, anchor_eui = range_data_match.groups()
-                    anchor_eui: str = "" # somehow get the anchor_eui from from_id
+                    distance, power, from_id, to_eui = range_data_match.groups()
+                    
+                    from_eui: str = self.get_anchor_eui(from_id) # somehow get the anchor_eui from from_id
 
-                    self.uwb_data_matrix.add_measurement(tag_eui, anchor_eui, float(distance))
+                    self.uwb_data_matrix.add_measurement(from_eui, to_eui, float(distance))
 
                 elif sample_rate_data_match: # 對於採樣率資料，更新 Anchor 的採樣率到 UWB Data Matrix
                     sample_rate, anchor_eui = sample_rate_data_match.groups()
@@ -255,9 +267,9 @@ class UWBPublisher(Node):
     def publish_tag_position(self) -> None:
         for tag_eui in self.uwb_data_matrix.tags.keys():
             x, y, z = self.uwb_data_matrix.locate_tag(tag_eui)
-            if tag_coordinate is not None:
+            if x is not None and y is not None and z is not None:
                 msg = TagPosition()
-                msg.EUI = tag.eui
+                msg.eui = tag_eui
                 msg.x = x
                 msg.y = y
                 msg.z = z
