@@ -121,7 +121,7 @@ void handleRanging_coord_3(){
   if(result.success) {
       
       uint32_t curMillis = millis();
-      delay(2); // Tweak based on your hardware
+      delay(2); // Tweak based on your hardwareQ
       range_self = result.range;
 
       // Get the tag EUI from the received data

@@ -68,7 +68,7 @@ class UWBdata(Position):
         self.EUI = EUI
         self.name = name
         self.pooling_data = {}  # 存放對應 tag 的距離數據 (tag_name -> list of (range_m, timestamp))
-        timestamp = datatime.now()
+        timestamp = datetime.now().strftime("%Y-%m-%d %H-%M-%S.%f")
         self.output_file = os.path.join(output_folder, fr"{self.name}_{timestamp}.csv")#add timestamp
 
         # 初始化每個 anchor 的 CSV 檔案
@@ -413,7 +413,8 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
 
 
 
-                #todo: update state according only to anchorA's status?
+                #todo: update state according only to anchorA's status? 
+                # No, according to the first anchor who changed state
                 if "built_coord_2" in line:
                     state_machine.status = "built_coord_2"
 
@@ -425,6 +426,9 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
 
                 if "flying" in line:
                     state_machine.status = "flying"
+
+                if "built_coord_3" in line:
+                    state_machine.status = "built_coord_3"
 
 
         except KeyboardInterrupt:
@@ -448,7 +452,7 @@ def processing_thread(anchor_list, multilateration_file):
 
 def main():
     output_folder = r".\output"
-    start_main_timestamp = datetime.now()
+    start_main_timestamp = datetime.now().strftime("%Y-%m-%d %H-%M-%S.%f")
     multilateration_file = os.path.join(output_folder, f"multilateration_results_{start_main_timestamp}.csv")
 
     os.makedirs(output_folder, exist_ok=True)
