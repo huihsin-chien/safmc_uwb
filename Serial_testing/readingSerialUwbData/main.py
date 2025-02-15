@@ -22,6 +22,8 @@ distance_between_anchors_and_anchors = {
     "CD": list(),
 } # key: anchor1, anchor2, value: distance 
 
+
+
 class stateMachine:
     def __init__(self):
         self.status = "build_coord_1"
@@ -49,7 +51,7 @@ class UWBdata(Position):
         self.EUI = EUI
         self.name = name
         self.pooling_data = {}  # 存放對應 tag 的距離數據 (tag_name -> list of (range_m, timestamp))
-        timestamp = time.strftime('%Y%m%d_%H%M%S')
+        timestamp = datatime.now()
         self.output_file = os.path.join(output_folder, fr"{self.name}_{timestamp}.csv")#add timestamp
 
         # 初始化每個 anchor 的 CSV 檔案
@@ -360,13 +362,17 @@ def processing_thread(anchor_list, multilateration_file):
     while True:
         print(f"Current state: {state_machine.status}")  # 調試輸出
         time.sleep(1)
+        if state_machine.status == "self_calibration":
+            time.sleep(0.1)
+            build_3D_coord.build_3D_coord(anchor_list)
+
         if state_machine.status == "flying":
             time.sleep(0.1)  # 讓處理頻率穩定
             multilateration(anchor_list, multilateration_file)
 
 def main():
     output_folder = r".\output"
-    start_main_timestamp = time.strftime('%Y%m%d_%H%M%S')
+    start_main_timestamp = datetime.now()
     multilateration_file = os.path.join(output_folder, f"multilateration_results_{start_main_timestamp}.csv")
 
     os.makedirs(output_folder, exist_ok=True)
