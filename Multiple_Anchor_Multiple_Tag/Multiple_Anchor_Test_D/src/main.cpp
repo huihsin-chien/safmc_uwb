@@ -11,7 +11,7 @@ uint16_t successRangingCount[8] = {0};
 uint32_t rangingCountPeriod = 0;
 float samplingRate = 0;
 
-uint16_t blink_rate = 200;
+uint16_t blink_rate = 50;
 uint16_t self_device_address = 3;
 
 double range_self;
