@@ -27,6 +27,7 @@ byte main_anchor_address[] = {0x01, 0x00};
 enum class State {
     built_coord_1,
     built_coord_2,
+    built_coord_3,
     self_calibration,
     flying
 };
