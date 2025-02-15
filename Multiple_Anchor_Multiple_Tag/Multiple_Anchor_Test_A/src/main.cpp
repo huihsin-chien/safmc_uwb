@@ -28,6 +28,7 @@ uint16_t blink_rate = 50;
 
 void handleRanging_coord_1();
 void handleRanging_coord_2();
+void handleRanging_coord_3();
 void handleRanging_otherAnchor();
 void handleRanging();
 class StateMachine{
@@ -73,7 +74,18 @@ class StateMachine{
           }
           break;
         case State::built_coord_2:
-          if(sample_count == 100 || (millis() - startTime) > 50000){
+          if(sample_count == 100 || (millis() - startTime) > 40000){
+            state = State::self_calibration;
+            sample_count = 0;
+            for(int i = 0; i < 8; i++){
+              successRangingCount[i] = 0;
+            }
+            startTime = millis();
+            Serial.println("State changed to built_coord_3");
+          }
+          break;
+        case State::built_coord_3:
+          if(sample_count == 100 || (millis() - startTime) > 60000){
             state = State::self_calibration;
             sample_count = 0;
             for(int i = 0; i < 8; i++){
@@ -84,7 +96,7 @@ class StateMachine{
           }
           break;
         case State::self_calibration:
-          if(sample_count == 100 || (millis() - startTime) > 50000){
+          if(sample_count == 100 || (millis() - startTime) > 80000){
             state = State::flying;
             sample_count = 0;
             for(int i = 0; i < 8; i++){

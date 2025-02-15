@@ -21,3 +21,4 @@
 * [ ]  add more tags and anchors 進入系統
 * [ ]  在 self_calibration 時，增加更多 anchor 來求得 3D 座標系（at least 4 anchorABCD for 建立3D座標，1 additinal anchor, 2 tag)
 * [ ]  統一 tag + anchor sample rate 表示方式
+* [ ] add class stateMchine into uwb_common
