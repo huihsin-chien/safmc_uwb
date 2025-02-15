@@ -24,6 +24,19 @@ distance_between_anchors_and_anchors = {
 # 清洗distance_between_anchors_and_anchors數據，刪掉離群值
 # https://medium.com/@prateekchauhan923/how-to-identify-and-remove-outliers-a-step-by-step-tutorial-with-python-738a103ae666
 # 四分位數 Z-score 標準差等 要選哪一種
+def clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors):
+    for key in distance_between_anchors_and_anchors:
+        distance_between_anchors_and_anchors[key] = quartile_and_average(distance_between_anchors_and_anchors[key])
+        
+def  quartile_and_average(data): # 四分位數？
+    # remove 0 in data
+    data = [d for d in data if d != 0]
+    q1 = np.percentile(data, 25)
+    q3 = np.percentile(data, 75)
+    filtered_data = [d for d in data if q1 <= d <= q3]
+    avg_distance = sum(filtered_data) / len(filtered_data)
+    return avg_distance
+
 
 class stateMachine:
     def __init__(self):
