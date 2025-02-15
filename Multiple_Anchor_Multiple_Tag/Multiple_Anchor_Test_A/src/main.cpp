@@ -138,7 +138,12 @@ void handleRanging_coord_1() {
         tag_shortAddress[0] = (byte)0x03;
         tag_shortAddress[1] = (byte)0x00;
         successRangingCount[2]++;
-      }else{ // if received other anchor blink
+      }else if (recv_data[2] == 4 && recv_data[3] == 0) { // if received AnchorD blink
+        tag_shortAddress[0] = (byte)0x04;
+        tag_shortAddress[1] = (byte)0x00;
+        successRangingCount[3]++;
+      } 
+      else{ // if received other anchor blink
         return; 
       }
 
@@ -165,6 +170,7 @@ void handleRanging_coord_1() {
         rangingCountPeriod = curMillis;
         successRangingCount[1] = 0;
         successRangingCount[2] = 0;
+        successRangingCount[3] = 0;
       }
     } 
   }
@@ -185,7 +191,12 @@ void handleRanging_coord_2() {
         tag_shortAddress[0] = (byte)0x03;
         tag_shortAddress[1] = (byte)0x00;
         successRangingCount[2]++;
-      }else{
+      }else if (recv_data[2] == 4 && recv_data[3] == 0) { // if received AnchorD blink
+        tag_shortAddress[0] = (byte)0x04;
+        tag_shortAddress[1] = (byte)0x00;
+        successRangingCount[3]++;
+      }
+      else{
         return;
       }
 
@@ -209,6 +220,7 @@ void handleRanging_coord_2() {
         Serial.print("AnchorC Sampling rate: "); Serial.print(samplingRate); Serial.println(" Hz");
         rangingCountPeriod = curMillis;
         successRangingCount[2] = 0;
+        successRangingCount[3] = 0;
       }
     } 
   }

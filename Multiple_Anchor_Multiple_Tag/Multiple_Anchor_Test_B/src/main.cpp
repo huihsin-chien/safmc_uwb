@@ -118,7 +118,9 @@ void handleRanging_coord_2(){
         memcpy(currentTagShortaddress, &recv_data[7], 2); // EUI starts at position 2 (assuming EUI is 8 bytes long)
         if(recv_data[7] == 0x03 && recv_data[8] == 0x00){ // recieved Anchor 3's blink
             successRangingCount[0]++;
-        }else{
+        }else if ( recv_data[7] == 0x04 && recv_data[8] == 0x00){
+            successRangingCount[1]++;}
+        else{
             return;
         }
 
@@ -138,6 +140,7 @@ void handleRanging_coord_2(){
             Serial.println(rangeString);
             rangingCountPeriod = curMillis;
             successRangingCount[0] = 0;
+            successRangingCount[1] = 0;
         }
 
     }
