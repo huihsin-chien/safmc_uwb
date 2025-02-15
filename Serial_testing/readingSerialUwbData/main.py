@@ -12,8 +12,15 @@ import numpy as np
 from datetime import datetime # for timestamp
 
 # 全域變數
-# data_queue = queue.Queue()  # 儲存所有 thread 接收的 UWB 資料
 lock = threading.Lock()  # 確保多執行緒存取安全
+distance_between_anchors_and_anchors = {
+    "AB": list(),
+    "AC": list(),
+    "AD": list(),
+    "BC": list(),
+    "BD": list(),
+    "CD": list(),
+} # key: anchor1, anchor2, value: distance 
 
 class stateMachine:
     def __init__(self):
@@ -49,7 +56,7 @@ class UWBdata(Position):
         with open(self.output_file, mode='w', newline='') as file:
             csv_writer = csv.writer(file)
             csv_writer.writerow(["timestamp", "tag_name", "range_m", "sample_rate"])
-
+        
     def setXYZ(self, x, y, z):
         self.x = x
         self.y = y
@@ -89,6 +96,134 @@ class UWBdata(Position):
                 else:
                     print(f"No data for {tag}")
         return result
+    
+    def match_serial_data(self,serial_port,line):
+
+        if state_machine.status == "build_coord_1":
+            if self.EUI == "00:01":
+                data_pattern =  re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
+                match = data_pattern.search(line)
+                print(f"{serial_port}: {line}")
+                if match:
+                    range_m = float(match.group(1))
+                    power = float(match.group(2))
+                    from_address = match.group(3)
+                    anchor_key = f"{match.group(4)}:{match.group(5)}"
+                    timestamp = time.time()
+                    # print("Matched!")
+                    print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
+                
+                    if from_address == "20":
+                        distance_between_anchors_and_anchors["AB"].append(range_m)
+                    elif from_address == "30":
+                        distance_between_anchors_and_anchors["AC"].append(range_m)
+                    elif from_address == "40":
+                        distance_between_anchors_and_anchors["AD"].append(range_m)
+            else:
+                pass
+
+        elif state_machine.status == "built_coord_2":
+            if self.EUI == "00:01":
+                data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
+                match = data_pattern.search(line)
+                print(f"{serial_port}: {line}")
+                if match:
+                    range_m = float(match.group(1))
+                    power = float(match.group(2))
+                    from_address = match.group(3)
+                    anchor_key = f"{match.group(4)}:{match.group(5)}"
+                    timestamp = time.time()
+                    # print("Matched!")
+                    print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
+
+                    if from_address == "20":
+                        distance_between_anchors_and_anchors["AB"].append(range_m)
+                    elif from_address == "30":
+                        distance_between_anchors_and_anchors["AC"].append(range_m)
+                    elif from_address == "40":
+                        distance_between_anchors_and_anchors["AD"].append(range_m)
+
+            elif self.EUI == "00:02":
+                # todo: store dBC, dBD
+                data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
+                match = data_pattern.search(line)
+                print(f"{serial_port}: {line}")
+                if match:
+                    range_m = float(match.group(1))
+                    power = float(match.group(2))
+                    from_address = match.group(3)
+                    anchor_key = f"{match.group(4)}:{match.group(5)}"
+                    timestamp = time.time()
+                    # print("Matched!")
+                    print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
+
+                    if from_address == "30":
+                        distance_between_anchors_and_anchors["BC"].append(range_m)
+                    elif from_address == "40":
+                        distance_between_anchors_and_anchors["BD"].append(range_m)
+            
+        elif state_machine.status == "self_calibration":
+            
+            #todo: store dAE, dAF, dAG, dAH
+            data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
+            match = data_pattern.search(line)
+            print(f"{serial_port}: {line}")
+            if match:
+                range_m = float(match.group(1))
+                power = float(match.group(2))
+                from_address = match.group(3)
+                anchor_key = f"{match.group(4)}:{match.group(5)}"
+                timestamp = time.time()
+                # print("Matched!")
+                print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
+                if self.EUI == "00:01":
+                    self_anchor = "A"
+                elif self.EUI == "00:02":
+                    self_anchor = "B"
+                elif self.EUI == "00:03":
+                    self_anchor = "C"
+                elif self.EUI == "00:04":
+                    self_anchor = "D"
+
+                if from_address == "50":
+                    distance_between_anchors_and_anchors[f"{self_anchor}E"].append(range_m)
+                elif from_address == "60":
+                    distance_between_anchors_and_anchors["AF"].append(range_m)
+                elif from_address == "70":
+                    distance_between_anchors_and_anchors["AG"].append(range_m)
+                elif from_address == "80":
+                    distance_between_anchors_and_anchors["AH"].append(range_m)
+            
+        elif state_machine.status == "flying":
+            match = data_pattern.search(line)
+            match_sample = re.search(r'Sampling rate\s*([0-9]+):\s*([0-9.]+)\s*Hz', line) #Sampling rate 1: 4.48 Hz
+            if line != "let's go~":
+                print(f"{serial_port}: {line}")
+            
+            if match:
+                range_m = float(match.group(1))
+                power = float(match.group(2))
+                from_address = match.group(3)
+                anchor_key = f"{match.group(4)}:{match.group(5)}"
+                timestamp = time.time()
+                # print("Matched!")
+                print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
+            
+                with lock: 
+                    
+                    self.store_pooling_data(from_address, range_m, timestamp)
+
+                
+            elif match_sample:
+                # print("Matched sample rate!")
+                target_tag = match_sample.group(1)
+                sample_rate = float(match_sample.group(2))
+
+                with open(self.output_file, mode='a', newline='') as file:
+                    csv_writer = csv.writer(file)
+                    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')  # 獲取包含微秒的時間戳
+                    csv_writer.writerow([timestamp, f"Sample rate {target_tag}", None, None, sample_rate])
+            
 
 def gps_solve(distances_to_station, stations_coordinates): #https://github.com/glucee/Multilateration/blob/master/Python/example.py
     def error(x, c, r):
@@ -146,42 +281,64 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
         try:
             line = ser.readline().decode('utf-8').strip()
             if line:
-                match = data_pattern.search(line)
-                match_sample = re.search(r'Sampling rate\s*([0-9]+):\s*([0-9.]+)\s*Hz', line) #Sampling rate 1: 4.48 Hz
-                if line != "let's go~":
-                    print(f"{serial_port}: {line}")
-                
-                if match:
-                    range_m = float(match.group(1))
-                    power = float(match.group(2))
-                    from_address = match.group(3)
-                    anchor_key = f"{match.group(4)}:{match.group(5)}"
-                    timestamp = time.time()
-                    # print("Matched!")
-                    print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
-                
-                    with lock: 
-                        # print("Lock acquired.")
-                        if not anchor_find:
-                            for anchor in anchor_list:
-                                if anchor_key in anchor.EUI:
-                                    this_anchor = anchor
-                                    print(f"Storing data to {anchor.name}")
-                                    anchor.store_pooling_data(from_address, range_m, timestamp)
-                        else:
-                            this_anchor.store_pooling_data(from_address, range_m, timestamp)
+                if not anchor_find:
+                    if "00:01" in line:
+                        anchor_find = True
+                        this_anchor = anchor_list[0]
+                    elif "00:02" in line:
+                        anchor_find = True
+                        this_anchor = anchor_list[1]
+                    elif "00:03" in line:
+                        anchor_find = True
+                        this_anchor = anchor_list[2]
+                    elif "00:04" in line:
+                        anchor_find = True
+                        this_anchor = anchor_list[3]
 
-                    # # 將數據加入 queue
-                    # data_queue.put((anchor_key, from_address, range_m, timestamp))
-                elif match_sample:
-                    # print("Matched sample rate!")
-                    target_tag = match_sample.group(1)
-                    sample_rate = float(match_sample.group(2))
 
-                    with open(this_anchor.output_file, mode='a', newline='') as file:
-                        csv_writer = csv.writer(file)
-                        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')  # 獲取包含微秒的時間戳
-                        csv_writer.writerow([timestamp, f"Sample rate {target_tag}", None, None, sample_rate])
+
+                if anchor_find and state_machine.status != "flying":
+                    this_anchor.match_serial_data(serial_port, line)
+                elif state_machine.status == "flying" and anchor_find:
+                    match = data_pattern.search(line)
+                    match_sample = re.search(r'Sampling rate\s*([0-9]+):\s*([0-9.]+)\s*Hz', line) #Sampling rate 1: 4.48 Hz
+                    if line != "let's go~":
+                        print(f"{serial_port}: {line}")
+                    
+                    if match:
+                        range_m = float(match.group(1))
+                        power = float(match.group(2))
+                        from_address = match.group(3)
+                        anchor_key = f"{match.group(4)}:{match.group(5)}"
+                        timestamp = time.time()
+                        # print("Matched!")
+                        print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
+                    
+                        with lock: 
+                            # print("Lock acquired.")
+                            if not anchor_find:
+                                for anchor in anchor_list:
+                                    if anchor_key in anchor.EUI:
+                                        this_anchor = anchor
+                                        print(f"Storing data to {anchor.name}")
+                                        anchor.store_pooling_data(from_address, range_m, timestamp)
+                            else:
+                                this_anchor.store_pooling_data(from_address, range_m, timestamp)
+
+                        
+                    elif match_sample:
+                        # print("Matched sample rate!")
+                        target_tag = match_sample.group(1)
+                        sample_rate = float(match_sample.group(2))
+
+                        with open(this_anchor.output_file, mode='a', newline='') as file:
+                            csv_writer = csv.writer(file)
+                            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')  # 獲取包含微秒的時間戳
+                            csv_writer.writerow([timestamp, f"Sample rate {target_tag}", None, None, sample_rate])
+
+
+
+                #todo: update state according only to anchorA's status?
                 if "built_coord_2" in line:
                     state_machine.status = "built_coord_2"
                     
@@ -208,7 +365,7 @@ def processing_thread(anchor_list, multilateration_file):
             multilateration(anchor_list, multilateration_file)
 
 def main():
-    output_folder = r"\output"
+    output_folder = r".\output"
     start_main_timestamp = time.strftime('%Y%m%d_%H%M%S')
     multilateration_file = os.path.join(output_folder, f"multilateration_results_{start_main_timestamp}.csv")
 
@@ -255,7 +412,27 @@ def main():
     for thread in threads:
         thread.join() # join 是等待執行緒結束
         # print("Thread joined.")
-
+    # 將 distance_between_anchors_and_anchors 寫入 CSV 檔案
+    with open(os.path.join(output_folder, f"distance_between_anchors_and_anchors_{start_main_timestamp}.csv"), mode='w', newline='') as file:
+        csv_writer = csv.writer(file)
+        csv_writer.writerow(["AB"])
+        for i in distance_between_anchors_and_anchors["AB"]:
+            csv_writer.writerow([i])
+        csv_writer.writerow(["AC"])
+        for i in distance_between_anchors_and_anchors["AC"]:
+            csv_writer.writerow([i])
+        csv_writer.writerow(["AD"])
+        for i in distance_between_anchors_and_anchors["AD"]:
+            csv_writer.writerow([i])
+        csv_writer.writerow(["BC"])
+        for i in distance_between_anchors_and_anchors["BC"]:
+            csv_writer.writerow([i])
+        csv_writer.writerow(["BD"])
+        for i in distance_between_anchors_and_anchors["BD"]:
+            csv_writer.writerow([i])
+        csv_writer.writerow(["CD"])
+        for i in distance_between_anchors_and_anchors["CD"]:
+            csv_writer.writerow([i])
 
 
 if __name__ == "__main__":
