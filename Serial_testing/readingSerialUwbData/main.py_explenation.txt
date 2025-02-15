@@ -1,0 +1,5 @@
+- lock意義:在multithread環境中，要確保資料不會被兩個執行續同時修改
+- multilateration定義:"多邊定位法"是指使用已知的anchor位置來計算未知的tag位置
+- build coord意義:使用anchor之間的位置去建立一個anchor的坐標系
+- 
+- 
