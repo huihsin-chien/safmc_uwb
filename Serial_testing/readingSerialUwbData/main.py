@@ -436,10 +436,12 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
 
                 if "built_coord_3" in line:
                     state_machine.status = "built_coord_3"  
-                if "self_calibration" in line:
+
+                if "self_calibration" in line and this_anchor == anchor_list[0]:
                     state_machine.status = "self_calibration"
                     print(distance_between_anchors_and_anchors)
                     clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors)
+                    print("clean distance: ",clean_distance_between_anchors_and_anchors)
                     X = build_3D_coord.build_3D_coord(clean_distance_between_anchors_and_anchors)
                     anchor_list[0].setXYZ(X[0][0], X[0][1], X[0][2])
                     anchor_list[1].setXYZ(X[1][0], X[1][1], X[1][2])
@@ -451,8 +453,6 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
                 if "flying" in line:
                     state_machine.status = "flying"
 
-
-
         except KeyboardInterrupt:
             # print(f"Stopped {serial_port}")
             break
@@ -463,12 +463,13 @@ def processing_thread(anchor_list, multilateration_file):
     """每 0.1 秒處理一次數據並計算位置"""
     while True:
         print(f"Current state: {state_machine.status}")  # 調試輸出
-        time.sleep(1)
+        time.sleep(0.1)
         if state_machine.status == "self_calibration":
-            time.sleep(0.1)
+            # time.sleep(0.1)
+            pass
 
         if state_machine.status == "flying":
-            time.sleep(0.1)  # 讓處理頻率穩定
+            # time.sleep(0.1) 
             multilateration(anchor_list, multilateration_file)
 
 def main():
@@ -540,7 +541,9 @@ def main():
         csv_writer.writerow(["CD"])
         for i in distance_between_anchors_and_anchors["CD"]:
             csv_writer.writerow([i])
-    print(clean_distance_between_anchors_and_anchors)
+    print("clean distance:",clean_distance_between_anchors_and_anchors)
+    print("position")
+    print((anchor.x, anchor.y, anchor.z) for anchor in anchor_list) 
 
 if __name__ == "__main__":
     main()

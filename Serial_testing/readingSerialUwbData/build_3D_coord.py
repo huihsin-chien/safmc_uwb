@@ -138,5 +138,12 @@ def build_3D_coord(anchorABCD_distance, dim = 3) -> tuple[np.ndarray, dict]:
     print(position)
     return X
 
-# if __name__ == "__main__":
-#     build_3D_coord(clean_anchorABCD_distance_data)
+weeee_anchorABCD_distance_data = {
+    'AB': 0.853050847457627, 'AC': 0.5083703703703704, 'AD': 0.346205533596838, 'BC': 0.11483870967741935, 'BD': 0.3547474747474747, 'CD': 0.19144444444444444
+}
+
+if __name__ == "__main__":
+    build_3D_coord(weeee_anchorABCD_distance_data)
+
+    
+

@@ -348,6 +348,7 @@ void handleRanging_otherAnchor(){
         samplingRate = (1000.0f * successRangingCount[7]) / (curMillis - rangingCountPeriod);
         Serial.print("Sampling rate AnchorH: "); Serial.print(samplingRate); Serial.println(" Hz");
         rangingCountPeriod = curMillis;
+        successRangingCount[3] = 0;
         successRangingCount[4] = 0;
         successRangingCount[5] = 0;
         successRangingCount[6] = 0;

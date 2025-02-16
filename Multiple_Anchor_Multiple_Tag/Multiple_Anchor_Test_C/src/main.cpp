@@ -54,7 +54,7 @@ class StateMachine{
       switch(state){
         case State::built_coord_1:
           if(sample_count == 100 || (millis() - startTime) > 20000){
-            state = State::built_coord_2;
+            state = State::built_coord_2;startTime = millis();
             Serial.println("State changed to built_coord_2");
           }
           break;
