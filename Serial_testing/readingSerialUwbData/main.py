@@ -364,9 +364,9 @@ def multilateration(anchor_list, multilateration_file):
             csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), tag, pos.x, pos.y, pos.z])
     return tag_pos
 
-def handle_serial_data(serial_port, data_pattern, anchor_list):
+def handle_serial_data(serial_port, data_pattern, anchor_list, ser):
     """處理每個 COM 連接，讀取並解析 UWB 數據"""
-    ser = serial.Serial(serial_port, baudrate=9600, timeout=1)
+    
     this_anchor = None
     anchor_find = False
     while True:
@@ -461,28 +461,28 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
     ser.close()
 
 
-def output_to_serial_ports(selected_ports, message):
+def output_to_serial_ports(selected_ports, message, opened_serial_ports):
     """在所有選中的 serial ports 上輸出字串"""
-    for port in selected_ports:
-        try:
-            # 嘗試開啟 serial port
-            with serial.Serial(port, baudrate=9600, timeout=1) as ser:
+    for ser in opened_serial_ports:
+        if ser.portstr in selected_ports:  # 確認端口在選中的列表中
+            try:
                 # 發送訊息
                 ser.write(message.encode('utf-8'))
-                print(f"Message sent to {port}")
-        except Exception as e:
-            print(f"Error opening {port}: {e}")
+                print(f"Message sent to {ser.portstr}")
+            except Exception as e:
+                print(f"Error sending message to {ser.portstr}: {e}")
+                
 
-
-def processing_thread(anchor_list, multilateration_file):
+def processing_thread(anchor_list, multilateration_file, ser):
     """每 0.1 秒處理一次數據並計算位置"""
     currentstate = '1'
     while True:
         print(f"Current state: {state_machine.status}")  # 調試輸出
-        output_to_serial_ports(ports_list, currentstate)
-        time.sleep(0.1)
+        output_to_serial_ports(ports_list, currentstate, ser)
+        print("len(distance_between_anchors_and_anchors[AB]): ",len(distance_between_anchors_and_anchors["AB"]))
+        time.sleep(0.5)
         if len(distance_between_anchors_and_anchors["AB"]) >20:
-            print("len(distance_between_anchors_and_anchors[AB]): ",len(distance_between_anchors_and_anchors["AB"]))
+            # print("len(distance_between_anchors_and_anchors[AB]): ",len(distance_between_anchors_and_anchors["AB"]))
             currentstate = '2'
         if len(distance_between_anchors_and_anchors["AC"]) >20 and len(distance_between_anchors_and_anchors["BC"]) >20:
             currentstate = '3'
@@ -529,15 +529,16 @@ def main():
     if 'a' in selected_ports:
         selected_ports = [comport[0] for comport in ports_list]
 
+    ser = serial.Serial(port, baudrate=9600, timeout=1)
     # 啟動 serial 讀取執行緒
     threads = []
     for port in selected_ports:
-        thread = threading.Thread(target=handle_serial_data, args=(port, data_pattern, anchor_list))
+        thread = threading.Thread(target=handle_serial_data, args=(port, data_pattern, anchor_list, ser))
         threads.append(thread)
         thread.start()
 
     # 啟動處理執行緒
-    processing = threading.Thread(target=processing_thread, args=(anchor_list, multilateration_file), daemon=True)
+    processing = threading.Thread(target=processing_thread, args=(anchor_list, multilateration_file, ser), daemon=True)
     processing.start()
     
 
