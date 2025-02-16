@@ -5,9 +5,9 @@
 * [ ]  紀錄 anchor 之間座標-> 惠心
 * [X]  加一個 state 記錄 dCD
 * [ ]  tag 位置陣列(全域變數) -> 惠心
-* [ ]  清洗  `distance_between_anchors_and_anchors`
-  * [ ]  取四分位數
-  * [ ]  把零清掉
+* [X]  清洗  `distance_between_anchors_and_anchors`
+  * [X]  取四分位數
+  * [X]  把零清掉
 * [ ]  previous data 陣列紀錄所有anchor 跟 tag之間的距離，若此次0.1秒內沒有距離資料就用此距離補上，並且每兩秒若沒更新就以其他anchor的資料做計算，直到此anchor有回傳距離
 * [ ]  implement multilateration
 * [X]  handle self-calibration state machine
