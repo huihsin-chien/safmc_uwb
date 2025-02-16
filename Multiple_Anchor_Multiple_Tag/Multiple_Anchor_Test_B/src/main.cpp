@@ -64,7 +64,7 @@ class StateMachine{
           break;
         case State::built_coord_2:
           if(sample_count == 100 || (millis() - startTime) > 40000){
-            state = State::self_calibration;
+            state = State::built_coord_3;
             sample_count = 0;
             for(int i = 0; i < 8; i++){
               successRangingCount[i] = 0;
