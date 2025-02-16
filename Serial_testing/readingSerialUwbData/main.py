@@ -39,26 +39,34 @@ def clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and
         
 def  quartile_and_average(data): # 四分位數？
     # remove 0 in data
-    data = [d for d in data if d != 0 ]
+    data = [d for d in data if (d != 0 or d != 0.0)]
+    if not data:
+        print("No data for this anchor pair.")
+        return 0
     q1 = np.percentile(data, 25)
     q3 = np.percentile(data, 75)
     filtered_data = [d for d in data if q1 <= d <= q3]
-    avg_distance = sum(filtered_data) / len(filtered_data)
+    if len(filtered_data) == 0:
+        print("No data for this anchor pair.")
+        return np.mean(data) # todo 要優化算法
+    else:
+        avg_distance = sum(filtered_data) / len(filtered_data)
+
     return avg_distance
 
 
 class stateMachine:
     def __init__(self):
         self.status = "build_coord_1"
-    def update(self):
-        if self.status == "built_coord_1":
-            self.status = "built_coord_2"
-        elif self.status == "built_coord_2":
-            self.status = "built_coord_3"
-        elif self.status == "built_coord_3":
-            self.status = "self_calibration"
-        elif self.status == "self_calibration":
-            self.status = "flying"
+    # def update(self):
+    #     if self.status == "built_coord_1":
+    #         self.status = "built_coord_2"
+    #     elif self.status == "built_coord_2":
+    #         self.status = "built_coord_3"
+    #     elif self.status == "built_coord_3":
+    #         self.status = "self_calibration"
+    #     elif self.status == "self_calibration":
+    #         self.status = "flying"
 
 state_machine = stateMachine()
 class Position:
@@ -430,6 +438,7 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
                     state_machine.status = "built_coord_3"  
                 if "self_calibration" in line:
                     state_machine.status = "self_calibration"
+                    print(distance_between_anchors_and_anchors)
                     clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors)
                     print(clean_distance_between_anchors_and_anchors)
                     X = build_3D_coord.build_3D_coord(clean_distance_between_anchors_and_anchors)
@@ -443,8 +452,6 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
                 if "flying" in line:
                     state_machine.status = "flying"
 
-                if "built_coord_3" in line:
-                    state_machine.status = "built_coord_3"
 
 
         except KeyboardInterrupt:

@@ -74,7 +74,7 @@ class StateMachine{
           }
           break;
         case State::built_coord_2:
-          if(sample_count == 100 || (millis() - startTime) > 40000){
+          if(sample_count == 100 || (millis() - startTime) > 20000){
             state = State::built_coord_3;
             sample_count = 0;
             for(int i = 0; i < 8; i++){
@@ -85,7 +85,7 @@ class StateMachine{
           }
           break;
         case State::built_coord_3:
-          if(sample_count == 100 || (millis() - startTime) > 60000){
+          if(sample_count == 100 || (millis() - startTime) > 20000){
             state = State::self_calibration;
             sample_count = 0;
             for(int i = 0; i < 8; i++){
@@ -96,7 +96,7 @@ class StateMachine{
           }
           break;
         case State::self_calibration:
-          if(sample_count == 100 || (millis() - startTime) > 80000){
+          if(sample_count == 100 || (millis() - startTime) > 40000){
             state = State::flying;
             sample_count = 0;
             for(int i = 0; i < 8; i++){
