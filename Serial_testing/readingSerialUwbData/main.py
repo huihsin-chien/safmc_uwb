@@ -529,18 +529,17 @@ def main():
     if 'a' in selected_ports:
         selected_ports = [comport[0] for comport in ports_list]
 
-    ser = serial.Serial(port, baudrate=9600, timeout=1)
+    
     # 啟動 serial 讀取執行緒
     threads = []
     for port in selected_ports:
+        ser = serial.Serial(port, baudrate=9600, timeout=1)
         thread = threading.Thread(target=handle_serial_data, args=(port, data_pattern, anchor_list, ser))
         threads.append(thread)
         thread.start()
-
-    # 啟動處理執行緒
-    processing = threading.Thread(target=processing_thread, args=(anchor_list, multilateration_file, ser, selected_ports), daemon=True)
-    processing.start()
-    
+        # 啟動處理執行緒
+        processing = threading.Thread(target=processing_thread, args=(anchor_list, multilateration_file, ser, selected_ports), daemon=True)
+        processing.start()
 
     for thread in threads:
         thread.join() # join 是等待執行緒結束
