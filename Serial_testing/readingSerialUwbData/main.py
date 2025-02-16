@@ -29,6 +29,7 @@ clean_distance_between_anchors_and_anchors =  {
     "BD": list(),
     "CD": list(),
 } 
+ports_list = list(serial.tools.list_ports.comports())
 
 # 清洗distance_between_anchors_and_anchors數據，刪掉離群值
 # https://medium.com/@prateekchauhan923/how-to-identify-and-remove-outliers-a-step-by-step-tutorial-with-python-738a103ae666
@@ -459,11 +460,35 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
 
     ser.close()
 
+
+def output_to_serial_ports(selected_ports, message):
+    """在所有選中的 serial ports 上輸出字串"""
+    for port in selected_ports:
+        try:
+            # 嘗試開啟 serial port
+            with serial.Serial(port, baudrate=9600, timeout=1) as ser:
+                # 發送訊息
+                ser.write(message.encode('utf-8'))
+                print(f"Message sent to {port}")
+        except Exception as e:
+            print(f"Error opening {port}: {e}")
+
+
 def processing_thread(anchor_list, multilateration_file):
     """每 0.1 秒處理一次數據並計算位置"""
+    currentstate = '1'
     while True:
         print(f"Current state: {state_machine.status}")  # 調試輸出
+        output_to_serial_ports(ports_list, currentstate)
         time.sleep(0.1)
+        if len(distance_between_anchors_and_anchors["AB"]) >20:
+            print("len(distance_between_anchors_and_anchors[AB]): ",len(distance_between_anchors_and_anchors["AB"]))
+            currentstate = '2'
+        if len(distance_between_anchors_and_anchors["AC"]) >20 and len(distance_between_anchors_and_anchors["BC"]) >20:
+            currentstate = '3'
+        if len(distance_between_anchors_and_anchors["AD"]) >20 and len(distance_between_anchors_and_anchors["BD"]) >20 and len(distance_between_anchors_and_anchors["CD"]) >20:
+            currentstate = '4'
+        #TODO self_calibration to flying
         if state_machine.status == "self_calibration":
             # time.sleep(0.1)
             pass
@@ -487,7 +512,6 @@ def main():
     data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
     # Range: 0.00 m      RX power: -59.80 dBm distance between anchor/tag:30 from Anchor 00:01
 
-    ports_list = list(serial.tools.list_ports.comports())
     for port in ports_list:
         print(port[0])
     anchor_list = [
