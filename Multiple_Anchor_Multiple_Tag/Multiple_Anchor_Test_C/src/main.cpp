@@ -50,50 +50,93 @@ class StateMachine{
             break;
       }
     }
-    void update(){ // sample_count haven't been implemented in ranging function
-      switch(state){
-        case State::built_coord_1:
-          if(sample_count == 100 || (millis() - startTime) > 20000){
-            state = State::built_coord_2;
-            Serial.println("State changed to built_coord_2");
-          }
-          break;
-        case State::built_coord_2:
-            if(sample_count == 100 || (millis() - startTime) > 20000){
-                state = State::built_coord_3;
-                sample_count = 0;
-                for(int i = 0; i < 8; i++){
-                successRangingCount[i] = 0;
-                }
-                DW1000Ng::spiWakeup();
-                DW1000Ng::setDeviceAddress(self_device_address);
-                startTime = millis();
-                Serial.println("State changed to built_coord_3");
-            }
-          break;
-        case State::built_coord_3:
-          if(sample_count == 100 || (millis() - startTime) > 20000){
-            state = State::self_calibration;
-            sample_count = 0;
-            for(int i = 0; i < 8; i++){
-              successRangingCount[i] = 0;
-            }
-            startTime = millis();
-            Serial.println("State changed to self_calibration");
-          }
-          break;
-        case State::self_calibration:
-          if(sample_count == 100 || (millis() - startTime) > 40000){
-            state = State::flying;
-            sample_count = 0;
-            for(int i = 0; i < 8; i++){
-              successRangingCount[i] = 0;
-            }
-            startTime = millis();
-            Serial.println("State changed to flying");
-          }
-          break;
+    void update(){ 
+      //為了防止anchor沒收到state change的指令，所以每一秒傳送一次current state
+      char receivedChar = ' ';
+      if(Serial.available()>0){        
+        receivedChar = Serial.read(); //讀取字元
+        Serial.println(receivedChar); //打印出字元
       }
+      if(receivedChar == '2' && state == State::built_coord_1){
+        state = State::built_coord_2;
+        sample_count = 0;
+        for(int i = 0; i < 8; i++){
+          successRangingCount[i] = 0;
+        }
+        startTime = millis();
+        Serial.println("State changed to built_coord_2");
+      }else if(receivedChar == '3' && state == State::built_coord_2){
+        state = State::built_coord_3;
+        sample_count = 0;
+        for(int i = 0; i < 8; i++){
+          successRangingCount[i] = 0;
+        }
+        startTime = millis();
+        Serial.println("State changed to built_coord_3");
+      }else if(receivedChar == 's' && state == State::built_coord_3){
+        state = State::self_calibration;
+        sample_count = 0;
+        for(int i = 0; i < 8; i++){
+          successRangingCount[i] = 0;
+        }
+        startTime = millis();
+        Serial.println("State changed to self_calibration");
+      }else if(receivedChar == 'f' && state == State::self_calibration){
+        state = State::flying;
+        sample_count = 0;
+        for(int i = 0; i < 8; i++){
+          successRangingCount[i] = 0;
+        }
+        startTime = millis();
+        Serial.println("State changed to flying");
+      }
+      // sample_count haven't been implemented in ranging function
+      // switch(state){
+      //   case State::built_coord_1:
+      //     if(sample_count == 100 || (millis() - startTime) > 20000){
+      //       state = State::built_coord_2;
+      //       sample_count = 0;
+      //       for(int i = 0; i < 8; i++){
+      //         successRangingCount[i] = 0;
+      //       }
+      //       startTime = millis();
+      //       Serial.println("State changed to built_coord_2");
+      //     }
+      //     break;
+      //   case State::built_coord_2:
+      //     if(sample_count == 100 || (millis() - startTime) > 20000){
+      //       state = State::built_coord_3;
+      //       sample_count = 0;
+      //       for(int i = 0; i < 8; i++){
+      //         successRangingCount[i] = 0;
+      //       }
+      //       startTime = millis();
+      //       Serial.println("State changed to built_coord_3");
+      //     }
+      //     break;
+      //   case State::built_coord_3:
+      //     if(sample_count == 100 || (millis() - startTime) > 20000){
+      //       state = State::self_calibration;
+      //       sample_count = 0;
+      //       for(int i = 0; i < 8; i++){
+      //         successRangingCount[i] = 0;
+      //       }
+      //       startTime = millis();
+      //       Serial.println("State changed to self_calibration");
+      //     }
+      //     break;
+      //   case State::self_calibration:
+      //     if(sample_count == 100 || (millis() - startTime) > 40000){
+      //       state = State::flying;
+      //       sample_count = 0;
+      //       for(int i = 0; i < 8; i++){
+      //         successRangingCount[i] = 0;
+      //       }
+      //       startTime = millis();
+      //       Serial.println("State changed to flying");
+      //     }
+      //     break;
+      // }
     }
     void addSampleCount(){
       sample_count++;
