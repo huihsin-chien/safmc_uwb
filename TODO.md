@@ -21,7 +21,7 @@
 
 ## Anchors & Tags
 
-* [X]  修改 blink rate 讓資料多一點
+* [X]  修改 blink rate 讓資料多一點 -> 亞彤
 * [X]  create system with different/best PRF, data Rate, preamble length, channel -> 亞彤
 * [ ]  add more tags and anchors 進入系統
 * [X]  在 self_calibration 時，增加更多 anchor 來求得 3D 座標系（at least 4 anchorABCD for 建立3D座標，1 additinal anchor, 2 tag)

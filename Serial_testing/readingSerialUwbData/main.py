@@ -39,7 +39,7 @@ def clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and
         
 def  quartile_and_average(data): # 四分位數？
     # remove 0 in data
-    data = [d for d in data if (d != 0 or d != 0.0)]
+    data = [d for d in data if d != 0 ]
     q1 = np.percentile(data, 25)
     q3 = np.percentile(data, 75)
     filtered_data = [d for d in data if q1 <= d <= q3]
@@ -269,7 +269,7 @@ class UWBdata(Position):
                     self_anchor = "D"
 
                 if from_address == "50":
-                    distance_between_anchors_and_anchors[f"{self_anchor}E"].append(range_m)
+                    distance_between_anchors_and_anchors["AE"].append(range_m)
                 elif from_address == "60":
                     distance_between_anchors_and_anchors["AF"].append(range_m)
                 elif from_address == "70":
@@ -431,6 +431,7 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
                 if "self_calibration" in line:
                     state_machine.status = "self_calibration"
                     clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors)
+                    print(clean_distance_between_anchors_and_anchors)
                     X = build_3D_coord.build_3D_coord(clean_distance_between_anchors_and_anchors)
                     anchor_list[0].setXYZ(X[0][0], X[0][1], X[0][2])
                     anchor_list[1].setXYZ(X[1][0], X[1][1], X[1][2])
@@ -533,7 +534,7 @@ def main():
         csv_writer.writerow(["CD"])
         for i in distance_between_anchors_and_anchors["CD"]:
             csv_writer.writerow([i])
-    print(clean_distance_between_anchors_and_anchors)
+    # print(clean_distance_between_anchors_and_anchors)
 
 if __name__ == "__main__":
     main()
