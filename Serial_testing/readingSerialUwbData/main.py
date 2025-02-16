@@ -471,14 +471,14 @@ def output_to_serial_ports(selected_ports, message, opened_serial_ports):
                 print(f"Message sent to {ser.portstr}")
             except Exception as e:
                 print(f"Error sending message to {ser.portstr}: {e}")
-                
 
-def processing_thread(anchor_list, multilateration_file, ser):
+
+def processing_thread(anchor_list, multilateration_file, ser, selected_ports):
     """每 0.1 秒處理一次數據並計算位置"""
     currentstate = '1'
     while True:
         print(f"Current state: {state_machine.status}")  # 調試輸出
-        output_to_serial_ports(ports_list, currentstate, ser)
+        output_to_serial_ports(selected_ports, currentstate, ser)
         print("len(distance_between_anchors_and_anchors[AB]): ",len(distance_between_anchors_and_anchors["AB"]))
         time.sleep(0.5)
         if len(distance_between_anchors_and_anchors["AB"]) >20:
@@ -538,7 +538,7 @@ def main():
         thread.start()
 
     # 啟動處理執行緒
-    processing = threading.Thread(target=processing_thread, args=(anchor_list, multilateration_file, ser), daemon=True)
+    processing = threading.Thread(target=processing_thread, args=(anchor_list, multilateration_file, ser, selected_ports), daemon=True)
     processing.start()
     
 
