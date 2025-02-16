@@ -1,12 +1,12 @@
 import numpy as np
 
 clean_anchorABCD_distance_data = {
-    ("A", "B"): 3,
-    ("A", "C"): 3,
-    ("A", "D"): 3,
-    ("B", "C"): 4.242640687119286,
-    ("B", "D"): 4.242640687119286,
-    ("C", "D"): 4.242640687119286
+    ("AB"): 3,
+    ("AC"): 3,
+    ("AD"): 3,
+    ("BC"): 4.242640687119286,
+    ("BD"): 4.242640687119286,
+    ("CD"): 4.242640687119286
 }
 
 def build_distance_matrix(anchorABCD_distance):
@@ -17,7 +17,7 @@ def build_distance_matrix(anchorABCD_distance):
             if i == j:
                 D[i, j ] = 0
             elif i < j:
-                D[i,j] = anchorABCD_distance[(chr(i+65), chr(j+65))]
+                D[i,j] = anchorABCD_distance[chr(i+65) + chr(j+65)]
             else:
                 D[i,j] = D[j,i]
     return D
@@ -117,6 +117,12 @@ def build_3D_coord(anchorABCD_distance, dim = 3) -> tuple[np.ndarray, dict]:
     2. MDS 降維得到初步局部座標
     3.  align_coordinates 進行座標對齊
     return 2D array of 3D coordinates
+
+    [[ 0.00000000e+00  0.00000000e+00  0.00000000e+00]
+    [ 3.00000000e+00 -6.69219233e-16  1.47912908e-16]
+    [-1.23415910e-16  3.00000000e+00 -1.51933587e-15]
+    [ 8.92992598e-32  4.99493760e-16  3.00000000e+00]]
+
     """
     D = build_distance_matrix(anchorABCD_distance)
     X = ClassicalMDS(D, dim)
@@ -129,7 +135,8 @@ def build_3D_coord(anchorABCD_distance, dim = 3) -> tuple[np.ndarray, dict]:
         "C": X[2],
         "D": X[3]
     }
-    return X, position
+    print(position)
+    return X
 
 # if __name__ == "__main__":
 #     build_3D_coord(clean_anchorABCD_distance_data)

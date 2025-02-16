@@ -21,16 +21,25 @@ distance_between_anchors_and_anchors = {
     "CD": list(),
 } # key: anchor1, anchor2, value: distance 
 
+clean_distance_between_anchors_and_anchors =  {
+    "AB": list(),
+    "AC": list(),
+    "AD": list(),
+    "BC": list(),
+    "BD": list(),
+    "CD": list(),
+} 
+
 # 清洗distance_between_anchors_and_anchors數據，刪掉離群值
 # https://medium.com/@prateekchauhan923/how-to-identify-and-remove-outliers-a-step-by-step-tutorial-with-python-738a103ae666
 # 四分位數 Z-score 標準差等 要選哪一種
 def clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors):
     for key in distance_between_anchors_and_anchors:
-        distance_between_anchors_and_anchors[key] = quartile_and_average(distance_between_anchors_and_anchors[key])
+        clean_distance_between_anchors_and_anchors[key] = quartile_and_average(distance_between_anchors_and_anchors[key])
         
 def  quartile_and_average(data): # 四分位數？
     # remove 0 in data
-    data = [d for d in data if d != 0]
+    data = [d for d in data if (d != 0 or d != 0.0)]
     q1 = np.percentile(data, 25)
     q3 = np.percentile(data, 75)
     filtered_data = [d for d in data if q1 <= d <= q3]
@@ -279,7 +288,7 @@ class UWBdata(Position):
                 power = float(match.group(2))
                 from_address = match.group(3)
                 anchor_key = f"{match.group(4)}:{match.group(5)}"
-                timestamp = time.time()
+                timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')  # 獲取包含微秒的時間戳
                 # print("Matched!")
                 print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
             
@@ -421,6 +430,14 @@ def handle_serial_data(serial_port, data_pattern, anchor_list):
                     state_machine.status = "built_coord_3"  
                 if "self_calibration" in line:
                     state_machine.status = "self_calibration"
+                    clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors)
+                    X = build_3D_coord.build_3D_coord(clean_distance_between_anchors_and_anchors)
+                    anchor_list[0].setXYZ(X[0][0], X[0][1], X[0][2])
+                    anchor_list[1].setXYZ(X[1][0], X[1][1], X[1][2])
+                    anchor_list[2].setXYZ(X[2][0], X[2][1], X[2][2])
+                    anchor_list[3].setXYZ(X[3][0], X[3][1], X[3][2])
+                    print((anchor.x, anchor.y, anchor.z) for anchor in anchor_list) 
+                    # set anchor's x, y, z
 
                 if "flying" in line:
                     state_machine.status = "flying"
@@ -442,7 +459,6 @@ def processing_thread(anchor_list, multilateration_file):
         time.sleep(1)
         if state_machine.status == "self_calibration":
             time.sleep(0.1)
-            build_3D_coord.build_3D_coord(anchor_list)
 
         if state_machine.status == "flying":
             time.sleep(0.1)  # 讓處理頻率穩定
@@ -517,7 +533,7 @@ def main():
         csv_writer.writerow(["CD"])
         for i in distance_between_anchors_and_anchors["CD"]:
             csv_writer.writerow([i])
-
+    print(clean_distance_between_anchors_and_anchors)
 
 if __name__ == "__main__":
     main()
