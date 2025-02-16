@@ -56,39 +56,39 @@ class StateMachine{
       if(Serial.available()>0){        
         receivedChar = Serial.read(); //讀取字元
         Serial.println(receivedChar); //打印出字元
-      }
-      if(receivedChar == '2' && state == State::built_coord_1){
-        state = State::built_coord_2;
-        sample_count = 0;
-        for(int i = 0; i < 8; i++){
-          successRangingCount[i] = 0;
+        if(receivedChar == '2' && state == State::built_coord_1){
+          state = State::built_coord_2;
+          sample_count = 0;
+          for(int i = 0; i < 8; i++){
+            successRangingCount[i] = 0;
+          }
+          startTime = millis();
+          Serial.println("State changed to built_coord_2");
+        }else if(receivedChar == '3' && state == State::built_coord_2){
+          state = State::built_coord_3;
+          sample_count = 0;
+          for(int i = 0; i < 8; i++){
+            successRangingCount[i] = 0;
+          }
+          startTime = millis();
+          Serial.println("State changed to built_coord_3");
+        }else if(receivedChar == 's' && state == State::built_coord_3){
+          state = State::self_calibration;
+          sample_count = 0;
+          for(int i = 0; i < 8; i++){
+            successRangingCount[i] = 0;
+          }
+          startTime = millis();
+          Serial.println("State changed to self_calibration");
+        }else if(receivedChar == 'f' && state == State::self_calibration){
+          state = State::flying;
+          sample_count = 0;
+          for(int i = 0; i < 8; i++){
+            successRangingCount[i] = 0;
+          }
+          startTime = millis();
+          Serial.println("State changed to flying");
         }
-        startTime = millis();
-        Serial.println("State changed to built_coord_2");
-      }else if(receivedChar == '3' && state == State::built_coord_2){
-        state = State::built_coord_3;
-        sample_count = 0;
-        for(int i = 0; i < 8; i++){
-          successRangingCount[i] = 0;
-        }
-        startTime = millis();
-        Serial.println("State changed to built_coord_3");
-      }else if(receivedChar == 's' && state == State::built_coord_3){
-        state = State::self_calibration;
-        sample_count = 0;
-        for(int i = 0; i < 8; i++){
-          successRangingCount[i] = 0;
-        }
-        startTime = millis();
-        Serial.println("State changed to self_calibration");
-      }else if(receivedChar == 'f' && state == State::self_calibration){
-        state = State::flying;
-        sample_count = 0;
-        for(int i = 0; i < 8; i++){
-          successRangingCount[i] = 0;
-        }
-        startTime = millis();
-        Serial.println("State changed to flying");
       }
       // sample_count haven't been implemented in ranging function
       // switch(state){
