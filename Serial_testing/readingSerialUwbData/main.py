@@ -84,7 +84,8 @@ class UWBdata(Position):
         super().__init__(x, y, z)
         self.EUI = EUI
         self.name = name
-        self.pooling_data = {}  # 存放對應 tag 的距離數據 (tag_name -> list of (range_m, timestamp))
+        self.uwb_distance_data = {}  # 存放對應anchor to  tag 的距離數據 (tag_name -> list of (range_m, timestamp))
+        self.previous_pooled_data = {}  # 存放上一次的距離數據 key: tag, value: [range_m, timestamp]
         timestamp = datetime.now().strftime("%Y-%m-%d %H-%M-%S.%f")
         self.output_file = os.path.join(output_folder, fr"{self.name}_{timestamp}.csv")#add timestamp
 
@@ -98,17 +99,19 @@ class UWBdata(Position):
         self.y = y
         self.z = z
 
-    def store_pooling_data(self, tag_name, range_m, timestamp):
-        """儲存 UWB 距離數據，並移除過期數據"""
-        if tag_name not in self.pooling_data:
-            self.pooling_data[tag_name] = []
+    def store_uwb_distance_data(self, tag_name, range_m, timestamp):
+        """儲存 UWB anchor to tag 距離數據，並移除過期數據"""
+        if tag_name not in self.uwb_distance_data:
+            self.uwb_distance_data[tag_name] = []
+            self.previous_pooling_data[tag_name] = [range_m, timestamp]
         
-        self.pooling_data[tag_name].append((range_m, timestamp))
+        self.uwb_distance_data[tag_name].append((range_m, timestamp))
         
         # 移除超過 0.5 秒的數據
-        self.pooling_data[tag_name] = [
-            (r, t) for r, t in self.pooling_data[tag_name] if timestamp - t <= 0.5
+        self.uwb_distance_data[tag_name] = [
+            (r, t) for r, t in self.uwb_distance_data[tag_name] if timestamp - t <= 0.5
         ]
+        print(f"Stored data for {tag_name}: {self.uwb_distance_data[tag_name]}")
 
         # 將數據寫入對應 anchor 的 CSV 檔案
         with open(self.output_file, mode='a', newline='') as file:
@@ -116,9 +119,12 @@ class UWBdata(Position):
             csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp)), tag_name, range_m])
 
     def get_pooled_distances(self) -> dict:  # key: tag, value: avg_distance
-        """回傳平均距離且濾除第一四分位數與第三四分位數以外的數據"""
+        """回傳平均距離且濾除第一四分位數與第三四分位數以外的數據
+        如果 2 秒內，該 tag 沒有新數據，則使用上一次的數據
+        如果 2 秒後該 tag 還沒有新數據，則回傳 None
+        """
         result = {}
-        for tag, data in self.pooling_data.items():
+        for tag, data in self.uwb_distance_data.items():
             if data:
                 print(f"Original data for {tag}: {data}, avg: {sum([r for r, _ in data]) / len(data)}")
                 distances = [r for r, _ in data]
@@ -128,9 +134,15 @@ class UWBdata(Position):
                 if filtered_distances:
                     avg_distance = sum(filtered_distances) / len(filtered_distances)
                     result[tag] = avg_distance
-                    print(f"Filtered data for {tag}: {filtered_distances}, avg: {avg_distance}")
+                    print(f"Filtered data for {tag}, avg: {avg_distance}")
+                    self.previous_pooled_data[tag][0] = avg_distance
+                    self.previous_pooled_data[tag][1] = datetime.now()            
+                elif datetime.now() - self.previous_pooled_data[tag][1] <= 2:  # 如果 2 秒內沒有新數據，則使用上一次的數據
+                    print(f"No data for {tag}, using previous data.")
+                    result[tag] = self.previous_pooled_data[tag][0] 
                 else:
-                    print(f"No data for {tag}")
+                    print(f"No data for {tag} for more than 2 seconds.")
+                    result[tag] = None
         return result
     
     def match_serial_data(self,serial_port,line):
@@ -286,41 +298,16 @@ class UWBdata(Position):
                 elif from_address == "80":
                     distance_between_anchors_and_anchors["AH"].append(range_m)
             
-        elif state_machine.status == "flying":
-            match = data_pattern.search(line)
-            match_sample = re.search(r'Sampling rate\s*([0-9]+):\s*([0-9.]+)\s*Hz', line) #Sampling rate 1: 4.48 Hz
-            if line != "let's go~":
-                print(f"{serial_port}: {line}")
-            
-            if match:
-                range_m = float(match.group(1))
-                power = float(match.group(2))
-                from_address = match.group(3)
-                anchor_key = f"{match.group(4)}:{match.group(5)}"
-                timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')  # 獲取包含微秒的時間戳
-                # print("Matched!")
-                print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
-            
-                with lock: 
-                    
-                    self.store_pooling_data(from_address, range_m, timestamp)
-
-                
-            elif match_sample:
-                # print("Matched sample rate!")
-                target_tag = match_sample.group(1)
-                sample_rate = float(match_sample.group(2))
-
-                with open(self.output_file, mode='a', newline='') as file:
-                    csv_writer = csv.writer(file)
-                    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')  # 獲取包含微秒的時間戳
-                    csv_writer.writerow([timestamp, f"Sample rate {target_tag}", None, None, sample_rate])
-            
-
 def gps_solve(distances_to_station, stations_coordinates): #https://github.com/glucee/Multilateration/blob/master/Python/example.py
+    """多邊定位算法 若有
+    :param distances_to_station: dict, key: tag, value: {anchor_EUI: pooled_range}
+    :param stations_coordinates: list, list of anchor coordinates
+    
+    """
     def error(x, c, r):
         return sum([(np.linalg.norm(x - c[i]) - r[i]) ** 2 for i in range(len(c))])
 
+  
     l = len(stations_coordinates)
     S = sum(distances_to_station)
     # compute weight vector for initial guess
@@ -339,20 +326,41 @@ def multilateration(anchor_list, multilateration_file):
     with lock:  # 確保多執行緒安全存取
         # 取得每個 tag 與每個anchor的距離。假設我想要tag1的位置，我需要anchor1, anchor2, anchor3的距離
         print("enter multilateration")
-        distances = {anchor.EUI: anchor.get_pooled_distances() for anchor in anchor_list} #key: anchor, value: {tag: avg_distance}
-        tag_distances_to_anchor = {} #key: tag, value: {anchor: pooled_range}
+        distances = {anchor.EUI: (anchor.get_pooled_distances()) for anchor in anchor_list} #key: anchor, value: {tag: avg_distance}，avg_distance 可能為 None
+        tag_distances_to_anchor = {} #key: tag, value: {anchor_EUI: pooled_range}，pooled_range 可能為 None
         for anchor_EUI in distances:
             for tag, pooled_range in distances[anchor_EUI].items():
                 if tag not in tag_distances_to_anchor:
                     tag_distances_to_anchor[tag] = {}
                 tag_distances_to_anchor[tag][anchor_EUI] = pooled_range
 
+#   for tag in distances_to_station:
+#         for anchor_EUI in distances_to_station[tag]:
+#             if distances_to_station[tag][anchor_EUI] == None:
+#                 del distances_to_station[tag][anchor_EUI]
+#                 # remove the anchor with None distance
+                
+                
+    # for tag in distances_to_station:
+    #     if len(distances_to_station[tag]) < 3:
+    #         print(f"Tag {tag} has less than 3 distances.")
+    #         continue
+    #     distances_to_station[tag] = list(distances_to_station[tag].values())    
+
 
     
-    anchor_locations = list(np.array([[anchor_list[0].x,anchor_list[0].y,anchor_list[0].z],[anchor_list[1].x, anchor_list[1].y, anchor_list[1].z],[anchor_list[2].x, anchor_list[2].y, anchor_list[2].z],[anchor_list[3].x, anchor_list[3].y, anchor_list[3].z]]))
+    
     tag_pos = {}
     print(tag_distances_to_anchor)
     for tag in tag_distances_to_anchor:
+        # todo: we need more anchor locations such as anchorEFGH
+        anchor_locations = list(np.array([[anchor_list[0].x,anchor_list[0].y,anchor_list[0].z],[anchor_list[1].x, anchor_list[1].y, anchor_list[1].z],[anchor_list[2].x, anchor_list[2].y, anchor_list[2].z],[anchor_list[3].x, anchor_list[3].y, anchor_list[3].z]]))
+        for anchor_EUI in tag_distances_to_anchor[tag]:
+            if tag_distances_to_anchor[tag][anchor_EUI] == None:
+                # anchor_locations without the anchor with None distance
+                anchor_locations.remove(anchor_locations[int(anchor_EUI[-1])-1])
+                del tag_distances_to_anchor[tag][anchor_EUI]
+
         tag_pos[tag] = Position(*gps_solve(list(tag_distances_to_anchor[tag].values()), anchor_locations))
         print(f"Tag {tag} position: {tag_pos[tag]}")
 
@@ -413,9 +421,9 @@ def handle_serial_data(serial_port, data_pattern, anchor_list, ser):
                                     if anchor_key in anchor.EUI:
                                         this_anchor = anchor
                                         print(f"Storing data to {anchor.name}")
-                                        anchor.store_pooling_data(from_address, range_m, timestamp)
+                                        anchor.store_uwb_distance_data(from_address, range_m, timestamp)
                             else:
-                                this_anchor.store_pooling_data(from_address, range_m, timestamp)
+                                this_anchor.store_uwb_distance_data(from_address, range_m, timestamp)
 
                         
                     elif match_sample:

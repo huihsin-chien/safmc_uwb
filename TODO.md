@@ -11,8 +11,9 @@
 
   * [X]  取四分位數
   * [X]  把零清掉
-* [ ]  previous data 陣列紀錄所有anchor 跟 tag之間的距離，若此次0.1秒內沒有距離資料就用此距離補上，並且每兩秒若沒更新就以其他anchor的資料做計算，直到此anchor有回傳距離
-* [ ]  implement multilateration
+* [X]  self.previous_pooled_data = {} 紀錄所有anchor 跟 tag之間的距離，若此次 0.1 秒內沒有距離資料就用此距離補上，並且每兩秒若沒更新就以其他anchor的資料做計算，省略此 anchor 距離送入 gps_solve，直到此 anchor 有回傳距離
+* [ ]  把state change 改成由main.py傳serial輸出給anchor
+* [X]  implement multilateration
 * [X]  handle self-calibration state machine
 
   * [X]  built_coord_1: 得到距離 dAB + dAC -> 惠心
