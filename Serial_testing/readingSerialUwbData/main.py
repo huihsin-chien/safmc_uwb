@@ -462,7 +462,7 @@ def output_to_serial_ports(selected_ports, message, opened_serial_ports):
             try:
                 # 發送訊息
                 ser.write(message.encode('utf-8'))
-                print(f"Message sent to {ser.portstr}")
+                # print(f"Message sent to {ser.portstr}")
             except Exception as e:
                 print(f"Error sending message to {ser.portstr}: {e}")
 
