@@ -142,7 +142,7 @@ class UWBdata(Position):
                     result[tag] = self.previous_pooled_data[tag][0] 
                 else:
                     print(f"No data for {tag} for more than 2 seconds.")
-                    result[tag] = None
+                    result[tag] = None          
         return result
     
     def match_serial_data(self,serial_port,line):
@@ -311,7 +311,7 @@ def gps_solve(distances_to_station, stations_coordinates): #https://github.com/g
     l = len(stations_coordinates)
     S = sum(distances_to_station)
     # compute weight vector for initial guess
-    if (S - w !=0 for w in distances_to_station) :
+    if (S - w != 0 for w in distances_to_station) :
         W = [((l - 1) * S) / (S - w ) for w in distances_to_station]
     else :
         print("Error: Only one distance provided")
@@ -332,23 +332,7 @@ def multilateration(anchor_list, multilateration_file):
             for tag, pooled_range in distances[anchor_EUI].items():
                 if tag not in tag_distances_to_anchor:
                     tag_distances_to_anchor[tag] = {}
-                tag_distances_to_anchor[tag][anchor_EUI] = pooled_range
-
-#   for tag in distances_to_station:
-#         for anchor_EUI in distances_to_station[tag]:
-#             if distances_to_station[tag][anchor_EUI] == None:
-#                 del distances_to_station[tag][anchor_EUI]
-#                 # remove the anchor with None distance
-                
-                
-    # for tag in distances_to_station:
-    #     if len(distances_to_station[tag]) < 3:
-    #         print(f"Tag {tag} has less than 3 distances.")
-    #         continue
-    #     distances_to_station[tag] = list(distances_to_station[tag].values())    
-
-
-    
+                tag_distances_to_anchor[tag][anchor_EUI] = pooled_range    
     
     tag_pos = {}
     print(tag_distances_to_anchor)
@@ -476,7 +460,7 @@ def output_to_serial_ports(selected_ports, message, opened_serial_ports):
             try:
                 # 發送訊息
                 ser.write(message.encode('utf-8'))
-                print(f"Message sent to {ser.portstr}")
+                # print(f"Message sent to {ser.portstr}")
             except Exception as e:
                 print(f"Error sending message to {ser.portstr}: {e}")
 
