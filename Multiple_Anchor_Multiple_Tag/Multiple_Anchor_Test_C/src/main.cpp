@@ -90,53 +90,6 @@ class StateMachine{
           Serial.println("State changed to flying");
         }
       }
-      // sample_count haven't been implemented in ranging function
-      // switch(state){
-      //   case State::built_coord_1:
-      //     if(sample_count == 100 || (millis() - startTime) > 20000){
-      //       state = State::built_coord_2;
-      //       sample_count = 0;
-      //       for(int i = 0; i < 8; i++){
-      //         successRangingCount[i] = 0;
-      //       }
-      //       startTime = millis();
-      //       Serial.println("State changed to built_coord_2");
-      //     }
-      //     break;
-      //   case State::built_coord_2:
-      //     if(sample_count == 100 || (millis() - startTime) > 20000){
-      //       state = State::built_coord_3;
-      //       sample_count = 0;
-      //       for(int i = 0; i < 8; i++){
-      //         successRangingCount[i] = 0;
-      //       }
-      //       startTime = millis();
-      //       Serial.println("State changed to built_coord_3");
-      //     }
-      //     break;
-      //   case State::built_coord_3:
-      //     if(sample_count == 100 || (millis() - startTime) > 20000){
-      //       state = State::self_calibration;
-      //       sample_count = 0;
-      //       for(int i = 0; i < 8; i++){
-      //         successRangingCount[i] = 0;
-      //       }
-      //       startTime = millis();
-      //       Serial.println("State changed to self_calibration");
-      //     }
-      //     break;
-      //   case State::self_calibration:
-      //     if(sample_count == 100 || (millis() - startTime) > 40000){
-      //       state = State::flying;
-      //       sample_count = 0;
-      //       for(int i = 0; i < 8; i++){
-      //         successRangingCount[i] = 0;
-      //       }
-      //       startTime = millis();
-      //       Serial.println("State changed to flying");
-      //     }
-      //     break;
-      // }
     }
     void addSampleCount(){
       sample_count++;
@@ -213,9 +166,7 @@ void handleRanging_self_calibration() {
         // memcpy(currentTagShortAddress, &recv_data[16], 2); // position: see void transmitRangingInitiation(byte tag_eui[], byte tag_short_address[]);
         memcpy(currentTagEUI, &recv_data[2], 8); // EUI starts at position 2 (assuming EUI is 8 bytes long)
         memcpy(currentTagShortaddress, &recv_data[2], 2);
-        if(recv_data[7] == 0x04 && recv_data[8] == 0x00){ // recieved Anchor 3's blink
-            successRangingCount[3]++;
-        }else if ( recv_data[7] == 0x05 && recv_data[8] == 0x00){
+        if ( recv_data[7] == 0x05 && recv_data[8] == 0x00){
             successRangingCount[4]++;
         }else if (recv_data[7] == 0x06 && recv_data[8] == 0x00){
             successRangingCount[5]++;}
@@ -234,10 +185,6 @@ void handleRanging_self_calibration() {
         
         if (curMillis - rangingCountPeriod > 1000) {
             
-            samplingRate = (1000.0f * successRangingCount[3]) / (curMillis - rangingCountPeriod);
-            rangeString = "Sampling rate of  AnchorD: "; rangeString+=(samplingRate); rangeString+=("Hz    Anchor:");
-            rangeString  += EUI[18]; rangeString+=EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
-            Serial.println(rangeString);
             samplingRate = (1000.0f * successRangingCount[4]) / (curMillis - rangingCountPeriod);
             rangeString = "Sampling rate of  AnchorE: "; rangeString+=(samplingRate); rangeString+=("Hz    Anchor:");
             rangeString  += EUI[18]; rangeString+=EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
