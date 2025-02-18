@@ -366,6 +366,7 @@ def handle_serial_data(serial_port, data_pattern, anchor_list, ser):
         try:
             line = ser.readline().decode('utf-8').strip()
             if line:
+                global setupcomplete
                 setupcomplete = True
                 if not anchor_find:
                     if "00:01" in line:
@@ -457,34 +458,38 @@ def handle_serial_data(serial_port, data_pattern, anchor_list, ser):
 
 def output_to_serial_ports(selected_ports, message, opened_serial_ports):
     """在所有選中的 serial ports 上輸出字串"""
-    for ser in opened_serial_ports:
-        if ser.portstr in selected_ports:  # 確認端口在選中的列表中
-            try:
-                # 發送訊息
-                ser.write(message.encode('utf-8'))
-                # print(f"Message sent to {ser.portstr}")
-            except Exception as e:
-                print(f"Error sending message to {ser.portstr}: {e}")
+    print(f"Outputting message to {selected_ports}")
+    print(f"Message: {message}")
+
+    # print(f"Opened serial ports: {[ser.portstr for ser in opened_serial_ports]}")
+    if opened_serial_ports.portstr in selected_ports:  # 確認端口在選中的列表中
+        try:
+            # 發送訊息
+            opened_serial_ports.write(message.encode('utf-8'))
+            print(f"Message sent to {opened_serial_ports.portstr}")
+        except Exception as e:
+            print(f"Error sending message to {opened_serial_ports.portstr}: {e}")
 
 
 def processing_thread(anchor_list, multilateration_file, ser, selected_ports):
     """每 0.1 秒處理一次數據並計算位置"""
-    q = '1'
+    targetstate = '1'
     while True:
         print(f"Current state: {state_machine.status}")  # 調試輸出
+        global setupcomplete
         if setupcomplete:
             output_to_serial_ports(selected_ports, targetstate, ser)
         print("len(distance_between_anchors_and_anchors[AB]): ",len(distance_between_anchors_and_anchors["AB"]))
+        print(f"target state: {targetstate}")
         time.sleep(0.5)
         if len(distance_between_anchors_and_anchors["AB"]) >20:
-            # print("len(distance_between_anchors_and_anchors[AB]): ",len(distance_between_anchors_and_anchors["AB"]))
             targetstate = '2'
         if len(distance_between_anchors_and_anchors["AC"]) >20 and len(distance_between_anchors_and_anchors["BC"]) >20:
             targetstate = '3'
         if len(distance_between_anchors_and_anchors["AD"]) >20 and len(distance_between_anchors_and_anchors["BD"]) >20 and len(distance_between_anchors_and_anchors["CD"]) >20:
-            targetstate = '4'
+            targetstate = 's'
         #TODO self_calibration to flying
-        if state_machine.status == "self_calibration":
+        if state_machine.status == "self_calibration" and :
             # time.sleep(0.1)
             pass
 
@@ -527,6 +532,7 @@ def main():
     
     # 啟動 serial 讀取執行緒
     threads = []
+    print(f"Selected ports: {selected_ports}")
     for port in selected_ports:
         ser = serial.Serial(port, baudrate=9600, timeout=1)
         thread = threading.Thread(target=handle_serial_data, args=(port, data_pattern, anchor_list, ser))
