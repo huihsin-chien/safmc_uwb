@@ -89,53 +89,6 @@ class StateMachine{
           Serial.println("State changed to flying");
         }
       }
-      // sample_count haven't been implemented in ranging function
-      // switch(state){
-      //   case State::built_coord_1:
-      //     if(sample_count == 100 || (millis() - startTime) > 20000){
-      //       state = State::built_coord_2;
-      //       sample_count = 0;
-      //       for(int i = 0; i < 8; i++){
-      //         successRangingCount[i] = 0;
-      //       }
-      //       startTime = millis();
-      //       Serial.println("State changed to built_coord_2");
-      //     }
-      //     break;
-      //   case State::built_coord_2:
-      //     if(sample_count == 100 || (millis() - startTime) > 20000){
-      //       state = State::built_coord_3;
-      //       sample_count = 0;
-      //       for(int i = 0; i < 8; i++){
-      //         successRangingCount[i] = 0;
-      //       }
-      //       startTime = millis();
-      //       Serial.println("State changed to built_coord_3");
-      //     }
-      //     break;
-      //   case State::built_coord_3:
-      //     if(sample_count == 100 || (millis() - startTime) > 20000){
-      //       state = State::self_calibration;
-      //       sample_count = 0;
-      //       for(int i = 0; i < 8; i++){
-      //         successRangingCount[i] = 0;
-      //       }
-      //       startTime = millis();
-      //       Serial.println("State changed to self_calibration");
-      //     }
-      //     break;
-      //   case State::self_calibration:
-      //     if(sample_count == 100 || (millis() - startTime) > 40000){
-      //       state = State::flying;
-      //       sample_count = 0;
-      //       for(int i = 0; i < 8; i++){
-      //         successRangingCount[i] = 0;
-      //       }
-      //       startTime = millis();
-      //       Serial.println("State changed to flying");
-      //     }
-      //     break;
-      // }
     }
     void addSampleCount(){
       sample_count++;
@@ -242,7 +195,7 @@ void ranging_flying() {
         DW1000Ng::getReceivedData(recv_data, recv_len);
         // memcpy(currentTagShortAddress, &recv_data[16], 2); // position: see void transmitRangingInitiation(byte tag_eui[], byte tag_short_address[]);
         memcpy(currentTagEUI, &recv_data[2], 8); // EUI starts at position 2 (assuming EUI is 8 bytes long)
-        memcpy(currentTagShortaddress, &recv_data[2], 2);
+        memcpy(currentTagShortaddress, &recv_data[7], 2);
    
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
         rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
