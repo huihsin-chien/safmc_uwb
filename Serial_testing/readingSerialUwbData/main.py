@@ -103,7 +103,7 @@ class UWBdata(Position):
 
     def store_uwb_distance_data(self, tag_name, range_m, timestamp):
         """儲存 UWB anchor to tag 距離數據，並移除過期數據"""
-        print("self name: ",self.name)
+        print("self name: ",self.name, "tag_name: ",tag_name, "range_m: ",range_m, "timestamp: ",timestamp)
         if tag_name not in self.uwb_distance_data:
             self.uwb_distance_data[tag_name] = []
             self.previous_pooled_data[tag_name] = [range_m, timestamp]
@@ -311,9 +311,9 @@ def gps_solve(distances_to_station, stations_coordinates): #https://github.com/g
         return sum([(np.linalg.norm(x - c[i]) - r[i]) ** 2 for i in range(min(len(c), len(r)))])
 
     # print(f"distances_to_station: ")
-    print("stations_coordinates: ",stations_coordinates)
+    # print("stations_coordinates: ",stations_coordinates)
     l = len(stations_coordinates)
-    print("distances_to_station_type: ",type(distances_to_station))
+    # print("distances_to_station_type: ",type(distances_to_station))
     S = sum(distances_to_station)
 
     # compute weight vector for initial guess
@@ -331,10 +331,10 @@ def gps_solve(distances_to_station, stations_coordinates): #https://github.com/g
 
 def multilateration(anchor_list, multilateration_file):
     """計算最新的 3D 位置"""
-    print("enter multilateration without lock")
+    # print("enter multilateration without lock")
     with lock:  # 確保多執行緒安全存取
         # 取得每個 tag 與每個anchor的距離。假設我想要tag1的位置，我需要anchor1, anchor2, anchor3的距離
-        print("enter multilateration")
+        # print("enter multilateration")
         distances = {anchor.EUI: (anchor.get_pooled_distances()) for anchor in anchor_list} #key: anchor, value: {tag: avg_distance}，avg_distance 可能為 None
         tag_distances_to_anchor = {} #key: tag, value: {anchor_EUI: pooled_range}，pooled_range 可能為 None
         for anchor_EUI in distances:
@@ -381,21 +381,26 @@ def handle_serial_data(serial_port, data_pattern, anchor_list, ser):
     while True:
         try:
             line = ser.readline().decode('utf-8').strip()
+            while not line:
+                # print(f"no line {serial_port}")
+                line = ser.readline().decode('utf-8').strip()
+            # print(f"line {serial_port}: ", line)
             if line:
                 global setupcomplete
                 setupcomplete = True
-                if "00:01" in line:
-                    anchor_find = True
-                    this_anchor = anchor_list[0]
-                elif "00:02" in line:
-                    anchor_find = True
-                    this_anchor = anchor_list[1]
-                elif "00:03" in line:
-                    anchor_find = True
-                    this_anchor = anchor_list[2]
-                elif "00:04" in line:
-                    anchor_find = True
-                    this_anchor = anchor_list[3]
+                if not anchor_find:
+                    if "00:01" in line:
+                        anchor_find = True
+                        this_anchor = anchor_list[0]
+                    elif "00:02" in line:
+                        anchor_find = True
+                        this_anchor = anchor_list[1]
+                    elif "00:03" in line:
+                        anchor_find = True
+                        this_anchor = anchor_list[2]
+                    elif "00:04" in line:
+                        anchor_find = True
+                        this_anchor = anchor_list[3]
 
 
 
@@ -425,6 +430,7 @@ def handle_serial_data(serial_port, data_pattern, anchor_list, ser):
                                         print(f"Storing data to {anchor.name}")
                                         anchor.store_uwb_distance_data(from_address, range_m, timestamp)
                             else:
+                                print("anchor_find: ",anchor_find)
                                 this_anchor.store_uwb_distance_data(from_address, range_m, timestamp)
 
                         
@@ -471,47 +477,54 @@ def handle_serial_data(serial_port, data_pattern, anchor_list, ser):
     ser.close()
 
 
-def output_to_serial_ports(selected_ports, message, opened_serial_ports):
+def output_to_serial_ports(selected_ports, message, opened_serial_port):
     """在所有選中的 serial ports 上輸出字串"""
     # print(f"Outputting message to {selected_ports}")
     # print(f"Message: {message}")
 
     # print(f"Opened serial ports: {[ser.portstr for ser in opened_serial_ports]}")
-    if opened_serial_ports.portstr in selected_ports:  # 確認端口在選中的列表中
+    if opened_serial_port.portstr in selected_ports:  # 確認端口在選中的列表中
         try:
             # 發送訊息
-            opened_serial_ports.write(message.encode('utf-8'))
+            opened_serial_port.write(message.encode('utf-8'))
             # print(f"Message s/ent to {opened_serial_ports.portstr}")
         except Exception as e:
-            print(f"Error sending message to {opened_serial_ports.portstr}: {e}")
+            print(f"Error sending message to {opened_serial_port.portstr}: {e}")
 
 
 def processing_thread(anchor_list, multilateration_file, ser, selected_ports):
     """每 0.1 秒處理一次數據並計算位置"""
     targetstate = '1'
+    enterflying = False
     while True:
         print(f"Current state: {state_machine.status}")  # 調試輸出
         global setupcomplete
         if setupcomplete:
             output_to_serial_ports(selected_ports, targetstate, ser)
-        # print("len(distance_between_anchors_and_anchors[AB]): ",len(distance_between_anchors_and_anchors["AB"]))
-        # print(f"target state: {targetstate}")
+        print("len(distance_between_anchors_and_anchors[AB]): ",len(distance_between_anchors_and_anchors["AB"]))
+        print(f"target state: {targetstate}")
         time.sleep(1)
-        if len(distance_between_anchors_and_anchors["AB"]) >20:
-            targetstate = '2'
-        if len(distance_between_anchors_and_anchors["AC"]) >20 and len(distance_between_anchors_and_anchors["BC"]) >20:
-            targetstate = '3'
-        if len(distance_between_anchors_and_anchors["AD"]) >20 and len(distance_between_anchors_and_anchors["BD"]) >20 and len(distance_between_anchors_and_anchors["CD"]) >20:
-            targetstate = 's'
-        #TODO self_calibration to flying
-        if state_machine.status == "self_calibration" and time.time() - distance_between_anchors_and_anchors["AB"][-1] > 5:
-            # time.sleep(0.1)
-            targetstate = 'f'
-
-        if state_machine.status == "flying":
+        if state_machine.status == "flying" and enterflying:
             # time.sleep(0.1) 
             # print("multilateration")
+            targetstate = 'f'
             multilateration(anchor_list, multilateration_file)
+        elif state_machine.status == "self_calibration" and not enterflying:
+            # time.sleep(0.1)
+            enterflying = True
+            targetstate = 'f'
+        elif len(distance_between_anchors_and_anchors["AD"]) >20 and len(distance_between_anchors_and_anchors["BD"]) >20 and len(distance_between_anchors_and_anchors["CD"]) >20 and not enterflying:
+            targetstate = 'f'       
+        #TODO self_calibration to flying
+        elif len(distance_between_anchors_and_anchors["AC"]) >20 and len(distance_between_anchors_and_anchors["BC"]) >20 and not enterflying:
+            targetstate = '3'
+        elif len(distance_between_anchors_and_anchors["AB"]) >20 and not enterflying:
+            targetstate = '2'
+
+
+
+
+ 
 
 def main():
     output_folder = r".\output"
