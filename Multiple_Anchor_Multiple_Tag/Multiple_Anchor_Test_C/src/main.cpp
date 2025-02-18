@@ -225,7 +225,7 @@ void ranging_flying() {
         DW1000Ng::getReceivedData(recv_data, recv_len);
         // memcpy(currentTagShortAddress, &recv_data[16], 2); // position: see void transmitRangingInitiation(byte tag_eui[], byte tag_short_address[]);
         memcpy(currentTagEUI, &recv_data[2], 8); // EUI starts at position 2 (assuming EUI is 8 bytes long)
-        memcpy(currentTagShortaddress, &recv_data[2], 2);
+        memcpy(currentTagShortaddress, &recv_data[7], 2);
    
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
         rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
