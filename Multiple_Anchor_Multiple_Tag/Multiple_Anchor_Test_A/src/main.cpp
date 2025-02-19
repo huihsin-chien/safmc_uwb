@@ -60,13 +60,22 @@ class StateMachine{
           break;
       }
     }
+
+    void printstate(){
+      Serial.print("Anchor");
+      Serial.print(&EUI[6]);
+      Serial.print(": ");
+      Serial.println(static_cast<int>(state));
+      return ;
+    }
+
     void update(){ 
       //為了防止anchor沒收到state change的指令，所以每一秒傳送一次current state
       char receivedChar = ' ';
       if(Serial.available()>0){        
         receivedChar = Serial.read(); //讀取字元
         Serial.println(receivedChar); //打印出字元
-        if(receivedChar == '2' && state == State::built_coord_1){
+        if(receivedChar == '2' && state != State::built_coord_2){
           state = State::built_coord_2;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
@@ -74,7 +83,7 @@ class StateMachine{
           }
           startTime = millis();
           Serial.println("State changed to built_coord_2");
-        }else if(receivedChar == '3' && state == State::built_coord_2){
+        }if(receivedChar == '3' && state != State::built_coord_3){
           state = State::built_coord_3;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
@@ -82,7 +91,7 @@ class StateMachine{
           }
           startTime = millis();
           Serial.println("State changed to built_coord_3");
-        }else if(receivedChar == 's' && state == State::built_coord_3){
+        }if(receivedChar == 's' && state != State::self_calibration){
           state = State::self_calibration;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
@@ -90,7 +99,7 @@ class StateMachine{
           }
           startTime = millis();
           Serial.println("State changed to self_calibration");
-        }else if(receivedChar == 'f' && state == State::self_calibration){
+        }if(receivedChar == 'f' && state != State::flying){
           state = State::flying;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
@@ -112,6 +121,7 @@ class StateMachine{
 
 
 
+
 void setup() {
     delay(5000);
     Serial.begin(9600);
@@ -123,6 +133,7 @@ StateMachine anchorStateMachine;
 void loop() {  
   anchorStateMachine.ranging();
   anchorStateMachine.update();
+  // anchorStateMachine.printstate();
 }
 
 
@@ -353,10 +364,12 @@ void handleRanging() { // for tag, need to be modified
     byte recv_data[recv_len];
     DW1000Ng::getReceivedData(recv_data, recv_len);
 
+    Serial.println("In fly");
     if(recv_data[0] == BLINK) {
       uint32_t curMillis = millis();
       // Serial.print("Tag EUI: "); Serial.print(recv_data[2]); Serial.println(recv_data[3]);
 
+      Serial.println("Received blink");
       if (recv_data[2] == 0 && recv_data[3] == 0) { // if received tag1 blink
         tag_shortAddress[0] = tag1_shortAddress[0];
         tag_shortAddress[1] = tag1_shortAddress[1];

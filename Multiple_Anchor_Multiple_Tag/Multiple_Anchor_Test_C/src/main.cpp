@@ -72,7 +72,7 @@ class StateMachine{
           }
           startTime = millis();
           Serial.println("State changed to built_coord_2");
-        }else if(receivedChar == '3' && state != State::built_coord_3){
+        }if(receivedChar == '3' && state != State::built_coord_3){
           state = State::built_coord_3;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
@@ -80,7 +80,7 @@ class StateMachine{
           }
           startTime = millis();
           Serial.println("State changed to built_coord_3");
-        }else if(receivedChar == 's' && state != State::self_calibration){
+        }if(receivedChar == 's' && state != State::self_calibration){
           state = State::self_calibration;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
@@ -88,7 +88,7 @@ class StateMachine{
           }
           startTime = millis();
           Serial.println("State changed to self_calibration");
-        }else if(receivedChar == 'f' && state != State::flying){
+        }if(receivedChar == 'f' && state != State::flying){
           state = State::flying;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
