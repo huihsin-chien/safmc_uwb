@@ -1,0 +1,233 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-10238a2b82b3c93d863a.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"build" : "uwb_msgs__py",
+					"jsonFile" : "directory-uwb_msgs__py-0f552c8fc5dc58d0003c.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/Judy/safmc_uwb/ros/build/uwb_msgs/uwb_msgs__py",
+					"targetIndexes" : 
+					[
+						5
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "uwb_msgs",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_uwb_msgs_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_uwb_msgs_egg-03231590a18715d6968e.json",
+					"name" : "ament_cmake_python_build_uwb_msgs_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_uwb_msgs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_uwb_msgs-819f3f2110c22139ba34.json",
+					"name" : "ament_cmake_python_copy_uwb_msgs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-619708c393b0f74b2bfb.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uwb_msgs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uwb_msgs-757202336147671cb7b7.json",
+					"name" : "uwb_msgs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uwb_msgs__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uwb_msgs__cpp-fe82d89f7e5a2b1e4117.json",
+					"name" : "uwb_msgs__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "uwb_msgs__py::@9225e561d4348fefb6c2",
+					"jsonFile" : "target-uwb_msgs__py-9a9cabe638143420a121.json",
+					"name" : "uwb_msgs__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uwb_msgs__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uwb_msgs__rosidl_generator_c-ae753dab06e96b774d73.json",
+					"name" : "uwb_msgs__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uwb_msgs__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uwb_msgs__rosidl_generator_py-e94f008eb7733b735d35.json",
+					"name" : "uwb_msgs__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uwb_msgs__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uwb_msgs__rosidl_typesupport_c-42e8b8102202e6fe88c1.json",
+					"name" : "uwb_msgs__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uwb_msgs__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uwb_msgs__rosidl_typesupport_c__pyext-2d82b6e2ddf6d016e8dc.json",
+					"name" : "uwb_msgs__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uwb_msgs__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uwb_msgs__rosidl_typesupport_cpp-08ad1412227e633a00c9.json",
+					"name" : "uwb_msgs__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uwb_msgs__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uwb_msgs__rosidl_typesupport_fastrtps_c-28f3ab8db9e47105cb03.json",
+					"name" : "uwb_msgs__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uwb_msgs__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uwb_msgs__rosidl_typesupport_fastrtps_c__pyext-52a44f690476e8e4f545.json",
+					"name" : "uwb_msgs__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uwb_msgs__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uwb_msgs__rosidl_typesupport_fastrtps_cpp-b33a9d30f7ccfd10857b.json",
+					"name" : "uwb_msgs__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uwb_msgs__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uwb_msgs__rosidl_typesupport_introspection_c-86304a9e3cf2b1d72ab5.json",
+					"name" : "uwb_msgs__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uwb_msgs__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uwb_msgs__rosidl_typesupport_introspection_c__pyext-f6deeeeb141319ad6e85.json",
+					"name" : "uwb_msgs__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uwb_msgs__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uwb_msgs__rosidl_typesupport_introspection_cpp-2b3cd93104eddba17a8b.json",
+					"name" : "uwb_msgs__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uwb_msgs_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uwb_msgs_uninstall-e9787c1a621df3e745ba.json",
+					"name" : "uwb_msgs_uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/Judy/safmc_uwb/ros/build/uwb_msgs",
+		"source" : "/home/Judy/safmc_uwb/ros/src/uwb_msgs"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}
