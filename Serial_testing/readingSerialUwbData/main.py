@@ -31,15 +31,35 @@ clean_distance_between_anchors_and_anchors =  {
     "BD": list(),
     "CD": list(),
 } 
+
+clean_distance_between_anchorABCD_and_anchorEFGH = {
+    "AE": list(),
+    "AF": list(),
+    "AG": list(),
+    "AH": list(),
+    "BE": list(),
+    "BF": list(),
+    "BG": list(),
+    "BH": list(),
+    "CE": list(),
+    "CF": list(),
+    "CG": list(),
+    "CH": list(),
+    "DE": list(),
+    "DF": list(),
+    "DG": list(),
+    "DH": list(),
+}
+
 ports_list = list(serial.tools.list_ports.comports())
 setupcomplete = False
 
 # 清洗distance_between_anchors_and_anchors數據，刪掉離群值
 # https://medium.com/@prateekchauhan923/how-to-identify-and-remove-outliers-a-step-by-step-tutorial-with-python-738a103ae666
 # 四分位數 Z-score 標準差等 要選哪一種
-def clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors):
+def clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors, clean_distance = clean_distance_between_anchors_and_anchors):
     for key in distance_between_anchors_and_anchors:
-        clean_distance_between_anchors_and_anchors[key] = quartile_and_average(distance_between_anchors_and_anchors[key])
+        clean_distance[key] = quartile_and_average(distance_between_anchors_and_anchors[key])
         
 def  quartile_and_average(data): # 四分位數？
     # remove 0 in data
@@ -376,62 +396,42 @@ def multilateration(anchor_list, multilateration_file):
             csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), tag, pos.x, pos.y, pos.z])
     return tag_pos
 
-def multilateration_for_self_calibration(anchor_list, multilateration_file, distance_between_anchors_and_anchors = distance_between_anchors_and_anchors):
-    pass
+def multilateration_for_self_calibration(anchor_list, distance_between_anchors_and_anchors = distance_between_anchors_and_anchors):
     """計算最新的 3D 位置"""
     # print("enter multilateration without lock")
     with lock:  # 確保多執行緒安全存取
-        clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors) # TODO check if this function is compatible
+        clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors, clean_distance_between_anchorABCD_and_anchorEFGH) # TODO check if this function is compatible
 
         # TODO 
         # tag_distances_to_anchor -> key: anchorEFGH(), value:{anchorABCD: pooled_range}
         tag_distances_to_anchor = {} #key: tag, value: {anchor_EUI: pooled_range}，pooled_range 可能為 None
-        for i in range(4):
-            if chr(69+i) in distance_between_anchors_and_anchors:
-                pass
-
-        """ 下面的程式需要更改~ 革命尚未成功，同志仍需努力！！！ """
-        distances = {anchor.EUI: (anchor.get_pooled_distances()) for anchor in anchor_list} #key: anchor, value: {tag: avg_distance}，avg_distance 可能為 None
-        tag_distances_to_anchor = {} #key: tag, value: {anchor_EUI: pooled_range}，pooled_range 可能為 None
-        for anchor_EUI in distances:
-            for tag, pooled_range in distances[anchor_EUI].items():
-                if tag not in tag_distances_to_anchor:
-                    tag_distances_to_anchor[tag] = {}
-                tag_distances_to_anchor[tag][anchor_EUI] = pooled_range 
-        print("distances: ",distances)
-    
+        # for i in range(4):
+        for distance in distance_between_anchors_and_anchors:
+           for i in range(4):
+               if chr(69 + i) in distance:
+                    if tag_distances_to_anchor[chr(69 + i)] == None:
+                        tag_distances_to_anchor[chr(69 + i)] = {}
+                    tag_distances_to_anchor[chr(69 + i)][f"00:0{int(distance[0])-64}"] = clean_distance_between_anchorABCD_and_anchorEFGH[distance]
+        
+        print("anchorEFH distances to anchor: ",tag_distances_to_anchor)
+    """ 革命尚未成功 同志仍需努力"""
     tag_pos = {}
     copytag_distances_to_anchor = copy.deepcopy(tag_distances_to_anchor)
-    print(tag_distances_to_anchor)
+
     for tag in tag_distances_to_anchor:
         # todo: we need more anchor locations such as anchorEFGH
         anchor_locations = list(np.array([[anchor_list[0].x,anchor_list[0].y,anchor_list[0].z],[anchor_list[1].x, anchor_list[1].y, anchor_list[1].z],[anchor_list[2].x, anchor_list[2].y, anchor_list[2].z],[anchor_list[3].x, anchor_list[3].y, anchor_list[3].z]]))
-        for anchor_EUI in tag_distances_to_anchor[tag]:
-            if tag_distances_to_anchor[tag][anchor_EUI] == None:
-                # anchor_locations without the anchor with None distance
-                anchor_locations.remove(anchor_locations[int(anchor_EUI[-1])-1])
-                del copytag_distances_to_anchor[tag][anchor_EUI]
-
-        print("tag_distances_to_anchor: ",tag_distances_to_anchor)
-        print("list tag_distances_to_anchor: ",tag_distances_to_anchor[tag].values())
-        if len(tag_distances_to_anchor[tag]) <= 3:
-            print(f"Tag {tag} has less than 3 distances. Skipping multilateration.")
-            print("Len(tag_distances_to_anchor[tag]): ",len(tag_distances_to_anchor[tag]))
-        else :
-            tag_pos[tag] = Position(*gps_solve(list(copytag_distances_to_anchor[tag].values()), anchor_locations))
-            print(f"Tag {tag} position: {tag_pos[tag]}")
-
-    # 將 multilateration 結果寫入 CSV 檔案
-    with open(multilateration_file, mode='a', newline='') as file:
-        csv_writer = csv.writer(file)
-        # csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S'), pos.x, pos.y, pos.z])
-        for tag, pos in tag_pos.items():
-            csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), tag, pos.x, pos.y, pos.z])
-    return tag_pos
 
 
+        tag_pos[tag] = Position(*gps_solve(list(copytag_distances_to_anchor[tag].values()), anchor_locations))
+        print(f"Tag {tag} position: {tag_pos[tag]}")
 
-
+    
+    # set anchor EFGH's x, y, z
+    anchor_list[4].setXYZ(tag_pos[tag][0], tag_pos[tag][1], tag_pos[tag][2])
+    anchor_list[5].setXYZ(tag_pos[tag][0], tag_pos[tag][1], tag_pos[tag][2])
+    anchor_list[6].setXYZ(tag_pos[tag][0], tag_pos[tag][1], tag_pos[tag][2])
+    anchor_list[7].setXYZ(tag_pos[tag][0], tag_pos[tag][1], tag_pos[tag][2])
 
 
 
@@ -575,6 +575,7 @@ def processing_thread(anchor_list, multilateration_file, ser, selected_ports, ou
             # print("multilateration")
             targetstate = 'f'
             multilateration(anchor_list, multilateration_file)
+
         elif state_machine.status == "self_calibration" and all_lengths_greater_than_20(distance_between_anchors_and_anchors) and enterself:
             # time.sleep(0.1)
             # TODO self_calibration to flying
@@ -584,6 +585,8 @@ def processing_thread(anchor_list, multilateration_file, ser, selected_ports, ou
             multilateration_for_self_calibration(anchor_list, multilateration_file)
             enterflying = True
             targetstate = 'f'
+
+
         elif len(distance_between_anchors_and_anchors["AD"]) >20 and len(distance_between_anchors_and_anchors["BD"]) >20 and len(distance_between_anchors_and_anchors["CD"]) >20 and not enterflying and not enterself:
             targetstate = 's'    
             enterself = True
@@ -599,12 +602,6 @@ def processing_thread(anchor_list, multilateration_file, ser, selected_ports, ou
             for i in range(4):
                 for j in range(4):
                     distance_between_anchors_and_anchors[f"{chr(65 + i)}{chr(69+j)}"] = list()
-
-            # calculate 3D coordinates of EFGH
-            # set anchor EFGH's x, y, z
-            # change state to flying 
-            # enterflying = True
-            # targetstate = 'f'
 
 
         elif len(distance_between_anchors_and_anchors["AC"]) >20 and len(distance_between_anchors_and_anchors["BC"]) >20 and not enterflying:
