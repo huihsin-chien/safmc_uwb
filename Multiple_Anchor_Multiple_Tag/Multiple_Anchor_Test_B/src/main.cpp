@@ -49,13 +49,21 @@ class StateMachine{
             break;
       }
     }
+
+    void printState(){
+      Serial.print("Anchor EUI: ");
+      Serial.print(&EUI[0]);
+      Serial.print(" Current state: ");
+      Serial.println(static_cast<int>(state));
+    }
+
     void update(){ 
       //為了防止anchor沒收到state change的指令，所以每一秒傳送一次current state
       char receivedChar = ' ';
       if(Serial.available()>0){        
         receivedChar = Serial.read(); //讀取字元
         Serial.println(receivedChar); //打印出字元
-        if(receivedChar == '2' && state == State::built_coord_1){
+        if(receivedChar == '2' && state != State::built_coord_2){
           state = State::built_coord_2;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
@@ -63,7 +71,7 @@ class StateMachine{
           }
           startTime = millis();
           Serial.println("State changed to built_coord_2");
-        }else if(receivedChar == '3' && state == State::built_coord_2){
+        }else if(receivedChar == '3' && state != State::built_coord_3){
           state = State::built_coord_3;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
@@ -71,7 +79,7 @@ class StateMachine{
           }
           startTime = millis();
           Serial.println("State changed to built_coord_3");
-        }else if(receivedChar == 's' && state == State::built_coord_3){
+        }else if(receivedChar == 's' && state != State::self_calibration){
           state = State::self_calibration;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
@@ -79,7 +87,7 @@ class StateMachine{
           }
           startTime = millis();
           Serial.println("State changed to self_calibration");
-        }else if(receivedChar == 'f' && state == State::self_calibration){
+        }else if(receivedChar == 'f' && state != State::flying){
           state = State::flying;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
@@ -110,6 +118,7 @@ StateMachine anchorTagStateMachine;
 void loop() {
   anchorTagStateMachine.update();
   anchorTagStateMachine.ranging();
+  // anchorTagStateMachine.printState();
 }
 
 void handleRanging_coord_2(){
