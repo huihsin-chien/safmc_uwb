@@ -11,6 +11,7 @@ import numpy as np
 from datetime import datetime # for timestamp
 import copy
 
+
 # 全域變數
 lock = threading.Lock()  # 確保多執行緒存取安全
 distance_between_anchors_and_anchors = {
@@ -300,6 +301,8 @@ class UWBdata(Position):
                     distance_between_anchors_and_anchors["AG"].append(range_m)
                 elif from_address == "80":
                     distance_between_anchors_and_anchors["AH"].append(range_m)
+
+                # TODO: 補上 dBE, dBF, dBG, dBH, dCE, dCF, dCG, dCH ......
             
 def gps_solve(distances_to_station, stations_coordinates): #https://github.com/glucee/Multilateration/blob/master/Python/example.py
     """多邊定位算法 若有
@@ -372,6 +375,65 @@ def multilateration(anchor_list, multilateration_file):
         for tag, pos in tag_pos.items():
             csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), tag, pos.x, pos.y, pos.z])
     return tag_pos
+
+def multilateration_for_self_calibration(anchor_list, multilateration_file, distance_between_anchors_and_anchors = distance_between_anchors_and_anchors):
+    pass
+    """計算最新的 3D 位置"""
+    # print("enter multilateration without lock")
+    with lock:  # 確保多執行緒安全存取
+        clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors) # TODO check if this function is compatible
+
+        # TODO 
+        # tag_distances_to_anchor -> key: anchorEFGH(), value:{anchorABCD: pooled_range}
+        tag_distances_to_anchor = {} #key: tag, value: {anchor_EUI: pooled_range}，pooled_range 可能為 None
+        for i in range(4):
+            if chr(69+i) in distance_between_anchors_and_anchors:
+                pass
+
+        """ 下面的程式需要更改~ 革命尚未成功，同志仍需努力！！！ """
+        distances = {anchor.EUI: (anchor.get_pooled_distances()) for anchor in anchor_list} #key: anchor, value: {tag: avg_distance}，avg_distance 可能為 None
+        tag_distances_to_anchor = {} #key: tag, value: {anchor_EUI: pooled_range}，pooled_range 可能為 None
+        for anchor_EUI in distances:
+            for tag, pooled_range in distances[anchor_EUI].items():
+                if tag not in tag_distances_to_anchor:
+                    tag_distances_to_anchor[tag] = {}
+                tag_distances_to_anchor[tag][anchor_EUI] = pooled_range 
+        print("distances: ",distances)
+    
+    tag_pos = {}
+    copytag_distances_to_anchor = copy.deepcopy(tag_distances_to_anchor)
+    print(tag_distances_to_anchor)
+    for tag in tag_distances_to_anchor:
+        # todo: we need more anchor locations such as anchorEFGH
+        anchor_locations = list(np.array([[anchor_list[0].x,anchor_list[0].y,anchor_list[0].z],[anchor_list[1].x, anchor_list[1].y, anchor_list[1].z],[anchor_list[2].x, anchor_list[2].y, anchor_list[2].z],[anchor_list[3].x, anchor_list[3].y, anchor_list[3].z]]))
+        for anchor_EUI in tag_distances_to_anchor[tag]:
+            if tag_distances_to_anchor[tag][anchor_EUI] == None:
+                # anchor_locations without the anchor with None distance
+                anchor_locations.remove(anchor_locations[int(anchor_EUI[-1])-1])
+                del copytag_distances_to_anchor[tag][anchor_EUI]
+
+        print("tag_distances_to_anchor: ",tag_distances_to_anchor)
+        print("list tag_distances_to_anchor: ",tag_distances_to_anchor[tag].values())
+        if len(tag_distances_to_anchor[tag]) <= 3:
+            print(f"Tag {tag} has less than 3 distances. Skipping multilateration.")
+            print("Len(tag_distances_to_anchor[tag]): ",len(tag_distances_to_anchor[tag]))
+        else :
+            tag_pos[tag] = Position(*gps_solve(list(copytag_distances_to_anchor[tag].values()), anchor_locations))
+            print(f"Tag {tag} position: {tag_pos[tag]}")
+
+    # 將 multilateration 結果寫入 CSV 檔案
+    with open(multilateration_file, mode='a', newline='') as file:
+        csv_writer = csv.writer(file)
+        # csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S'), pos.x, pos.y, pos.z])
+        for tag, pos in tag_pos.items():
+            csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), tag, pos.x, pos.y, pos.z])
+    return tag_pos
+
+
+
+
+
+
 
 def handle_serial_data(serial_port, data_pattern, anchor_list, ser):
     """處理每個 COM 連接，讀取並解析 UWB 數據"""
@@ -491,11 +553,15 @@ def output_to_serial_ports(selected_ports, message, opened_serial_port):
         except Exception as e:
             print(f"Error sending message to {opened_serial_port.portstr}: {e}")
 
+def all_lengths_greater_than_20(distance_between_anchors_and_anchors):
+    return all(len(distance_between_anchors_and_anchors[key]) > 20 for key in distance_between_anchors_and_anchors)
 
-def processing_thread(anchor_list, multilateration_file, ser, selected_ports):
+
+def processing_thread(anchor_list, multilateration_file, ser, selected_ports, output_folder="."):
     """每 0.1 秒處理一次數據並計算位置"""
     targetstate = '1'
     enterflying = False
+    enterself = False
     while True:
         print(f"Current state: {state_machine.status}")  # 調試輸出
         global setupcomplete
@@ -509,13 +575,38 @@ def processing_thread(anchor_list, multilateration_file, ser, selected_ports):
             # print("multilateration")
             targetstate = 'f'
             multilateration(anchor_list, multilateration_file)
-        elif state_machine.status == "self_calibration" and not enterflying:
+        elif state_machine.status == "self_calibration" and all_lengths_greater_than_20(distance_between_anchors_and_anchors) and enterself:
             # time.sleep(0.1)
+            # TODO self_calibration to flying
+   
+   
+            # 判斷dAE, dAF, dAG, dAH, dBE, dBF, dBG, dBH, dCE, dCF, dCG, dCH是否有足夠的數據，如果有，進行data cleaning and multilateration，再進入 flying 狀態
+            multilateration_for_self_calibration(anchor_list, multilateration_file)
             enterflying = True
             targetstate = 'f'
-        elif len(distance_between_anchors_and_anchors["AD"]) >20 and len(distance_between_anchors_and_anchors["BD"]) >20 and len(distance_between_anchors_and_anchors["CD"]) >20 and not enterflying:
-            targetstate = 'f'       
-        #TODO self_calibration to flying
+        elif len(distance_between_anchors_and_anchors["AD"]) >20 and len(distance_between_anchors_and_anchors["BD"]) >20 and len(distance_between_anchors_and_anchors["CD"]) >20 and not enterflying and not enterself:
+            targetstate = 's'    
+            enterself = True
+            #TODO self_calibration to flying
+            # add anchor EFGH into anchor_list
+            anchor_list.append(UWBdata(0, 0, 0, "00:05", "AnchorE", output_folder))
+            anchor_list.append(UWBdata(0, 0, 0, "00:06", "AnchorF", output_folder)) 
+            anchor_list.append(UWBdata(0, 0, 0, "00:07", "AnchorG", output_folder))
+            anchor_list.append(UWBdata(0, 0, 0, "00:08", "AnchorH", output_folder))
+
+            # append dAE, dAF, dAG, dAH, dBE, dBF, dBG, dBH, dCE, dCF, dCG, dCH, dDE, dDF, dDG, dDH into distance_between_anchors_and_anchors
+            
+            for i in range(4):
+                for j in range(4):
+                    distance_between_anchors_and_anchors[f"{chr(65 + i)}{chr(69+j)}"] = list()
+
+            # calculate 3D coordinates of EFGH
+            # set anchor EFGH's x, y, z
+            # change state to flying 
+            # enterflying = True
+            # targetstate = 'f'
+
+
         elif len(distance_between_anchors_and_anchors["AC"]) >20 and len(distance_between_anchors_and_anchors["BC"]) >20 and not enterflying:
             targetstate = '3'
         elif len(distance_between_anchors_and_anchors["AB"]) >20 and not enterflying:
@@ -544,7 +635,7 @@ def main():
     for port in ports_list:
         print(port[0])
     anchor_list = [
-        UWBdata(0, 0, 0, "00:01", "AnchorA", git),
+        UWBdata(0, 0, 0, "00:01", "AnchorA", output_folder),
         UWBdata(0, 0, 0, "00:02", "AnchorB", output_folder),
         UWBdata(0, 0, 0, "00:03", "AnchorC", output_folder),
         UWBdata(0, 0, 0, "00:04", "AnchorD", output_folder),
@@ -568,7 +659,7 @@ def main():
         threads.append(thread)
         thread.start()
         # 啟動處理執行緒
-        processing = threading.Thread(target=processing_thread, args=(anchor_list, multilateration_file, ser, selected_ports), daemon=True)
+        processing = threading.Thread(target=processing_thread, args=(anchor_list, multilateration_file, ser, selected_ports, output_folder), daemon=True)
         processing.start()
 
     for thread in threads:
