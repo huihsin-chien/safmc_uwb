@@ -271,7 +271,7 @@ class UWBdata(Position):
 
         elif state_machine.status == "self_calibration":
             
-            #todo: store dAE, dAF, dAG, dAH
+            #TODO: store dAE, dAF, dAG, dAH
             data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
             match = data_pattern.search(line)
             print(f"{serial_port}: {line}")
@@ -544,7 +544,7 @@ def main():
     for port in ports_list:
         print(port[0])
     anchor_list = [
-        UWBdata(0, 0, 0, "00:01", "AnchorA", output_folder),
+        UWBdata(0, 0, 0, "00:01", "AnchorA", git),
         UWBdata(0, 0, 0, "00:02", "AnchorB", output_folder),
         UWBdata(0, 0, 0, "00:03", "AnchorC", output_folder),
         UWBdata(0, 0, 0, "00:04", "AnchorD", output_folder),
