@@ -3,7 +3,7 @@
 
 // Extended Unique Identifier register. 64-bit device identifier. Register file: 0x01
 char EUI[] = "AA:BB:CC:DD:EE:FF:00:05"; 
-uint16_t next_anchor = 5 ;
+uint16_t next_anchor = 6 ;
 
 byte currentTagShortaddress[2];
 // ranging counter (per second)
@@ -54,7 +54,7 @@ class StateMachine{
       if(Serial.available()>0){        
         receivedChar = Serial.read(); //讀取字元
         Serial.println(receivedChar); //打印出字元
-        if(receivedChar == '2' && state == State::built_coord_1){
+        if(receivedChar == '2' && state != State::built_coord_2){
           state = State::built_coord_2;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
@@ -62,7 +62,7 @@ class StateMachine{
           }
           startTime = millis();
           Serial.println("State changed to built_coord_2");
-        }else if(receivedChar == '3' && state == State::built_coord_2){
+        }if(receivedChar == '3' && state != State::built_coord_3){
           state = State::built_coord_3;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
@@ -70,7 +70,7 @@ class StateMachine{
           }
           startTime = millis();
           Serial.println("State changed to built_coord_3");
-        }else if(receivedChar == 's' && state == State::built_coord_3){
+        }if(receivedChar == 's' && state != State::self_calibration){
           state = State::self_calibration;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
@@ -78,7 +78,7 @@ class StateMachine{
           }
           startTime = millis();
           Serial.println("State changed to self_calibration");
-        }else if(receivedChar == 'f' && state == State::self_calibration){
+        }if(receivedChar == 'f' && state != State::flying){
           state = State::flying;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
