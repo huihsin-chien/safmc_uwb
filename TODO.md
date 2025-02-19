@@ -1,10 +1,15 @@
 ## main.py
 
 * [ ]  有時候 3D 位置解算會算不出來 該怎麼辦
-* [ ] 實作 state 從 self_calibration -> flying 的轉換
-* [ ] 新增更多 anchor 做 self_calibration
-  * [ ] anchor_locations 需要更多除了 anchor ABCD 以外的資料 at line 341
-* [ ] if self_calibration hasn't implemented yet, 惠心 can skip self_calibration part and go testing flying part 
+* [ ]  實作 state 從 self_calibration -> flying 的轉換
+* [ ]  實作 self_calibration
+* [ ]  跟子昕討論要做 4 v.s. 4 or 8 v.s. 8
+
+  - pros of 4 v.s. 4: 有兩個獨立系統，其中一個死掉後還有另外一個系統可以幫忙定位。如果全部都用同一個系統，只要 anchor A 死掉，其他全部也都會失效。但如果有兩個系統，就可以有 backup
+  - cons of 4 v.s. 4: 要重新寫把兩個座標系對齊的程式
+* [ ]  新增更多 anchor 做 self_calibration
+
+  * [ ]  anchor_locations 需要更多除了 anchor ABCD 以外的資料 at line 341
 * [X]  發現state 轉換無法從 built_coord_3 變成 self_calibration
 * [X]  record sampling rate in csv files
 * [X]  紀錄 anchor 之間距離-> 惠心
@@ -23,7 +28,7 @@
   * [X]  built_coord_1: 得到距離 dAB + dAC -> 惠心
   * [X]  built_coord_2: 得到距離 dBC，(之後應該要再多加一個anchor D 用來建立 3D 坐標系)，計算出 3D 座標-> 惠心
   * [X]  self_calibration: 和ＥＦＧＨanchor TWR，得到距離，求出座標-> 惠心
-  * [X]  flying: 與 tag TWR 
+  * [X]  flying: 與 tag TWR
 * [X]  如何清理得到的 data? pooling 距離時要加 filter？避免 noise & 離群值 -> 亞彤
 * [ ]  實際驗證程式功能（得到anchor 座標->tag multilateration）
 * [ ]  讓 sample rate record in csv 更易讀
