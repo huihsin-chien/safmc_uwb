@@ -3,5 +3,6 @@
 .clang_complete
 .gcc-flags.json
 venv/ 
+output/*.csv
 
 # .pio
