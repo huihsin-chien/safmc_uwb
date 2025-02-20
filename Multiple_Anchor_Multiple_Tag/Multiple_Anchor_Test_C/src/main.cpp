@@ -122,7 +122,7 @@ void loop() {
 }
 
 void handleRanging_coord_3(){
-  RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
+  RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor);
   if(result.success) {
       
       uint32_t curMillis = millis();
@@ -162,7 +162,7 @@ void handleRanging_coord_3(){
 }
 
 void handleRanging_self_calibration() {  
-    RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
+    RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor);
     if(result.success) {
         uint32_t curMillis = millis();
         delay(4); // Tweak based on your hardware

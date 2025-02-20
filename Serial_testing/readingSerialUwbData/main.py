@@ -23,7 +23,7 @@ distance_between_anchors_and_anchors = {
     "CD": list(),
 } # key: anchor1, anchor2, value: distance 
 
-clean_distance_between_anchors_and_anchors =  {
+clean_avg_distance_between_anchors_and_anchors =  {
     "AB": list(),
     "AC": list(),
     "AD": list(),
@@ -32,7 +32,7 @@ clean_distance_between_anchors_and_anchors =  {
     "CD": list(),
 } 
 
-clean_distance_between_anchorABCD_and_anchorEFGH = {
+clean_avg_distance_between_anchorABCD_and_anchorEFGH = {
     "AE": list(),
     "AF": list(),
     "AG": list(),
@@ -57,9 +57,10 @@ setupcomplete = False
 # 清洗distance_between_anchors_and_anchors數據，刪掉離群值
 # https://medium.com/@prateekchauhan923/how-to-identify-and-remove-outliers-a-step-by-step-tutorial-with-python-738a103ae666
 # 四分位數 Z-score 標準差等 要選哪一種
-def clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors, clean_distance = clean_distance_between_anchors_and_anchors):
+def clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors, clean_distance = clean_avg_distance_between_anchors_and_anchors):
     for key in distance_between_anchors_and_anchors:
-        clean_distance[key] = quartile_and_average(distance_between_anchors_and_anchors[key])
+        if key in clean_distance:
+            clean_distance[key] = quartile_and_average(distance_between_anchors_and_anchors[key])
         
 def  quartile_and_average(data): # 四分位數？
     # remove 0 in data
@@ -68,7 +69,7 @@ def  quartile_and_average(data): # 四分位數？
         print("No data for this anchor pair.")
         return 0
     q1 = np.percentile(data, 25)
-    q3 = np.percentile(data, 75)
+    q3 = np.percentile(data, 75) 
     filtered_data = [d for d in data if q1 <= d <= q3]
     if len(filtered_data) == 0:
         print("No data for this anchor pair.")
@@ -170,10 +171,9 @@ class UWBdata(Position):
         return result
     
     def match_serial_data(self,serial_port,line):
-
+        data_pattern =  re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
         if state_machine.status == "build_coord_1":
             if self.EUI == "00:01":
-                data_pattern =  re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
                 match = data_pattern.search(line)
                 print(f"{serial_port}: {line}")
                 if match:
@@ -196,7 +196,6 @@ class UWBdata(Position):
 
         elif state_machine.status == "built_coord_2":
             if self.EUI == "00:01":
-                data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
                 match = data_pattern.search(line)
                 print(f"{serial_port}: {line}")
                 if match:
@@ -217,7 +216,6 @@ class UWBdata(Position):
 
             elif self.EUI == "00:02":
                 # todo: store dBC, dBD
-                data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
                 match = data_pattern.search(line)
                 print(f"{serial_port}: {line}")
                 if match:
@@ -236,7 +234,6 @@ class UWBdata(Position):
 
         elif state_machine.status == "built_coord_3":
             if self.EUI == "00:01":
-                data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
                 match = data_pattern.search(line)
                 print(f"{serial_port}: {line}")
                 if match:
@@ -256,7 +253,6 @@ class UWBdata(Position):
                         distance_between_anchors_and_anchors["AD"].append(range_m)     
 
             elif self.EUI == "00:02":
-                data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
                 match = data_pattern.search(line)
                 print(f"{serial_port}: {line}")
                 if match:
@@ -275,7 +271,6 @@ class UWBdata(Position):
 
             elif self.EUI == "00:03":
                 # todo: store dCD
-                data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
                 match = data_pattern.search(line)
                 print(f"{serial_port}: {line}")
                 if match:
@@ -292,8 +287,7 @@ class UWBdata(Position):
 
         elif state_machine.status == "self_calibration":
             
-            #TODO: store dAE, dAF, dAG, dAH
-            data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
+
             match = data_pattern.search(line)
             print(f"{serial_port}: {line}")
             if match:
@@ -303,26 +297,56 @@ class UWBdata(Position):
                 anchor_key = f"{match.group(4)}:{match.group(5)}"
                 timestamp = time.time()
                 # print("Matched!")
-                print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
+                # print(f"Range: {range_m} m, Power: {power} dBm, From: {from_address}, Anchor: {anchor_key}")
                 if self.EUI == "00:01":
                     self_anchor = "A"
+                        
+                    if from_address == "50":
+                        distance_between_anchors_and_anchors["AE"].append(range_m)
+                    elif from_address == "60":
+                        distance_between_anchors_and_anchors["AF"].append(range_m)
+                    elif from_address == "70":
+                        distance_between_anchors_and_anchors["AG"].append(range_m)
+                    elif from_address == "80":
+                        distance_between_anchors_and_anchors["AH"].append(range_m)
+
                 elif self.EUI == "00:02":
                     self_anchor = "B"
+
+                    if from_address == "50":
+                        distance_between_anchors_and_anchors["BE"].append(range_m)
+                    elif from_address == "60":
+                        distance_between_anchors_and_anchors["BF"].append(range_m)
+                    elif from_address == "70":
+                        distance_between_anchors_and_anchors["BG"].append(range_m)
+                    elif from_address == "80":
+                        distance_between_anchors_and_anchors["BH"].append(range_m)
+
+
                 elif self.EUI == "00:03":
                     self_anchor = "C"
+                    if from_address == "50":
+                        distance_between_anchors_and_anchors["CE"].append(range_m)
+                    elif from_address == "60":
+                        distance_between_anchors_and_anchors["CF"].append(range_m)
+                    elif from_address == "70":
+                        distance_between_anchors_and_anchors["CG"].append(range_m)
+                    elif from_address == "80":
+                        distance_between_anchors_and_anchors["CH"].append(range_m)
+
+
                 elif self.EUI == "00:04":
                     self_anchor = "D"
+                    
+                    if from_address == "50":
+                        distance_between_anchors_and_anchors["DE"].append(range_m)
+                    elif from_address == "60":
+                        distance_between_anchors_and_anchors["DF"].append(range_m)
+                    elif from_address == "70":
+                        distance_between_anchors_and_anchors["DG"].append(range_m)
+                    elif from_address == "80":
+                        distance_between_anchors_and_anchors["DH"].append(range_m)
 
-                if from_address == "50":
-                    distance_between_anchors_and_anchors["AE"].append(range_m)
-                elif from_address == "60":
-                    distance_between_anchors_and_anchors["AF"].append(range_m)
-                elif from_address == "70":
-                    distance_between_anchors_and_anchors["AG"].append(range_m)
-                elif from_address == "80":
-                    distance_between_anchors_and_anchors["AH"].append(range_m)
-
-                # TODO: 補上 dBE, dBF, dBG, dBH, dCE, dCF, dCG, dCH ......
             
 def gps_solve(distances_to_station, stations_coordinates): #https://github.com/glucee/Multilateration/blob/master/Python/example.py
     """多邊定位算法 若有
@@ -400,20 +424,23 @@ def multilateration_for_self_calibration(anchor_list, distance_between_anchors_a
     """計算最新的 3D 位置"""
     # print("enter multilateration without lock")
     with lock:  # 確保多執行緒安全存取
-        clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors, clean_distance_between_anchorABCD_and_anchorEFGH) # TODO check if this function is compatible
+        clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors, clean_avg_distance_between_anchorABCD_and_anchorEFGH) 
+        print("clean distance: ",clean_avg_distance_between_anchorABCD_and_anchorEFGH)
 
         # TODO 
         # tag_distances_to_anchor -> key: anchorEFGH(), value:{anchorABCD: pooled_range}
-        tag_distances_to_anchor = {} #key: tag, value: {anchor_EUI: pooled_range}，pooled_range 可能為 None
+        tag_distances_to_anchor = {
+            "00:05": {},
+            "00:06": {},
+            "00:07": {},
+            "00:08": {},
+        } #key: tag a.k.a anchorEFGH()‘s EUI, value: {anchor_EUI: pooled_range}，pooled_range 可能為 None
         # for i in range(4):
-        for distance in distance_between_anchors_and_anchors:
-           for i in range(4):
-               if chr(69 + i) in distance:
-                    if tag_distances_to_anchor[chr(69 + i)] == None:
-                        tag_distances_to_anchor[chr(69 + i)] = {}
-                    tag_distances_to_anchor[chr(69 + i)][f"00:0{int(distance[0])-64}"] = clean_distance_between_anchorABCD_and_anchorEFGH[distance]
+        for distance in clean_avg_distance_between_anchorABCD_and_anchorEFGH:
+            tag_distances_to_anchor[f"00:0{int(distance[-1]-64)}"][f"00:0{int(distance[0])-64}"] = clean_avg_distance_between_anchorABCD_and_anchorEFGH[distance]
         
         print("anchorEFH distances to anchor: ",tag_distances_to_anchor)
+
     """ 革命尚未成功 同志仍需努力"""
     tag_pos = {}
     copytag_distances_to_anchor = copy.deepcopy(tag_distances_to_anchor)
@@ -426,12 +453,11 @@ def multilateration_for_self_calibration(anchor_list, distance_between_anchors_a
         tag_pos[tag] = Position(*gps_solve(list(copytag_distances_to_anchor[tag].values()), anchor_locations))
         print(f"Tag {tag} position: {tag_pos[tag]}")
 
-    
-    # set anchor EFGH's x, y, z
-    anchor_list[4].setXYZ(tag_pos[tag][0], tag_pos[tag][1], tag_pos[tag][2])
-    anchor_list[5].setXYZ(tag_pos[tag][0], tag_pos[tag][1], tag_pos[tag][2])
-    anchor_list[6].setXYZ(tag_pos[tag][0], tag_pos[tag][1], tag_pos[tag][2])
-    anchor_list[7].setXYZ(tag_pos[tag][0], tag_pos[tag][1], tag_pos[tag][2])
+        # set anchor EFGH's x, y, z
+        anchor_list[4].setXYZ(tag_pos[tag][0], tag_pos[tag][1], tag_pos[tag][2])
+        anchor_list[5].setXYZ(tag_pos[tag][0], tag_pos[tag][1], tag_pos[tag][2])
+        anchor_list[6].setXYZ(tag_pos[tag][0], tag_pos[tag][1], tag_pos[tag][2])
+        anchor_list[7].setXYZ(tag_pos[tag][0], tag_pos[tag][1], tag_pos[tag][2])
 
 
 
@@ -520,8 +546,8 @@ def handle_serial_data(serial_port, data_pattern, anchor_list, ser):
                     state_machine.status = "self_calibration"
                     print(distance_between_anchors_and_anchors)
                     clean_distance_between_anchors_and_anchors_data(distance_between_anchors_and_anchors)
-                    print("clean distance: ",clean_distance_between_anchors_and_anchors)
-                    X = build_3D_coord.build_3D_coord(clean_distance_between_anchors_and_anchors)
+                    print("clean distance: ",clean_avg_distance_between_anchors_and_anchors)
+                    X = build_3D_coord.build_3D_coord(clean_avg_distance_between_anchors_and_anchors)
                     anchor_list[0].setXYZ(X[0][0], X[0][1], X[0][2])
                     anchor_list[1].setXYZ(X[1][0], X[1][1], X[1][2])
                     anchor_list[2].setXYZ(X[2][0], X[2][1], X[2][2])
@@ -556,6 +582,8 @@ def output_to_serial_ports(selected_ports, message, opened_serial_port):
 def all_lengths_greater_than_20(distance_between_anchors_and_anchors):
     return all(len(distance_between_anchors_and_anchors[key]) > 20 for key in distance_between_anchors_and_anchors)
 
+def anchorE_lengths_greater_than_20(distance_between_anchors_and_anchors):
+    return len(distance_between_anchors_and_anchors["AE"]) > 20 and len(distance_between_anchors_and_anchors["BE"]) > 20 and len(distance_between_anchors_and_anchors["CE"]) > 20 and len(distance_between_anchors_and_anchors["DE"]) > 20 
 
 def processing_thread(anchor_list, multilateration_file, ser, selected_ports, output_folder="."):
     """每 0.1 秒處理一次數據並計算位置"""
@@ -576,7 +604,7 @@ def processing_thread(anchor_list, multilateration_file, ser, selected_ports, ou
             targetstate = 'f'
             multilateration(anchor_list, multilateration_file)
 
-        elif state_machine.status == "self_calibration" and all_lengths_greater_than_20(distance_between_anchors_and_anchors) and enterself:
+        elif state_machine.status == "self_calibration" and anchorE_lengths_greater_than_20(distance_between_anchors_and_anchors) and enterself: # anchorE_lengths_greater_than_20 應該要改成 all_lengths_greater_than_20(distance_between_anchors_and_anchors)
             # time.sleep(0.1)
             # TODO self_calibration to flying
    
@@ -683,9 +711,25 @@ def main():
         csv_writer.writerow(["CD"])
         for i in distance_between_anchors_and_anchors["CD"]:
             csv_writer.writerow([i])
-    print("clean distance:",clean_distance_between_anchors_and_anchors)
+
+        csv_writer.writerow(["AE"])
+        for i in distance_between_anchors_and_anchors["AE"]:
+            csv_writer.writerow([i])
+        csv_writer.writerow(["BE"])
+        for i in distance_between_anchors_and_anchors["BE"]:
+            csv_writer.writerow([i])
+        csv_writer.writerow(["CE"]) 
+        for i in distance_between_anchors_and_anchors["CE"]:
+            csv_writer.writerow([i])
+        csv_writer.writerow(["DE"])
+        for i in distance_between_anchors_and_anchors["DE"]:
+            csv_writer.writerow([i])
+
+    print("clean distance:",clean_avg_distance_between_anchors_and_anchors)
     print("position")
     print((anchor.x, anchor.y, anchor.z) for anchor in anchor_list) 
+
+    # print("all distance: ", distance_between_anchors_and_anchors)
 
 if __name__ == "__main__":
     main()
