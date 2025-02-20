@@ -52,7 +52,8 @@ clean_avg_distance_between_anchorABCD_and_anchorEFGH = {
 }
 
 ports_list = list(serial.tools.list_ports.comports())
-setupcomplete = False
+setupcomplete = False 
+"""確保selected_ports的serial port已經設定完成"""
 
 # 清洗distance_between_anchors_and_anchors數據，刪掉離群值
 # https://medium.com/@prateekchauhan923/how-to-identify-and-remove-outliers-a-step-by-step-tutorial-with-python-738a103ae666
@@ -146,8 +147,11 @@ class UWBdata(Position):
     def get_pooled_distances(self) -> dict:  # key: tag, value: avg_distance
         """回傳平均距離且濾除第一四分位數與第三四分位數以外的數據
         如果 2 秒內，該 tag 沒有新數據，則使用上一次的數據
-        如果 2 秒後該 tag 還沒有新數據，則回傳 None
+        如果 2 秒後該 tag 還沒有新數據，則回傳 None 踢掉0的數據
+        
+        如果其中一個anchor壞掉了, 就不找他的距離
         """
+        """anchor_list裡的bool設true"""
         result = {}
         for tag, data in self.uwb_distance_data.items():
             if data:
@@ -161,16 +165,24 @@ class UWBdata(Position):
                     result[tag] = avg_distance
                     print(f"Filtered data for {tag}, avg: {avg_distance}")
                     self.previous_pooled_data[tag][0] = avg_distance
-                    self.previous_pooled_data[tag][1] = datetime.now().timestamp()            
+                    self.previous_pooled_data[tag][1] = datetime.now().timestamp()   
+                             
                 elif datetime.now().timestamp() - self.previous_pooled_data[tag][1] <= 10:  # 如果 2 秒內沒有新數據，則使用上一次的數據
+                    """中間隔多久存constant調整"""
                     print(f"No data for {tag}, using previous data.")
                     result[tag] = self.previous_pooled_data[tag][0] 
                 else:
                     print(f"No data for {tag} for more than 2 seconds.")
-                    result[tag] = None          
+                    result[tag] = None  
+                    """anchor_list裡的boolg設定false"""
+                    
+                    
+        """回傳一格距離資料及距離平均值"""           
         return result
     
     def match_serial_data(self,serial_port,line):
+        
+        """每個anchor做不一樣的工作, buid_coord 1,2,3 到self calibration"""
         data_pattern =  re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
         if state_machine.status == "build_coord_1":
             if self.EUI == "00:01":
@@ -377,27 +389,35 @@ def gps_solve(distances_to_station, stations_coordinates): #https://github.com/g
     return minimize(error, x0, args=(stations_coordinates, distances_to_station), method='Nelder-Mead').x
 
 def multilateration(anchor_list, multilateration_file):
+    
+    """anchor list len=8"""
     """計算最新的 3D 位置"""
     # print("enter multilateration without lock")
     with lock:  # 確保多執行緒安全存取
         # 取得每個 tag 與每個anchor的距離。假設我想要tag1的位置，我需要anchor1, anchor2, anchor3的距離
         # print("enter multilateration")
+        """distances儲存乾淨資料"""
         distances = {anchor.EUI: (anchor.get_pooled_distances()) for anchor in anchor_list} #key: anchor, value: {tag: avg_distance}，avg_distance 可能為 None
         tag_distances_to_anchor = {} #key: tag, value: {anchor_EUI: pooled_range}，pooled_range 可能為 None
+        """改變資料儲存的格式,以符合gps_solve的格式"""
         for anchor_EUI in distances:
+    
             for tag, pooled_range in distances[anchor_EUI].items():
                 if tag not in tag_distances_to_anchor:
                     tag_distances_to_anchor[tag] = {}
                 tag_distances_to_anchor[tag][anchor_EUI] = pooled_range 
+                
         print("distances: ",distances)
     
-    tag_pos = {}
+    tag_pos = {} #key: tag, value: Position(x, y, z)
     copytag_distances_to_anchor = copy.deepcopy(tag_distances_to_anchor)
     print(tag_distances_to_anchor)
     for tag in tag_distances_to_anchor:
+        """在anchor_list儲存一個bool"""
         # todo: we need more anchor locations such as anchorEFGH
         anchor_locations = list(np.array([[anchor_list[0].x,anchor_list[0].y,anchor_list[0].z],[anchor_list[1].x, anchor_list[1].y, anchor_list[1].z],[anchor_list[2].x, anchor_list[2].y, anchor_list[2].z],[anchor_list[3].x, anchor_list[3].y, anchor_list[3].z]]))
         for anchor_EUI in tag_distances_to_anchor[tag]:
+            """移除none的資料"""
             if tag_distances_to_anchor[tag][anchor_EUI] == None:
                 # anchor_locations without the anchor with None distance
                 anchor_locations.remove(anchor_locations[int(anchor_EUI[-1])-1])
@@ -406,6 +426,7 @@ def multilateration(anchor_list, multilateration_file):
         print("tag_distances_to_anchor: ",tag_distances_to_anchor)
         print("list tag_distances_to_anchor: ",tag_distances_to_anchor[tag].values())
         if len(tag_distances_to_anchor[tag]) <= 3:
+            """如果少於3個距離，就不做multilateration,能不能用drone 自身sensorIMU來計算當下的位置(斷掉前+斷掉後移動距離)"""
             print(f"Tag {tag} has less than 3 distances. Skipping multilateration.")
             print("Len(tag_distances_to_anchor[tag]): ",len(tag_distances_to_anchor[tag]))
         else :
@@ -442,7 +463,7 @@ def multilateration_for_self_calibration(anchor_list, distance_between_anchors_a
         print("anchorEFH distances to anchor: ",tag_distances_to_anchor)
 
     """ 革命尚未成功 同志仍需努力"""
-    tag_pos = {}
+    tag_pos = {} #key: tag, value: Position(x, y, z) 
     copytag_distances_to_anchor = copy.deepcopy(tag_distances_to_anchor)
 
     for tag in tag_distances_to_anchor:
@@ -473,9 +494,9 @@ def handle_serial_data(serial_port, data_pattern, anchor_list, ser):
                 # print(f"no line {serial_port}")
                 line = ser.readline().decode('utf-8').strip()
             # print(f"line {serial_port}: ", line)
-            if line:
-                global setupcomplete
-                setupcomplete = True
+            if line: 
+                global setupcomplete 
+                setupcomplete = True 
                 if not anchor_find:
                     if "00:01" in line:
                         anchor_find = True
@@ -597,14 +618,18 @@ def processing_thread(anchor_list, multilateration_file, ser, selected_ports, ou
             output_to_serial_ports(selected_ports, targetstate, ser)
         print("len(distance_between_anchors_and_anchors[AB]): ",len(distance_between_anchors_and_anchors["AB"]))
         print(f"target state: {targetstate}")
-        time.sleep(1)
+        time.sleep(1) 
+        """這是不是測試用的"""
         if state_machine.status == "flying" and enterflying:
             # time.sleep(0.1) 
             # print("multilateration")
             targetstate = 'f'
             multilateration(anchor_list, multilateration_file)
+            
+            
 
         elif state_machine.status == "self_calibration" and anchorE_lengths_greater_than_20(distance_between_anchors_and_anchors) and enterself: # anchorE_lengths_greater_than_20 應該要改成 all_lengths_greater_than_20(distance_between_anchors_and_anchors)
+            """確認全部e,f,g,h資料量都夠了"""
             # time.sleep(0.1)
             # TODO self_calibration to flying
    
@@ -616,6 +641,7 @@ def processing_thread(anchor_list, multilateration_file, ser, selected_ports, ou
 
 
         elif len(distance_between_anchors_and_anchors["AD"]) >20 and len(distance_between_anchors_and_anchors["BD"]) >20 and len(distance_between_anchors_and_anchors["CD"]) >20 and not enterflying and not enterself:
+            """為了calibration收集資料"""
             targetstate = 's'    
             enterself = True
             #TODO self_calibration to flying
@@ -633,8 +659,10 @@ def processing_thread(anchor_list, multilateration_file, ser, selected_ports, ou
 
 
         elif len(distance_between_anchors_and_anchors["AC"]) >20 and len(distance_between_anchors_and_anchors["BC"]) >20 and not enterflying:
+            """資料收集購的時候改變狀態, 資料量存constant"""
             targetstate = '3'
         elif len(distance_between_anchors_and_anchors["AB"]) >20 and not enterflying:
+            """資料收集購的時候改變狀態,資料量存constant"""
             targetstate = '2'
 
 
@@ -646,6 +674,7 @@ def main():
     output_folder = r".\output"
     start_main_timestamp = datetime.now().strftime("%Y-%m-%d %H-%M-%S.%f")
     multilateration_file = os.path.join(output_folder, f"multilateration_results_{start_main_timestamp}.csv")
+    """儲存multilateration 結果的 CSV 檔案,解算tag完的結果 """
 
     os.makedirs(output_folder, exist_ok=True)
     
@@ -665,7 +694,7 @@ def main():
         UWBdata(0, 0, 0, "00:03", "AnchorC", output_folder),
         UWBdata(0, 0, 0, "00:04", "AnchorD", output_folder),
     ]
-
+    """最後要存建立起的x,y,z座標"""
     if not ports_list:
         print("No serial ports found.")
         return
