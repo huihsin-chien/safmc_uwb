@@ -15,7 +15,7 @@ import time
 import os
 import csv
 
-# 用於統計上排除極值
+# 用於統計上排除極值、與 3D 定位
 import numpy as np
 from typing import Optional, Tuple
 
@@ -32,8 +32,35 @@ range_data_regexp = re.compile(
 sample_rate_data_regexp = re.compile(
     r'Sampling\srate\sof\s{2}Anchor[A-H]:\s(-?\d*\.\d*|-?\binf\b)Hz\s{4}Anchor:(\d{2}:\d{2})')
 
+# 多點定位算法
+# ref: https://github.com/glucee/Multilateration/blob/master/Python/example.py
+def gps_solve(distances_to_station: dict[str, dict[str, float]], stations_coordinates: list[np.array]) -> np.array or None:
+    """多邊定位算法 若有
+    :param distances_to_station: dict, key: tag, value: {anchor_EUI: pooled_range}
+    :param stations_coordinates: list, list of anchor coordinates
+    
+    """
+    def error(x, c, r):
+        return sum([(np.linalg.norm(x - c[i]) - r[i]) ** 2 for i in range(min(len(c), len(r)))])
 
-# 由於……所以我們需要一個狀態機
+    l = len(stations_coordinates)
+    S = sum(distances_to_station)
+
+    # 為初始推測計算權重
+    W = []
+    if all(S - w != 0 for w in distances_to_station) :
+        W = [((l - 1) * S) / (S - w ) for w in distances_to_station]
+    else :
+        print("Error: Only one distance provided")
+        return None
+        
+    # get initial guess of point location
+    Length = len(W)
+    x0 = sum([W[i] * stations_coordinates[i] for i in range(Length)])
+    # optimize distance from signal origin to border of spheres
+    return minimize(error, x0, args=(stations_coordinates, distances_to_station), method='Nelder-Mead').x
+
+# 由於要同步 UWB 與 Mediator 之間的程式進度，所以我們需要一個狀態機
 class stateMachine:
     def __init__(self):
         self.status = "built_coord_1"
@@ -164,6 +191,9 @@ class UWBDataMatrix:
         # - 完善定位算法
         # - `self.tags[tag_eui].coordinate = [x, y, z]`
         # - 如果 SAVE_DATA，則儲存結果到 CSV 檔案
+
+                
+    
 
     # 更新 Anchor Sample Rate
     def update_anchor_sample_rate(self, anchor_eui: str, sample_rate: float) -> None:
