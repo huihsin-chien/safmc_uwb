@@ -4,7 +4,6 @@
 // Extended Unique Identifier register. 64-bit device identifier. Register file: 0x01
 char EUI[] = "AA:BB:CC:DD:EE:FF:00:03"; 
 uint16_t next_anchor = 4;
-byte currentTagShortaddress[2];
 // ranging counter (per second)
 uint16_t successRangingCount[8] = {0};
 uint32_t rangingCountPeriod = 0;
@@ -16,7 +15,6 @@ uint16_t self_device_address = 3;
 double range_self;
 
 
-byte currentTagEUI[8]; // Array to store the tag's EUI (8 bytes)
 
 void handleRanging_coord_3();
 void handleRanging_self_calibration();
@@ -133,7 +131,6 @@ void handleRanging_coord_3(){
       size_t recv_len = DW1000Ng::getReceivedDataLength();
       byte recv_data[recv_len];
       DW1000Ng::getReceivedData(recv_data, recv_len);
-      memcpy(currentTagShortaddress, &recv_data[7], 2); // EUI starts at position 2 (assuming EUI is 8 bytes long)
       if ( recv_data[7] == 0x04 && recv_data[8] == 0x00){
           successRangingCount[1]++;}
       else{
@@ -172,9 +169,7 @@ void handleRanging_self_calibration() {
         size_t recv_len = DW1000Ng::getReceivedDataLength();
         byte recv_data[recv_len];
         DW1000Ng::getReceivedData(recv_data, recv_len);
-        // memcpy(currentTagShortAddress, &recv_data[16], 2); // position: see void transmitRangingInitiation(byte tag_eui[], byte tag_short_address[]);
-        memcpy(currentTagEUI, &recv_data[2], 8); // EUI starts at position 2 (assuming EUI is 8 bytes long)
-        memcpy(currentTagShortaddress, &recv_data[2], 2);
+       
         if ( recv_data[7] == 0x05 && recv_data[8] == 0x00){
             successRangingCount[4]++;
         }else if (recv_data[7] == 0x06 && recv_data[8] == 0x00){
@@ -216,8 +211,6 @@ void handleRanging_self_calibration() {
                 successRangingCount[i] = 0;
             }
         }
-
-
     }
 }
 
@@ -232,9 +225,6 @@ void ranging_flying() {
         size_t recv_len = DW1000Ng::getReceivedDataLength();
         byte recv_data[recv_len];
         DW1000Ng::getReceivedData(recv_data, recv_len);
-        // memcpy(currentTagShortAddress, &recv_data[16], 2); // position: see void transmitRangingInitiation(byte tag_eui[], byte tag_short_address[]);
-        // memcpy(currentTagEUI, &recv_data[2], 8); // EUI starts at position 2 (assuming EUI is 8 bytes long)
-        memcpy(currentTagShortaddress, &recv_data[7], 2);
    
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
         rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
