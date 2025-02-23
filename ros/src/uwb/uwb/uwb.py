@@ -3,6 +3,7 @@ import rclpy
 from rclpy.node import Node
 from rclpy.qos import QoSDurabilityPolicy, QoSHistoryPolicy, QoSProfile, QoSReliabilityPolicy
 from uwb_msgs.msg import TagPosition # 自定義的 ROS2 Message
+import serial.tools.list_ports
 
 # 用於透過 USB 讀取 UWB Anchor，與截取資訊
 import serial
@@ -18,13 +19,13 @@ import csv
 # 用於統計上排除極值、與 3D 定位
 import numpy as np
 from typing import Optional, Tuple
-from build_3D_coord import build_3D_coord
+from .build_3D_coord import build_3D_coord
 
 # 用於多點定位
-from scipy import minimize
+from scipy.optimize import minimize
 
 # 一些設定
-SAVE_DATA = False # 是否儲存 UWB 設備的位置資訊用於 debug
+SAVE_DATA = True # 是否儲存 UWB 設備的位置資訊用於 debug
 DATA_FOLDER = os.path.join(os.getcwd(), "output") # 儲存資料的資料夾
 
 # 為了幾乎沒有的效能差異，我們預先編譯正則表達式（Regular Expression）
@@ -214,7 +215,9 @@ class UWBPublisher(Node):
                 csv_writer.writerow(["timestamp", "x", "y", "z"]) # 標題
 
         # 開啟 Ports 用以讀取 UWB 設備
-        ports = [] # TODO 從 params.yaml 讀取 list(serial.tools.list_ports.comports())
+        print("Opening ports")
+        ports = list(serial.tools.list_ports.comports())
+        print(ports)
         for port in ports:
             self.opened_port=port
             serial_connection = serial.Serial(port, baudrate=9600, timeout=1)
@@ -327,7 +330,7 @@ class UWBPublisher(Node):
         return anchor.eui
     
     # 透過 USB Serial 廣播 target_state
-    def broadcast_target_state(self, port) -> None:
+    def broadcast_target_state(self) -> None:
         for serial_connection in self.serials:
             try:
                 serial_connection.write(f"{self.target_state}".encode('utf-8'))
