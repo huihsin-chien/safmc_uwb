@@ -1,0 +1,27 @@
+[1.651s] Invoking command in '/home/Judy/safmc_uwb/ros/src/uwb': PYTHONPATH=/home/Judy/safmc_uwb/ros/build/uwb/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/Judy/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/uwb build --build-base /home/Judy/safmc_uwb/ros/build/uwb/build install --record /home/Judy/safmc_uwb/ros/build/uwb/install.log --single-version-externally-managed install_data
+[2.042s] running egg_info
+[2.043s] writing ../../build/uwb/uwb.egg-info/PKG-INFO
+[2.044s] writing dependency_links to ../../build/uwb/uwb.egg-info/dependency_links.txt
+[2.044s] writing entry points to ../../build/uwb/uwb.egg-info/entry_points.txt
+[2.044s] writing requirements to ../../build/uwb/uwb.egg-info/requires.txt
+[2.045s] writing top-level names to ../../build/uwb/uwb.egg-info/top_level.txt
+[2.047s] reading manifest file '../../build/uwb/uwb.egg-info/SOURCES.txt'
+[2.048s] writing manifest file '../../build/uwb/uwb.egg-info/SOURCES.txt'
+[2.048s] running build
+[2.048s] running build_py
+[2.049s] running install
+[2.050s] running install_lib
+[2.052s] byte-compiling /home/Judy/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/uwb.py to uwb.cpython-310.pyc
+[2.053s]   File "/home/Judy/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/uwb.py", line 24
+[2.053s]     from scipy import minimizesudo apt update
+[2.053s]                                    ^^^
+[2.053s] SyntaxError: invalid syntax
+[2.053s] 
+[2.054s] running install_data
+[2.054s] running install_egg_info
+[2.055s] removing '/home/Judy/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb-0.0.0-py3.10.egg-info' (and everything under it)
+[2.056s] Copying ../../build/uwb/uwb.egg-info to /home/Judy/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb-0.0.0-py3.10.egg-info
+[2.059s] running install_scripts
+[2.089s] Installing uwb script to /home/Judy/safmc_uwb/ros/install/uwb/lib/uwb
+[2.090s] writing list of installed files to '/home/Judy/safmc_uwb/ros/build/uwb/install.log'
+[2.124s] Invoked command in '/home/Judy/safmc_uwb/ros/src/uwb' returned '0': PYTHONPATH=/home/Judy/safmc_uwb/ros/build/uwb/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/Judy/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/uwb build --build-base /home/Judy/safmc_uwb/ros/build/uwb/build install --record /home/Judy/safmc_uwb/ros/build/uwb/install.log --single-version-externally-managed install_data

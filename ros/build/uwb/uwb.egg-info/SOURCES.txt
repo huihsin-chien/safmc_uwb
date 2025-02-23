@@ -13,4 +13,7 @@ test/test_copyright.py
 test/test_flake8.py
 test/test_pep257.py
 uwb/__init__.py
+uwb/build_3D_coord.py
 uwb/uwb.py
+uwb/uwb_rewrite.py
+uwb/uwb_rewrite_2.py
