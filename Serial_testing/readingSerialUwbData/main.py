@@ -403,8 +403,18 @@ def multilateration(anchor_list, multilateration_file):
         for anchor_EUI in distances:
     
             for tag, pooled_range in distances[anchor_EUI].items():
-                if tag not in tag_distances_to_anchor:
-                    tag_distances_to_anchor[tag] = {}
+                def locate_tag(self, tag_eui) -> Tuple[float, float, float]:
+    tag_distances_to_anchor = {}
+
+    if tag_eui not in self.data:
+        return None  # Handle case where the tag is missing
+
+    tag_distances_to_anchor[tag_eui] = {}
+
+    for anchor_eui in self.data[tag_eui]:  # Get all anchors for this tag
+        avg_distance = self.get_distance(tag_eui, anchor_eui)  # Get cleaned distance
+
+        tag_distances_to_anchor[tag_eui][anchor_eui] = avg_distance
                 tag_distances_to_anchor[tag][anchor_EUI] = pooled_range 
                 
         print("distances: ",distances)
