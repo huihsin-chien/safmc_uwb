@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/Judy/safmc_uwb/ros/src/uwb_msgs
+CMAKE_SOURCE_DIR = /workspace/safmc_uwb/ros/src/uwb_msgs
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/Judy/safmc_uwb/ros/build/uwb_msgs
+CMAKE_BINARY_DIR = /workspace/safmc_uwb/ros/build/uwb_msgs
 
 # Utility rule file for uninstall.
 
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/Judy/safmc_uwb/ros/build/uwb_msgs && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/Judy/safmc_uwb/ros/src/uwb_msgs /home/Judy/safmc_uwb/ros/src/uwb_msgs /home/Judy/safmc_uwb/ros/build/uwb_msgs /home/Judy/safmc_uwb/ros/build/uwb_msgs /home/Judy/safmc_uwb/ros/build/uwb_msgs/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /workspace/safmc_uwb/ros/build/uwb_msgs && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /workspace/safmc_uwb/ros/src/uwb_msgs /workspace/safmc_uwb/ros/src/uwb_msgs /workspace/safmc_uwb/ros/build/uwb_msgs /workspace/safmc_uwb/ros/build/uwb_msgs /workspace/safmc_uwb/ros/build/uwb_msgs/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

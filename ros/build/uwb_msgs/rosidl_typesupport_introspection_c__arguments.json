@@ -1,11 +1,11 @@
 {
   "package_name": "uwb_msgs",
-  "output_dir": "/home/Judy/safmc_uwb/ros/build/uwb_msgs/rosidl_typesupport_introspection_c/uwb_msgs",
+  "output_dir": "/workspace/safmc_uwb/ros/build/uwb_msgs/rosidl_typesupport_introspection_c/uwb_msgs",
   "template_dir": "/opt/ros/humble/share/rosidl_typesupport_introspection_c/resource",
   "idl_tuples": [
-    "/home/Judy/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs:msg/Range.idl",
-    "/home/Judy/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs:msg/Pose.idl",
-    "/home/Judy/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs:msg/TagPosition.idl"
+    "/workspace/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs:msg/Range.idl",
+    "/workspace/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs:msg/Pose.idl",
+    "/workspace/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs:msg/TagPosition.idl"
   ],
   "ros_interface_dependencies": [
     "geometry_msgs:/opt/ros/humble/share/geometry_msgs/msg/Accel.idl",
@@ -78,9 +78,9 @@
     "/opt/ros/humble/share/rosidl_typesupport_introspection_c/resource/msg__type_support.c.em",
     "/opt/ros/humble/share/rosidl_typesupport_introspection_c/resource/srv__rosidl_typesupport_introspection_c.h.em",
     "/opt/ros/humble/share/rosidl_typesupport_introspection_c/resource/srv__type_support.c.em",
-    "/home/Judy/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs/msg/Range.idl",
-    "/home/Judy/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs/msg/Pose.idl",
-    "/home/Judy/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs/msg/TagPosition.idl",
+    "/workspace/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs/msg/Range.idl",
+    "/workspace/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs/msg/Pose.idl",
+    "/workspace/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs/msg/TagPosition.idl",
     "/opt/ros/humble/share/geometry_msgs/msg/Accel.idl",
     "/opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl",
     "/opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl",

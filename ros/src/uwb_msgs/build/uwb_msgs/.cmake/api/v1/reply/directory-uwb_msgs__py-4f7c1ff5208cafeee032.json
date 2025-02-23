@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "uwb_msgs__py",
+		"source" : "build/uwb_msgs/uwb_msgs__py"
+	}
+}

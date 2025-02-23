@@ -1,6 +1,6 @@
 # CMake generated Testfile for 
-# Source directory: /home/Judy/safmc_uwb/ros/build/uwb_msgs/uwb_msgs__py
-# Build directory: /home/Judy/safmc_uwb/ros/build/uwb_msgs/uwb_msgs__py
+# Source directory: /workspace/safmc_uwb/ros/build/uwb_msgs/uwb_msgs__py
+# Build directory: /workspace/safmc_uwb/ros/build/uwb_msgs/uwb_msgs__py
 # 
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.

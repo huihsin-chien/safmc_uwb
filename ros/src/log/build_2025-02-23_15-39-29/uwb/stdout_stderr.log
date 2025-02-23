@@ -1,0 +1,44 @@
+running egg_info
+creating ../build/uwb/uwb.egg-info
+writing ../build/uwb/uwb.egg-info/PKG-INFO
+writing dependency_links to ../build/uwb/uwb.egg-info/dependency_links.txt
+writing entry points to ../build/uwb/uwb.egg-info/entry_points.txt
+writing requirements to ../build/uwb/uwb.egg-info/requires.txt
+writing top-level names to ../build/uwb/uwb.egg-info/top_level.txt
+writing manifest file '../build/uwb/uwb.egg-info/SOURCES.txt'
+reading manifest file '../build/uwb/uwb.egg-info/SOURCES.txt'
+writing manifest file '../build/uwb/uwb.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /workspace/safmc_uwb/ros/src/build/uwb/build
+creating /workspace/safmc_uwb/ros/src/build/uwb/build/lib
+creating /workspace/safmc_uwb/ros/src/build/uwb/build/lib/uwb
+copying uwb/uwb.py -> /workspace/safmc_uwb/ros/src/build/uwb/build/lib/uwb
+copying uwb/build_3D_coord.py -> /workspace/safmc_uwb/ros/src/build/uwb/build/lib/uwb
+copying uwb/uwb_rewrite.py -> /workspace/safmc_uwb/ros/src/build/uwb/build/lib/uwb
+copying uwb/uwb_rewrite_2.py -> /workspace/safmc_uwb/ros/src/build/uwb/build/lib/uwb
+copying uwb/__init__.py -> /workspace/safmc_uwb/ros/src/build/uwb/build/lib/uwb
+running install
+running install_lib
+creating /workspace/safmc_uwb/ros/src/install/uwb/lib/python3.10/site-packages/uwb
+copying /workspace/safmc_uwb/ros/src/build/uwb/build/lib/uwb/uwb.py -> /workspace/safmc_uwb/ros/src/install/uwb/lib/python3.10/site-packages/uwb
+copying /workspace/safmc_uwb/ros/src/build/uwb/build/lib/uwb/build_3D_coord.py -> /workspace/safmc_uwb/ros/src/install/uwb/lib/python3.10/site-packages/uwb
+copying /workspace/safmc_uwb/ros/src/build/uwb/build/lib/uwb/uwb_rewrite.py -> /workspace/safmc_uwb/ros/src/install/uwb/lib/python3.10/site-packages/uwb
+copying /workspace/safmc_uwb/ros/src/build/uwb/build/lib/uwb/uwb_rewrite_2.py -> /workspace/safmc_uwb/ros/src/install/uwb/lib/python3.10/site-packages/uwb
+copying /workspace/safmc_uwb/ros/src/build/uwb/build/lib/uwb/__init__.py -> /workspace/safmc_uwb/ros/src/install/uwb/lib/python3.10/site-packages/uwb
+byte-compiling /workspace/safmc_uwb/ros/src/install/uwb/lib/python3.10/site-packages/uwb/uwb.py to uwb.cpython-310.pyc
+byte-compiling /workspace/safmc_uwb/ros/src/install/uwb/lib/python3.10/site-packages/uwb/build_3D_coord.py to build_3D_coord.cpython-310.pyc
+byte-compiling /workspace/safmc_uwb/ros/src/install/uwb/lib/python3.10/site-packages/uwb/uwb_rewrite.py to uwb_rewrite.cpython-310.pyc
+byte-compiling /workspace/safmc_uwb/ros/src/install/uwb/lib/python3.10/site-packages/uwb/uwb_rewrite_2.py to uwb_rewrite_2.cpython-310.pyc
+byte-compiling /workspace/safmc_uwb/ros/src/install/uwb/lib/python3.10/site-packages/uwb/__init__.py to __init__.cpython-310.pyc
+running install_data
+creating /workspace/safmc_uwb/ros/src/install/uwb/share/ament_index
+creating /workspace/safmc_uwb/ros/src/install/uwb/share/ament_index/resource_index
+creating /workspace/safmc_uwb/ros/src/install/uwb/share/ament_index/resource_index/packages
+copying resource/uwb -> /workspace/safmc_uwb/ros/src/install/uwb/share/ament_index/resource_index/packages
+copying package.xml -> /workspace/safmc_uwb/ros/src/install/uwb/share/uwb
+running install_egg_info
+Copying ../build/uwb/uwb.egg-info to /workspace/safmc_uwb/ros/src/install/uwb/lib/python3.10/site-packages/uwb-0.0.0-py3.10.egg-info
+running install_scripts
+Installing uwb script to /workspace/safmc_uwb/ros/src/install/uwb/lib/uwb
+writing list of installed files to '/workspace/safmc_uwb/ros/src/build/uwb/install.log'

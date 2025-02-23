@@ -1,8 +1,8 @@
-# Install script for directory: /home/Judy/safmc_uwb/ros/build/uwb_msgs/uwb_msgs__py
+# Install script for directory: /workspace/safmc_uwb/ros/build/uwb_msgs/uwb_msgs__py
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/Judy/safmc_uwb/ros/install/uwb_msgs")
+  set(CMAKE_INSTALL_PREFIX "/workspace/safmc_uwb/ros/install/uwb_msgs")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
