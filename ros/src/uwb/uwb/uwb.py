@@ -497,6 +497,7 @@ class UWBPublisher(Node):
             coordinate = self.uwb_data_matrix.locate_tag(tag_eui)
 
             if coordinate is None:
+                dbg(f"- no coordinate for {tag_eui}, skipping")
                 # dbg(f"- no coordinate for {tag_eui}, skipping")
                 # TODO: 試著用 (速度 * 時間 + 舊位置) 或其他 Sensor 估算
                 continue
