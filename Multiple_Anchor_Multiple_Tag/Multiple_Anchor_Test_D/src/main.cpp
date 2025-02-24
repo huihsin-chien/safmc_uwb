@@ -5,7 +5,6 @@
 char EUI[] = "AA:BB:CC:DD:EE:FF:00:04"; 
 uint16_t next_anchor = 5 ;
 
-byte currentTagShortaddress[2];
 // ranging counter (per second)
 uint16_t successRangingCount[8] = {0};
 uint32_t rangingCountPeriod = 0;
@@ -33,10 +32,10 @@ class StateMachine{
     void ranging(){
       switch(state){
         case State::built_coord_1:
-            tagTWR(blink_rate, &EUI[0]);               
-            break;
+          tagTWR(blink_rate, &EUI[0]);               
+          break;
         case State::built_coord_2:
-            tagTWR(blink_rate, &EUI[0]);
+          tagTWR(blink_rate, &EUI[0]);
           break;
         case State::built_coord_3:
           tagTWR(blink_rate, &EUI[0]);
@@ -137,7 +136,6 @@ void handleRanging_self_calibration(){
       size_t recv_len = DW1000Ng::getReceivedDataLength();
       byte recv_data[recv_len];
       DW1000Ng::getReceivedData(recv_data, recv_len);
-      memcpy(currentTagShortaddress, &recv_data[7], 2); // EUI starts at position 2 (assuming EUI is 8 bytes long)
       if ( recv_data[7] == 0x05 && recv_data[8] == 0x00){ // recieved Anchor E's blink
           successRangingCount[4]++;
       }else if (recv_data[7] == 0x06 && recv_data[8] == 0x00){
@@ -192,55 +190,51 @@ void handleRanging_self_calibration(){
 }
 
 
-
 void ranging_flying() {  
-    RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor);
-    if(result.success) {
-        uint32_t curMillis = millis();
-        delay(4); // Tweak based on your hardware
-        range_self = result.range;
+  RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
+  if(result.success) {
+      uint32_t curMillis = millis();
+      delay(2); // Tweak based on your hardware
+      range_self = result.range;
 
-        // Get the tag short address from the received data
-        size_t recv_len = DW1000Ng::getReceivedDataLength();
-        byte recv_data[recv_len];
-        DW1000Ng::getReceivedData(recv_data, recv_len);
-        // memcpy(currentTagShortAddress, &recv_data[16], 2); // position: see void transmitRangingInitiation(byte tag_eui[], byte tag_short_address[]);
-        memcpy(currentTagEUI, &recv_data[2], 8); // EUI starts at position 2 (assuming EUI is 8 bytes long)
-        memcpy(currentTagShortaddress, &recv_data[7], 2);
-   
-        String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-        rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
-        rangeString += recv_data[7]; rangeString += recv_data[8];
-        rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
-        Serial.println(rangeString);
-        if(recv_data[7] == 0x01 && recv_data[8] == 0x01){
-            successRangingCount[1]++;
-        }
-        else if ( recv_data[7] == 0x02 && recv_data[8] == 0x02){
-            successRangingCount[2]++;
-        }
-        else if ( recv_data[7] == 0x03 && recv_data[8] == 0x03){
-            successRangingCount[3]++;
-        }
-        if (curMillis - rangingCountPeriod > 1000) {
-            
-            samplingRate = (1000.0f * successRangingCount[1]) / (curMillis - rangingCountPeriod);
-            Serial.print("Sampling rate 1: "); Serial.print(samplingRate); Serial.println(" Hz");
-            samplingRate = (1000.0f * successRangingCount[2]) / (curMillis - rangingCountPeriod);
-            Serial.print("Sampling rate 2: "); Serial.print(samplingRate); Serial.println(" Hz");
-            samplingRate = (1000.0f * successRangingCount[3]) / (curMillis - rangingCountPeriod);
-            Serial.print("Sampling rate 3: "); Serial.print(samplingRate); Serial.println(" Hz");
-            rangingCountPeriod = curMillis;
-            successRangingCount[1] = 0;
-            successRangingCount[2] = 0;
-            successRangingCount[3] = 0;
+      // Get the tag short address from the received data
+      size_t recv_len = DW1000Ng::getReceivedDataLength();
+      byte recv_data[recv_len];
+      DW1000Ng::getReceivedData(recv_data, recv_len);
+ 
+      String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
+      rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
+      rangeString += recv_data[7]; rangeString += recv_data[8];
+      rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
+      Serial.println(rangeString);
+      if(recv_data[7] == 0x01 && recv_data[8] == 0x01){
+          successRangingCount[1]++;
+      }
+      else if ( recv_data[7] == 0x02 && recv_data[8] == 0x02){
+          successRangingCount[2]++;
+      }
+      else if ( recv_data[7] == 0x03 && recv_data[8] == 0x03){
+          successRangingCount[3]++;
+      }
+      if (curMillis - rangingCountPeriod > 1000) {
+          
+          samplingRate = (1000.0f * successRangingCount[1]) / (curMillis - rangingCountPeriod);
+          Serial.print("Sampling rate 1: "); Serial.print(samplingRate); Serial.println(" Hz");
+          samplingRate = (1000.0f * successRangingCount[2]) / (curMillis - rangingCountPeriod);
+          Serial.print("Sampling rate 2: "); Serial.print(samplingRate); Serial.println(" Hz");
+          samplingRate = (1000.0f * successRangingCount[3]) / (curMillis - rangingCountPeriod);
+          Serial.print("Sampling rate 3: "); Serial.print(samplingRate); Serial.println(" Hz");
+          rangingCountPeriod = curMillis;
+          successRangingCount[1] = 0;
+          successRangingCount[2] = 0;
+          successRangingCount[3] = 0;
 
-        }
+      }
 
 
-    } else {
-      Serial.println("Ranging failed");
-    }
+  }
+  else{
+      Serial.println("Ranging failed in flying state");
+  }
 }
-
 

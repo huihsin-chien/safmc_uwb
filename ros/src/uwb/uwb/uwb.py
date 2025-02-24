@@ -130,7 +130,7 @@ class UWBDataMatrix:
 
     # 將測量資訊加入資料庫
     def add_measurement(self, tag_eui: str, anchor_eui: str, distance: float) -> None:
-        dbg(f"- - - adding measurement from {tag_eui} to {anchor_eui}: {distance}m")
+        # dbg(f"- - - adding measurement from {tag_eui} to {anchor_eui}: {distance}m")
         if tag_eui not in self.data:
             # dbg(f"- - - no tag_eui {tag_eui} in data")
             return
@@ -246,7 +246,7 @@ class UWBPublisher(Node):
         # 開啟 Ports 用以讀取 UWB 設備
         ports = [port.device for port in serial.tools.list_ports.comports()]
         for port in ports:
-            serial_connection = serial.Serial(port, baudrate=9600, timeout=0.01)
+            serial_connection = serial.Serial(port, baudrate=9600, timeout=0.001)
             self.serials.append(serial_connection)
 
         dbg("ports are: ", ports)
@@ -254,8 +254,8 @@ class UWBPublisher(Node):
         # 指定 ROS Topic 的傳輸行為與品質（QoS, Quality of Service)
         qos_profile = QoSProfile(
             reliability=QoSReliabilityPolicy.BEST_EFFORT,   # 不保證傳輸成功
-            durability=QoSDurabilityPolicy.TRANSIENT_LOCAL, # 為後期加入的 Subscriber 保留資料
-            history=QoSHistoryPolicy.KEEP_LAST, depth=1     # 只保留最新的 depth (= 1) 筆資料
+            durability=QoSDurabilityPolicy.VOLATILE, # 為後期加入的 Subscriber 保留資料
+            history=QoSHistoryPolicy.KEEP_LAST, depth=10     # 只保留最新的 depth (= 1) 筆資料
         )
 
         # 定義 ROS Topic
@@ -297,7 +297,7 @@ class UWBPublisher(Node):
         # 用於判斷 tag-like anchors 到 anchors 之間的資料量已足夠
         def have_enough_data_between(tag_euis: list[str], anchor_euis: list[str]) -> bool:
             uwb_calibration_data_matrix.clear_outdated_measurements(tag_euis[0], anchor_euis[0])
-            dbg("- -", "\n- - ".join(f"from {tag_eui} to {anchor_eui}: {len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui])}" for tag_eui in tag_euis for anchor_eui in anchor_euis))
+            # dbg("- -", "\n- - ".join(f"from {tag_eui} to {anchor_eui}: {len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui])}" for tag_eui in tag_euis for anchor_eui in anchor_euis))
             return all(
                 len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui]) > 20
                 for tag_eui in tag_euis
@@ -323,12 +323,16 @@ class UWBPublisher(Node):
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:02", "00:03", "00:04"], ["00:01"]):
                 self.target_state = "2"
+                ## 假定 UWB Anchors 此時不會移動，故預先把距離資料儲存，以免稍後遭清除
+                for i in range(1, 4):
+                    distance_matrix[0][i] \
+                    = distance_matrix[i][0] \
+                    = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:01")
+                break
 
-        ## 假定 UWB Anchors 此時不會移動，故預先把距離資料儲存，以免稍後遭清除
-        for i in range(1, 4):
-            distance_matrix[0][i] \
-            = distance_matrix[i][0] \
-            = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:01")
+        while self.state == "built_coord_1":
+            self.broadcast_target_state()
+            self.read_serial(uwb_calibration_data_matrix)
         
         dbg("- built_coord_2")
 
@@ -338,11 +342,15 @@ class UWBPublisher(Node):
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:03", "00:04"], ["00:02"]):
                 self.target_state = "3"
-
-        for i in range(2, 4):
-            distance_matrix[1][i] \
-            = distance_matrix[i][1] \
-            = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:02")
+                for i in range(2, 4):
+                    distance_matrix[1][i] \
+                    = distance_matrix[i][1] \
+                    = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:02")
+                break
+        
+        while self.state == "built_coord_2":
+            self.broadcast_target_state()
+            self.read_serial(uwb_calibration_data_matrix)
             
         dbg("- built_coord_3")
 
@@ -352,13 +360,19 @@ class UWBPublisher(Node):
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:04"], ["00:03"]):
                 self.target_state = "s"
+                for i in range(3, 4):
+                    distance_matrix[2][i] \
+                    = distance_matrix[i][2] \
+                    = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:03")
+                break
         
-        for i in range(3, 4):
-            distance_matrix[2][i] \
-            = distance_matrix[i][2] \
-            = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:03")
-        
+        while self.state == "built_coord_3":
+            self.broadcast_target_state()
+            self.read_serial(uwb_calibration_data_matrix)
+
         dbg("- self_calibration")
+
+        dbg("distance_matrix is", distance_matrix)
 
         ## self_calibration 階段
         ### 設定 Anchor 00:01~00:04 座標
@@ -366,6 +380,8 @@ class UWBPublisher(Node):
         for i in range(4):
             self.anchors[i].update_coordinate(anchor_coords[i])
         self.target_state = "f"
+
+        dbg("anchor_coords are", anchor_coords)
 
         # while self.state == "self_calibration":
         #     self.broadcast_target_state()
@@ -408,6 +424,7 @@ class UWBPublisher(Node):
                 serial_connection.write(f"{self.target_state}".encode('utf-8'))
             except Exception as e:
                 print(f"Error sending message to {serial_connection.portstr}: {e}")
+        time.sleep(0.2) # 以免淹沒 Serial Port
 
     # 透過 USB Serial，讀取並儲存 UWB 裝置距離、採樣率、新狀態遷移
     def read_serial(self, uwb_data_matrix: UWBDataMatrix) -> None:
@@ -456,6 +473,8 @@ class UWBPublisher(Node):
                     for state in ["built_coord_1", "built_coord_2", "built_coord_3", "self_calibration", "flying"]:
                         if state in line:
                             self.state = state
+                    
+                    # dbg(f"- - - Read Serial: {line}")
     
     # 定期發佈 Tag 的位置
     def publish_tag_position(self) -> None:
@@ -467,12 +486,12 @@ class UWBPublisher(Node):
                 # TODO: 試著用 (速度 * 時間 + 舊位置) 或其他 Sensor 估算
                 continue
 
-            dbg(f"- coordinate for {tag_eui} is {coordinate}")
-
             msg = TagPosition()
             msg.eui = tag_eui
             msg.x, msg.y, msg.z = coordinate
             self.tag_position_publisher.publish(msg)
+
+            dbg(f"- coordinate for {tag_eui} is {coordinate}")
 
 # main 函數，僅在直接執行這個檔案時才執行
 def main(args=None):
