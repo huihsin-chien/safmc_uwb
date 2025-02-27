@@ -244,7 +244,7 @@ class UWBPublisher(Node):
         dbg("Opening Serial Ports")
 
         # 開啟 Ports 用以讀取 UWB 設備
-        ports = [port.device for port in serial.tools.list_ports.comports()]
+        ports = [port.device for port in serial.tools.list_ports.comports() if "ttyACM" in port.device]
         for port in ports:
             serial_connection = serial.Serial(port, baudrate=9600, timeout=0.001)
             self.serials.append(serial_connection)
@@ -288,7 +288,7 @@ class UWBPublisher(Node):
     # 進行 Self Calibration：取得 Calibration Data，建立 Coordinate 並設定 Anchors 座標
     def build_coord(self):
         uwb_calibration_data_matrix = UWBDataMatrix(
-            time_threshold=5, 
+            time_threshold=15, 
             anchors=self.anchors[0:4], 
             tags=self.anchors[1:4]     
                 # 在 Self Calibration 階段，Anchor 00:02~00:04 都可能暫時作為 Tag
@@ -299,7 +299,7 @@ class UWBPublisher(Node):
             uwb_calibration_data_matrix.clear_outdated_measurements(tag_euis[0], anchor_euis[0])
             dbg("- -", "\n- - ".join(f"from {tag_eui} to {anchor_eui}: {len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui])}" for tag_eui in tag_euis for anchor_eui in anchor_euis))
             return all(
-                len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui]) > 20
+                len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui]) > 60
                 for tag_eui in tag_euis
                 for anchor_eui in anchor_euis
             )
@@ -436,7 +436,8 @@ class UWBPublisher(Node):
     def broadcast_target_state(self) -> None:
         for serial_connection in self.serials:
             try: 
-                serial_connection.write(f"{self.target_state}".encode('utf-8'))
+                while serial_connection.write(f"{self.target_state * 10}".encode('utf-8')) <= 0:
+                    time.sleep(0.01)
             except Exception as e:
                 print(f"Error sending message to {serial_connection.portstr}: {e}")
         time.sleep(2) # 以免淹沒 Serial Port
@@ -444,7 +445,7 @@ class UWBPublisher(Node):
     # 透過 USB Serial，讀取並儲存 UWB 裝置距離、採樣率、新狀態遷移
     def read_serial(self, uwb_data_matrix: UWBDataMatrix) -> None:
         for serial_connection in self.serials: # 逐一讀取每個 Serial Port
-            dbg(f"- - - Reading from {serial_connection.portstr}")
+            # dbg(f"- - - Reading from {serial_connection.portstr}")
             try: 
                 lines = [line.decode("utf-8").strip() for line in serial_connection.readlines()]
             except Exception as e:
@@ -497,7 +498,7 @@ class UWBPublisher(Node):
             coordinate = self.uwb_data_matrix.locate_tag(tag_eui)
 
             if coordinate is None:
-                dbg(f"- no coordinate for {tag_eui}, skipping")
+                # dbg(f"- no coordinate for {tag_eui}, skipping")
                 # dbg(f"- no coordinate for {tag_eui}, skipping")
                 # TODO: 試著用 (速度 * 時間 + 舊位置) 或其他 Sensor 估算
                 continue
