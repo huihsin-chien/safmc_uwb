@@ -167,10 +167,16 @@ class UWBDataMatrix:
         q3 = np.percentile(distances, 75) if distances else float("inf")
         filtered_distances = [distance for distance in distances if q1 <= distance <= q3]
 
-        # TODO: 也許這裡需要修正固定偏差值，來修正系統誤差、提高準確度
+        # 資料不足提早離開
+        if len(filtered_distances) < 0:
+            return None
+
+        # 線性修正固定偏差值 & 縮放比例，來提高精準度
+        trimmed_mean = np.mean(filtered_distances)
+        estimated_real_distance = (trimmed_mean - 0.1766) / 1.0349
 
         # 計算並回傳平均值
-        return np.mean(filtered_distances) if len(filtered_distances) > 0 else None
+        return estimated_real_distance
 
     # 計算多點定位（multilateration）的結果
     def locate_tag(self, tag_eui) -> Optional[Tuple[float, float, float]]:
@@ -290,8 +296,8 @@ class UWBPublisher(Node):
         uwb_calibration_data_matrix = UWBDataMatrix(
             time_threshold=15, 
             anchors=self.anchors[0:4], 
-            tags=self.anchors[1:4]     
-                # 在 Self Calibration 階段，Anchor 00:02~00:04 都可能暫時作為 Tag
+            tags=self.anchors[1:8] 
+                # 在 Self Calibration 階段，Anchor 00:02~00:08 都可能暫時作為 Tag
         )
 
         # 用於判斷 tag-like anchors 到 anchors 之間的資料量已足夠
@@ -359,22 +365,15 @@ class UWBPublisher(Node):
             self.broadcast_target_state()
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:04"], ["00:03"]):
-                # self.target_state = "s"
                 for i in range(3, 4):
                     distance_matrix[2][i] \
                     = distance_matrix[i][2] \
                     = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:03")
                 break
-        
-        # while self.state == "built_coord_3":
-        #     self.broadcast_target_state()
-        #     self.read_serial(uwb_calibration_data_matrix)
 
-        dbg("- self_calibration")
-
-        ## self_calibration 階段
-        while True: # 重試到 build_3D_coord 成功
-            ### 設定 Anchor 00:01~00:04 座標
+        ## 重試到 build_3D_coord 成功
+        while True:
+            ## 設定 Anchor 00:01~00:04 座標
             dbg("distance_matrix is", distance_matrix)
             anchor_coords = build_3D_coord(distance_matrix)
             if not all(
@@ -383,7 +382,7 @@ class UWBPublisher(Node):
                     for num in anchor_coord
                 ) for anchor_coord in anchor_coords
             ):
-                # 如果 build_3D_coord 失敗（含有非實數），重試
+                # 如果 build_3D_coord 失敗（結果含有非實數），獲取新資料重試
                 dbg("build_3D_coord failed, retrying", anchor_coords)
                 self.read_serial(uwb_calibration_data_matrix)
                 for i in range(3, 4):
@@ -391,33 +390,33 @@ class UWBPublisher(Node):
                     = distance_matrix[i][2] \
                     = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:03")
                 continue
+
             print("anchor_coords are", anchor_coords)
             for i in range(4):
                 self.anchors[i].update_coordinate(anchor_coords[i])
             break
+            self.target_state = "s"
         
         #在完成前四個anchor定位後, 定位後四個EFHG
+
+        dbg("- self_calibration")
+
+        ## self_calibration 階段
         
         while True:
             self.broadcast_target_state()
             self.read_serial(uwb_calibration_data_matrix)
-            if have_enough_data_between(["00:01", "00:02", "00:03", "00:04"], ["00:05"]) and \
-                have_enough_data_between(["00:01", "00:02", "00:03", "00:04"], ["00:06"]) and \
-                have_enough_data_between(["00:01", "00:02", "00:03", "00:04"], ["00:07"]) and \
-                have_enough_data_between(["00:01", "00:02", "00:03", "00:04"], ["00:08"]):
-                
-                last_four_anchor_coords={uwb_calibration_data_matrix.locate_tag("00:05"),
+            if have_enough_data_between(["00:01", "00:02", "00:03", "00:04"], ["00:05", "00:06", "00:07", "00:08"]):
+                last_four_anchor_coords = [
+                    uwb_calibration_data_matrix.locate_tag("00:05"),
                     uwb_calibration_data_matrix.locate_tag("00:06"),
                     uwb_calibration_data_matrix.locate_tag("00:07"),
-                    uwb_calibration_data_matrix.locate_tag("00:08")}
-                
+                    uwb_calibration_data_matrix.locate_tag("00:08")
+                ]
                 
                 if all(last_four_anchor_coords):
-                    for i in range(4,8):
-                        self.anchors[i].update_coordinate(last_four_anchor_coords[i-4])
                     break
                 
-        
         self.target_state = "f"
 
         while self.state != "flying":
@@ -429,8 +428,6 @@ class UWBPublisher(Node):
         #     time.sleep(0.1)
         #     self.broadcast_target_state()
         #     self.read_serial(uwb_calibration_data_matrix) 
-
-        ### TODO: 設定 Anchor 00:05~00:08 座標
 
     def get_eui_from_id(self, id) -> Optional[str]:
         id_to_eui = {
