@@ -32,8 +32,9 @@ def align_coordinates(X: np.ndarray) -> np.ndarray: # Rodrigues' rotation formul
     '''
     此程式將 X[0] 當作原點，X[1] 當作 x 軸，X[2]當作 z 軸，進行座標對齊
     1. 以 X[0] (anchor0）為原點，平移所有座標向量
-    2. 以 X[0]X[1] 為基準向量（x,0,0），旋轉所有座標向量(anchor1 做為X軸）
-    3. 以 X[0]X[3] 為基準向量（0,0,z），旋轉所有座標向量（anchor3 做為Z軸）
+    2. 以 X[0]X[1] 為基準向量（x,0,0），旋轉所有座標向量（anchor 0->1 做為 X 軸正向）
+    3. 以 X[0]X[2] 為基準向量（0,y,0），旋轉所有座標向量（anchor 0->2 做為 Y 軸正向）
+    4. 因已知 anchor4 有正 z 座標，故如果 X[3][2] 是負數，將所有座標對 XY 平面做鏡像，以確保 Z 軸在上
     '''
     X_aligned = X - X[0]
 
@@ -61,11 +62,11 @@ def align_coordinates(X: np.ndarray) -> np.ndarray: # Rodrigues' rotation formul
     X_aligned[2] = np.dot(R, X_aligned[2]).A1
     X_aligned[3] = np.dot(R, X_aligned[3]).A1
     # plot3D(X_aligned)
-    
-    # 3. 以X[0]X[3]為基準向量（0,0,z），旋轉所有座標向量
-    u = [0, 0, 1]
-    v = X_aligned[3]
-    X_3_norm = np.linalg.norm(v)
+      
+    # 3. 以X[0]X[2]為基準向量（0,y,0），旋轉所有座標向量
+    u = [0, 1, 0]
+    v = X_aligned[2]
+    X_2_norm = np.linalg.norm(v)
     u = np.array(u) / np.linalg.norm(u)
     v = np.array(v) / np.linalg.norm(v)
     w = np.cross(u, v)
@@ -82,10 +83,41 @@ def align_coordinates(X: np.ndarray) -> np.ndarray: # Rodrigues' rotation formul
                 [w[2], 0, -w[0]],
                 [-w[1], w[0], 0]])
     R = I + np.sin(theta) * W + (1 - np.cos(theta)) * np.dot(W, W)
-    X_aligned[3] = (np.dot(R, v).A1)*X_3_norm  # Convert to 1D array
+    X_aligned[2] = (np.dot(R, v).A1)*X_2_norm  # Convert to 1D array
     X_aligned[1] = np.dot(R, X_aligned[1]).A1
-    X_aligned[2] = np.dot(R, X_aligned[2]).A1
+    X_aligned[3] = np.dot(R, X_aligned[3]).A1
     # plot3D(X_aligned)
+
+    # 3. 以X[0]X[3]為基準向量（0,0,z），旋轉所有座標向量
+    # u = [0, 0, 1]
+    # v = X_aligned[3]
+    # X_3_norm = np.linalg.norm(v)
+    # u = np.array(u) / np.linalg.norm(u)
+    # v = np.array(v) / np.linalg.norm(v)
+    # w = np.cross(u, v)
+
+    # w_norm = np.linalg.norm(w)
+    # if w_norm == 0:
+    #     print("Error: vectors are parallel!")
+    #     exit()
+    # w = w / w_norm
+    # cos_theta = np.dot(u, v)  # u · v = |u||v|cos(theta), and both are normalized
+    # theta = -1 * np.arccos(np.clip(cos_theta, -1.0, 1.0))  # Ensure cos_theta is in valid range
+    # I = np.identity(3)
+    # W = np.matrix([[0, -w[2], w[1]],
+    #             [w[2], 0, -w[0]],
+    #             [-w[1], w[0], 0]])
+    # R = I + np.sin(theta) * W + (1 - np.cos(theta)) * np.dot(W, W)
+    # X_aligned[3] = (np.dot(R, v).A1)*X_3_norm  # Convert to 1D array
+    # X_aligned[1] = np.dot(R, X_aligned[1]).A1
+    # X_aligned[2] = np.dot(R, X_aligned[2]).A1
+    # # plot3D(X_aligned)
+
+    # 3. 因已知 anchor4 有正 z 座標，故如果 X[3][2] 是負數，將所有座標對 XY 平面做鏡像，以確保 Z 軸在上
+    if X_aligned[3][2] < 0:
+        for idx in range(4):
+            X_aligned[idx][2] = - X_aligned[idx][2]
+
     return X_aligned
 
     #reference: https://openhome.cc/Gossip/WebGL/Rodrigues.html
@@ -132,11 +164,21 @@ if __name__ == "__main__":
     # }
     # build_3D_coord(example_anchorABCD_distance_data)
 
+    # 4.233235827 9.113604436	4.591527774	10.04686691	6.351241666	4.783365312
+
     example_distance_matrix = np.array([
-        [0.        , 0.85305085, 0.50837037, 0.34620553],
-        [0.85305085, 0.        , 0.11483871, 0.35474747],
-        [0.50837037, 0.11483871, 0.        , 0.19144444],
-        [0.34620553, 0.35474747, 0.19144444, 0.        ]
+        [ 0, 2.76, 2.39, 1.18 ],
+        [ 2.76, 0, 3.76, 3.19 ],
+        [ 2.39, 3.76, 0, 2.67 ],
+        [ 1.18, 3.19, 2.67, 0 ]
     ])
+
+    # example_distance_matrix = np.array([
+    #     [ 0, 4.233235827, 9.113604436, 4.591527774 ],
+    #     [ 4.233235827, 0, 10.04686691, 6.351241666 ],
+    #     [ 9.113604436, 10.04686691, 0, 4.783365312 ],
+    #     [ 4.591527774, 6.351241666, 4.783365312, 0 ]
+    # ])
+
     X = build_3D_coord(example_distance_matrix)
     print(X)
