@@ -1,9 +1,0 @@
-timestamp,portstr,line
-20250304_151045,/dev/ttyACM2,n ...
-20250304_151045,/dev/ttyACM2,"Device ID: DECA - model: 1, version: 3, revision: 0"
-20250304_151045,/dev/ttyACM2,Unique ID: AA:BB:CC:DD:EE:FF:00:02
-20250304_151045,/dev/ttyACM2,"Network ID & Device Address: PAN: 609A, Short Address: 02"
-20250304_151045,/dev/ttyACM2,"Device mode: Data rate: 6800 kb/s, PRF: 16 MHz, Preamble: 64 symbols, Channel: #5, Preamble code #3"
-20250304_151045,/dev/ttyACM1,": Data rate: 6800 kb/s, PRF: 16 MHz, Preamble: 64 symbols, Channel: #5, Preamble code #3"
-20250304_151045,/dev/ttyACM0,": 609A, Short Address: 04"
-20250304_151045,/dev/ttyACM0,"Device mode: Data rate: 6800 kb/s, PRF: 16 MHz, Preamble: 64 symbols, Channel: #5, Preamble code #3"
