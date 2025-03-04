@@ -394,8 +394,8 @@ class UWBPublisher(Node):
             print("anchor_coords are", anchor_coords)
             for i in range(4):
                 self.anchors[i].update_coordinate(anchor_coords[i])
-            break
             self.target_state = "s"
+            break
         
         #在完成前四個anchor定位後, 定位後四個EFHG
 

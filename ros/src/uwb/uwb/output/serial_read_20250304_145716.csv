@@ -1,0 +1,15 @@
+timestamp,portstr,line
+20250304_145718,/dev/ttyACM1,### arduino-DW1000Ng-ranging-anchor-###
+20250304_145718,/dev/ttyACM1,DW1000Ng initialized ...
+20250304_145718,/dev/ttyACM1,Committed configuration ...
+20250304_145718,/dev/ttyACM1,"Device ID: DECA - model: 1, version: 3, revision: 0"
+20250304_145718,/dev/ttyACM1,Unique ID: AA:BB:CC:DD:EE:FF:00:01
+20250304_145718,/dev/ttyACM1,"Network ID & Device Address: PAN: 609A, Short Address: 01"
+20250304_145718,/dev/ttyACM1,"Device mode: Data rate: 6800 kb/s, PRF: 16 MHz, Preamble: 64 symbols, Channel: #5, Preamble code #3"
+20250304_145718,/dev/ttyACM0,### arduino-DW1000Ng-ranging-anchor-###
+20250304_145718,/dev/ttyACM0,DW1000Ng initialized ...
+20250304_145718,/dev/ttyACM0,Committed configuration ...
+20250304_145718,/dev/ttyACM0,"Device ID: DECA - model: 1, version: 3, revision: 0"
+20250304_145718,/dev/ttyACM0,Unique ID: AA:BB:CC:DD:EE:FF:00:04
+20250304_145718,/dev/ttyACM0,"Network ID & Device Address: PAN: 609A, Short Address: 04"
+20250304_145718,/dev/ttyACM0,"Device mode: Data rate: 6800 kb/s, PRF: 16 MHz, Preamble: 64 symbols, Channel: #5, Preamble code #3"
