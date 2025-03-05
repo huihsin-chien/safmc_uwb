@@ -1,18 +1,1 @@
-// generated from rosidl_adapter/resource/msg.idl.em
-// with input from uwb_msgs/msg/Range.msg
-// generated code does not contain a copyright notice
-
-
-module uwb_msgs {
-  module msg {
-    struct Range {
-      double range;
-
-      double power;
-
-      string from_id;
-
-      string to_id;
-    };
-  };
-};
+/workspace/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs/msg/Range.idl

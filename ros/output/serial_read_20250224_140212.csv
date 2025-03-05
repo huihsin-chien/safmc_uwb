@@ -1,0 +1,898 @@
+timestamp,portstr,line
+20250224_140216,/dev/ttyACM0,### arduino-DW1000Ng-ranging-anchor-###
+20250224_140216,/dev/ttyACM0,DW1000Ng initialized ...
+20250224_140216,/dev/ttyACM0,Committed configuration ...
+20250224_140216,/dev/ttyACM0,"Device ID: DECA - model: 1, version: 3, revision: 0"
+20250224_140216,/dev/ttyACM0,Unique ID: AA:BB:CC:DD:EE:FF:00:04
+20250224_140216,/dev/ttyACM0,"Network ID & Device Address: PAN: 609A, Short Address: 04"
+20250224_140216,/dev/ttyACM0,"Device mode: Data rate: 6800 kb/s, PRF: 16 MHz, Preamble: 64 symbols, Channel: #5, Preamble code #3"
+20250224_140216,/dev/ttyACM1,### arduino-DW1000Ng-ranging-anchor-###
+20250224_140216,/dev/ttyACM1,DW1000Ng initialized ...
+20250224_140216,/dev/ttyACM1,Committed configuration ...
+20250224_140216,/dev/ttyACM1,"Device ID: DECA - model: 1, version: 3, revision: 0"
+20250224_140216,/dev/ttyACM1,Unique ID: AA:BB:CC:DD:EE:FF:00:02
+20250224_140216,/dev/ttyACM1,"Network ID & Device Address: PAN: 609A, Short Address: 02"
+20250224_140216,/dev/ttyACM1,"Device mode: Data rate: 6800 kb/s, PRF: 16 MHz, Preamble: 64 symbols, Channel: #5, Preamble code #3"
+20250224_140221,/dev/ttyACM0,1
+20250224_140221,/dev/ttyACM0,let's go~
+20250224_140221,/dev/ttyACM0,1
+20250224_140221,/dev/ttyACM0,let's go~
+20250224_140221,/dev/ttyACM0,result is right!
+20250224_140221,/dev/ttyACM0,1
+20250224_140221,/dev/ttyACM0,let's go~
+20250224_140221,/dev/ttyACM0,result is right!
+20250224_140221,/dev/ttyACM0,1
+20250224_140221,/dev/ttyACM0,let's go~
+20250224_140221,/dev/ttyACM0,1
+20250224_140221,/dev/ttyACM0,let's go~
+20250224_140221,/dev/ttyACM0,1
+20250224_140221,/dev/ttyACM0,let's go~
+20250224_140221,/dev/ttyACM1,1
+20250224_140221,/dev/ttyACM1,let's go~
+20250224_140221,/dev/ttyACM1,1
+20250224_140221,/dev/ttyACM1,let's go~
+20250224_140221,/dev/ttyACM0,1
+20250224_140221,/dev/ttyACM0,let's go~
+20250224_140221,/dev/ttyACM0,1
+20250224_140221,/dev/ttyACM0,let's go~
+20250224_140221,/dev/ttyACM0,1
+20250224_140221,/dev/ttyACM0,let's go~
+20250224_140221,/dev/ttyACM1,result is right!
+20250224_140221,/dev/ttyACM1,1
+20250224_140221,/dev/ttyACM1,let's go~
+20250224_140221,/dev/ttyACM1,1
+20250224_140221,/dev/ttyACM1,let's go~
+20250224_140221,/dev/ttyACM1,result is right!
+20250224_140221,/dev/ttyACM1,1
+20250224_140221,/dev/ttyACM1,let's go~
+20250224_140221,/dev/ttyACM0,result is right!
+20250224_140221,/dev/ttyACM0,1
+20250224_140221,/dev/ttyACM0,let's go~
+20250224_140221,/dev/ttyACM0,1
+20250224_140221,/dev/ttyACM0,let's go~
+20250224_140221,/dev/ttyACM0,1
+20250224_140221,/dev/ttyACM0,let's go~
+20250224_140221,/dev/ttyACM1,1
+20250224_140221,/dev/ttyACM1,let's go~
+20250224_140221,/dev/ttyACM1,1
+20250224_140221,/dev/ttyACM1,let's go~
+20250224_140221,/dev/ttyACM1,result is right!
+20250224_140221,/dev/ttyACM1,1
+20250224_140221,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM0,result is right!
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM0,result is right!
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM0,result is right!
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM0,result is right!
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM0,result is right!
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM0,result is right!
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM0,result is right!
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM1,result is right!
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM1,result is right!
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM1,result is right!
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM0,result is right!
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM0,result is right!
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM0,result is right!
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM0,result is right!
+20250224_140222,/dev/ttyACM0,1
+20250224_140222,/dev/ttyACM0,let's go~
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140222,/dev/ttyACM1,result is right!
+20250224_140222,/dev/ttyACM1,1
+20250224_140222,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM0,result is right!
+20250224_140223,/dev/ttyACM0,1
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM0,1
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM0,result is right!
+20250224_140223,/dev/ttyACM0,1
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,1
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,1
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,1
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM0,1
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM0,result is right!
+20250224_140223,/dev/ttyACM0,1
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM0,result is right!
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,1
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,1
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,1
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,1
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM0,result is right!
+20250224_140223,/dev/ttyACM0,1
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM0,result is right!
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,1
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,1
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,1
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM0,1
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM0,result is right!
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM0,result is right!
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,1
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM0,result is right!
+20250224_140223,/dev/ttyACM0,1
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM0,result is right!
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM0,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,1
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140223,/dev/ttyACM1,result is right!
+20250224_140223,/dev/ttyACM1,let's go~
+20250224_140224,/dev/ttyACM0,result is right!
+20250224_140224,/dev/ttyACM0,1
+20250224_140224,/dev/ttyACM0,let's go~
+20250224_140224,/dev/ttyACM0,let's go~
+20250224_140224,/dev/ttyACM0,result is right!
+20250224_140224,/dev/ttyACM0,let's go~
+20250224_140224,/dev/ttyACM0,result is right!
+20250224_140224,/dev/ttyACM0,let's go~
+20250224_140224,/dev/ttyACM1,result is right!
+20250224_140224,/dev/ttyACM1,1
+20250224_140224,/dev/ttyACM1,let's go~
+20250224_140224,/dev/ttyACM1,result is right!
+20250224_140224,/dev/ttyACM1,let's go~
+20250224_140224,/dev/ttyACM1,result is right!
+20250224_140224,/dev/ttyACM1,let's go~
+20250224_140224,/dev/ttyACM1,result is right!
+20250224_140224,/dev/ttyACM1,let's go~
+20250224_140224,/dev/ttyACM0,result is right!
+20250224_140224,/dev/ttyACM0,1
+20250224_140224,/dev/ttyACM0,let's go~
+20250224_140224,/dev/ttyACM0,result is right!
+20250224_140224,/dev/ttyACM0,let's go~
+20250224_140224,/dev/ttyACM0,let's go~
+20250224_140224,/dev/ttyACM1,1
+20250224_140224,/dev/ttyACM1,let's go~
+20250224_140224,/dev/ttyACM1,result is right!
+20250224_140224,/dev/ttyACM1,let's go~
+20250224_140224,/dev/ttyACM1,result is right!
+20250224_140224,/dev/ttyACM1,let's go~
+20250224_140224,/dev/ttyACM0,result is right!
+20250224_140224,/dev/ttyACM0,1
+20250224_140224,/dev/ttyACM0,let's go~
+20250224_140224,/dev/ttyACM0,result is right!
+20250224_140224,/dev/ttyACM0,let's go~
+20250224_140224,/dev/ttyACM0,result is right!
+20250224_140224,/dev/ttyACM0,let's go~
+20250224_140224,/dev/ttyACM0,let's go~
+20250224_140224,/dev/ttyACM1,result is right!
+20250224_140224,/dev/ttyACM1,1
+20250224_140224,/dev/ttyACM1,let's go~
+20250224_140224,/dev/ttyACM1,let's go~
+20250224_140224,/dev/ttyACM1,let's go~
+20250224_140224,/dev/ttyACM1,result is right!
+20250224_140224,/dev/ttyACM1,let's go~
+20250224_140224,/dev/ttyACM0,result is right!
+20250224_140224,/dev/ttyACM0,1
+20250224_140224,/dev/ttyACM0,let's go~
+20250224_140224,/dev/ttyACM0,let's go~
+20250224_140224,/dev/ttyACM0,let's go~
+20250224_140224,/dev/ttyACM1,result is right!
+20250224_140224,/dev/ttyACM1,1
+20250224_140224,/dev/ttyACM1,let's go~
+20250224_140224,/dev/ttyACM1,result is right!
+20250224_140224,/dev/ttyACM1,let's go~
+20250224_140224,/dev/ttyACM1,result is right!
+20250224_140224,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM0,result is right!
+20250224_140225,/dev/ttyACM0,1
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM0,result is right!
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM0,result is right!
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM1,result is right!
+20250224_140225,/dev/ttyACM1,1
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM1,result is right!
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM0,1
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM1,1
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM1,result is right!
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM0,result is right!
+20250224_140225,/dev/ttyACM0,1
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM0,result is right!
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM1,result is right!
+20250224_140225,/dev/ttyACM1,1
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM1,result is right!
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM1,result is right!
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM0,result is right!
+20250224_140225,/dev/ttyACM0,1
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM1,1
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM0,1
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM0,result is right!
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM0,let's go~
+20250224_140225,/dev/ttyACM1,result is right!
+20250224_140225,/dev/ttyACM1,1
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM1,result is right!
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM1,result is right!
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140225,/dev/ttyACM1,result is right!
+20250224_140225,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM0,result is right!
+20250224_140226,/dev/ttyACM0,1
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM0,result is right!
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM0,result is right!
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM1,1
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM0,1
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM0,result is right!
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM1,1
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM1,result is right!
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM1,result is right!
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM0,result is right!
+20250224_140226,/dev/ttyACM0,1
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM0,result is right!
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM1,result is right!
+20250224_140226,/dev/ttyACM1,1
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM1,result is right!
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM0,1
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM1,1
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM1,result is right!
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM0,1
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM0,let's go~
+20250224_140226,/dev/ttyACM1,1
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140226,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM0,result is right!
+20250224_140227,/dev/ttyACM0,1
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM1,1
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM0,1
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM1,1
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM1,result is right!
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM1,result is right!
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM0,1
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM0,result is right!
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM0,result is right!
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM1,result is right!
+20250224_140227,/dev/ttyACM1,1
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM0,1
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM1,1
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM0,1
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM0,let's go~
+20250224_140227,/dev/ttyACM1,result is right!
+20250224_140227,/dev/ttyACM1,1
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM1,result is right!
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140227,/dev/ttyACM1,result is right!
+20250224_140227,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM0,1
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM0,result is right!
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM0,result is right!
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM0,result is right!
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM1,1
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM0,1
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM1,1
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM0,1
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM1,result is right!
+20250224_140228,/dev/ttyACM1,1
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM1,result is right!
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM1,result is right!
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM0,result is right!
+20250224_140228,/dev/ttyACM0,1
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM0,result is right!
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM1,1
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM0,1
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM0,result is right!
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM0,result is right!
+20250224_140228,/dev/ttyACM0,let's go~
+20250224_140228,/dev/ttyACM1,1
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140228,/dev/ttyACM1,let's go~
+20250224_140229,/dev/ttyACM0,result is right!
+20250224_140229,/dev/ttyACM0,1
+20250224_140229,/dev/ttyACM0,let's go~
+20250224_140229,/dev/ttyACM0,let's go~
+20250224_140229,/dev/ttyACM0,let's go~
+20250224_140229,/dev/ttyACM1,result is right!
+20250224_140229,/dev/ttyACM1,1
+20250224_140229,/dev/ttyACM1,let's go~
+20250224_140229,/dev/ttyACM1,let's go~
+20250224_140229,/dev/ttyACM1,result is right!
+20250224_140229,/dev/ttyACM1,let's go~
+20250224_140229,/dev/ttyACM0,let's go~
+20250224_140229,/dev/ttyACM0,1
+20250224_140229,/dev/ttyACM0,let's go~
+20250224_140229,/dev/ttyACM0,result is right!
+20250224_140229,/dev/ttyACM0,let's go~
+20250224_140229,/dev/ttyACM0,result is right!
+20250224_140229,/dev/ttyACM0,let's go~
+20250224_140229,/dev/ttyACM1,result is right!
+20250224_140229,/dev/ttyACM1,1
+20250224_140229,/dev/ttyACM1,let's go~
+20250224_140229,/dev/ttyACM1,let's go~
+20250224_140229,/dev/ttyACM1,result is right!
+20250224_140229,/dev/ttyACM1,let's go~
+20250224_140229,/dev/ttyACM1,result is right!
+20250224_140229,/dev/ttyACM1,let's go~
+20250224_140229,/dev/ttyACM0,1
+20250224_140229,/dev/ttyACM0,let's go~
+20250224_140229,/dev/ttyACM0,result is right!
+20250224_140229,/dev/ttyACM0,let's go~
+20250224_140229,/dev/ttyACM0,result is right!
+20250224_140229,/dev/ttyACM0,let's go~
+20250224_140229,/dev/ttyACM1,result is right!
+20250224_140229,/dev/ttyACM1,1
+20250224_140229,/dev/ttyACM1,let's go~
+20250224_140229,/dev/ttyACM1,let's go~
+20250224_140229,/dev/ttyACM1,let's go~
+20250224_140229,/dev/ttyACM0,result is right!
+20250224_140229,/dev/ttyACM0,let's go~
+20250224_140229,/dev/ttyACM0,1
+20250224_140229,/dev/ttyACM0,let's go~
+20250224_140229,/dev/ttyACM0,result is right!
+20250224_140229,/dev/ttyACM0,let's go~
+20250224_140229,/dev/ttyACM0,let's go~
+20250224_140229,/dev/ttyACM1,1
+20250224_140229,/dev/ttyACM1,let's go~
+20250224_140229,/dev/ttyACM1,result is right!
+20250224_140229,/dev/ttyACM1,let's go~
+20250224_140229,/dev/ttyACM1,result is right!
+20250224_140229,/dev/ttyACM1,let's go~
+20250224_140229,/dev/ttyACM1,result is right!
+20250224_140229,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,1
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,1
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,1
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,1
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,1
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,1
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,1
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,1
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,1
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM0,result is right!
+20250224_140230,/dev/ttyACM0,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,1
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140230,/dev/ttyACM1,result is right!
+20250224_140230,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM0,result is right!
+20250224_140231,/dev/ttyACM0,1
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM0,result is right!
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM1,1
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM1,result is right!
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM1,result is right!
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM0,result is right!
+20250224_140231,/dev/ttyACM0,1
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM0,result is right!
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM1,result is right!
+20250224_140231,/dev/ttyACM1,1
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM1,result is right!
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM0,result is right!
+20250224_140231,/dev/ttyACM0,1
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM0,result is right!
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM1,result is right!
+20250224_140231,/dev/ttyACM1,1
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM1,result is right!
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM1,result is right!
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM0,result is right!
+20250224_140231,/dev/ttyACM0,1
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM0,result is right!
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM1,result is right!
+20250224_140231,/dev/ttyACM1,1
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM1,result is right!
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM1,result is right!
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM0,1
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM0,let's go~
+20250224_140231,/dev/ttyACM1,result is right!
+20250224_140231,/dev/ttyACM1,1
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM1,result is right!
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM1,result is right!
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140231,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM0,1
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM1,1
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM0,result is right!
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM0,result is right!
+20250224_140232,/dev/ttyACM0,1
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM1,result is right!
+20250224_140232,/dev/ttyACM1,1
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM1,result is right!
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM1,result is right!
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM0,1
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM0,result is right!
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM0,result is right!
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM1,1
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM0,1
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM0,result is right!
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM1,1
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM1,result is right!
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM1,result is right!
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM0,1
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM0,let's go~
+20250224_140232,/dev/ttyACM1,result is right!
+20250224_140232,/dev/ttyACM1,1
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140232,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM0,result is right!
+20250224_140233,/dev/ttyACM0,1
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM0,result is right!
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM1,1
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM1,result is right!
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM1,result is right!
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM0,result is right!
+20250224_140233,/dev/ttyACM0,1
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM1,result is right!
+20250224_140233,/dev/ttyACM1,1
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM1,result is right!
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM0,result is right!
+20250224_140233,/dev/ttyACM0,1
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM0,result is right!
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM0,result is right!
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM1,1
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM1,result is right!
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM0,1
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM1,result is right!
+20250224_140233,/dev/ttyACM1,1
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM1,result is right!
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM0,1
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM0,let's go~
+20250224_140233,/dev/ttyACM1,1
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140233,/dev/ttyACM1,let's go~
+20250224_140234,/dev/ttyACM0,result is right!
+20250224_140234,/dev/ttyACM0,1
+20250224_140234,/dev/ttyACM0,let's go~
+20250224_140234,/dev/ttyACM0,let's go~
+20250224_140234,/dev/ttyACM0,result is right!
+20250224_140234,/dev/ttyACM0,let's go~
+20250224_140234,/dev/ttyACM0,let's go~
+20250224_140234,/dev/ttyACM1,1
+20250224_140234,/dev/ttyACM1,let's go~
+20250224_140234,/dev/ttyACM1,let's go~
+20250224_140234,/dev/ttyACM1,result is right!
+20250224_140234,/dev/ttyACM1,let's go~
+20250224_140234,/dev/ttyACM0,1
+20250224_140234,/dev/ttyACM0,let's go~
+20250224_140234,/dev/ttyACM0,let's go~
+20250224_140234,/dev/ttyACM0,let's go~
+20250224_140234,/dev/ttyACM1,result is right!
+20250224_140234,/dev/ttyACM1,1
+20250224_140234,/dev/ttyACM1,let's go~
+20250224_140234,/dev/ttyACM1,result is right!
+20250224_140234,/dev/ttyACM1,let's go~
+20250224_140234,/dev/ttyACM1,let's go~
+20250224_140234,/dev/ttyACM1,let's go~
+20250224_140234,/dev/ttyACM0,1
+20250224_140234,/dev/ttyACM0,let's go~
+20250224_140234,/dev/ttyACM0,let's go~
+20250224_140234,/dev/ttyACM0,let's go~
+20250224_140234,/dev/ttyACM0,result is right!
+20250224_140234,/dev/ttyACM0,let's go~
+20250224_140234,/dev/ttyACM1,1
+20250224_140234,/dev/ttyACM1,let's go~
+20250224_140234,/dev/ttyACM1,let's go~
+20250224_140234,/dev/ttyACM1,let's go~
+20250224_140234,/dev/ttyACM0,result is right!
+20250224_140234,/dev/ttyACM0,1
+20250224_140234,/dev/ttyACM0,let's go~
+20250224_140234,/dev/ttyACM0,result is right!
+20250224_140234,/dev/ttyACM0,let's go~
+20250224_140234,/dev/ttyACM0,let's go~
+20250224_140234,/dev/ttyACM1,1
+20250224_140234,/dev/ttyACM1,let's go~
+20250224_140234,/dev/ttyACM1,let's go~
+20250224_140234,/dev/ttyACM1,result is right!
+20250224_140234,/dev/ttyACM1,let's go~
+20250224_140234,/dev/ttyACM1,result is right!
+20250224_140234,/dev/ttyACM1,let's go~
+20250224_140235,/dev/ttyACM0,1
+20250224_140235,/dev/ttyACM0,let's go~
+20250224_140235,/dev/ttyACM0,let's go~
+20250224_140235,/dev/ttyACM0,let's go~
+20250224_140235,/dev/ttyACM0,let's go~
+20250224_140235,/dev/ttyACM1,1
+20250224_140235,/dev/ttyACM1,let's go~
+20250224_140235,/dev/ttyACM1,result is right!
+20250224_140235,/dev/ttyACM1,let's go~
+20250224_140235,/dev/ttyACM1,let's go~
+20250224_140235,/dev/ttyACM0,1
+20250224_140235,/dev/ttyACM0,let's go~
+20250224_140235,/dev/ttyACM0,let's go~
+20250224_140235,/dev/ttyACM0,let's go~
+20250224_140235,/dev/ttyACM1,1
+20250224_140235,/dev/ttyACM1,let's go~
+20250224_140235,/dev/ttyACM1,let's go~
+20250224_140235,/dev/ttyACM1,let's go~
+20250224_140235,/dev/ttyACM1,let's go~
+20250224_140235,/dev/ttyACM0,1
+20250224_140235,/dev/ttyACM0,let's go~
+20250224_140235,/dev/ttyACM0,let's go~
+20250224_140235,/dev/ttyACM0,result is right!
+20250224_140235,/dev/ttyACM0,let's go~
+20250224_140235,/dev/ttyACM0,let's go~
+20250224_140235,/dev/ttyACM1,1
+20250224_140235,/dev/ttyACM1,let's go~
+20250224_140235,/dev/ttyACM1,result is right!
+20250224_140235,/dev/ttyACM1,let's go~
+20250224_140235,/dev/ttyACM1,result is right!
+20250224_140235,/dev/ttyACM1,let's go~

@@ -1,0 +1,201 @@
+[0.000000] (-) TimerEvent: {}
+[0.000254] (uwb_msgs) JobQueued: {'identifier': 'uwb_msgs', 'dependencies': OrderedDict()}
+[0.000290] (uwb) JobQueued: {'identifier': 'uwb', 'dependencies': OrderedDict([('uwb_msgs', '/workspace/safmc_uwb/ros/install/uwb_msgs')])}
+[0.000331] (uwb_msgs) JobStarted: {'identifier': 'uwb_msgs'}
+[0.006202] (uwb_msgs) JobProgress: {'identifier': 'uwb_msgs', 'progress': 'cmake'}
+[0.007389] (uwb_msgs) JobProgress: {'identifier': 'uwb_msgs', 'progress': 'build'}
+[0.008267] (uwb_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/workspace/safmc_uwb/ros/build/uwb_msgs', '--', '-j20', '-l20'], 'cwd': '/workspace/safmc_uwb/ros/build/uwb_msgs', 'env': OrderedDict([('SUDO_GID', '1000'), ('MAIL', '/var/mail/root'), ('USER', 'root'), ('HOSTNAME', 'huixin'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/workspace/safmc_uwb/ros/install/uwb_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/workspace/safmc_uwb/ros/install'), ('SUDO_UID', '1000'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('SUDO_COMMAND', '/usr/bin/su'), ('AMENT_PREFIX_PATH', '/workspace/safmc_uwb/ros/install/uwb:/workspace/safmc_uwb/ros/install/uwb_msgs:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('SUDO_USER', 'user'), ('PWD', '/workspace/safmc_uwb/ros/build/uwb_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:/workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/workspace/safmc_uwb/ros/install/uwb_msgs:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble')]), 'shell': False}
+[0.061155] (uwb_msgs) StdoutLine: {'line': b'[  2%] Built target uwb_msgs__cpp\n'}
+[0.062657] (uwb_msgs) StdoutLine: {'line': b'[ 12%] Built target uwb_msgs__rosidl_generator_c\n'}
+[0.072525] (uwb_msgs) StdoutLine: {'line': b'[ 12%] Built target ament_cmake_python_symlink_uwb_msgs\n'}
+[0.096051] (uwb_msgs) StdoutLine: {'line': b'[ 23%] Built target uwb_msgs__rosidl_typesupport_introspection_cpp\n'}
+[0.097210] (uwb_msgs) StdoutLine: {'line': b'[ 34%] Built target uwb_msgs__rosidl_typesupport_cpp\n'}
+[0.098143] (uwb_msgs) StdoutLine: {'line': b'[ 44%] Built target uwb_msgs__rosidl_typesupport_introspection_c\n'}
+[0.099581] (-) TimerEvent: {}
+[0.099890] (uwb_msgs) StdoutLine: {'line': b'[ 55%] Built target uwb_msgs__rosidl_typesupport_fastrtps_c\n'}
+[0.100409] (uwb_msgs) StdoutLine: {'line': b'[ 65%] Built target uwb_msgs__rosidl_typesupport_c\n'}
+[0.101517] (uwb_msgs) StdoutLine: {'line': b'[ 76%] Built target uwb_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[0.127496] (uwb_msgs) StdoutLine: {'line': b'[ 76%] Built target uwb_msgs\n'}
+[0.152135] (uwb_msgs) StdoutLine: {'line': b'[ 78%] Built target uwb_msgs__py\n'}
+[0.179622] (uwb_msgs) StdoutLine: {'line': b'[ 87%] Built target uwb_msgs__rosidl_generator_py\n'}
+[0.199701] (-) TimerEvent: {}
+[0.205801] (uwb_msgs) StdoutLine: {'line': b'[ 91%] Built target uwb_msgs__rosidl_typesupport_fastrtps_c__pyext\n'}
+[0.206121] (uwb_msgs) StdoutLine: {'line': b'[ 95%] Built target uwb_msgs__rosidl_typesupport_introspection_c__pyext\n'}
+[0.209484] (uwb_msgs) StdoutLine: {'line': b'[100%] Built target uwb_msgs__rosidl_typesupport_c__pyext\n'}
+[0.299914] (-) TimerEvent: {}
+[0.311964] (uwb_msgs) StdoutLine: {'line': b'running egg_info\n'}
+[0.312668] (uwb_msgs) StdoutLine: {'line': b'writing uwb_msgs.egg-info/PKG-INFO\n'}
+[0.313183] (uwb_msgs) StdoutLine: {'line': b'writing dependency_links to uwb_msgs.egg-info/dependency_links.txt\n'}
+[0.313242] (uwb_msgs) StdoutLine: {'line': b'writing top-level names to uwb_msgs.egg-info/top_level.txt\n'}
+[0.315188] (uwb_msgs) StdoutLine: {'line': b"reading manifest file 'uwb_msgs.egg-info/SOURCES.txt'\n"}
+[0.315851] (uwb_msgs) StdoutLine: {'line': b"writing manifest file 'uwb_msgs.egg-info/SOURCES.txt'\n"}
+[0.344053] (uwb_msgs) StdoutLine: {'line': b'[100%] Built target ament_cmake_python_build_uwb_msgs_egg\n'}
+[0.356396] (uwb_msgs) CommandEnded: {'returncode': 0}
+[0.357385] (uwb_msgs) JobProgress: {'identifier': 'uwb_msgs', 'progress': 'install'}
+[0.366705] (uwb_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/workspace/safmc_uwb/ros/build/uwb_msgs'], 'cwd': '/workspace/safmc_uwb/ros/build/uwb_msgs', 'env': OrderedDict([('SUDO_GID', '1000'), ('MAIL', '/var/mail/root'), ('USER', 'root'), ('HOSTNAME', 'huixin'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/workspace/safmc_uwb/ros/install/uwb_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('ROS_PYTHON_VERSION', '3'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/workspace/safmc_uwb/ros/install'), ('SUDO_UID', '1000'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('SUDO_COMMAND', '/usr/bin/su'), ('AMENT_PREFIX_PATH', '/workspace/safmc_uwb/ros/install/uwb:/workspace/safmc_uwb/ros/install/uwb_msgs:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('SUDO_USER', 'user'), ('PWD', '/workspace/safmc_uwb/ros/build/uwb_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:/workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/workspace/safmc_uwb/ros/install/uwb_msgs:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble')]), 'shell': False}
+[0.376820] (uwb_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.377638] (uwb_msgs) StdoutLine: {'line': b'-- Execute custom install script\n'}
+[0.377786] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/ament_index/resource_index/rosidl_interfaces/uwb_msgs\n'}
+[0.378353] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/pose__functions.h\n'}
+[0.378408] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/pose__struct.h\n'}
+[0.378504] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/pose__type_support.h\n'}
+[0.378555] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__functions.h\n'}
+[0.378649] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__struct.h\n'}
+[0.378784] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__type_support.h\n'}
+[0.378835] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/tag_position__functions.h\n'}
+[0.378916] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/tag_position__struct.h\n'}
+[0.379016] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/tag_position__type_support.h\n'}
+[0.379065] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/pose.h\n'}
+[0.379134] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/range.h\n'}
+[0.379178] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[0.379224] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/tag_position.h\n'}
+[0.379304] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/library_path.sh\n'}
+[0.379377] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/library_path.dsv\n'}
+[0.379765] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/pose__rosidl_typesupport_fastrtps_c.h\n'}
+[0.379850] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__rosidl_typesupport_fastrtps_c.h\n'}
+[0.379941] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/tag_position__rosidl_typesupport_fastrtps_c.h\n'}
+[0.380018] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[0.380334] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/pose__rosidl_typesupport_introspection_c.h\n'}
+[0.380431] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__rosidl_typesupport_introspection_c.h\n'}
+[0.380507] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/tag_position__rosidl_typesupport_introspection_c.h\n'}
+[0.380585] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[0.381016] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/pose__builder.hpp\n'}
+[0.381092] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/pose__struct.hpp\n'}
+[0.381156] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/pose__traits.hpp\n'}
+[0.381225] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/pose__type_support.hpp\n'}
+[0.381295] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__builder.hpp\n'}
+[0.381363] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__struct.hpp\n'}
+[0.381443] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__traits.hpp\n'}
+[0.381527] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__type_support.hpp\n'}
+[0.381613] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/tag_position__builder.hpp\n'}
+[0.381699] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/tag_position__struct.hpp\n'}
+[0.381780] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/tag_position__traits.hpp\n'}
+[0.381862] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/tag_position__type_support.hpp\n'}
+[0.381952] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/pose.hpp\n'}
+[0.382021] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/range.hpp\n'}
+[0.382099] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[0.382184] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/tag_position.hpp\n'}
+[0.382593] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/pose__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.382683] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.382768] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/tag_position__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.382848] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[0.383123] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/pose__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.383206] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.383290] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/tag_position__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.383420] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/pythonpath.sh\n'}
+[0.383544] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/pythonpath.dsv\n'}
+[0.383800] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[0.383881] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[0.383963] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[0.384043] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[0.384579] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/__init__.py\n'}
+[0.384655] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/_uwb_msgs_s.ep.rosidl_typesupport_c.c\n'}
+[0.384730] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/_uwb_msgs_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[0.384800] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/_uwb_msgs_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[0.384881] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/libuwb_msgs__rosidl_generator_py.so\n'}
+[0.384963] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/__init__.py\n'}
+[0.385045] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/_pose.py\n'}
+[0.385124] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/_pose_s.c\n'}
+[0.385203] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/_range.py\n'}
+[0.385280] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/_range_s.c\n'}
+[0.385360] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/_tag_position.py\n'}
+[0.385440] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/_tag_position_s.c\n'}
+[0.385526] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.385615] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.385709] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.385947] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.386162] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.386369] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.386514] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/msg/Range.idl\n'}
+[0.386647] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/msg/Pose.idl\n'}
+[0.386811] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/msg/TagPosition.idl\n'}
+[0.386942] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/msg/Range.msg\n'}
+[0.387053] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/msg/Pose.msg\n'}
+[0.387164] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/msg/TagPosition.msg\n'}
+[0.387294] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/ament_index/resource_index/package_run_dependencies/uwb_msgs\n'}
+[0.387416] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/ament_index/resource_index/parent_prefix_path/uwb_msgs\n'}
+[0.387551] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/ament_prefix_path.sh\n'}
+[0.387664] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/ament_prefix_path.dsv\n'}
+[0.387780] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/path.sh\n'}
+[0.387887] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/environment/path.dsv\n'}
+[0.388000] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/local_setup.bash\n'}
+[0.388101] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/local_setup.sh\n'}
+[0.388220] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/local_setup.zsh\n'}
+[0.388378] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/local_setup.dsv\n'}
+[0.388749] (uwb_msgs) StdoutLine: {'line': b'-- Symlinking: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/package.dsv\n'}
+[0.397754] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/ament_index/resource_index/packages/uwb_msgs\n'}
+[0.397895] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[0.398005] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[0.398075] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[0.398156] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[0.398232] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[0.398344] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[0.398420] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[0.398639] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgsConfig.cmake\n'}
+[0.398847] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgsConfig-version.cmake\n'}
+[0.399056] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date symlink: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/package.xml\n'}
+[0.399229] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_generator_c.so\n'}
+[0.399374] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[0.399589] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_introspection_c.so\n'}
+[0.399787] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_c.so\n'}
+[0.399972] (-) TimerEvent: {}
+[0.400130] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[0.400274] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[0.400407] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_cpp.so\n'}
+[0.438586] (uwb_msgs) StdoutLine: {'line': b"Listing '/workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs'...\n"}
+[0.438868] (uwb_msgs) StdoutLine: {'line': b"Listing '/workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg'...\n"}
+[0.444332] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/lib/libuwb_msgs__rosidl_generator_py.so\n'}
+[0.444901] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_cExport.cmake\n'}
+[0.445069] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[0.445182] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[0.445317] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[0.445653] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[0.445792] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[0.445890] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_cExport.cmake\n'}
+[0.445988] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[0.446084] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_cppExport.cmake\n'}
+[0.446183] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[0.446279] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[0.446376] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[0.446520] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[0.446641] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[0.446746] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[0.446858] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_pyExport.cmake\n'}
+[0.446961] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/safmc_uwb/ros/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_pyExport-noconfig.cmake\n'}
+[0.448019] (uwb_msgs) CommandEnded: {'returncode': 0}
+[0.471192] (uwb_msgs) JobEnded: {'identifier': 'uwb_msgs', 'rc': 0}
+[0.474137] (uwb) JobStarted: {'identifier': 'uwb'}
+[0.500129] (-) TimerEvent: {}
+[0.600583] (-) TimerEvent: {}
+[0.700940] (-) TimerEvent: {}
+[0.801452] (-) TimerEvent: {}
+[0.901916] (-) TimerEvent: {}
+[1.002339] (-) TimerEvent: {}
+[1.102744] (-) TimerEvent: {}
+[1.199215] (uwb) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/uwb', 'build', '--build-base', '/workspace/safmc_uwb/ros/build/uwb/build', 'install', '--record', '/workspace/safmc_uwb/ros/build/uwb/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/workspace/safmc_uwb/ros/src/uwb', 'env': {'SUDO_GID': '1000', 'MAIL': '/var/mail/root', 'USER': 'root', 'HOSTNAME': 'huixin', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/workspace/safmc_uwb/ros/install/uwb_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'ROS_PYTHON_VERSION': '3', 'COLORTERM': 'truecolor', 'COLCON_PREFIX_PATH': '/workspace/safmc_uwb/ros/install', 'SUDO_UID': '1000', 'ROS_DISTRO': 'humble', 'LOGNAME': 'root', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'SUDO_COMMAND': '/usr/bin/su', 'AMENT_PREFIX_PATH': '/workspace/safmc_uwb/ros/install/uwb:/workspace/safmc_uwb/ros/install/uwb_msgs:/opt/ros/humble', 'DEBIAN_FRONTEND': 'noninteractive', 'SHELL': '/bin/bash', 'SUDO_USER': 'user', 'PWD': '/workspace/safmc_uwb/ros/build/uwb', 'LC_ALL': 'en_US.UTF-8', 'PYTHONPATH': '/workspace/safmc_uwb/ros/build/uwb/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:/workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/workspace/safmc_uwb/ros/install/uwb_msgs'}, 'shell': False}
+[1.203826] (-) TimerEvent: {}
+[1.304809] (-) TimerEvent: {}
+[1.405814] (-) TimerEvent: {}
+[1.494595] (uwb) StdoutLine: {'line': b'running egg_info\n'}
+[1.495889] (uwb) StdoutLine: {'line': b'writing ../../build/uwb/uwb.egg-info/PKG-INFO\n'}
+[1.496539] (uwb) StdoutLine: {'line': b'writing dependency_links to ../../build/uwb/uwb.egg-info/dependency_links.txt\n'}
+[1.497647] (uwb) StdoutLine: {'line': b'writing entry points to ../../build/uwb/uwb.egg-info/entry_points.txt\n'}
+[1.498779] (uwb) StdoutLine: {'line': b'writing requirements to ../../build/uwb/uwb.egg-info/requires.txt\n'}
+[1.499934] (uwb) StdoutLine: {'line': b'writing top-level names to ../../build/uwb/uwb.egg-info/top_level.txt\n'}
+[1.500651] (uwb) StdoutLine: {'line': b"reading manifest file '../../build/uwb/uwb.egg-info/SOURCES.txt'\n"}
+[1.501248] (uwb) StdoutLine: {'line': b"writing manifest file '../../build/uwb/uwb.egg-info/SOURCES.txt'\n"}
+[1.502272] (uwb) StdoutLine: {'line': b'running build\n'}
+[1.503419] (uwb) StdoutLine: {'line': b'running build_py\n'}
+[1.504276] (uwb) StdoutLine: {'line': b'running install\n'}
+[1.504965] (uwb) StdoutLine: {'line': b'running install_lib\n'}
+[1.505426] (uwb) StdoutLine: {'line': b'running install_data\n'}
+[1.505601] (uwb) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.505678] (uwb) StdoutLine: {'line': b"removing '/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[1.505787] (uwb) StdoutLine: {'line': b'Copying ../../build/uwb/uwb.egg-info to /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb-0.0.0-py3.10.egg-info\n'}
+[1.505853] (-) TimerEvent: {}
+[1.506279] (uwb) StdoutLine: {'line': b'running install_scripts\n'}
+[1.534829] (uwb) StdoutLine: {'line': b'Installing uwb script to /workspace/safmc_uwb/ros/install/uwb/lib/uwb\n'}
+[1.536196] (uwb) StdoutLine: {'line': b"writing list of installed files to '/workspace/safmc_uwb/ros/build/uwb/install.log'\n"}
+[1.564363] (uwb) CommandEnded: {'returncode': 0}
+[1.573711] (uwb) JobEnded: {'identifier': 'uwb', 'rc': 0}
+[1.575370] (-) EventReactorShutdown: {}

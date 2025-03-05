@@ -1,5 +1,0 @@
-  File "/home/Judy/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/uwb.py", line 24
-    from scipy import minimizesudo apt update
-                                   ^^^
-SyntaxError: invalid syntax
-

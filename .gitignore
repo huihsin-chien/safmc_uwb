@@ -4,5 +4,6 @@
 .gcc-flags.json
 venv/ 
 output/*.csv
+.csv
 
 # .pio

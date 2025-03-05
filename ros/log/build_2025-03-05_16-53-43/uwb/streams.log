@@ -1,0 +1,63 @@
+[0.801s] Invoking command in '/workspace/safmc_uwb/ros/build/uwb': AMENT_PREFIX_PATH=/workspace/safmc_uwb/ros/install/uwb_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/workspace/safmc_uwb/ros/install/uwb_msgs LD_LIBRARY_PATH=/workspace/safmc_uwb/ros/install/uwb_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/workspace/safmc_uwb/ros/build/uwb/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:/workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /workspace/safmc_uwb/ros/build/uwb/build
+[1.115s] running develop
+[1.294s] Removing /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb.egg-link (link to .)
+[1.326s] Invoked command in '/workspace/safmc_uwb/ros/build/uwb' returned '0': AMENT_PREFIX_PATH=/workspace/safmc_uwb/ros/install/uwb_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/workspace/safmc_uwb/ros/install/uwb_msgs LD_LIBRARY_PATH=/workspace/safmc_uwb/ros/install/uwb_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/workspace/safmc_uwb/ros/build/uwb/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:/workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /workspace/safmc_uwb/ros/build/uwb/build
+[1.334s] Invoking command in '/workspace/safmc_uwb/ros/src/uwb': AMENT_PREFIX_PATH=/workspace/safmc_uwb/ros/install/uwb_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/workspace/safmc_uwb/ros/install/uwb_msgs LD_LIBRARY_PATH=/workspace/safmc_uwb/ros/install/uwb_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/workspace/safmc_uwb/ros/build/uwb/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:/workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/uwb build --build-base /workspace/safmc_uwb/ros/build/uwb/build install --record /workspace/safmc_uwb/ros/build/uwb/install.log --single-version-externally-managed install_data --force
+[1.622s] running egg_info
+[1.623s] writing ../../build/uwb/uwb.egg-info/PKG-INFO
+[1.624s] writing dependency_links to ../../build/uwb/uwb.egg-info/dependency_links.txt
+[1.624s] writing entry points to ../../build/uwb/uwb.egg-info/entry_points.txt
+[1.624s] writing requirements to ../../build/uwb/uwb.egg-info/requires.txt
+[1.625s] writing top-level names to ../../build/uwb/uwb.egg-info/top_level.txt
+[1.626s] reading manifest file '../../build/uwb/uwb.egg-info/SOURCES.txt'
+[1.627s] writing manifest file '../../build/uwb/uwb.egg-info/SOURCES.txt'
+[1.627s] running build
+[1.627s] running build_py
+[1.628s] creating /workspace/safmc_uwb/ros/build/uwb/build
+[1.628s] creating /workspace/safmc_uwb/ros/build/uwb/build/lib
+[1.628s] creating /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb
+[1.628s] copying uwb/build_3D_coord_old.py -> /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb
+[1.629s] copying uwb/uwb_rewrite.py -> /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb
+[1.629s] copying uwb/uwb_8v8.py -> /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb
+[1.631s] copying uwb/build_3D_coord.py -> /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb
+[1.632s] copying uwb/AB_range.py -> /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb
+[1.632s] copying uwb/build_3D_coord_rewrite.py -> /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb
+[1.632s] copying uwb/uwb_rewrite_3.py -> /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb
+[1.632s] copying uwb/uwb.py -> /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb
+[1.632s] copying uwb/uwb_5v8.py -> /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb
+[1.632s] copying uwb/__init__.py -> /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb
+[1.633s] copying uwb/uwb_rewrite_2.py -> /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb
+[1.633s] running install
+[1.633s] running install_lib
+[1.633s] creating /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb
+[1.633s] copying /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb/build_3D_coord_old.py -> /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb
+[1.633s] copying /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb/uwb_rewrite.py -> /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb
+[1.633s] copying /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb/uwb_8v8.py -> /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb
+[1.633s] copying /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb/build_3D_coord.py -> /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb
+[1.633s] copying /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb/AB_range.py -> /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb
+[1.633s] copying /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb/build_3D_coord_rewrite.py -> /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb
+[1.633s] copying /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb/uwb_rewrite_3.py -> /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb
+[1.633s] copying /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb/uwb.py -> /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb
+[1.633s] copying /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb/uwb_5v8.py -> /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb
+[1.634s] copying /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb/__init__.py -> /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb
+[1.634s] copying /workspace/safmc_uwb/ros/build/uwb/build/lib/uwb/uwb_rewrite_2.py -> /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb
+[1.634s] byte-compiling /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/build_3D_coord_old.py to build_3D_coord_old.cpython-310.pyc
+[1.634s] byte-compiling /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/uwb_rewrite.py to uwb_rewrite.cpython-310.pyc
+[1.637s] byte-compiling /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/uwb_8v8.py to uwb_8v8.cpython-310.pyc
+[1.643s] byte-compiling /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/build_3D_coord.py to build_3D_coord.cpython-310.pyc
+[1.644s] byte-compiling /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/AB_range.py to AB_range.cpython-310.pyc
+[1.647s] byte-compiling /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/build_3D_coord_rewrite.py to build_3D_coord_rewrite.cpython-310.pyc
+[1.647s] byte-compiling /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/uwb_rewrite_3.py to uwb_rewrite_3.cpython-310.pyc
+[1.651s] byte-compiling /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/uwb.py to uwb.cpython-310.pyc
+[1.656s] byte-compiling /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/uwb_5v8.py to uwb_5v8.cpython-310.pyc
+[1.660s] byte-compiling /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/__init__.py to __init__.cpython-310.pyc
+[1.661s] byte-compiling /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/uwb_rewrite_2.py to uwb_rewrite_2.cpython-310.pyc
+[1.663s] running install_data
+[1.663s] copying resource/uwb -> /workspace/safmc_uwb/ros/install/uwb/share/ament_index/resource_index/packages
+[1.663s] copying package.xml -> /workspace/safmc_uwb/ros/install/uwb/share/uwb
+[1.663s] running install_egg_info
+[1.666s] Copying ../../build/uwb/uwb.egg-info to /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb-0.0.0-py3.10.egg-info
+[1.667s] running install_scripts
+[1.694s] Installing uwb script to /workspace/safmc_uwb/ros/install/uwb/lib/uwb
+[1.695s] writing list of installed files to '/workspace/safmc_uwb/ros/build/uwb/install.log'
+[1.724s] Invoked command in '/workspace/safmc_uwb/ros/src/uwb' returned '0': AMENT_PREFIX_PATH=/workspace/safmc_uwb/ros/install/uwb_msgs:${AMENT_PREFIX_PATH} CMAKE_PREFIX_PATH=/workspace/safmc_uwb/ros/install/uwb_msgs LD_LIBRARY_PATH=/workspace/safmc_uwb/ros/install/uwb_msgs/lib:${LD_LIBRARY_PATH} PYTHONPATH=/workspace/safmc_uwb/ros/build/uwb/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:/workspace/safmc_uwb/ros/install/uwb_msgs/local/lib/python3.10/dist-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/uwb build --build-base /workspace/safmc_uwb/ros/build/uwb/build install --record /workspace/safmc_uwb/ros/build/uwb/install.log --single-version-externally-managed install_data --force

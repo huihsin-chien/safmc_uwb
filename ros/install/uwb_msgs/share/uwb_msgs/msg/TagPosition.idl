@@ -1,18 +1,1 @@
-// generated from rosidl_adapter/resource/msg.idl.em
-// with input from uwb_msgs/msg/TagPosition.msg
-// generated code does not contain a copyright notice
-
-
-module uwb_msgs {
-  module msg {
-    struct TagPosition {
-      double x;
-
-      double y;
-
-      double z;
-
-      string eui;
-    };
-  };
-};
+/workspace/safmc_uwb/ros/build/uwb_msgs/rosidl_adapter/uwb_msgs/msg/TagPosition.idl

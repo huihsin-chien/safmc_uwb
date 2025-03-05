@@ -315,17 +315,17 @@ uwb_msgs__rosidl_typesupport_cpp/fast:
 .PHONY : uwb_msgs__rosidl_typesupport_cpp/fast
 
 #=============================================================================
-# Target rules for targets named ament_cmake_python_copy_uwb_msgs
+# Target rules for targets named ament_cmake_python_symlink_uwb_msgs
 
 # Build rule for target.
-ament_cmake_python_copy_uwb_msgs: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_copy_uwb_msgs
-.PHONY : ament_cmake_python_copy_uwb_msgs
+ament_cmake_python_symlink_uwb_msgs: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_symlink_uwb_msgs
+.PHONY : ament_cmake_python_symlink_uwb_msgs
 
 # fast build rule for target.
-ament_cmake_python_copy_uwb_msgs/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_copy_uwb_msgs.dir/build.make CMakeFiles/ament_cmake_python_copy_uwb_msgs.dir/build
-.PHONY : ament_cmake_python_copy_uwb_msgs/fast
+ament_cmake_python_symlink_uwb_msgs/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_symlink_uwb_msgs.dir/build.make CMakeFiles/ament_cmake_python_symlink_uwb_msgs.dir/build
+.PHONY : ament_cmake_python_symlink_uwb_msgs/fast
 
 #=============================================================================
 # Target rules for targets named ament_cmake_python_build_uwb_msgs_egg
@@ -1067,7 +1067,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... ament_cmake_python_build_uwb_msgs_egg"
-	@echo "... ament_cmake_python_copy_uwb_msgs"
+	@echo "... ament_cmake_python_symlink_uwb_msgs"
 	@echo "... uninstall"
 	@echo "... uwb_msgs"
 	@echo "... uwb_msgs__cpp"

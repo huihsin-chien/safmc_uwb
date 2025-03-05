@@ -1,6 +1,1 @@
-msg/Pose.idl
-msg/Pose.msg
-msg/Range.idl
-msg/Range.msg
-msg/TagPosition.idl
-msg/TagPosition.msg
+/workspace/safmc_uwb/ros/build/uwb_msgs/ament_cmake_index/share/ament_index/resource_index/rosidl_interfaces/uwb_msgs

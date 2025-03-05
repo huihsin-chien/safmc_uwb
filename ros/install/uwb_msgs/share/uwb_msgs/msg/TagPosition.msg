@@ -1,4 +1,1 @@
-float64 x
-float64 y
-float64 z
-string eui
+/workspace/safmc_uwb/ros/src/uwb_msgs/msg/TagPosition.msg
