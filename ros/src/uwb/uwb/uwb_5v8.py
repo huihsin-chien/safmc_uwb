@@ -139,10 +139,10 @@ class UWBDataMatrix:
             return
 
         self.data[tag_eui][anchor_eui].append(UWBData(distance))
-        timestamp_str = time.strftime('%Y-%m-%d %H:%M:%S')
+        timestamp_str = time.strftime('%Y%m%d_%H%M%S')
         if SAVE_DATA:
             anchor_eui_encoded = anchor_eui.replace(":", "-")
-            anchor_file_path = os.path.join(DATA_FOLDER, f"Device_{anchor_eui_encoded}_{timestamp_str}.csv")
+            anchor_file_path = os.path.join(DATA_FOLDER, f"Device_{anchor_eui_encoded}_{self.timestamp_str}.csv")
             with open(anchor_file_path, mode='a') as file:
                 csv_writer = csv.writer(file, escapechar='"')
                 csv_writer.writerow([timestamp_str, tag_eui, distance, self.anchor_sample_rate[anchor_eui] if anchor_eui in self.anchor_sample_rate else "N/A"])
@@ -294,7 +294,7 @@ class UWBPublisher(Node):
     # 進行 Self Calibration：取得 Calibration Data，建立 Coordinate 並設定 Anchors 座標
     def build_coord(self):
         uwb_calibration_data_matrix = UWBDataMatrix(
-            time_threshold=15, 
+            time_threshold=180, 
             anchors=self.anchors[0:4], 
             tags=self.anchors[1:8] 
                 # 在 Self Calibration 階段，Anchor 00:02~00:08 都可能暫時作為 Tag
@@ -406,7 +406,7 @@ class UWBPublisher(Node):
         while True:
             self.broadcast_target_state()
             self.read_serial(uwb_calibration_data_matrix)
-            if have_enough_data_between(["00:01", "00:02", "00:03", "00:04"], ["00:05"]):
+            if have_enough_data_between(["00:05"], ["00:01", "00:02", "00:03", "00:04"]):
                 last_four_anchor_coords = [
                     uwb_calibration_data_matrix.locate_tag("00:05")
                 ]
@@ -477,7 +477,7 @@ class UWBPublisher(Node):
                 if SAVE_DATA:
                     with open(self.serial_read_file, mode='a', newline='') as file:
                         csv_writer = csv.writer(file, escapechar='"')
-                        csv_writer.writerow([time.strftime('%Y%m%d_%H%M%S'), serial_connection.portstr, line]) # 標題
+                        csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S'), serial_connection.portstr, line]) # 標題
 
                 # 每一行有多種可能的資料：距離資料、採樣率資料、狀態遷移資料
                 # - 距離資料 e.g. `Range: 1.23 m     RX power: -45.67 dBm distance between anchor/tag:01:01 from Anchor 00:01`
@@ -506,7 +506,7 @@ class UWBPublisher(Node):
                         if state in line:
                             self.state = state
                     
-                    # dbg(f"- - - Read Serial: {line}")
+                # dbg(f"- - - Read Serial: {line}")
     
     # 定期發佈 Tag 的位置
     def publish_tag_position(self) -> None:

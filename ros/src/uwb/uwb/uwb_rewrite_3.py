@@ -142,7 +142,7 @@ class UWBDataMatrix:
         timestamp_str = time.strftime('%Y-%m-%d %H:%M:%S')
         if SAVE_DATA:
             anchor_eui_encoded = anchor_eui.replace(":", "-")
-            anchor_file_path = os.path.join(DATA_FOLDER, f"Device_{anchor_eui_encoded}_{timestamp_str}.csv")
+            anchor_file_path = os.path.join(DATA_FOLDER, f"Device_{anchor_eui_encoded}_{self.timestamp_str}.csv")
             with open(anchor_file_path, mode='a') as file:
                 csv_writer = csv.writer(file, escapechar='"')
                 csv_writer.writerow([timestamp_str, tag_eui, distance, self.anchor_sample_rate[anchor_eui] if anchor_eui in self.anchor_sample_rate else "N/A"])
