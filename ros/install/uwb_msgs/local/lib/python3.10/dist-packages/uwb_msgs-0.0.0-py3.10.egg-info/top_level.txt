@@ -1,1 +1,1 @@
-uwb_msgs
+/workspace/safmc_uwb/ros/build/uwb_msgs/ament_cmake_python/uwb_msgs/uwb_msgs.egg-info/top_level.txt

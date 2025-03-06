@@ -1,2 +1,1 @@
-geometry_msgs/Point pos
-string tag
+/workspace/safmc_uwb/ros/src/uwb_msgs/msg/Pose.msg

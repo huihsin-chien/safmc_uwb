@@ -18,6 +18,7 @@ byte tag3_shortAddress[] = {0x03, 0x03};
 
 byte anchor_b[] = {0x02, 0x00};
 uint16_t next_anchor = 2;
+uint16_t next_anchor_count = 2;
 byte anchor_c[] = {0x03, 0x00};
 
 // ranging counter (per second)
@@ -316,7 +317,10 @@ void handleRanging_otherAnchor(){
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission();
       // ranginginitiation 有成功
-      RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor);
+      next_anchor_count ++;
+      next_anchor_count = next_anchor_count%3;
+      
+      RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor_count+ 2);
       if(!result.success) return;
       range_self = result.range;
       String rangeString = "Range: "; rangeString += range_self; rangeString += " m";

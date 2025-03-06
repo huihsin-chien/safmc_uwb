@@ -1,0 +1,4 @@
+Invoking command in '/workspace/safmc_uwb/ros/build/uwb_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble /usr/bin/cmake --build /workspace/safmc_uwb/ros/build/uwb_msgs -- -j20 -l20
+Invoked command in '/workspace/safmc_uwb/ros/build/uwb_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble /usr/bin/cmake --build /workspace/safmc_uwb/ros/build/uwb_msgs -- -j20 -l20
+Invoking command in '/workspace/safmc_uwb/ros/build/uwb_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble /usr/bin/cmake --install /workspace/safmc_uwb/ros/build/uwb_msgs
+Invoked command in '/workspace/safmc_uwb/ros/build/uwb_msgs' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble /usr/bin/cmake --install /workspace/safmc_uwb/ros/build/uwb_msgs
