@@ -1,1 +1,0 @@
-[0mCMake Error: The source "/home/Judy/safmc_uwb/ros/src/uwb_msgs/CMakeLists.txt" does not match the source "/home/Judy/safmc_uwb/ros/src/msg_folder/CMakeLists.txt" used to generate cache.  Re-run cmake with a different source directory.[0m

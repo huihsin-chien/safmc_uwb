@@ -1,2 +1,0 @@
-Invoking command in '/workspace/safmc_uwb/ros/build/uwb_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble /usr/bin/cmake --build /workspace/safmc_uwb/ros/build/uwb_msgs -- -j12 -l12
-Invoked command in '/workspace/safmc_uwb/ros/build/uwb_msgs' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble /usr/bin/cmake --build /workspace/safmc_uwb/ros/build/uwb_msgs -- -j12 -l12

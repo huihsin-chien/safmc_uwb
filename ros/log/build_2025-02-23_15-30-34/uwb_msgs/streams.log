@@ -1,6 +1,0 @@
-[0.026s] Invoking command in '/workspace/safmc_uwb/ros/build/uwb_msgs': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble /usr/bin/cmake --build /workspace/safmc_uwb/ros/build/uwb_msgs -- -j12 -l12
-[0.041s] [0mCMake Error: The current CMakeCache.txt directory /workspace/safmc_uwb/ros/build/uwb_msgs/CMakeCache.txt is different than the directory /home/Judy/safmc_uwb/ros/build/uwb_msgs where CMakeCache.txt was created. This may result in binaries being created in the wrong place. If you are not sure, reedit the CMakeCache.txt[0m
-[0.060s] [0mCMake Error: The source directory "/home/Judy/safmc_uwb/ros/src/uwb_msgs" does not exist.
-[0.060s] Specify --help for usage, or press the help button on the CMake GUI.[0m
-[0.062s] gmake: *** [Makefile:1179: cmake_check_build_system] Error 1
-[0.066s] Invoked command in '/workspace/safmc_uwb/ros/build/uwb_msgs' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble /usr/bin/cmake --build /workspace/safmc_uwb/ros/build/uwb_msgs -- -j12 -l12

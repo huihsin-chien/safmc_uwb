@@ -1,0 +1,10 @@
+  File "/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/uwb.py", line 412
+    break
+    ^^^^^
+SyntaxError: invalid syntax
+
+  File "/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/uwb_5v8.py", line 412
+    break
+    ^^^^^
+SyntaxError: invalid syntax
+

@@ -1,5 +1,0 @@
-  File "/home/Judy/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/uwb_rewrite_2.py", line 284
-    = distance_matrix[i][0] 
-    ^
-SyntaxError: invalid syntax
-
