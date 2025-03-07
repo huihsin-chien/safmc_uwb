@@ -254,8 +254,8 @@ class UWBPublisher(Node):
         # 指定 ROS Topic 的傳輸行為與品質（QoS, Quality of Service)
         qos_profile = QoSProfile(
             reliability=QoSReliabilityPolicy.BEST_EFFORT,   # 不保證傳輸成功
-            durability=QoSDurabilityPolicy.VOLATILE, # 為後期加入的 Subscriber 保留資料
-            history=QoSHistoryPolicy.KEEP_LAST, depth=10     # 只保留最新的 depth (= 1) 筆資料
+            durability=QoSDurabilityPolicy.VOLATILE,        # 不為 Subscriber 保留資料
+            history=QoSHistoryPolicy.KEEP_LAST, depth=10    # 只保留最新的 depth (= 10) 筆資料
         )
 
         # 定義 ROS Topic
