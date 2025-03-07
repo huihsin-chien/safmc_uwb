@@ -1,0 +1,16 @@
+running develop
+running egg_info
+writing uwb.egg-info/PKG-INFO
+writing dependency_links to uwb.egg-info/dependency_links.txt
+writing entry points to uwb.egg-info/entry_points.txt
+writing requirements to uwb.egg-info/requires.txt
+writing top-level names to uwb.egg-info/top_level.txt
+reading manifest file 'uwb.egg-info/SOURCES.txt'
+writing manifest file 'uwb.egg-info/SOURCES.txt'
+running build_ext
+Creating /workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb.egg-link (link to .)
+Installing uwb script to /workspace/safmc_uwb/ros/install/uwb/lib/uwb
+
+Installed /workspace/safmc_uwb/ros/build/uwb
+running symlink_data
+symbolically linking /workspace/safmc_uwb/ros/build/uwb/resource/uwb -> /workspace/safmc_uwb/ros/install/uwb/share/ament_index/resource_index/packages

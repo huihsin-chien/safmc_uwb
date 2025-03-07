@@ -1,0 +1,116 @@
+timestamp,portstr,line
+20250304_173552,/dev/ttyACM4,### arduino-DW1000Ng-ranging-anchor-###
+20250304_173552,/dev/ttyACM4,DW1000Ng initialized ...
+20250304_173552,/dev/ttyACM4,Committed configuration ...
+20250304_173552,/dev/ttyACM4,"Device ID: DECA - model: 1, version: 3, revision: 0"
+20250304_173552,/dev/ttyACM4,Unique ID: AA:BB:CC:DD:EE:FF:00:04
+20250304_173552,/dev/ttyACM4,"Network ID & Device Address: PAN: 609A, Short Address: 04"
+20250304_173552,/dev/ttyACM4,"Device mode: Data rate: 6800 kb/s, PRF: 16 MHz, Preamble: 64 symbols, Channel: #5, Preamble code #3"
+20250304_173552,/dev/ttyACM3,### arduino-DW1000Ng-ranging-anchor-###
+20250304_173552,/dev/ttyACM3,DW1000Ng initialized ...
+20250304_173552,/dev/ttyACM3,Committed configuration ...
+20250304_173552,/dev/ttyACM3,"Device ID: DECA - model: 1, version: 3, revision: 0"
+20250304_173552,/dev/ttyACM3,Unique ID: AA:BB:CC:DD:EE:FF:00:02
+20250304_173552,/dev/ttyACM3,"Network ID & Device Address: PAN: 609A, Short Address: 02"
+20250304_173552,/dev/ttyACM3,"Device mode: Data rate: 6800 kb/s, PRF: 16 MHz, Preamble: 64 symbols, Channel: #5, Preamble code #3"
+20250304_173552,/dev/ttyACM2,### arduino-DW1000Ng-ranging-anchor-###
+20250304_173552,/dev/ttyACM2,DW1000Ng initialized ...
+20250304_173552,/dev/ttyACM2,Committed configuration ...
+20250304_173552,/dev/ttyACM2,"Device ID: DECA - model: 1, version: 3, revision: 0"
+20250304_173552,/dev/ttyACM2,Unique ID: AA:BB:CC:DD:EE:FF:00:01
+20250304_173552,/dev/ttyACM2,"Network ID & Device Address: PAN: 609A, Short Address: 01"
+20250304_173552,/dev/ttyACM2,"Device mode: Data rate: 6800 kb/s, PRF: 16 MHz, Preamble: 64 symbols, Channel: #5, Preamble code #3"
+20250304_173552,/dev/ttyACM1,### arduino-DW1000Ng-ranging-anchor-###
+20250304_173552,/dev/ttyACM1,DW1000Ng initialized ...
+20250304_173552,/dev/ttyACM1,Committed configuration ...
+20250304_173552,/dev/ttyACM1,"Device ID: DECA - model: 1, version: 3, revision: 0"
+20250304_173552,/dev/ttyACM1,Unique ID: AA:BB:CC:DD:EE:FF:00:03
+20250304_173552,/dev/ttyACM1,"Network ID & Device Address: PAN: 609A, Short Address: 03"
+20250304_173552,/dev/ttyACM1,"Device mode: Data rate: 6800 kb/s, PRF: 16 MHz, Preamble: 64 symbols, Channel: #5, Preamble code #3"
+20250304_173552,/dev/ttyACM0,n ...
+20250304_173552,/dev/ttyACM0,"Device ID: DECA - model: 1, version: 3, revision: 0"
+20250304_173552,/dev/ttyACM0,Unique ID: AA:BB:CC:DD:EE:FF:00:05
+20250304_173552,/dev/ttyACM0,"Network ID & Device Address: PAN: 609A, Short Address: 05"
+20250304_173552,/dev/ttyACM0,"Device mode: Data rate: 6800 kb/s, PRF: 16 MHz, Preamble: 64 symbols, Channel: #5, Preamble code #3"
+20250304_173554,/dev/ttyACM0,1
+20250304_173554,/dev/ttyACM0,let's go~
+20250304_173554,/dev/ttyACM0,1
+20250304_173554,/dev/ttyACM0,let's go~
+20250304_173554,/dev/ttyACM0,1
+20250304_173554,/dev/ttyACM0,let's go~
+20250304_173554,/dev/ttyACM0,1
+20250304_173554,/dev/ttyACM0,let's go~
+20250304_173554,/dev/ttyACM0,1
+20250304_173554,/dev/ttyACM0,let's go~
+20250304_173554,/dev/ttyACM0,1
+20250304_173554,/dev/ttyACM0,let's go~
+20250304_173554,/dev/ttyACM0,1
+20250304_173554,/dev/ttyACM0,let's go~
+20250304_173554,/dev/ttyACM0,1
+20250304_173554,/dev/ttyACM0,let's go~
+20250304_173554,/dev/ttyACM0,1
+20250304_173554,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM3,1
+20250304_173556,/dev/ttyACM3,let's go~
+20250304_173556,/dev/ttyACM1,1
+20250304_173556,/dev/ttyACM1,let's go~
+20250304_173556,/dev/ttyACM1,1
+20250304_173556,/dev/ttyACM1,let's go~
+20250304_173556,/dev/ttyACM1,1
+20250304_173556,/dev/ttyACM1,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,1
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,let's go~
+20250304_173556,/dev/ttyACM0,let's go~
