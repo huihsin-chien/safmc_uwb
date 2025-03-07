@@ -525,6 +525,7 @@ class UWBPublisher(Node):
             msg = TagPosition()
             msg.eui = tag_eui
             msg.x, msg.y, msg.z = coordinate
+            msg.timestamp = time.time()
             self.tag_position_publisher.publish(msg)
 
             dbg(f"- coordinate for {tag_eui} is {coordinate}")
