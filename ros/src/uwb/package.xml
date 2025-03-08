@@ -14,9 +14,21 @@
   <exec_depend>rclpy</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>uwb_msgs</exec_depend>
-  <exec_depend>pyserial</exec_depend>
-  <exec_depend>scipy</exec_depend>
+  <exec_depend>python3-serial</exec_depend> <!-- pyserial -->
+  <exec_depend>python3-scipy</exec_depend>  <!-- scipy    -->
+  <!-- 
+    Check:
+    - [Usage of `rosdep`]( http://docs.ros.org/en/independent/api/rosdep/html/commands.html )
+    - [Keys to fill in <depend>]( https://github.com/ros/rosdistro/tree/master/rosdep/ )
 
+    To list dependencies, run `rosdep keys -\-from-paths ./src` (remove the '\' before execution).
+    To install deps, run `rosdep install -\-from-paths ./src -\-ignore-src` (remove the '\').
+
+    Explanation:
+    - Arg `-\-from-paths` indicates that the packages to resolve deps for are in the local path
+    - Arg `-\-ignore-src` hint rosdep also to check the local folder for deps, which may also
+      being installing
+  -->
 
   <export>
     <build_type>ament_python</build_type>
