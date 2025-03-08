@@ -1,1 +1,0 @@
-/workspace/safmc_uwb/ros/build/uwb_msgs/rosidl_typesupport_fastrtps_c/uwb_msgs/msg/detail/pose__rosidl_typesupport_fastrtps_c.h

@@ -1,0 +1,233 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-40087613027992c5af54.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"build" : "agent_msgs__py",
+					"jsonFile" : "directory-agent_msgs__py-33becc8f1aa6a7e797a9.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/workspace/tmp/safmc_uwb/ros/build/agent_msgs/agent_msgs__py",
+					"targetIndexes" : 
+					[
+						2
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "agent_msgs",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "agent_msgs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-agent_msgs-b046086f44784870dd66.json",
+					"name" : "agent_msgs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "agent_msgs__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-agent_msgs__cpp-4c2e4d84ccd03b38ba3c.json",
+					"name" : "agent_msgs__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "agent_msgs__py::@aa89ec86dfbc556bfa22",
+					"jsonFile" : "target-agent_msgs__py-cfe39f52c83d237679cc.json",
+					"name" : "agent_msgs__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "agent_msgs__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-agent_msgs__rosidl_generator_c-30b72d7bfcabfa4059be.json",
+					"name" : "agent_msgs__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "agent_msgs__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-agent_msgs__rosidl_generator_py-1e0b29d7ce9d9bb7f7b5.json",
+					"name" : "agent_msgs__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "agent_msgs__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-agent_msgs__rosidl_typesupport_c-bae3da9bf63339de4a2c.json",
+					"name" : "agent_msgs__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "agent_msgs__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-agent_msgs__rosidl_typesupport_c__pyext-e1c00172b7a9ce6faefd.json",
+					"name" : "agent_msgs__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "agent_msgs__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-agent_msgs__rosidl_typesupport_cpp-397fbba47cfa6f6bbfb0.json",
+					"name" : "agent_msgs__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "agent_msgs__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-agent_msgs__rosidl_typesupport_fastrtps_c-a71a6ce82bf0c2725675.json",
+					"name" : "agent_msgs__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "agent_msgs__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-agent_msgs__rosidl_typesupport_fastrtps_c__pyext-01341f9d559127920ca3.json",
+					"name" : "agent_msgs__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "agent_msgs__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-agent_msgs__rosidl_typesupport_fastrtps_cpp-582874e0f2b9865b9be7.json",
+					"name" : "agent_msgs__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "agent_msgs__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-agent_msgs__rosidl_typesupport_introspection_c-603918ea7ad579df377e.json",
+					"name" : "agent_msgs__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "agent_msgs__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-agent_msgs__rosidl_typesupport_introspection_c__pyext-d79ead8cd406f636457e.json",
+					"name" : "agent_msgs__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "agent_msgs__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-agent_msgs__rosidl_typesupport_introspection_cpp-f714767fe3bc59160b98.json",
+					"name" : "agent_msgs__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "agent_msgs_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-agent_msgs_uninstall-fa8842e782f72e317557.json",
+					"name" : "agent_msgs_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_agent_msgs_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_agent_msgs_egg-fc8c57e67c8908e6427a.json",
+					"name" : "ament_cmake_python_build_agent_msgs_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_agent_msgs::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_agent_msgs-b5de0ca1751905ac48be.json",
+					"name" : "ament_cmake_python_copy_agent_msgs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-14e80e16d60804dfc3dd.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/workspace/tmp/safmc_uwb/ros/build/agent_msgs",
+		"source" : "/workspace/tmp/safmc_uwb/ros/src/agent_msgs"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

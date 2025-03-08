@@ -1,4 +1,4 @@
 import sys
 if sys.prefix == '/usr':
     sys.real_prefix = sys.prefix
-    sys.prefix = sys.exec_prefix = '/workspace/safmc_uwb/ros/install/uwb'
+    sys.prefix = sys.exec_prefix = '/workspace/tmp/safmc_uwb/ros/install/uwb'

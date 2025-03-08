@@ -1,0 +1,4 @@
+Invoking command in '/workspace/tmp/safmc_uwb/ros/build/agent_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /workspace/tmp/safmc_uwb/ros/build/agent_msgs -- -j20 -l20
+Invoked command in '/workspace/tmp/safmc_uwb/ros/build/agent_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /workspace/tmp/safmc_uwb/ros/build/agent_msgs -- -j20 -l20
+Invoking command in '/workspace/tmp/safmc_uwb/ros/build/agent_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /workspace/tmp/safmc_uwb/ros/build/agent_msgs
+Invoked command in '/workspace/tmp/safmc_uwb/ros/build/agent_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /workspace/tmp/safmc_uwb/ros/build/agent_msgs

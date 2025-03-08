@@ -1,0 +1,221 @@
+[0.000000] (-) TimerEvent: {}
+[0.000353] (agent_msgs) JobQueued: {'identifier': 'agent_msgs', 'dependencies': OrderedDict()}
+[0.000416] (uwb) JobQueued: {'identifier': 'uwb', 'dependencies': OrderedDict()}
+[0.000476] (agent_msgs) JobStarted: {'identifier': 'agent_msgs'}
+[0.003850] (uwb) JobStarted: {'identifier': 'uwb'}
+[0.008741] (agent_msgs) JobProgress: {'identifier': 'agent_msgs', 'progress': 'cmake'}
+[0.009234] (agent_msgs) JobProgress: {'identifier': 'agent_msgs', 'progress': 'build'}
+[0.009309] (agent_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/workspace/tmp/safmc_uwb/ros/build/agent_msgs', '--', '-j20', '-l20'], 'cwd': '/workspace/tmp/safmc_uwb/ros/build/agent_msgs', 'env': OrderedDict([('SUDO_GID', '1000'), ('MAIL', '/var/mail/root'), ('USER', 'root'), ('HOSTNAME', 'huixin'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/workspace/safmc_uwb/ros/install/agent_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/workspace/tmp'), ('ROS_PYTHON_VERSION', '3'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/workspace/safmc_uwb/ros/install'), ('SUDO_UID', '1000'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('SUDO_COMMAND', '/usr/bin/su'), ('AMENT_PREFIX_PATH', '/workspace/safmc_uwb/ros/install/uwb:/workspace/safmc_uwb/ros/install/agent_msgs:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('SUDO_USER', 'user'), ('PWD', '/workspace/tmp/safmc_uwb/ros/build/agent_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:/workspace/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/workspace/safmc_uwb/ros/install/agent_msgs:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble')]), 'shell': False}
+[0.049631] (agent_msgs) StdoutLine: {'line': b'[  2%] Built target agent_msgs__cpp\n'}
+[0.051985] (agent_msgs) StdoutLine: {'line': b'[ 12%] Built target agent_msgs__rosidl_generator_c\n'}
+[0.056548] (agent_msgs) StdoutLine: {'line': b'[ 12%] Built target ament_cmake_python_copy_agent_msgs\n'}
+[0.065790] (agent_msgs) StdoutLine: {'line': b'[ 23%] Built target agent_msgs__rosidl_typesupport_introspection_cpp\n'}
+[0.066352] (agent_msgs) StdoutLine: {'line': b'[ 34%] Built target agent_msgs__rosidl_typesupport_cpp\n'}
+[0.066526] (agent_msgs) StdoutLine: {'line': b'[ 44%] Built target agent_msgs__rosidl_typesupport_c\n'}
+[0.068428] (agent_msgs) StdoutLine: {'line': b'[ 55%] Built target agent_msgs__rosidl_typesupport_introspection_c\n'}
+[0.069055] (agent_msgs) StdoutLine: {'line': b'[ 65%] Built target agent_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[0.071387] (agent_msgs) StdoutLine: {'line': b'[ 76%] Built target agent_msgs__rosidl_typesupport_fastrtps_c\n'}
+[0.087928] (agent_msgs) StdoutLine: {'line': b'[ 76%] Built target agent_msgs\n'}
+[0.099743] (-) TimerEvent: {}
+[0.105152] (agent_msgs) StdoutLine: {'line': b'[ 78%] Built target agent_msgs__py\n'}
+[0.125005] (agent_msgs) StdoutLine: {'line': b'[ 87%] Built target agent_msgs__rosidl_generator_py\n'}
+[0.143305] (agent_msgs) StdoutLine: {'line': b'[100%] Built target agent_msgs__rosidl_typesupport_fastrtps_c__pyext\n'}
+[0.143450] (agent_msgs) StdoutLine: {'line': b'[100%] Built target agent_msgs__rosidl_typesupport_introspection_c__pyext\n'}
+[0.143509] (agent_msgs) StdoutLine: {'line': b'[100%] Built target agent_msgs__rosidl_typesupport_c__pyext\n'}
+[0.199969] (-) TimerEvent: {}
+[0.210571] (agent_msgs) StdoutLine: {'line': b'running egg_info\n'}
+[0.211047] (agent_msgs) StdoutLine: {'line': b'writing agent_msgs.egg-info/PKG-INFO\n'}
+[0.211372] (agent_msgs) StdoutLine: {'line': b'writing dependency_links to agent_msgs.egg-info/dependency_links.txt\n'}
+[0.211552] (agent_msgs) StdoutLine: {'line': b'writing top-level names to agent_msgs.egg-info/top_level.txt\n'}
+[0.212858] (agent_msgs) StdoutLine: {'line': b"reading manifest file 'agent_msgs.egg-info/SOURCES.txt'\n"}
+[0.213387] (agent_msgs) StdoutLine: {'line': b"writing manifest file 'agent_msgs.egg-info/SOURCES.txt'\n"}
+[0.232470] (agent_msgs) StdoutLine: {'line': b'[100%] Built target ament_cmake_python_build_agent_msgs_egg\n'}
+[0.241021] (agent_msgs) CommandEnded: {'returncode': 0}
+[0.241902] (agent_msgs) JobProgress: {'identifier': 'agent_msgs', 'progress': 'install'}
+[0.247526] (agent_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/workspace/tmp/safmc_uwb/ros/build/agent_msgs'], 'cwd': '/workspace/tmp/safmc_uwb/ros/build/agent_msgs', 'env': OrderedDict([('SUDO_GID', '1000'), ('MAIL', '/var/mail/root'), ('USER', 'root'), ('HOSTNAME', 'huixin'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/workspace/safmc_uwb/ros/install/agent_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/workspace/tmp'), ('ROS_PYTHON_VERSION', '3'), ('COLORTERM', 'truecolor'), ('COLCON_PREFIX_PATH', '/workspace/safmc_uwb/ros/install'), ('SUDO_UID', '1000'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('SUDO_COMMAND', '/usr/bin/su'), ('AMENT_PREFIX_PATH', '/workspace/safmc_uwb/ros/install/uwb:/workspace/safmc_uwb/ros/install/agent_msgs:/opt/ros/humble'), ('DEBIAN_FRONTEND', 'noninteractive'), ('SHELL', '/bin/bash'), ('SUDO_USER', 'user'), ('PWD', '/workspace/tmp/safmc_uwb/ros/build/agent_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('PYTHONPATH', '/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:/workspace/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/workspace/safmc_uwb/ros/install/agent_msgs:/workspace/safmc_uwb/ros/install/uwb:/opt/ros/humble')]), 'shell': False}
+[0.254473] (agent_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[0.254763] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/ament_index/resource_index/rosidl_interfaces/agent_msgs\n'}
+[0.254846] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs\n'}
+[0.254887] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg\n'}
+[0.254927] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/pose.h\n'}
+[0.254965] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/tag_position.h\n'}
+[0.255006] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[0.255044] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail\n'}
+[0.255081] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/range__type_support.h\n'}
+[0.255117] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/pose__struct.h\n'}
+[0.255152] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/tag_position__type_support.h\n'}
+[0.255188] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/tag_position__struct.h\n'}
+[0.255383] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/pose__functions.h\n'}
+[0.255434] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/pose__type_support.h\n'}
+[0.255475] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/tag_position__functions.h\n'}
+[0.255681] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/pose__functions.c\n'}
+[0.255743] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/tag_position__functions.c\n'}
+[0.255800] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/range__functions.c\n'}
+[0.255839] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/range__functions.h\n'}
+[0.255878] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/range__struct.h\n'}
+[0.255917] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/range.h\n'}
+[0.255957] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/environment/library_path.sh\n'}
+[0.255996] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/environment/library_path.dsv\n'}
+[0.256032] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/lib/libagent_msgs__rosidl_generator_c.so\n'}
+[0.256070] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs\n'}
+[0.256106] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg\n'}
+[0.256239] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[0.256280] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail\n'}
+[0.256319] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/tag_position__rosidl_typesupport_fastrtps_c.h\n'}
+[0.256355] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/pose__rosidl_typesupport_fastrtps_c.h\n'}
+[0.256391] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/range__rosidl_typesupport_fastrtps_c.h\n'}
+[0.256426] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/lib/libagent_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[0.256463] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs\n'}
+[0.256535] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg\n'}
+[0.256583] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[0.256618] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail\n'}
+[0.256669] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/pose__type_support.c\n'}
+[0.256706] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/tag_position__rosidl_typesupport_introspection_c.h\n'}
+[0.256743] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/range__rosidl_typesupport_introspection_c.h\n'}
+[0.256778] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/tag_position__type_support.c\n'}
+[0.256812] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/pose__rosidl_typesupport_introspection_c.h\n'}
+[0.256847] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/range__type_support.c\n'}
+[0.256882] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/lib/libagent_msgs__rosidl_typesupport_introspection_c.so\n'}
+[0.256917] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/lib/libagent_msgs__rosidl_typesupport_c.so\n'}
+[0.256953] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs\n'}
+[0.256987] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg\n'}
+[0.257021] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/range.hpp\n'}
+[0.257056] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/pose.hpp\n'}
+[0.257112] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/tag_position.hpp\n'}
+[0.257148] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail\n'}
+[0.257183] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/pose__struct.hpp\n'}
+[0.257218] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/pose__type_support.hpp\n'}
+[0.257251] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/tag_position__traits.hpp\n'}
+[0.257285] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/range__struct.hpp\n'}
+[0.257356] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/tag_position__type_support.hpp\n'}
+[0.257402] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/pose__builder.hpp\n'}
+[0.257436] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/range__builder.hpp\n'}
+[0.257479] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/pose__traits.hpp\n'}
+[0.257538] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/range__type_support.hpp\n'}
+[0.257591] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/tag_position__struct.hpp\n'}
+[0.257656] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/range__traits.hpp\n'}
+[0.257692] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/tag_position__builder.hpp\n'}
+[0.257727] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[0.257773] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs\n'}
+[0.257808] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg\n'}
+[0.257843] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail\n'}
+[0.257878] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/range__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.257914] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/pose__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.257974] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/dds_fastrtps\n'}
+[0.258006] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/tag_position__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[0.258041] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[0.258075] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/lib/libagent_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[0.258108] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs\n'}
+[0.258140] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg\n'}
+[0.258173] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail\n'}
+[0.258206] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/tag_position__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.258239] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/tag_position__type_support.cpp\n'}
+[0.258272] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/range__type_support.cpp\n'}
+[0.258305] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/range__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.258341] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/pose__rosidl_typesupport_introspection_cpp.hpp\n'}
+[0.258374] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/include/agent_msgs/agent_msgs/msg/detail/pose__type_support.cpp\n'}
+[0.258407] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/lib/libagent_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[0.258463] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/lib/libagent_msgs__rosidl_typesupport_cpp.so\n'}
+[0.258499] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/environment/pythonpath.sh\n'}
+[0.258534] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/environment/pythonpath.dsv\n'}
+[0.258565] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs-0.0.0-py3.10.egg-info\n'}
+[0.258598] (agent_msgs) StdoutLine: {'line': b'-- Installing: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[0.258630] (agent_msgs) StdoutLine: {'line': b'-- Installing: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[0.258661] (agent_msgs) StdoutLine: {'line': b'-- Installing: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[0.258693] (agent_msgs) StdoutLine: {'line': b'-- Installing: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[0.258724] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs\n'}
+[0.258755] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/agent_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.258791] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/msg\n'}
+[0.258823] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/msg/_range_s.c\n'}
+[0.258855] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/msg/_tag_position.py\n'}
+[0.258886] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/msg/_tag_position_s.c\n'}
+[0.258918] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/msg/_pose_s.c\n'}
+[0.258949] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/msg/_pose.py\n'}
+[0.258980] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/msg/__init__.py\n'}
+[0.259011] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/msg/_range.py\n'}
+[0.259042] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/_agent_msgs_s.ep.rosidl_typesupport_c.c\n'}
+[0.259074] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/agent_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.259107] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/_agent_msgs_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[0.259139] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/agent_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.259171] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/_agent_msgs_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[0.259203] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/__init__.py\n'}
+[0.259235] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/libagent_msgs__rosidl_generator_py.so\n'}
+[0.279958] (agent_msgs) StdoutLine: {'line': b"Listing '/workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs'...\n"}
+[0.280114] (agent_msgs) StdoutLine: {'line': b"Listing '/workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/msg'...\n"}
+[0.283822] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/agent_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.283998] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/agent_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.284194] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages/agent_msgs/agent_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[0.284429] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/lib/libagent_msgs__rosidl_generator_py.so\n'}
+[0.284612] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/msg/Range.idl\n'}
+[0.284744] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/msg/Pose.idl\n'}
+[0.284879] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/msg/TagPosition.idl\n'}
+[0.284999] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/msg/Range.msg\n'}
+[0.285065] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/msg/Pose.msg\n'}
+[0.285144] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/msg/TagPosition.msg\n'}
+[0.285216] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/ament_index/resource_index/package_run_dependencies/agent_msgs\n'}
+[0.285364] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/ament_index/resource_index/parent_prefix_path/agent_msgs\n'}
+[0.285481] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/environment/ament_prefix_path.sh\n'}
+[0.285610] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/environment/ament_prefix_path.dsv\n'}
+[0.285749] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/environment/path.sh\n'}
+[0.285920] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/environment/path.dsv\n'}
+[0.285995] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/local_setup.bash\n'}
+[0.286075] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/local_setup.sh\n'}
+[0.286153] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/local_setup.zsh\n'}
+[0.286239] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/local_setup.dsv\n'}
+[0.286328] (agent_msgs) StdoutLine: {'line': b'-- Installing: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/package.dsv\n'}
+[0.286414] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/ament_index/resource_index/packages/agent_msgs\n'}
+[0.286530] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/export_agent_msgs__rosidl_generator_cExport.cmake\n'}
+[0.286622] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/export_agent_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[0.286706] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/export_agent_msgs__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[0.286788] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/export_agent_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[0.286868] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/agent_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[0.286953] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/agent_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[0.287037] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/agent_msgs__rosidl_typesupport_cExport.cmake\n'}
+[0.287116] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/agent_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[0.287286] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/export_agent_msgs__rosidl_generator_cppExport.cmake\n'}
+[0.287527] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/export_agent_msgs__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[0.287870] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/export_agent_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[0.288398] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/agent_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[0.288857] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/agent_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[0.289176] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/agent_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[0.289356] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/agent_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[0.289497] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/export_agent_msgs__rosidl_generator_pyExport.cmake\n'}
+[0.289591] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/export_agent_msgs__rosidl_generator_pyExport-noconfig.cmake\n'}
+[0.289641] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[0.289679] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[0.289723] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[0.289785] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[0.289824] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[0.289861] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[0.289918] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[0.290040] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/agent_msgsConfig.cmake\n'}
+[0.290150] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/cmake/agent_msgsConfig-version.cmake\n'}
+[0.290238] (agent_msgs) StdoutLine: {'line': b'-- Up-to-date: /workspace/tmp/safmc_uwb/ros/install/agent_msgs/share/agent_msgs/package.xml\n'}
+[0.290416] (agent_msgs) CommandEnded: {'returncode': 0}
+[0.300068] (-) TimerEvent: {}
+[0.303003] (agent_msgs) JobEnded: {'identifier': 'agent_msgs', 'rc': 0}
+[0.390579] (uwb) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', '-W', 'ignore:easy_install command is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/uwb', 'build', '--build-base', '/workspace/tmp/safmc_uwb/ros/build/uwb/build', 'install', '--record', '/workspace/tmp/safmc_uwb/ros/build/uwb/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/workspace/tmp/safmc_uwb/ros/src/uwb', 'env': {'SUDO_GID': '1000', 'MAIL': '/var/mail/root', 'USER': 'root', 'HOSTNAME': 'huixin', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/workspace/safmc_uwb/ros/install/agent_msgs/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/root', 'OLDPWD': '/workspace/tmp', 'ROS_PYTHON_VERSION': '3', 'COLORTERM': 'truecolor', 'COLCON_PREFIX_PATH': '/workspace/safmc_uwb/ros/install', 'SUDO_UID': '1000', 'ROS_DISTRO': 'humble', 'LOGNAME': 'root', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'TERM': 'xterm-256color', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'DISPLAY': ':0', 'LANG': 'en_US.UTF-8', 'SUDO_COMMAND': '/usr/bin/su', 'AMENT_PREFIX_PATH': '/workspace/safmc_uwb/ros/install/uwb:/workspace/safmc_uwb/ros/install/agent_msgs:/opt/ros/humble', 'DEBIAN_FRONTEND': 'noninteractive', 'SHELL': '/bin/bash', 'SUDO_USER': 'user', 'PWD': '/workspace/tmp/safmc_uwb/ros/build/uwb', 'LC_ALL': 'en_US.UTF-8', 'PYTHONPATH': '/workspace/tmp/safmc_uwb/ros/build/uwb/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/tmp/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:/workspace/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:/workspace/safmc_uwb/ros/install/agent_msgs/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/workspace/safmc_uwb/ros/install/agent_msgs'}, 'shell': False}
+[0.400167] (-) TimerEvent: {}
+[0.500395] (-) TimerEvent: {}
+[0.545889] (uwb) StdoutLine: {'line': b'running egg_info\n'}
+[0.546187] (uwb) StdoutLine: {'line': b'writing ../../build/uwb/uwb.egg-info/PKG-INFO\n'}
+[0.546363] (uwb) StdoutLine: {'line': b'writing dependency_links to ../../build/uwb/uwb.egg-info/dependency_links.txt\n'}
+[0.546541] (uwb) StdoutLine: {'line': b'writing entry points to ../../build/uwb/uwb.egg-info/entry_points.txt\n'}
+[0.546618] (uwb) StdoutLine: {'line': b'writing requirements to ../../build/uwb/uwb.egg-info/requires.txt\n'}
+[0.546683] (uwb) StdoutLine: {'line': b'writing top-level names to ../../build/uwb/uwb.egg-info/top_level.txt\n'}
+[0.547668] (uwb) StdoutLine: {'line': b"reading manifest file '../../build/uwb/uwb.egg-info/SOURCES.txt'\n"}
+[0.547977] (uwb) StdoutLine: {'line': b"writing manifest file '../../build/uwb/uwb.egg-info/SOURCES.txt'\n"}
+[0.548108] (uwb) StdoutLine: {'line': b'running build\n'}
+[0.548180] (uwb) StdoutLine: {'line': b'running build_py\n'}
+[0.548437] (uwb) StdoutLine: {'line': b'running install\n'}
+[0.548710] (uwb) StdoutLine: {'line': b'running install_lib\n'}
+[0.549616] (uwb) StdoutLine: {'line': b'running install_data\n'}
+[0.549687] (uwb) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.550892] (uwb) StdoutLine: {'line': b"removing '/workspace/tmp/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb-0.0.0-py3.10.egg-info' (and everything under it)\n"}
+[0.551035] (uwb) StdoutLine: {'line': b'Copying ../../build/uwb/uwb.egg-info to /workspace/tmp/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb-0.0.0-py3.10.egg-info\n'}
+[0.551352] (uwb) StdoutLine: {'line': b'running install_scripts\n'}
+[0.566873] (uwb) StdoutLine: {'line': b'Installing uwb script to /workspace/tmp/safmc_uwb/ros/install/uwb/lib/uwb\n'}
+[0.567064] (uwb) StdoutLine: {'line': b"writing list of installed files to '/workspace/tmp/safmc_uwb/ros/build/uwb/install.log'\n"}
+[0.582568] (uwb) CommandEnded: {'returncode': 0}
+[0.586683] (uwb) JobEnded: {'identifier': 'uwb', 'rc': 0}
+[0.587289] (-) EventReactorShutdown: {}

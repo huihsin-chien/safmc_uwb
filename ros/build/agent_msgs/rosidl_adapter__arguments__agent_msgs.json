@@ -1,0 +1,8 @@
+{
+  "package_name": "agent_msgs",
+  "non_idl_tuples": [
+    "/workspace/tmp/safmc_uwb/ros/src/agent_msgs:msg/Range.msg",
+    "/workspace/tmp/safmc_uwb/ros/src/agent_msgs:msg/Pose.msg",
+    "/workspace/tmp/safmc_uwb/ros/src/agent_msgs:msg/TagPosition.msg"
+  ]
+}

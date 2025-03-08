@@ -1,1 +1,0 @@
-/workspace/safmc_uwb/ros/build/uwb_msgs/rosidl_generator_c/uwb_msgs/msg/detail/pose__struct.h

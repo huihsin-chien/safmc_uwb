@@ -296,10 +296,9 @@ class UWBPublisher(Node):
 
         # 用於判斷 tag-like anchors 到 anchors 之間的資料量已足夠
         def have_enough_data_between(tag_euis: list[str], anchor_euis: list[str]) -> bool:
-            uwb_calibration_data_matrix.clear_outdated_measurements(tag_euis[0], anchor_euis[0])
             dbg("- -", "\n- - ".join(f"from {tag_eui} to {anchor_eui}: {len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui])}" for tag_eui in tag_euis for anchor_eui in anchor_euis))
             return all(
-                len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui]) > 60
+                len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui]) >= 60
                 for tag_eui in tag_euis
                 for anchor_eui in anchor_euis
             )
@@ -439,7 +438,12 @@ class UWBPublisher(Node):
                 while serial_connection.write(f"{self.target_state * 10}".encode('utf-8')) <= 0:
                     time.sleep(0.01)
             except Exception as e:
+                serial_connection.close()
                 print(f"Error sending message to {serial_connection.portstr}: {e}")
+                try: 
+                    serial_connection.open() 
+                except Exception as a:
+                    print(f"Failed to reopen the serial port {serial_connection.portstr}") 
         time.sleep(2) # 以免淹沒 Serial Port
 
     # 透過 USB Serial，讀取並儲存 UWB 裝置距離、採樣率、新狀態遷移

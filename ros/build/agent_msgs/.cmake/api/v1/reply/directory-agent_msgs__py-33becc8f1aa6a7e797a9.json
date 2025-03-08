@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "agent_msgs__py",
+		"source" : "/workspace/tmp/safmc_uwb/ros/build/agent_msgs/agent_msgs__py"
+	}
+}

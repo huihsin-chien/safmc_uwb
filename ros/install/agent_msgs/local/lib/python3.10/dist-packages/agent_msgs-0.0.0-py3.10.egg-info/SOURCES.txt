@@ -1,0 +1,10 @@
+setup.py
+agent_msgs/__init__.py
+agent_msgs.egg-info/PKG-INFO
+agent_msgs.egg-info/SOURCES.txt
+agent_msgs.egg-info/dependency_links.txt
+agent_msgs.egg-info/top_level.txt
+agent_msgs/msg/__init__.py
+agent_msgs/msg/_pose.py
+agent_msgs/msg/_range.py
+agent_msgs/msg/_tag_position.py
