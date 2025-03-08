@@ -139,7 +139,7 @@ class UWBDataMatrix:
             return
 
         self.data[tag_eui][anchor_eui].append(UWBData(distance))
-        timestamp_str = time.strftime('%Y-%m-%d %H:%M:%S')
+        timestamp_str = time.strftime('%Y%m%d_%H%M%S')
         if SAVE_DATA:
             anchor_eui_encoded = anchor_eui.replace(":", "-")
             anchor_file_path = os.path.join(DATA_FOLDER, f"Device_{anchor_eui_encoded}_{self.timestamp_str}.csv")
@@ -294,7 +294,7 @@ class UWBPublisher(Node):
     # 進行 Self Calibration：取得 Calibration Data，建立 Coordinate 並設定 Anchors 座標
     def build_coord(self):
         uwb_calibration_data_matrix = UWBDataMatrix(
-            time_threshold=15, 
+            time_threshold=180, 
             anchors=self.anchors[0:4], 
             tags=self.anchors[1:8] 
                 # 在 Self Calibration 階段，Anchor 00:02~00:08 都可能暫時作為 Tag
@@ -458,7 +458,17 @@ class UWBPublisher(Node):
                 while serial_connection.write(f"{self.target_state * 10}".encode('utf-8')) <= 0:
                     time.sleep(0.01)
             except Exception as e:
+                # ports = [port.device for port in serial.tools.list_ports.comports() if "ttyACM" in port.device]
+                # dbg("ports:", ports)
+                # for port in ports:
+                #     serial.Serial(port, baudrate=9600, timeout=0.001)
+                serial_connection.close()
                 print(f"Error sending message to {serial_connection.portstr}: {e}")
+                try: 
+                    serial_connection.open() 
+                except Exception as a:
+                    print(f"Failed to reopen the serial port {serial_connection.portstr}") 
+
         time.sleep(2) # 以免淹沒 Serial Port
 
     # 透過 USB Serial，讀取並儲存 UWB 裝置距離、採樣率、新狀態遷移
@@ -468,6 +478,7 @@ class UWBPublisher(Node):
             try: 
                 lines = [line.decode("utf-8").strip() for line in serial_connection.readlines()]
             except Exception as e:
+
                 print(f"- - - Error reading from {serial_connection.portstr}: {e}")
                 continue
             # dbg("- - - Lines are: ", lines)
@@ -509,7 +520,7 @@ class UWBPublisher(Node):
                         if state in line:
                             self.state = state
                     
-                    # dbg(f"- - - Read Serial: {line}")
+                # dbg(f"- - - Read Serial: {line}")
     
     # 定期發佈 Tag 的位置
     def publish_tag_position(self) -> None:
@@ -540,6 +551,8 @@ def main(args=None):
     finally:
         position_publisher.destroy_node()
         rclpy.shutdown()
-            
+        for serial_connection in position_publisher.serials:
+            serial_connection.close()
+
 if __name__ == '__main__':
     main()

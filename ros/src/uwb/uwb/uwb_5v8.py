@@ -462,11 +462,12 @@ class UWBPublisher(Node):
                 # for port in ports:
                 #     serial.Serial(port, baudrate=9600, timeout=0.001)
                 serial_connection.close()
-                try: serial_connection.open() 
-                except Exception as a:
-                    print("cant open serial port")  
-
                 print(f"Error sending message to {serial_connection.portstr}: {e}")
+                try: 
+                    serial_connection.open() 
+                except Exception as a:
+                    print(f"Failed to reopen the serial port {serial_connection.portstr}") 
+
         time.sleep(2) # 以免淹沒 Serial Port
 
     # 透過 USB Serial，讀取並儲存 UWB 裝置距離、採樣率、新狀態遷移
@@ -551,5 +552,6 @@ def main(args=None):
         rclpy.shutdown()
         for serial_connection in position_publisher.serials:
             serial_connection.close()
+
 if __name__ == '__main__':
     main()
