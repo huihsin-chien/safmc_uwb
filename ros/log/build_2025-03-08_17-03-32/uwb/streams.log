@@ -1,0 +1,27 @@
+[0.354s] Invoking command in '/workspace/tmp/safmc_uwb/ros/src/uwb': PYTHONPATH=/workspace/tmp/safmc_uwb/ros/build/uwb/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/tmp/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/uwb build --build-base /workspace/tmp/safmc_uwb/ros/build/uwb/build install --record /workspace/tmp/safmc_uwb/ros/build/uwb/install.log --single-version-externally-managed install_data
+[0.486s] running egg_info
+[0.486s] writing ../../build/uwb/uwb.egg-info/PKG-INFO
+[0.486s] writing dependency_links to ../../build/uwb/uwb.egg-info/dependency_links.txt
+[0.486s] writing entry points to ../../build/uwb/uwb.egg-info/entry_points.txt
+[0.486s] writing requirements to ../../build/uwb/uwb.egg-info/requires.txt
+[0.486s] writing top-level names to ../../build/uwb/uwb.egg-info/top_level.txt
+[0.488s] reading manifest file '../../build/uwb/uwb.egg-info/SOURCES.txt'
+[0.488s] writing manifest file '../../build/uwb/uwb.egg-info/SOURCES.txt'
+[0.488s] running build
+[0.488s] running build_py
+[0.488s] copying uwb/uwb_rewrite_3.py -> /workspace/tmp/safmc_uwb/ros/build/uwb/build/lib/uwb
+[0.489s] copying uwb/uwb.py -> /workspace/tmp/safmc_uwb/ros/build/uwb/build/lib/uwb
+[0.489s] running install
+[0.489s] running install_lib
+[0.490s] copying /workspace/tmp/safmc_uwb/ros/build/uwb/build/lib/uwb/uwb_rewrite_3.py -> /workspace/tmp/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb
+[0.490s] copying /workspace/tmp/safmc_uwb/ros/build/uwb/build/lib/uwb/uwb.py -> /workspace/tmp/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb
+[0.490s] byte-compiling /workspace/tmp/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/uwb_rewrite_3.py to uwb_rewrite_3.cpython-310.pyc
+[0.493s] byte-compiling /workspace/tmp/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb/uwb.py to uwb.cpython-310.pyc
+[0.495s] running install_data
+[0.495s] running install_egg_info
+[0.496s] removing '/workspace/tmp/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb-0.0.0-py3.10.egg-info' (and everything under it)
+[0.496s] Copying ../../build/uwb/uwb.egg-info to /workspace/tmp/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages/uwb-0.0.0-py3.10.egg-info
+[0.497s] running install_scripts
+[0.510s] Installing uwb script to /workspace/tmp/safmc_uwb/ros/install/uwb/lib/uwb
+[0.511s] writing list of installed files to '/workspace/tmp/safmc_uwb/ros/build/uwb/install.log'
+[0.526s] Invoked command in '/workspace/tmp/safmc_uwb/ros/src/uwb' returned '0': PYTHONPATH=/workspace/tmp/safmc_uwb/ros/build/uwb/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/workspace/tmp/safmc_uwb/ros/install/uwb/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/uwb build --build-base /workspace/tmp/safmc_uwb/ros/build/uwb/build install --record /workspace/tmp/safmc_uwb/ros/build/uwb/install.log --single-version-externally-managed install_data

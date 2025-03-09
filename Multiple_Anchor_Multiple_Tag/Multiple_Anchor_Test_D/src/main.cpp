@@ -127,7 +127,6 @@ void handleRanging_self_calibration(){
     
   RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
   if(result.success) {
-      
       uint32_t curMillis = millis();
       delay(2); // Tweak based on your hardware
       range_self = result.range;
@@ -138,6 +137,7 @@ void handleRanging_self_calibration(){
       DW1000Ng::getReceivedData(recv_data, recv_len);
       if ( recv_data[7] == 0x05 && recv_data[8] == 0x00){ // recieved Anchor E's blink
           successRangingCount[4]++;
+          Serial.println("AnchorE's blink received");
       }else if (recv_data[7] == 0x06 && recv_data[8] == 0x00){
           successRangingCount[5]++;}
       else if (recv_data[7] == 0x07 && recv_data[8] == 0x00){

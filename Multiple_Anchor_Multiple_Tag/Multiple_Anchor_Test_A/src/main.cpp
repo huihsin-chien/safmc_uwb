@@ -343,7 +343,6 @@ void handleRanging_otherAnchor(){
         successRangingCount[5] = 0;
         successRangingCount[6] = 0;
         successRangingCount[7] = 0;
-        successRangingCount[8] = 0;
       }
     } 
   }

@@ -121,6 +121,11 @@ def align_coordinates(X: np.ndarray) -> np.ndarray: # Rodrigues' rotation formul
 #         for idx in range(4):
 #             X_aligned[idx][2] = - X_aligned[idx][2]
 
+    # 3. 因已知 anchor 3 有正 y 座標，故如果 X[2][1] 是負數，將所有座標對 XZ 平面做鏡像，以確保 Y 軸在上
+    if X_aligned[2][1] < 0:
+        for idx in range(4):
+            X_aligned[idx][1] = - X_aligned[idx][1]
+
     print ( "(", X_aligned[0][0], ",", X_aligned[0][1], ",", X_aligned[0][2], ")\n","(", X_aligned[1][0], ",", X_aligned[1][1], ",", X_aligned[1][2], ")\n", "(", X_aligned[2][0], ",", X_aligned[2][1], ",", X_aligned[2][2], ")\n", "(", X_aligned[3][0], ",", X_aligned[3][1], ",", X_aligned[3][2], ")\n")
     return X_aligned
 

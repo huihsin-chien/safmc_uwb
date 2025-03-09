@@ -1,0 +1,3440 @@
+timestamp,portstr,line
+20250308_174004,/dev/ttyACM0,### arduino-DW1000Ng-ranging-anchor-###
+20250308_174004,/dev/ttyACM0,DW1000Ng initialized ...
+20250308_174004,/dev/ttyACM0,Committed configuration ...
+20250308_174004,/dev/ttyACM0,"Device ID: DECA - model: 1, version: 3, revision: 0"
+20250308_174004,/dev/ttyACM0,Unique ID: AA:BB:CC:DD:EE:FF:00:04
+20250308_174004,/dev/ttyACM0,"Network ID & Device Address: PAN: 609A, Short Address: 04"
+20250308_174004,/dev/ttyACM0,"Device mode: Data rate: 850 kb/s, PRF: 64 MHz, Preamble: 1024 symbols, Channel: #4, Preamble code #18"
+20250308_174004,/dev/ttyACM1,### arduino-DW1000Ng-ranging-anchor-###
+20250308_174004,/dev/ttyACM1,DW1000Ng initialized ...
+20250308_174004,/dev/ttyACM1,Committed configuration ...
+20250308_174004,/dev/ttyACM1,"Device ID: DECA - model: 1, version: 3, revision: 0"
+20250308_174004,/dev/ttyACM1,Unique ID: AA:BB:CC:DD:EE:FF:00:03
+20250308_174004,/dev/ttyACM1,"Network ID & Device Address: PAN: 609A, Short Address: 03"
+20250308_174004,/dev/ttyACM1,"Device mode: Data rate: 850 kb/s, PRF: 64 MHz, Preamble: 1024 symbols, Channel: #4, Preamble code #18"
+20250308_174004,/dev/ttyACM2,### arduino-DW1000Ng-ranging-anchor-###
+20250308_174004,/dev/ttyACM2,DW1000Ng initialized ...
+20250308_174004,/dev/ttyACM2,Committed configuration ...
+20250308_174004,/dev/ttyACM2,"Device ID: DECA - model: 1, version: 3, revision: 0"
+20250308_174004,/dev/ttyACM2,Unique ID: AA:BB:CC:DD:EE:FF:00:02
+20250308_174004,/dev/ttyACM2,"Network ID & Device Address: PAN: 609A, Short Address: 02"
+20250308_174004,/dev/ttyACM2,"Device mode: Data rate: 850 kb/s, PRF: 64 MHz, Preamble: 1024 symbols, Channel: #4, Preamble code #18"
+20250308_174004,/dev/ttyACM3,### arduino-DW1000Ng-ranging-anchor-###
+20250308_174004,/dev/ttyACM3,DW1000Ng initialized ...
+20250308_174004,/dev/ttyACM3,Committed configuration ...
+20250308_174004,/dev/ttyACM3,"Device ID: DECA - model: 1, version: 3, revision: 0"
+20250308_174004,/dev/ttyACM3,Unique ID: AA:BB:CC:DD:EE:FF:00:01
+20250308_174004,/dev/ttyACM3,"Network ID & Device Address: PAN: 609A, Short Address: 01"
+20250308_174004,/dev/ttyACM3,"Device mode: Data rate: 850 kb/s, PRF: 64 MHz, Preamble: 1024 symbols, Channel: #4, Preamble code #18"
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM0,1
+20250308_174008,/dev/ttyACM0,let's go~
+20250308_174008,/dev/ttyACM1,1
+20250308_174008,/dev/ttyACM1,let's go~
+20250308_174008,/dev/ttyACM1,1
+20250308_174008,/dev/ttyACM1,let's go~
+20250308_174008,/dev/ttyACM1,1
+20250308_174008,/dev/ttyACM1,let's go~
+20250308_174008,/dev/ttyACM1,1
+20250308_174008,/dev/ttyACM1,let's go~
+20250308_174008,/dev/ttyACM1,1
+20250308_174008,/dev/ttyACM1,let's go~
+20250308_174008,/dev/ttyACM1,1
+20250308_174008,/dev/ttyACM1,let's go~
+20250308_174008,/dev/ttyACM1,1
+20250308_174008,/dev/ttyACM1,let's go~
+20250308_174008,/dev/ttyACM1,1
+20250308_174008,/dev/ttyACM1,let's go~
+20250308_174008,/dev/ttyACM1,1
+20250308_174008,/dev/ttyACM1,let's go~
+20250308_174008,/dev/ttyACM1,1
+20250308_174008,/dev/ttyACM1,let's go~
+20250308_174008,/dev/ttyACM1,1
+20250308_174008,/dev/ttyACM1,let's go~
+20250308_174008,/dev/ttyACM1,1
+20250308_174008,/dev/ttyACM1,let's go~
+20250308_174008,/dev/ttyACM1,1
+20250308_174008,/dev/ttyACM1,let's go~
+20250308_174008,/dev/ttyACM2,1
+20250308_174008,/dev/ttyACM2,let's go~
+20250308_174008,/dev/ttyACM2,1
+20250308_174008,/dev/ttyACM2,let's go~
+20250308_174008,/dev/ttyACM2,1
+20250308_174008,/dev/ttyACM2,let's go~
+20250308_174008,/dev/ttyACM2,1
+20250308_174008,/dev/ttyACM2,let's go~
+20250308_174008,/dev/ttyACM2,1
+20250308_174008,/dev/ttyACM2,let's go~
+20250308_174008,/dev/ttyACM2,1
+20250308_174008,/dev/ttyACM2,let's go~
+20250308_174008,/dev/ttyACM2,1
+20250308_174008,/dev/ttyACM2,let's go~
+20250308_174008,/dev/ttyACM2,1
+20250308_174008,/dev/ttyACM2,let's go~
+20250308_174008,/dev/ttyACM2,1
+20250308_174008,/dev/ttyACM2,let's go~
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174008,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,1
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,result is right!
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,result is right!
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,result is right!
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM0,result is right!
+20250308_174010,/dev/ttyACM0,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,1
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM1,result is right!
+20250308_174010,/dev/ttyACM1,let's go~
+20250308_174010,/dev/ttyACM2,result is right!
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,result is right!
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,result is right!
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,result is right!
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,result is right!
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM2,1
+20250308_174010,/dev/ttyACM2,let's go~
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,Range: 14.59 m	 RX power: -90.34 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,AnchorB Sampling rate: 0.29 Hz
+20250308_174010,/dev/ttyACM3,AnchorC Sampling rate: 0.10 Hz
+20250308_174010,/dev/ttyACM3,AnchorD Sampling rate: 0.10 Hz
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,1
+20250308_174010,/dev/ttyACM3,Range: 14.55 m	 RX power: -88.37 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,Range: 14.57 m	 RX power: -90.01 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,Range: 0.00 m	 RX power: -93.73 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,Range: 14.55 m	 RX power: -88.06 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,Range: 14.63 m	 RX power: -93.03 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,AnchorB Sampling rate: 8.80 Hz
+20250308_174010,/dev/ttyACM3,AnchorC Sampling rate: 8.80 Hz
+20250308_174010,/dev/ttyACM3,AnchorD Sampling rate: 8.80 Hz
+20250308_174010,/dev/ttyACM3,Range: 3.39 m	 RX power: -77.23 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,Range: 14.58 m	 RX power: -93.75 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,Range: 14.57 m	 RX power: -90.34 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,Range: 3.42 m	 RX power: -80.87 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,Range: 14.63 m	 RX power: -92.15 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,Range: 0.00 m	 RX power: -79.16 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,Range: 14.58 m	 RX power: -89.38 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,Range: 3.40 m	 RX power: -79.02 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,Range: 3.42 m	 RX power: -79.52 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174010,/dev/ttyACM3,Range: 6.76 m	 RX power: -78.80 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,1
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,1
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,1
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,result is right!
+20250308_174012,/dev/ttyACM0,1
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,1
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,1
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,1
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,1
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,result is right!
+20250308_174012,/dev/ttyACM0,1
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,1
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM0,let's go~
+20250308_174012,/dev/ttyACM1,1
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,1
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,1
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,1
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,1
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,1
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,1
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,1
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,1
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,1
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM1,result is right!
+20250308_174012,/dev/ttyACM1,let's go~
+20250308_174012,/dev/ttyACM2,1
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,1
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,result is right!
+20250308_174012,/dev/ttyACM2,1
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,1
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,1
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,1
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,1
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,1
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,1
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,1
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,result is right!
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,result is right!
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,result is right!
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,result is right!
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,result is right!
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,result is right!
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,result is right!
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM2,let's go~
+20250308_174012,/dev/ttyACM3,1
+20250308_174012,/dev/ttyACM3,1
+20250308_174012,/dev/ttyACM3,1
+20250308_174012,/dev/ttyACM3,1
+20250308_174012,/dev/ttyACM3,1
+20250308_174012,/dev/ttyACM3,1
+20250308_174012,/dev/ttyACM3,1
+20250308_174012,/dev/ttyACM3,1
+20250308_174012,/dev/ttyACM3,1
+20250308_174012,/dev/ttyACM3,1
+20250308_174012,/dev/ttyACM3,Range: 0.00 m	 RX power: -87.37 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 14.57 m	 RX power: -90.62 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 3.37 m	 RX power: -77.88 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 0.00 m	 RX power: -78.04 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 6.73 m	 RX power: -78.61 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 0.00 m	 RX power: -77.58 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,AnchorB Sampling rate: 10.97 Hz
+20250308_174012,/dev/ttyACM3,AnchorC Sampling rate: 8.97 Hz
+20250308_174012,/dev/ttyACM3,AnchorD Sampling rate: 8.97 Hz
+20250308_174012,/dev/ttyACM3,Range: 3.45 m	 RX power: -81.25 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 14.59 m	 RX power: -90.22 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 14.59 m	 RX power: -89.97 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 14.58 m	 RX power: -89.87 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 14.60 m	 RX power: -90.40 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 14.61 m	 RX power: -91.28 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,AnchorB Sampling rate: 11.25 Hz
+20250308_174012,/dev/ttyACM3,AnchorC Sampling rate: 10.45 Hz
+20250308_174012,/dev/ttyACM3,AnchorD Sampling rate: 10.45 Hz
+20250308_174012,/dev/ttyACM3,Range: 14.60 m	 RX power: -96.59 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 3.37 m	 RX power: -77.95 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 14.60 m	 RX power: -90.41 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 14.58 m	 RX power: -90.21 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 6.77 m	 RX power: -77.99 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174012,/dev/ttyACM3,Range: 14.58 m	 RX power: -90.01 dBm distance between anchor/tag:20 from Anchor 00:01 
+20250308_174014,/dev/ttyACM0,2
+20250308_174014,/dev/ttyACM0,State changed to built_coord_2
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,2
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,2
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,2
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,2
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,2
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,2
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,2
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,2
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,2
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,result is right!
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM0,let's go~
+20250308_174014,/dev/ttyACM1,2
+20250308_174014,/dev/ttyACM1,State changed to built_coord_2
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,2
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,2
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,2
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,2
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,2
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,2
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,2
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,2
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,2
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,result is right!
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM1,let's go~
+20250308_174014,/dev/ttyACM2,let's go~
+20250308_174014,/dev/ttyACM2,2
+20250308_174014,/dev/ttyACM2,State changed to built_coord_2
+20250308_174014,/dev/ttyACM2,2
+20250308_174014,/dev/ttyACM2,2
+20250308_174014,/dev/ttyACM2,2
+20250308_174014,/dev/ttyACM2,2
+20250308_174014,/dev/ttyACM2,2
+20250308_174014,/dev/ttyACM2,2
+20250308_174014,/dev/ttyACM2,2
+20250308_174014,/dev/ttyACM2,2
+20250308_174014,/dev/ttyACM2,2
+20250308_174014,/dev/ttyACM2,Range: 15.37 m	 RX power: -88.37 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174014,/dev/ttyACM2,Sampling rate of  AnchorC: 0.00Hz    Anchor:00:02 
+20250308_174014,/dev/ttyACM2,Sampling rate of  AnchorD: infHz    Anchor:00:02 
+20250308_174014,/dev/ttyACM2,Range: 16.12 m	 RX power: -94.96 dBm distance between anchor/tag:30 from Anchor 00:02 
+20250308_174014,/dev/ttyACM3,2
+20250308_174014,/dev/ttyACM3,State changed to built_coord_2
+20250308_174014,/dev/ttyACM3,2
+20250308_174014,/dev/ttyACM3,2
+20250308_174014,/dev/ttyACM3,2
+20250308_174014,/dev/ttyACM3,2
+20250308_174014,/dev/ttyACM3,2
+20250308_174014,/dev/ttyACM3,2
+20250308_174014,/dev/ttyACM3,2
+20250308_174014,/dev/ttyACM3,2
+20250308_174014,/dev/ttyACM3,2
+20250308_174014,/dev/ttyACM3,Range: 3.38 m	 RX power: -79.05 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174014,/dev/ttyACM3,Range: 3.27 m	 RX power: -76.67 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174014,/dev/ttyACM3,Range: 3.34 m	 RX power: -77.02 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174014,/dev/ttyACM3,Range: 3.34 m	 RX power: -77.72 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174014,/dev/ttyACM3,Range: 3.33 m	 RX power: -78.19 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174014,/dev/ttyACM3,AnchorC Sampling rate: 8.20 Hz
+20250308_174014,/dev/ttyACM3,AnchorD Sampling rate: 8.20 Hz
+20250308_174014,/dev/ttyACM3,Range: 3.35 m	 RX power: -78.43 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174014,/dev/ttyACM3,Range: 3.38 m	 RX power: -78.05 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174014,/dev/ttyACM3,Range: 3.38 m	 RX power: -78.40 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174014,/dev/ttyACM3,Range: 6.78 m	 RX power: -78.49 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174014,/dev/ttyACM3,Range: 6.79 m	 RX power: -78.53 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174014,/dev/ttyACM3,Range: 6.79 m	 RX power: -80.77 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174014,/dev/ttyACM3,AnchorC Sampling rate: 10.82 Hz
+20250308_174014,/dev/ttyACM3,AnchorD Sampling rate: 10.82 Hz
+20250308_174016,/dev/ttyACM0,2
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,2
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,2
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,2
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,2
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,2
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,2
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,2
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,2
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,2
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,result is right!
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM0,let's go~
+20250308_174016,/dev/ttyACM1,2
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,2
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,2
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,2
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,2
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,2
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,2
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,2
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,2
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,2
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM1,let's go~
+20250308_174016,/dev/ttyACM2,2
+20250308_174016,/dev/ttyACM2,2
+20250308_174016,/dev/ttyACM2,2
+20250308_174016,/dev/ttyACM2,2
+20250308_174016,/dev/ttyACM2,2
+20250308_174016,/dev/ttyACM2,2
+20250308_174016,/dev/ttyACM2,2
+20250308_174016,/dev/ttyACM2,2
+20250308_174016,/dev/ttyACM2,2
+20250308_174016,/dev/ttyACM2,2
+20250308_174016,/dev/ttyACM2,Range: 15.32 m	 RX power: -86.11 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174016,/dev/ttyACM2,Range: 15.41 m	 RX power: -88.35 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174016,/dev/ttyACM2,Sampling rate of  AnchorC: 0.80Hz    Anchor:00:02 
+20250308_174016,/dev/ttyACM2,Sampling rate of  AnchorD: infHz    Anchor:00:02 
+20250308_174016,/dev/ttyACM2,Range: 15.42 m	 RX power: -88.40 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174016,/dev/ttyACM3,2
+20250308_174016,/dev/ttyACM3,2
+20250308_174016,/dev/ttyACM3,2
+20250308_174016,/dev/ttyACM3,2
+20250308_174016,/dev/ttyACM3,2
+20250308_174016,/dev/ttyACM3,2
+20250308_174016,/dev/ttyACM3,2
+20250308_174016,/dev/ttyACM3,2
+20250308_174016,/dev/ttyACM3,2
+20250308_174016,/dev/ttyACM3,2
+20250308_174016,/dev/ttyACM3,Range: 3.38 m	 RX power: -78.79 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174016,/dev/ttyACM3,Range: 3.32 m	 RX power: -77.96 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174016,/dev/ttyACM3,Range: 0.00 m	 RX power: -79.08 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174016,/dev/ttyACM3,Range: 3.40 m	 RX power: -79.57 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174016,/dev/ttyACM3,Range: 3.43 m	 RX power: -82.89 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174016,/dev/ttyACM3,AnchorC Sampling rate: 7.56 Hz
+20250308_174016,/dev/ttyACM3,AnchorD Sampling rate: 7.56 Hz
+20250308_174018,/dev/ttyACM0,2
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,2
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,2
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,2
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,2
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,2
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,2
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,2
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,2
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,2
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM0,let's go~
+20250308_174018,/dev/ttyACM1,2
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,2
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,2
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,2
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,2
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,2
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,2
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,2
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,2
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,2
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM1,let's go~
+20250308_174018,/dev/ttyACM2,2
+20250308_174018,/dev/ttyACM2,2
+20250308_174018,/dev/ttyACM2,2
+20250308_174018,/dev/ttyACM2,2
+20250308_174018,/dev/ttyACM2,2
+20250308_174018,/dev/ttyACM2,2
+20250308_174018,/dev/ttyACM2,2
+20250308_174018,/dev/ttyACM2,2
+20250308_174018,/dev/ttyACM2,2
+20250308_174018,/dev/ttyACM2,2
+20250308_174018,/dev/ttyACM3,2
+20250308_174018,/dev/ttyACM3,2
+20250308_174018,/dev/ttyACM3,2
+20250308_174018,/dev/ttyACM3,2
+20250308_174018,/dev/ttyACM3,2
+20250308_174018,/dev/ttyACM3,2
+20250308_174018,/dev/ttyACM3,2
+20250308_174018,/dev/ttyACM3,2
+20250308_174018,/dev/ttyACM3,2
+20250308_174018,/dev/ttyACM3,2
+20250308_174018,/dev/ttyACM3,Range: 6.76 m	 RX power: -78.06 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174018,/dev/ttyACM3,AnchorC Sampling rate: 3.94 Hz
+20250308_174018,/dev/ttyACM3,AnchorD Sampling rate: 3.94 Hz
+20250308_174018,/dev/ttyACM3,Range: 6.72 m	 RX power: -77.97 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174018,/dev/ttyACM3,Range: 3.42 m	 RX power: -81.84 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174018,/dev/ttyACM3,AnchorC Sampling rate: 3.69 Hz
+20250308_174018,/dev/ttyACM3,AnchorD Sampling rate: 3.69 Hz
+20250308_174020,/dev/ttyACM0,2
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,2
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,2
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,2
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,2
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,2
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,2
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,2
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,2
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,2
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,result is right!
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM0,let's go~
+20250308_174020,/dev/ttyACM1,2
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,2
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,2
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,2
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,2
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,2
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,2
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,2
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,2
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,2
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM1,let's go~
+20250308_174020,/dev/ttyACM2,2
+20250308_174020,/dev/ttyACM2,2
+20250308_174020,/dev/ttyACM2,2
+20250308_174020,/dev/ttyACM2,2
+20250308_174020,/dev/ttyACM2,2
+20250308_174020,/dev/ttyACM2,2
+20250308_174020,/dev/ttyACM2,2
+20250308_174020,/dev/ttyACM2,2
+20250308_174020,/dev/ttyACM2,2
+20250308_174020,/dev/ttyACM2,2
+20250308_174020,/dev/ttyACM2,Range: 15.38 m	 RX power: -88.63 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174020,/dev/ttyACM2,Sampling rate of  AnchorC: 0.00Hz    Anchor:00:02 
+20250308_174020,/dev/ttyACM2,Sampling rate of  AnchorD: infHz    Anchor:00:02 
+20250308_174020,/dev/ttyACM3,2
+20250308_174020,/dev/ttyACM3,2
+20250308_174020,/dev/ttyACM3,2
+20250308_174020,/dev/ttyACM3,2
+20250308_174020,/dev/ttyACM3,2
+20250308_174020,/dev/ttyACM3,2
+20250308_174020,/dev/ttyACM3,2
+20250308_174020,/dev/ttyACM3,2
+20250308_174020,/dev/ttyACM3,2
+20250308_174020,/dev/ttyACM3,2
+20250308_174020,/dev/ttyACM3,Range: 3.49 m	 RX power: -84.40 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174020,/dev/ttyACM3,Range: 3.39 m	 RX power: -77.19 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174020,/dev/ttyACM3,Range: 3.44 m	 RX power: -82.61 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174020,/dev/ttyACM3,Range: 3.30 m	 RX power: -76.38 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174020,/dev/ttyACM3,Range: 3.34 m	 RX power: -78.43 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174020,/dev/ttyACM3,AnchorC Sampling rate: 4.39 Hz
+20250308_174020,/dev/ttyACM3,AnchorD Sampling rate: 4.39 Hz
+20250308_174020,/dev/ttyACM3,Range: 3.33 m	 RX power: -77.82 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174020,/dev/ttyACM3,Range: 3.49 m	 RX power: -82.75 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174020,/dev/ttyACM3,Range: 3.32 m	 RX power: -77.72 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174020,/dev/ttyACM3,Range: 3.45 m	 RX power: -84.34 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174022,/dev/ttyACM0,2
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,2
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,2
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,2
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,2
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,2
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,2
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,2
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,2
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,2
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM0,let's go~
+20250308_174022,/dev/ttyACM1,2
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,2
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,2
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,2
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,2
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,2
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,2
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,2
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,2
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,2
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM1,let's go~
+20250308_174022,/dev/ttyACM2,2
+20250308_174022,/dev/ttyACM2,2
+20250308_174022,/dev/ttyACM2,2
+20250308_174022,/dev/ttyACM2,2
+20250308_174022,/dev/ttyACM2,2
+20250308_174022,/dev/ttyACM2,2
+20250308_174022,/dev/ttyACM2,2
+20250308_174022,/dev/ttyACM2,2
+20250308_174022,/dev/ttyACM2,2
+20250308_174022,/dev/ttyACM2,2
+20250308_174022,/dev/ttyACM3,2
+20250308_174022,/dev/ttyACM3,2
+20250308_174022,/dev/ttyACM3,2
+20250308_174022,/dev/ttyACM3,2
+20250308_174022,/dev/ttyACM3,2
+20250308_174022,/dev/ttyACM3,2
+20250308_174022,/dev/ttyACM3,2
+20250308_174022,/dev/ttyACM3,2
+20250308_174022,/dev/ttyACM3,2
+20250308_174022,/dev/ttyACM3,2
+20250308_174022,/dev/ttyACM3,Range: 3.35 m	 RX power: -78.30 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174022,/dev/ttyACM3,AnchorC Sampling rate: 6.09 Hz
+20250308_174022,/dev/ttyACM3,AnchorD Sampling rate: 6.09 Hz
+20250308_174022,/dev/ttyACM3,Range: 3.42 m	 RX power: -82.04 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174022,/dev/ttyACM3,Range: 3.42 m	 RX power: -79.41 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174022,/dev/ttyACM3,AnchorC Sampling rate: 9.67 Hz
+20250308_174022,/dev/ttyACM3,AnchorD Sampling rate: 9.67 Hz
+20250308_174024,/dev/ttyACM0,2
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,2
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,2
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,2
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,2
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,2
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,2
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,2
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,2
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,2
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM0,let's go~
+20250308_174024,/dev/ttyACM1,2
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,2
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,2
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,2
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,2
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,2
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,2
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,2
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,2
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,2
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM1,let's go~
+20250308_174024,/dev/ttyACM2,2
+20250308_174024,/dev/ttyACM2,2
+20250308_174024,/dev/ttyACM2,2
+20250308_174024,/dev/ttyACM2,2
+20250308_174024,/dev/ttyACM2,2
+20250308_174024,/dev/ttyACM2,2
+20250308_174024,/dev/ttyACM2,2
+20250308_174024,/dev/ttyACM2,2
+20250308_174024,/dev/ttyACM2,2
+20250308_174024,/dev/ttyACM2,2
+20250308_174024,/dev/ttyACM3,2
+20250308_174024,/dev/ttyACM3,2
+20250308_174024,/dev/ttyACM3,2
+20250308_174024,/dev/ttyACM3,2
+20250308_174024,/dev/ttyACM3,2
+20250308_174024,/dev/ttyACM3,2
+20250308_174024,/dev/ttyACM3,2
+20250308_174024,/dev/ttyACM3,2
+20250308_174024,/dev/ttyACM3,2
+20250308_174024,/dev/ttyACM3,2
+20250308_174024,/dev/ttyACM3,Range: 3.40 m	 RX power: -80.97 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174024,/dev/ttyACM3,Range: 6.75 m	 RX power: -77.85 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174024,/dev/ttyACM3,AnchorC Sampling rate: 7.92 Hz
+20250308_174024,/dev/ttyACM3,AnchorD Sampling rate: 7.92 Hz
+20250308_174024,/dev/ttyACM3,Range: 6.84 m	 RX power: -79.69 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174024,/dev/ttyACM3,Range: 3.43 m	 RX power: -81.25 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174024,/dev/ttyACM3,Range: 0.00 m	 RX power: -77.38 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174024,/dev/ttyACM3,Range: 0.00 m	 RX power: -78.05 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174026,/dev/ttyACM0,2
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,2
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,2
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,2
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,2
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,2
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,2
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,2
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,2
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,2
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM0,let's go~
+20250308_174026,/dev/ttyACM1,2
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,2
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,2
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,2
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,2
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,2
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,2
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,2
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,2
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,2
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM1,let's go~
+20250308_174026,/dev/ttyACM2,2
+20250308_174026,/dev/ttyACM2,2
+20250308_174026,/dev/ttyACM2,2
+20250308_174026,/dev/ttyACM2,2
+20250308_174026,/dev/ttyACM2,2
+20250308_174026,/dev/ttyACM2,2
+20250308_174026,/dev/ttyACM2,2
+20250308_174026,/dev/ttyACM2,2
+20250308_174026,/dev/ttyACM2,2
+20250308_174026,/dev/ttyACM2,2
+20250308_174026,/dev/ttyACM3,2
+20250308_174026,/dev/ttyACM3,2
+20250308_174026,/dev/ttyACM3,2
+20250308_174026,/dev/ttyACM3,2
+20250308_174026,/dev/ttyACM3,2
+20250308_174026,/dev/ttyACM3,2
+20250308_174026,/dev/ttyACM3,2
+20250308_174026,/dev/ttyACM3,2
+20250308_174026,/dev/ttyACM3,2
+20250308_174026,/dev/ttyACM3,2
+20250308_174026,/dev/ttyACM3,Range: 6.83 m	 RX power: -78.79 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174026,/dev/ttyACM3,AnchorC Sampling rate: 10.46 Hz
+20250308_174026,/dev/ttyACM3,AnchorD Sampling rate: 10.46 Hz
+20250308_174026,/dev/ttyACM3,Range: 3.30 m	 RX power: -76.91 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174026,/dev/ttyACM3,Range: 3.36 m	 RX power: -77.25 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174028,/dev/ttyACM0,2
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,2
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,2
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,2
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,2
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,2
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,2
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,2
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,2
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,2
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM0,let's go~
+20250308_174028,/dev/ttyACM1,2
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,2
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,2
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,2
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,2
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,2
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,2
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,2
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,2
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,2
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM1,let's go~
+20250308_174028,/dev/ttyACM2,2
+20250308_174028,/dev/ttyACM2,2
+20250308_174028,/dev/ttyACM2,2
+20250308_174028,/dev/ttyACM2,2
+20250308_174028,/dev/ttyACM2,2
+20250308_174028,/dev/ttyACM2,2
+20250308_174028,/dev/ttyACM2,2
+20250308_174028,/dev/ttyACM2,2
+20250308_174028,/dev/ttyACM2,2
+20250308_174028,/dev/ttyACM2,2
+20250308_174028,/dev/ttyACM2,Range: 16.18 m	 RX power: -98.18 dBm distance between anchor/tag:30 from Anchor 00:02 
+20250308_174028,/dev/ttyACM2,Sampling rate of  AnchorC: 0.11Hz    Anchor:00:02 
+20250308_174028,/dev/ttyACM2,Sampling rate of  AnchorD: nanHz    Anchor:00:02 
+20250308_174028,/dev/ttyACM3,2
+20250308_174028,/dev/ttyACM3,2
+20250308_174028,/dev/ttyACM3,2
+20250308_174028,/dev/ttyACM3,2
+20250308_174028,/dev/ttyACM3,2
+20250308_174028,/dev/ttyACM3,2
+20250308_174028,/dev/ttyACM3,2
+20250308_174028,/dev/ttyACM3,2
+20250308_174028,/dev/ttyACM3,2
+20250308_174028,/dev/ttyACM3,2
+20250308_174028,/dev/ttyACM3,Range: 6.76 m	 RX power: -79.42 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174028,/dev/ttyACM3,Range: 3.37 m	 RX power: -77.54 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174028,/dev/ttyACM3,AnchorC Sampling rate: 10.62 Hz
+20250308_174028,/dev/ttyACM3,AnchorD Sampling rate: 10.62 Hz
+20250308_174028,/dev/ttyACM3,Range: 3.37 m	 RX power: -78.64 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174028,/dev/ttyACM3,Range: 6.78 m	 RX power: -79.77 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174028,/dev/ttyACM3,Range: 3.37 m	 RX power: -78.36 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174028,/dev/ttyACM3,Range: 3.36 m	 RX power: -78.48 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174028,/dev/ttyACM3,Range: 3.29 m	 RX power: -76.46 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174028,/dev/ttyACM3,AnchorC Sampling rate: 6.89 Hz
+20250308_174028,/dev/ttyACM3,AnchorD Sampling rate: 6.89 Hz
+20250308_174028,/dev/ttyACM3,Range: 6.84 m	 RX power: -82.36 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174028,/dev/ttyACM3,Range: 3.40 m	 RX power: -80.62 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174028,/dev/ttyACM3,Range: 3.43 m	 RX power: -84.40 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174030,/dev/ttyACM0,2
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,2
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,2
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,2
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,2
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,2
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,2
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,2
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,2
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,2
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,result is right!
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM0,let's go~
+20250308_174030,/dev/ttyACM1,2
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,2
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,2
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,2
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,2
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,2
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,2
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,2
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,2
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,2
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM1,let's go~
+20250308_174030,/dev/ttyACM2,2
+20250308_174030,/dev/ttyACM2,2
+20250308_174030,/dev/ttyACM2,2
+20250308_174030,/dev/ttyACM2,2
+20250308_174030,/dev/ttyACM2,2
+20250308_174030,/dev/ttyACM2,2
+20250308_174030,/dev/ttyACM2,2
+20250308_174030,/dev/ttyACM2,2
+20250308_174030,/dev/ttyACM2,2
+20250308_174030,/dev/ttyACM2,2
+20250308_174030,/dev/ttyACM2,Range: 15.33 m	 RX power: -84.98 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174030,/dev/ttyACM3,2
+20250308_174030,/dev/ttyACM3,2
+20250308_174030,/dev/ttyACM3,2
+20250308_174030,/dev/ttyACM3,2
+20250308_174030,/dev/ttyACM3,2
+20250308_174030,/dev/ttyACM3,2
+20250308_174030,/dev/ttyACM3,2
+20250308_174030,/dev/ttyACM3,2
+20250308_174030,/dev/ttyACM3,2
+20250308_174030,/dev/ttyACM3,2
+20250308_174030,/dev/ttyACM3,Range: 3.41 m	 RX power: -81.67 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174030,/dev/ttyACM3,Range: 0.00 m	 RX power: -78.79 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174030,/dev/ttyACM3,Range: 3.44 m	 RX power: -81.62 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174030,/dev/ttyACM3,Range: 3.34 m	 RX power: -77.55 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174030,/dev/ttyACM3,Range: 3.39 m	 RX power: -80.15 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174030,/dev/ttyACM3,AnchorC Sampling rate: 5.85 Hz
+20250308_174030,/dev/ttyACM3,AnchorD Sampling rate: 5.85 Hz
+20250308_174030,/dev/ttyACM3,Range: 3.38 m	 RX power: -77.62 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174030,/dev/ttyACM3,Range: 0.00 m	 RX power: -78.30 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174030,/dev/ttyACM3,Range: 3.35 m	 RX power: -78.10 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174030,/dev/ttyACM3,Range: 0.00 m	 RX power: -88.11 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174030,/dev/ttyACM3,AnchorC Sampling rate: 5.42 Hz
+20250308_174030,/dev/ttyACM3,AnchorD Sampling rate: 5.42 Hz
+20250308_174030,/dev/ttyACM3,Range: 3.39 m	 RX power: -79.46 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174032,/dev/ttyACM0,2
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,2
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,2
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,2
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,2
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,2
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,2
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,2
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,2
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,2
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM0,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,2
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,2
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,2
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,2
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,2
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,2
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,2
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,2
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,2
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,2
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM1,let's go~
+20250308_174032,/dev/ttyACM2,2
+20250308_174032,/dev/ttyACM2,2
+20250308_174032,/dev/ttyACM2,2
+20250308_174032,/dev/ttyACM2,2
+20250308_174032,/dev/ttyACM2,2
+20250308_174032,/dev/ttyACM2,2
+20250308_174032,/dev/ttyACM2,2
+20250308_174032,/dev/ttyACM2,2
+20250308_174032,/dev/ttyACM2,2
+20250308_174032,/dev/ttyACM2,2
+20250308_174032,/dev/ttyACM3,2
+20250308_174032,/dev/ttyACM3,2
+20250308_174032,/dev/ttyACM3,2
+20250308_174032,/dev/ttyACM3,2
+20250308_174032,/dev/ttyACM3,2
+20250308_174032,/dev/ttyACM3,2
+20250308_174032,/dev/ttyACM3,2
+20250308_174032,/dev/ttyACM3,2
+20250308_174032,/dev/ttyACM3,2
+20250308_174032,/dev/ttyACM3,2
+20250308_174032,/dev/ttyACM3,Range: 3.40 m	 RX power: -79.70 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174032,/dev/ttyACM3,Range: 6.80 m	 RX power: -80.09 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174032,/dev/ttyACM3,Range: 6.73 m	 RX power: -78.99 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174032,/dev/ttyACM3,AnchorC Sampling rate: 6.86 Hz
+20250308_174032,/dev/ttyACM3,AnchorD Sampling rate: 6.86 Hz
+20250308_174032,/dev/ttyACM3,Range: 0.00 m	 RX power: -78.52 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174034,/dev/ttyACM0,2
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,2
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,2
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,2
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,2
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,2
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,2
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,2
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,2
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,2
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM0,let's go~
+20250308_174034,/dev/ttyACM1,2
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,2
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,2
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,2
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,2
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,2
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,2
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,2
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,2
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,2
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,result is right!
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM1,let's go~
+20250308_174034,/dev/ttyACM2,2
+20250308_174034,/dev/ttyACM2,2
+20250308_174034,/dev/ttyACM2,2
+20250308_174034,/dev/ttyACM2,2
+20250308_174034,/dev/ttyACM2,2
+20250308_174034,/dev/ttyACM2,2
+20250308_174034,/dev/ttyACM2,2
+20250308_174034,/dev/ttyACM2,2
+20250308_174034,/dev/ttyACM2,2
+20250308_174034,/dev/ttyACM2,2
+20250308_174034,/dev/ttyACM2,Range: 15.52 m	 RX power: inf dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174034,/dev/ttyACM2,Sampling rate of  AnchorC: 0.00Hz    Anchor:00:02 
+20250308_174034,/dev/ttyACM2,Sampling rate of  AnchorD: infHz    Anchor:00:02 
+20250308_174034,/dev/ttyACM2,Range: 16.14 m	 RX power: inf dBm distance between anchor/tag:30 from Anchor 00:02 
+20250308_174034,/dev/ttyACM3,2
+20250308_174034,/dev/ttyACM3,2
+20250308_174034,/dev/ttyACM3,2
+20250308_174034,/dev/ttyACM3,2
+20250308_174034,/dev/ttyACM3,2
+20250308_174034,/dev/ttyACM3,2
+20250308_174034,/dev/ttyACM3,2
+20250308_174034,/dev/ttyACM3,2
+20250308_174034,/dev/ttyACM3,2
+20250308_174034,/dev/ttyACM3,2
+20250308_174034,/dev/ttyACM3,Range: 3.30 m	 RX power: -76.27 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174034,/dev/ttyACM3,AnchorC Sampling rate: 3.79 Hz
+20250308_174034,/dev/ttyACM3,AnchorD Sampling rate: 3.79 Hz
+20250308_174034,/dev/ttyACM3,Range: 3.37 m	 RX power: -77.38 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174034,/dev/ttyACM3,Range: 3.32 m	 RX power: -76.27 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174034,/dev/ttyACM3,Range: 6.89 m	 RX power: -79.84 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174034,/dev/ttyACM3,AnchorC Sampling rate: 5.83 Hz
+20250308_174034,/dev/ttyACM3,AnchorD Sampling rate: 5.83 Hz
+20250308_174034,/dev/ttyACM3,Range: 3.32 m	 RX power: -76.78 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174034,/dev/ttyACM3,Range: 3.33 m	 RX power: -76.95 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174034,/dev/ttyACM3,Range: 6.74 m	 RX power: -78.53 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174034,/dev/ttyACM3,Range: 6.80 m	 RX power: -80.48 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174034,/dev/ttyACM3,Range: 3.38 m	 RX power: -77.82 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174034,/dev/ttyACM3,Range: 0.00 m	 RX power: -80.44 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174036,/dev/ttyACM0,2
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,2
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,2
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,2
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,2
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,2
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,2
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,2
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,2
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,2
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM0,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,2
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,2
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,2
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,2
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,2
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,2
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,2
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,2
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,2
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,2
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM1,let's go~
+20250308_174036,/dev/ttyACM2,2
+20250308_174036,/dev/ttyACM2,2
+20250308_174036,/dev/ttyACM2,2
+20250308_174036,/dev/ttyACM2,2
+20250308_174036,/dev/ttyACM2,2
+20250308_174036,/dev/ttyACM2,2
+20250308_174036,/dev/ttyACM2,2
+20250308_174036,/dev/ttyACM2,2
+20250308_174036,/dev/ttyACM2,2
+20250308_174036,/dev/ttyACM2,2
+20250308_174036,/dev/ttyACM3,2
+20250308_174036,/dev/ttyACM3,2
+20250308_174036,/dev/ttyACM3,2
+20250308_174036,/dev/ttyACM3,2
+20250308_174036,/dev/ttyACM3,2
+20250308_174036,/dev/ttyACM3,2
+20250308_174036,/dev/ttyACM3,2
+20250308_174036,/dev/ttyACM3,2
+20250308_174036,/dev/ttyACM3,2
+20250308_174036,/dev/ttyACM3,2
+20250308_174036,/dev/ttyACM3,Range: 3.45 m	 RX power: -81.39 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174036,/dev/ttyACM3,AnchorC Sampling rate: 10.49 Hz
+20250308_174036,/dev/ttyACM3,AnchorD Sampling rate: 10.49 Hz
+20250308_174036,/dev/ttyACM3,Range: 0.00 m	 RX power: -80.70 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174036,/dev/ttyACM3,Range: 3.45 m	 RX power: -82.69 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174036,/dev/ttyACM3,AnchorC Sampling rate: 10.85 Hz
+20250308_174036,/dev/ttyACM3,AnchorD Sampling rate: 10.85 Hz
+20250308_174039,/dev/ttyACM0,2
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,2
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,2
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,2
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,2
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,2
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,2
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,2
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,2
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,2
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM0,let's go~
+20250308_174039,/dev/ttyACM1,2
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,2
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,2
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,2
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,2
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,2
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,2
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,2
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,2
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,2
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM1,let's go~
+20250308_174039,/dev/ttyACM2,2
+20250308_174039,/dev/ttyACM2,2
+20250308_174039,/dev/ttyACM2,2
+20250308_174039,/dev/ttyACM2,2
+20250308_174039,/dev/ttyACM2,2
+20250308_174039,/dev/ttyACM2,2
+20250308_174039,/dev/ttyACM2,2
+20250308_174039,/dev/ttyACM2,2
+20250308_174039,/dev/ttyACM2,2
+20250308_174039,/dev/ttyACM2,2
+20250308_174039,/dev/ttyACM3,2
+20250308_174039,/dev/ttyACM3,2
+20250308_174039,/dev/ttyACM3,2
+20250308_174039,/dev/ttyACM3,2
+20250308_174039,/dev/ttyACM3,2
+20250308_174039,/dev/ttyACM3,2
+20250308_174039,/dev/ttyACM3,2
+20250308_174039,/dev/ttyACM3,2
+20250308_174039,/dev/ttyACM3,2
+20250308_174039,/dev/ttyACM3,2
+20250308_174039,/dev/ttyACM3,Range: 3.39 m	 RX power: -80.87 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174039,/dev/ttyACM3,AnchorC Sampling rate: 11.85 Hz
+20250308_174039,/dev/ttyACM3,AnchorD Sampling rate: 11.85 Hz
+20250308_174041,/dev/ttyACM0,2
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,2
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,2
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,2
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,2
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,2
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,2
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,2
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,2
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,2
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,result is right!
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM0,let's go~
+20250308_174041,/dev/ttyACM1,2
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,2
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,2
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,2
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,2
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,2
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,2
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,2
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,2
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,2
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM1,let's go~
+20250308_174041,/dev/ttyACM2,2
+20250308_174041,/dev/ttyACM2,2
+20250308_174041,/dev/ttyACM2,2
+20250308_174041,/dev/ttyACM2,2
+20250308_174041,/dev/ttyACM2,2
+20250308_174041,/dev/ttyACM2,2
+20250308_174041,/dev/ttyACM2,2
+20250308_174041,/dev/ttyACM2,2
+20250308_174041,/dev/ttyACM2,2
+20250308_174041,/dev/ttyACM2,2
+20250308_174041,/dev/ttyACM2,Range: 15.39 m	 RX power: -88.58 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174041,/dev/ttyACM2,Sampling rate of  AnchorC: 0.19Hz    Anchor:00:02 
+20250308_174041,/dev/ttyACM2,Sampling rate of  AnchorD: infHz    Anchor:00:02 
+20250308_174041,/dev/ttyACM2,Range: 15.41 m	 RX power: -86.67 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174041,/dev/ttyACM2,Range: 16.15 m	 RX power: -97.66 dBm distance between anchor/tag:30 from Anchor 00:02 
+20250308_174041,/dev/ttyACM2,Range: 16.10 m	 RX power: inf dBm distance between anchor/tag:30 from Anchor 00:02 
+20250308_174041,/dev/ttyACM2,Sampling rate of  AnchorC: 1.27Hz    Anchor:00:02 
+20250308_174041,/dev/ttyACM2,Sampling rate of  AnchorD: infHz    Anchor:00:02 
+20250308_174041,/dev/ttyACM3,2
+20250308_174041,/dev/ttyACM3,2
+20250308_174041,/dev/ttyACM3,2
+20250308_174041,/dev/ttyACM3,2
+20250308_174041,/dev/ttyACM3,2
+20250308_174041,/dev/ttyACM3,2
+20250308_174041,/dev/ttyACM3,2
+20250308_174041,/dev/ttyACM3,2
+20250308_174041,/dev/ttyACM3,2
+20250308_174041,/dev/ttyACM3,2
+20250308_174041,/dev/ttyACM3,Range: 6.77 m	 RX power: -80.06 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174041,/dev/ttyACM3,Range: 3.39 m	 RX power: -80.50 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174041,/dev/ttyACM3,Range: 3.40 m	 RX power: -79.24 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174041,/dev/ttyACM3,Range: 3.42 m	 RX power: -80.06 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174041,/dev/ttyACM3,Range: 6.76 m	 RX power: -78.71 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174041,/dev/ttyACM3,Range: 3.33 m	 RX power: -76.50 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174041,/dev/ttyACM3,AnchorC Sampling rate: 8.76 Hz
+20250308_174041,/dev/ttyACM3,AnchorD Sampling rate: 8.76 Hz
+20250308_174041,/dev/ttyACM3,Range: 3.35 m	 RX power: -78.78 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174041,/dev/ttyACM3,Range: 3.38 m	 RX power: -77.19 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174041,/dev/ttyACM3,Range: 6.75 m	 RX power: -78.47 dBm distance between anchor/tag:30 from Anchor 00:01 
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,3
+20250308_174043,/dev/ttyACM0,State changed to built_coord_3
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,3
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,3
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,3
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,3
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,3
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,3
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,3
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,3
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,3
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM0,let's go~
+20250308_174043,/dev/ttyACM1,3
+20250308_174043,/dev/ttyACM1,State changed to built_coord_3
+20250308_174043,/dev/ttyACM1,3
+20250308_174043,/dev/ttyACM1,3
+20250308_174043,/dev/ttyACM1,3
+20250308_174043,/dev/ttyACM1,3
+20250308_174043,/dev/ttyACM1,3
+20250308_174043,/dev/ttyACM1,3
+20250308_174043,/dev/ttyACM1,3
+20250308_174043,/dev/ttyACM1,3
+20250308_174043,/dev/ttyACM1,3
+20250308_174043,/dev/ttyACM2,3
+20250308_174043,/dev/ttyACM2,State changed to built_coord_3
+20250308_174043,/dev/ttyACM2,3
+20250308_174043,/dev/ttyACM2,3
+20250308_174043,/dev/ttyACM2,3
+20250308_174043,/dev/ttyACM2,3
+20250308_174043,/dev/ttyACM2,3
+20250308_174043,/dev/ttyACM2,3
+20250308_174043,/dev/ttyACM2,3
+20250308_174043,/dev/ttyACM2,3
+20250308_174043,/dev/ttyACM2,3
+20250308_174043,/dev/ttyACM3,3
+20250308_174043,/dev/ttyACM3,State changed to built_coord_3
+20250308_174043,/dev/ttyACM3,3
+20250308_174043,/dev/ttyACM3,3
+20250308_174043,/dev/ttyACM3,3
+20250308_174043,/dev/ttyACM3,3
+20250308_174043,/dev/ttyACM3,3
+20250308_174043,/dev/ttyACM3,3
+20250308_174043,/dev/ttyACM3,3
+20250308_174043,/dev/ttyACM3,3
+20250308_174043,/dev/ttyACM3,3
+20250308_174043,/dev/ttyACM3,Range: 3.38 m	 RX power: -77.19 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174043,/dev/ttyACM3,Range: 3.48 m	 RX power: -84.94 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174043,/dev/ttyACM3,Range: 3.49 m	 RX power: -86.07 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174043,/dev/ttyACM3,Range: 3.35 m	 RX power: -77.44 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174043,/dev/ttyACM3,Range: 3.33 m	 RX power: -78.42 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174043,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174043,/dev/ttyACM3,Range: 3.36 m	 RX power: -78.72 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174043,/dev/ttyACM3,Range: 3.37 m	 RX power: -78.93 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174043,/dev/ttyACM3,Range: 3.42 m	 RX power: -79.44 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174043,/dev/ttyACM3,Range: 3.35 m	 RX power: -77.32 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174043,/dev/ttyACM3,Range: 3.43 m	 RX power: -80.63 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174043,/dev/ttyACM3,Range: 3.39 m	 RX power: -78.03 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174043,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,3
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,3
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,3
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,3
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,3
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,3
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,3
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,3
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,3
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,3
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM0,let's go~
+20250308_174045,/dev/ttyACM1,3
+20250308_174045,/dev/ttyACM1,3
+20250308_174045,/dev/ttyACM1,3
+20250308_174045,/dev/ttyACM1,3
+20250308_174045,/dev/ttyACM1,3
+20250308_174045,/dev/ttyACM1,3
+20250308_174045,/dev/ttyACM1,3
+20250308_174045,/dev/ttyACM1,3
+20250308_174045,/dev/ttyACM1,3
+20250308_174045,/dev/ttyACM1,3
+20250308_174045,/dev/ttyACM2,3
+20250308_174045,/dev/ttyACM2,3
+20250308_174045,/dev/ttyACM2,3
+20250308_174045,/dev/ttyACM2,3
+20250308_174045,/dev/ttyACM2,3
+20250308_174045,/dev/ttyACM2,3
+20250308_174045,/dev/ttyACM2,3
+20250308_174045,/dev/ttyACM2,3
+20250308_174045,/dev/ttyACM2,3
+20250308_174045,/dev/ttyACM2,3
+20250308_174045,/dev/ttyACM3,3
+20250308_174045,/dev/ttyACM3,3
+20250308_174045,/dev/ttyACM3,3
+20250308_174045,/dev/ttyACM3,3
+20250308_174045,/dev/ttyACM3,3
+20250308_174045,/dev/ttyACM3,3
+20250308_174045,/dev/ttyACM3,3
+20250308_174045,/dev/ttyACM3,3
+20250308_174045,/dev/ttyACM3,3
+20250308_174045,/dev/ttyACM3,3
+20250308_174045,/dev/ttyACM3,Range: 3.40 m	 RX power: -79.43 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174045,/dev/ttyACM3,Range: 3.47 m	 RX power: -84.96 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174045,/dev/ttyACM3,Range: 3.43 m	 RX power: -82.65 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174045,/dev/ttyACM3,Range: 3.45 m	 RX power: -83.37 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174045,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174047,/dev/ttyACM0,3
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,3
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,3
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,3
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,3
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,3
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,3
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,3
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,3
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,3
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM0,let's go~
+20250308_174047,/dev/ttyACM1,3
+20250308_174047,/dev/ttyACM1,3
+20250308_174047,/dev/ttyACM1,3
+20250308_174047,/dev/ttyACM1,3
+20250308_174047,/dev/ttyACM1,3
+20250308_174047,/dev/ttyACM1,3
+20250308_174047,/dev/ttyACM1,3
+20250308_174047,/dev/ttyACM1,3
+20250308_174047,/dev/ttyACM1,3
+20250308_174047,/dev/ttyACM1,3
+20250308_174047,/dev/ttyACM2,3
+20250308_174047,/dev/ttyACM2,3
+20250308_174047,/dev/ttyACM2,3
+20250308_174047,/dev/ttyACM2,3
+20250308_174047,/dev/ttyACM2,3
+20250308_174047,/dev/ttyACM2,3
+20250308_174047,/dev/ttyACM2,3
+20250308_174047,/dev/ttyACM2,3
+20250308_174047,/dev/ttyACM2,3
+20250308_174047,/dev/ttyACM2,3
+20250308_174047,/dev/ttyACM3,3
+20250308_174047,/dev/ttyACM3,3
+20250308_174047,/dev/ttyACM3,3
+20250308_174047,/dev/ttyACM3,3
+20250308_174047,/dev/ttyACM3,3
+20250308_174047,/dev/ttyACM3,3
+20250308_174047,/dev/ttyACM3,3
+20250308_174047,/dev/ttyACM3,3
+20250308_174047,/dev/ttyACM3,3
+20250308_174047,/dev/ttyACM3,3
+20250308_174047,/dev/ttyACM3,Range: 3.38 m	 RX power: -78.58 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174047,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174049,/dev/ttyACM0,3
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,3
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,3
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,3
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,3
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,3
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,3
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,3
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,3
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,3
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM0,let's go~
+20250308_174049,/dev/ttyACM1,3
+20250308_174049,/dev/ttyACM1,3
+20250308_174049,/dev/ttyACM1,3
+20250308_174049,/dev/ttyACM1,3
+20250308_174049,/dev/ttyACM1,3
+20250308_174049,/dev/ttyACM1,3
+20250308_174049,/dev/ttyACM1,3
+20250308_174049,/dev/ttyACM1,3
+20250308_174049,/dev/ttyACM1,3
+20250308_174049,/dev/ttyACM1,3
+20250308_174049,/dev/ttyACM1,Range: 3.45 m	 RX power: -75.32 dBm distance between anchor/tag:40 from Anchor 00:03 
+20250308_174049,/dev/ttyACM1,Sampling rate of  AnchorD: 0.02Hz    Anchor:00:03 
+20250308_174049,/dev/ttyACM2,3
+20250308_174049,/dev/ttyACM2,3
+20250308_174049,/dev/ttyACM2,3
+20250308_174049,/dev/ttyACM2,3
+20250308_174049,/dev/ttyACM2,3
+20250308_174049,/dev/ttyACM2,3
+20250308_174049,/dev/ttyACM2,3
+20250308_174049,/dev/ttyACM2,3
+20250308_174049,/dev/ttyACM2,3
+20250308_174049,/dev/ttyACM2,3
+20250308_174049,/dev/ttyACM2,Range: 15.44 m	 RX power: -85.98 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174049,/dev/ttyACM2,Sampling rate of  AnchorD: 0.14Hz    Anchor:00:02 
+20250308_174049,/dev/ttyACM2,Range: 15.37 m	 RX power: -86.46 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174049,/dev/ttyACM2,Range: 15.47 m	 RX power: -89.97 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174049,/dev/ttyACM2,Range: 15.43 m	 RX power: -89.81 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174049,/dev/ttyACM3,3
+20250308_174049,/dev/ttyACM3,3
+20250308_174049,/dev/ttyACM3,3
+20250308_174049,/dev/ttyACM3,3
+20250308_174049,/dev/ttyACM3,3
+20250308_174049,/dev/ttyACM3,3
+20250308_174049,/dev/ttyACM3,3
+20250308_174049,/dev/ttyACM3,3
+20250308_174049,/dev/ttyACM3,3
+20250308_174049,/dev/ttyACM3,3
+20250308_174049,/dev/ttyACM3,Range: 3.43 m	 RX power: -81.92 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174049,/dev/ttyACM3,Range: 3.38 m	 RX power: -77.07 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174049,/dev/ttyACM3,Range: 3.41 m	 RX power: -78.98 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174049,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174049,/dev/ttyACM3,Range: 3.41 m	 RX power: -77.49 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174049,/dev/ttyACM3,Range: 3.35 m	 RX power: -77.10 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174049,/dev/ttyACM3,Range: 3.43 m	 RX power: -82.03 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174049,/dev/ttyACM3,Range: 3.45 m	 RX power: -82.04 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174049,/dev/ttyACM3,Range: 3.48 m	 RX power: -83.56 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174049,/dev/ttyACM3,Range: 3.39 m	 RX power: -79.43 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,3
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,3
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,3
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,3
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,3
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,3
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,3
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,3
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,3
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,3
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM0,let's go~
+20250308_174051,/dev/ttyACM1,3
+20250308_174051,/dev/ttyACM1,3
+20250308_174051,/dev/ttyACM1,3
+20250308_174051,/dev/ttyACM1,3
+20250308_174051,/dev/ttyACM1,3
+20250308_174051,/dev/ttyACM1,3
+20250308_174051,/dev/ttyACM1,3
+20250308_174051,/dev/ttyACM1,3
+20250308_174051,/dev/ttyACM1,3
+20250308_174051,/dev/ttyACM1,3
+20250308_174051,/dev/ttyACM2,3
+20250308_174051,/dev/ttyACM2,3
+20250308_174051,/dev/ttyACM2,3
+20250308_174051,/dev/ttyACM2,3
+20250308_174051,/dev/ttyACM2,3
+20250308_174051,/dev/ttyACM2,3
+20250308_174051,/dev/ttyACM2,3
+20250308_174051,/dev/ttyACM2,3
+20250308_174051,/dev/ttyACM2,3
+20250308_174051,/dev/ttyACM2,3
+20250308_174051,/dev/ttyACM2,Range: 15.41 m	 RX power: -90.94 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174051,/dev/ttyACM2,Sampling rate of  AnchorD: 1.49Hz    Anchor:00:02 
+20250308_174051,/dev/ttyACM3,3
+20250308_174051,/dev/ttyACM3,3
+20250308_174051,/dev/ttyACM3,3
+20250308_174051,/dev/ttyACM3,3
+20250308_174051,/dev/ttyACM3,3
+20250308_174051,/dev/ttyACM3,3
+20250308_174051,/dev/ttyACM3,3
+20250308_174051,/dev/ttyACM3,3
+20250308_174051,/dev/ttyACM3,3
+20250308_174051,/dev/ttyACM3,3
+20250308_174051,/dev/ttyACM3,Range: 3.41 m	 RX power: -78.82 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174051,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174051,/dev/ttyACM3,Range: 3.36 m	 RX power: -78.42 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174051,/dev/ttyACM3,Range: 3.45 m	 RX power: -82.91 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174051,/dev/ttyACM3,Range: 3.34 m	 RX power: -77.36 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174051,/dev/ttyACM3,Range: 3.34 m	 RX power: -77.47 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174051,/dev/ttyACM3,Range: 3.31 m	 RX power: -76.39 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174051,/dev/ttyACM3,Range: 3.49 m	 RX power: -83.38 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174051,/dev/ttyACM3,Range: 3.36 m	 RX power: -77.72 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174051,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174051,/dev/ttyACM3,Range: 0.00 m	 RX power: -79.20 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174051,/dev/ttyACM3,Range: 3.33 m	 RX power: -76.94 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174053,/dev/ttyACM0,3
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,3
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,3
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,3
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,3
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,3
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,3
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,3
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,3
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,3
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM0,let's go~
+20250308_174053,/dev/ttyACM1,3
+20250308_174053,/dev/ttyACM1,3
+20250308_174053,/dev/ttyACM1,3
+20250308_174053,/dev/ttyACM1,3
+20250308_174053,/dev/ttyACM1,3
+20250308_174053,/dev/ttyACM1,3
+20250308_174053,/dev/ttyACM1,3
+20250308_174053,/dev/ttyACM1,3
+20250308_174053,/dev/ttyACM1,3
+20250308_174053,/dev/ttyACM1,3
+20250308_174053,/dev/ttyACM2,3
+20250308_174053,/dev/ttyACM2,3
+20250308_174053,/dev/ttyACM2,3
+20250308_174053,/dev/ttyACM2,3
+20250308_174053,/dev/ttyACM2,3
+20250308_174053,/dev/ttyACM2,3
+20250308_174053,/dev/ttyACM2,3
+20250308_174053,/dev/ttyACM2,3
+20250308_174053,/dev/ttyACM2,3
+20250308_174053,/dev/ttyACM2,3
+20250308_174053,/dev/ttyACM3,3
+20250308_174053,/dev/ttyACM3,3
+20250308_174053,/dev/ttyACM3,3
+20250308_174053,/dev/ttyACM3,3
+20250308_174053,/dev/ttyACM3,3
+20250308_174053,/dev/ttyACM3,3
+20250308_174053,/dev/ttyACM3,3
+20250308_174053,/dev/ttyACM3,3
+20250308_174053,/dev/ttyACM3,3
+20250308_174053,/dev/ttyACM3,3
+20250308_174053,/dev/ttyACM3,Range: 3.37 m	 RX power: -78.31 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174053,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174053,/dev/ttyACM3,Range: 3.39 m	 RX power: -77.99 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174053,/dev/ttyACM3,Range: 3.40 m	 RX power: -79.77 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174053,/dev/ttyACM3,Range: 3.38 m	 RX power: -80.51 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174055,/dev/ttyACM0,3
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,3
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,3
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,3
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,3
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,3
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,3
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,3
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,3
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,3
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM0,let's go~
+20250308_174055,/dev/ttyACM1,3
+20250308_174055,/dev/ttyACM1,3
+20250308_174055,/dev/ttyACM1,3
+20250308_174055,/dev/ttyACM1,3
+20250308_174055,/dev/ttyACM1,3
+20250308_174055,/dev/ttyACM1,3
+20250308_174055,/dev/ttyACM1,3
+20250308_174055,/dev/ttyACM1,3
+20250308_174055,/dev/ttyACM1,3
+20250308_174055,/dev/ttyACM1,3
+20250308_174055,/dev/ttyACM1,Range: 3.53 m	 RX power: -77.06 dBm distance between anchor/tag:40 from Anchor 00:03 
+20250308_174055,/dev/ttyACM1,Sampling rate of  AnchorD: 0.17Hz    Anchor:00:03 
+20250308_174055,/dev/ttyACM2,3
+20250308_174055,/dev/ttyACM2,3
+20250308_174055,/dev/ttyACM2,3
+20250308_174055,/dev/ttyACM2,3
+20250308_174055,/dev/ttyACM2,3
+20250308_174055,/dev/ttyACM2,3
+20250308_174055,/dev/ttyACM2,3
+20250308_174055,/dev/ttyACM2,3
+20250308_174055,/dev/ttyACM2,3
+20250308_174055,/dev/ttyACM2,3
+20250308_174055,/dev/ttyACM2,Range: 15.45 m	 RX power: -91.37 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174055,/dev/ttyACM2,Sampling rate of  AnchorD: 0.28Hz    Anchor:00:02 
+20250308_174055,/dev/ttyACM3,3
+20250308_174055,/dev/ttyACM3,3
+20250308_174055,/dev/ttyACM3,3
+20250308_174055,/dev/ttyACM3,3
+20250308_174055,/dev/ttyACM3,3
+20250308_174055,/dev/ttyACM3,3
+20250308_174055,/dev/ttyACM3,3
+20250308_174055,/dev/ttyACM3,3
+20250308_174055,/dev/ttyACM3,3
+20250308_174055,/dev/ttyACM3,3
+20250308_174055,/dev/ttyACM3,Range: 3.40 m	 RX power: -80.56 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174055,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174055,/dev/ttyACM3,Range: 3.36 m	 RX power: -77.43 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174057,/dev/ttyACM0,3
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,3
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,3
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,3
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,3
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,3
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,3
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,3
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,3
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,3
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM0,let's go~
+20250308_174057,/dev/ttyACM1,3
+20250308_174057,/dev/ttyACM1,3
+20250308_174057,/dev/ttyACM1,3
+20250308_174057,/dev/ttyACM1,3
+20250308_174057,/dev/ttyACM1,3
+20250308_174057,/dev/ttyACM1,3
+20250308_174057,/dev/ttyACM1,3
+20250308_174057,/dev/ttyACM1,3
+20250308_174057,/dev/ttyACM1,3
+20250308_174057,/dev/ttyACM1,3
+20250308_174057,/dev/ttyACM1,Range: 3.50 m	 RX power: -78.84 dBm distance between anchor/tag:40 from Anchor 00:03 
+20250308_174057,/dev/ttyACM1,Sampling rate of  AnchorD: 0.41Hz    Anchor:00:03 
+20250308_174057,/dev/ttyACM2,3
+20250308_174057,/dev/ttyACM2,3
+20250308_174057,/dev/ttyACM2,3
+20250308_174057,/dev/ttyACM2,3
+20250308_174057,/dev/ttyACM2,3
+20250308_174057,/dev/ttyACM2,3
+20250308_174057,/dev/ttyACM2,3
+20250308_174057,/dev/ttyACM2,3
+20250308_174057,/dev/ttyACM2,3
+20250308_174057,/dev/ttyACM2,3
+20250308_174057,/dev/ttyACM2,Range: 15.40 m	 RX power: -86.31 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174057,/dev/ttyACM2,Sampling rate of  AnchorD: 0.47Hz    Anchor:00:02 
+20250308_174057,/dev/ttyACM2,Range: 15.41 m	 RX power: -90.02 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174057,/dev/ttyACM3,3
+20250308_174057,/dev/ttyACM3,3
+20250308_174057,/dev/ttyACM3,3
+20250308_174057,/dev/ttyACM3,3
+20250308_174057,/dev/ttyACM3,3
+20250308_174057,/dev/ttyACM3,3
+20250308_174057,/dev/ttyACM3,3
+20250308_174057,/dev/ttyACM3,3
+20250308_174057,/dev/ttyACM3,3
+20250308_174057,/dev/ttyACM3,3
+20250308_174057,/dev/ttyACM3,Range: 0.00 m	 RX power: -79.35 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174057,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174057,/dev/ttyACM3,Range: 3.46 m	 RX power: -84.96 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174057,/dev/ttyACM3,Range: 3.35 m	 RX power: -78.80 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174057,/dev/ttyACM3,Range: 3.39 m	 RX power: -80.62 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174057,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174059,/dev/ttyACM0,3
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,3
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,3
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,3
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,3
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,3
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,3
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,3
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,3
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,3
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM0,let's go~
+20250308_174059,/dev/ttyACM1,3
+20250308_174059,/dev/ttyACM1,3
+20250308_174059,/dev/ttyACM1,3
+20250308_174059,/dev/ttyACM1,3
+20250308_174059,/dev/ttyACM1,3
+20250308_174059,/dev/ttyACM1,3
+20250308_174059,/dev/ttyACM1,3
+20250308_174059,/dev/ttyACM1,3
+20250308_174059,/dev/ttyACM1,3
+20250308_174059,/dev/ttyACM1,3
+20250308_174059,/dev/ttyACM2,3
+20250308_174059,/dev/ttyACM2,3
+20250308_174059,/dev/ttyACM2,3
+20250308_174059,/dev/ttyACM2,3
+20250308_174059,/dev/ttyACM2,3
+20250308_174059,/dev/ttyACM2,3
+20250308_174059,/dev/ttyACM2,3
+20250308_174059,/dev/ttyACM2,3
+20250308_174059,/dev/ttyACM2,3
+20250308_174059,/dev/ttyACM2,3
+20250308_174059,/dev/ttyACM2,Range: 15.41 m	 RX power: -89.97 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174059,/dev/ttyACM2,Range: 15.35 m	 RX power: -85.54 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174059,/dev/ttyACM2,Sampling rate of  AnchorD: 2.39Hz    Anchor:00:02 
+20250308_174059,/dev/ttyACM2,Range: 15.33 m	 RX power: -86.07 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174059,/dev/ttyACM2,Range: 15.44 m	 RX power: -92.24 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174059,/dev/ttyACM3,3
+20250308_174059,/dev/ttyACM3,3
+20250308_174059,/dev/ttyACM3,3
+20250308_174059,/dev/ttyACM3,3
+20250308_174059,/dev/ttyACM3,3
+20250308_174059,/dev/ttyACM3,3
+20250308_174059,/dev/ttyACM3,3
+20250308_174059,/dev/ttyACM3,3
+20250308_174059,/dev/ttyACM3,3
+20250308_174059,/dev/ttyACM3,3
+20250308_174059,/dev/ttyACM3,Range: 3.35 m	 RX power: -78.53 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174059,/dev/ttyACM3,Range: 3.37 m	 RX power: -77.21 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174059,/dev/ttyACM3,Range: 3.38 m	 RX power: -79.65 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174059,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174059,/dev/ttyACM3,Range: 3.45 m	 RX power: -83.22 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174059,/dev/ttyACM3,Range: 0.00 m	 RX power: -79.09 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174101,/dev/ttyACM0,3
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,3
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,3
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,3
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,3
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,3
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,3
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,3
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,3
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,3
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM0,let's go~
+20250308_174101,/dev/ttyACM1,3
+20250308_174101,/dev/ttyACM1,3
+20250308_174101,/dev/ttyACM1,3
+20250308_174101,/dev/ttyACM1,3
+20250308_174101,/dev/ttyACM1,3
+20250308_174101,/dev/ttyACM1,3
+20250308_174101,/dev/ttyACM1,3
+20250308_174101,/dev/ttyACM1,3
+20250308_174101,/dev/ttyACM1,3
+20250308_174101,/dev/ttyACM1,3
+20250308_174101,/dev/ttyACM2,3
+20250308_174101,/dev/ttyACM2,3
+20250308_174101,/dev/ttyACM2,3
+20250308_174101,/dev/ttyACM2,3
+20250308_174101,/dev/ttyACM2,3
+20250308_174101,/dev/ttyACM2,3
+20250308_174101,/dev/ttyACM2,3
+20250308_174101,/dev/ttyACM2,3
+20250308_174101,/dev/ttyACM2,3
+20250308_174101,/dev/ttyACM2,3
+20250308_174101,/dev/ttyACM2,Range: 15.32 m	 RX power: -85.18 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174101,/dev/ttyACM2,Sampling rate of  AnchorD: 1.47Hz    Anchor:00:02 
+20250308_174101,/dev/ttyACM3,3
+20250308_174101,/dev/ttyACM3,3
+20250308_174101,/dev/ttyACM3,3
+20250308_174101,/dev/ttyACM3,3
+20250308_174101,/dev/ttyACM3,3
+20250308_174101,/dev/ttyACM3,3
+20250308_174101,/dev/ttyACM3,3
+20250308_174101,/dev/ttyACM3,3
+20250308_174101,/dev/ttyACM3,3
+20250308_174101,/dev/ttyACM3,3
+20250308_174101,/dev/ttyACM3,Range: 3.40 m	 RX power: -80.06 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174101,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174101,/dev/ttyACM3,Range: 3.39 m	 RX power: -79.60 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174101,/dev/ttyACM3,Range: 3.43 m	 RX power: -81.31 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174101,/dev/ttyACM3,Range: 3.39 m	 RX power: -79.78 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174101,/dev/ttyACM3,Range: 3.38 m	 RX power: -77.61 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174101,/dev/ttyACM3,Range: 3.34 m	 RX power: -78.15 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174101,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,3
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,3
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,3
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,3
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,3
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,3
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,3
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,3
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,3
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,3
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM0,let's go~
+20250308_174103,/dev/ttyACM1,3
+20250308_174103,/dev/ttyACM1,3
+20250308_174103,/dev/ttyACM1,3
+20250308_174103,/dev/ttyACM1,3
+20250308_174103,/dev/ttyACM1,3
+20250308_174103,/dev/ttyACM1,3
+20250308_174103,/dev/ttyACM1,3
+20250308_174103,/dev/ttyACM1,3
+20250308_174103,/dev/ttyACM1,3
+20250308_174103,/dev/ttyACM1,3
+20250308_174103,/dev/ttyACM2,3
+20250308_174103,/dev/ttyACM2,3
+20250308_174103,/dev/ttyACM2,3
+20250308_174103,/dev/ttyACM2,3
+20250308_174103,/dev/ttyACM2,3
+20250308_174103,/dev/ttyACM2,3
+20250308_174103,/dev/ttyACM2,3
+20250308_174103,/dev/ttyACM2,3
+20250308_174103,/dev/ttyACM2,3
+20250308_174103,/dev/ttyACM2,3
+20250308_174103,/dev/ttyACM3,3
+20250308_174103,/dev/ttyACM3,3
+20250308_174103,/dev/ttyACM3,3
+20250308_174103,/dev/ttyACM3,3
+20250308_174103,/dev/ttyACM3,3
+20250308_174103,/dev/ttyACM3,3
+20250308_174103,/dev/ttyACM3,3
+20250308_174103,/dev/ttyACM3,3
+20250308_174103,/dev/ttyACM3,3
+20250308_174103,/dev/ttyACM3,3
+20250308_174103,/dev/ttyACM3,Range: 3.43 m	 RX power: -80.69 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174103,/dev/ttyACM3,Range: 3.39 m	 RX power: -77.38 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174103,/dev/ttyACM3,Range: 3.34 m	 RX power: -77.71 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174103,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174103,/dev/ttyACM3,Range: 3.36 m	 RX power: -77.10 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174103,/dev/ttyACM3,Range: 3.38 m	 RX power: -78.15 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174103,/dev/ttyACM3,Range: 3.31 m	 RX power: -76.73 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174103,/dev/ttyACM3,Range: 3.37 m	 RX power: -78.39 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174103,/dev/ttyACM3,Range: 3.38 m	 RX power: -77.83 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174105,/dev/ttyACM0,3
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,3
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,3
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,3
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,3
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,3
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,3
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,3
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,3
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,3
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM0,let's go~
+20250308_174105,/dev/ttyACM1,3
+20250308_174105,/dev/ttyACM1,3
+20250308_174105,/dev/ttyACM1,3
+20250308_174105,/dev/ttyACM1,3
+20250308_174105,/dev/ttyACM1,3
+20250308_174105,/dev/ttyACM1,3
+20250308_174105,/dev/ttyACM1,3
+20250308_174105,/dev/ttyACM1,3
+20250308_174105,/dev/ttyACM1,3
+20250308_174105,/dev/ttyACM1,3
+20250308_174105,/dev/ttyACM1,Range: 3.46 m	 RX power: -78.05 dBm distance between anchor/tag:40 from Anchor 00:03 
+20250308_174105,/dev/ttyACM1,Sampling rate of  AnchorD: 0.15Hz    Anchor:00:03 
+20250308_174105,/dev/ttyACM2,Range: 15.34 m	 RX power: -83.18 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174105,/dev/ttyACM2,Sampling rate of  AnchorD: 0.30Hz    Anchor:00:02 
+20250308_174105,/dev/ttyACM2,3
+20250308_174105,/dev/ttyACM2,3
+20250308_174105,/dev/ttyACM2,3
+20250308_174105,/dev/ttyACM2,3
+20250308_174105,/dev/ttyACM2,3
+20250308_174105,/dev/ttyACM2,3
+20250308_174105,/dev/ttyACM2,3
+20250308_174105,/dev/ttyACM2,3
+20250308_174105,/dev/ttyACM2,3
+20250308_174105,/dev/ttyACM2,3
+20250308_174105,/dev/ttyACM2,Range: 15.42 m	 RX power: -90.90 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174105,/dev/ttyACM3,3
+20250308_174105,/dev/ttyACM3,3
+20250308_174105,/dev/ttyACM3,3
+20250308_174105,/dev/ttyACM3,3
+20250308_174105,/dev/ttyACM3,3
+20250308_174105,/dev/ttyACM3,3
+20250308_174105,/dev/ttyACM3,3
+20250308_174105,/dev/ttyACM3,3
+20250308_174105,/dev/ttyACM3,3
+20250308_174105,/dev/ttyACM3,3
+20250308_174105,/dev/ttyACM3,Range: 3.31 m	 RX power: -75.15 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174105,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174105,/dev/ttyACM3,Range: 3.37 m	 RX power: -77.58 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174105,/dev/ttyACM3,Range: 3.51 m	 RX power: -88.56 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174105,/dev/ttyACM3,Range: 0.00 m	 RX power: -79.59 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174105,/dev/ttyACM3,Range: 3.27 m	 RX power: -75.79 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174105,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174105,/dev/ttyACM3,Range: 3.38 m	 RX power: -77.81 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,3
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,3
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,3
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,3
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,3
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,3
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,3
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,3
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,3
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,3
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM0,let's go~
+20250308_174107,/dev/ttyACM1,3
+20250308_174107,/dev/ttyACM1,3
+20250308_174107,/dev/ttyACM1,3
+20250308_174107,/dev/ttyACM1,3
+20250308_174107,/dev/ttyACM1,3
+20250308_174107,/dev/ttyACM1,3
+20250308_174107,/dev/ttyACM1,3
+20250308_174107,/dev/ttyACM1,3
+20250308_174107,/dev/ttyACM1,3
+20250308_174107,/dev/ttyACM1,3
+20250308_174107,/dev/ttyACM2,3
+20250308_174107,/dev/ttyACM2,3
+20250308_174107,/dev/ttyACM2,3
+20250308_174107,/dev/ttyACM2,3
+20250308_174107,/dev/ttyACM2,3
+20250308_174107,/dev/ttyACM2,3
+20250308_174107,/dev/ttyACM2,3
+20250308_174107,/dev/ttyACM2,3
+20250308_174107,/dev/ttyACM2,3
+20250308_174107,/dev/ttyACM2,3
+20250308_174107,/dev/ttyACM3,3
+20250308_174107,/dev/ttyACM3,3
+20250308_174107,/dev/ttyACM3,3
+20250308_174107,/dev/ttyACM3,3
+20250308_174107,/dev/ttyACM3,3
+20250308_174107,/dev/ttyACM3,3
+20250308_174107,/dev/ttyACM3,3
+20250308_174107,/dev/ttyACM3,3
+20250308_174107,/dev/ttyACM3,3
+20250308_174107,/dev/ttyACM3,Range: 3.37 m	 RX power: -77.81 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174107,/dev/ttyACM3,3
+20250308_174107,/dev/ttyACM3,Range: 3.35 m	 RX power: -78.05 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174107,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174107,/dev/ttyACM3,Range: 3.44 m	 RX power: -81.74 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174107,/dev/ttyACM3,Range: 3.37 m	 RX power: -78.45 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,3
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,3
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,3
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,3
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,3
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,3
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,3
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,3
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,3
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,3
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM0,let's go~
+20250308_174109,/dev/ttyACM1,3
+20250308_174109,/dev/ttyACM1,3
+20250308_174109,/dev/ttyACM1,3
+20250308_174109,/dev/ttyACM1,3
+20250308_174109,/dev/ttyACM1,3
+20250308_174109,/dev/ttyACM1,3
+20250308_174109,/dev/ttyACM1,3
+20250308_174109,/dev/ttyACM1,3
+20250308_174109,/dev/ttyACM1,3
+20250308_174109,/dev/ttyACM1,3
+20250308_174109,/dev/ttyACM2,3
+20250308_174109,/dev/ttyACM2,3
+20250308_174109,/dev/ttyACM2,3
+20250308_174109,/dev/ttyACM2,3
+20250308_174109,/dev/ttyACM2,3
+20250308_174109,/dev/ttyACM2,3
+20250308_174109,/dev/ttyACM2,3
+20250308_174109,/dev/ttyACM2,3
+20250308_174109,/dev/ttyACM2,3
+20250308_174109,/dev/ttyACM2,3
+20250308_174109,/dev/ttyACM2,Range: 15.37 m	 RX power: -87.61 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174109,/dev/ttyACM2,Sampling rate of  AnchorD: 0.33Hz    Anchor:00:02 
+20250308_174109,/dev/ttyACM3,3
+20250308_174109,/dev/ttyACM3,3
+20250308_174109,/dev/ttyACM3,3
+20250308_174109,/dev/ttyACM3,3
+20250308_174109,/dev/ttyACM3,3
+20250308_174109,/dev/ttyACM3,3
+20250308_174109,/dev/ttyACM3,3
+20250308_174109,/dev/ttyACM3,3
+20250308_174109,/dev/ttyACM3,3
+20250308_174109,/dev/ttyACM3,3
+20250308_174109,/dev/ttyACM3,Range: 3.38 m	 RX power: -77.42 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174109,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174109,/dev/ttyACM3,Range: 3.33 m	 RX power: -76.82 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174109,/dev/ttyACM3,Range: 3.32 m	 RX power: -75.69 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174109,/dev/ttyACM3,Range: 3.38 m	 RX power: -77.40 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174109,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174109,/dev/ttyACM3,Range: 3.41 m	 RX power: -77.39 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174111,/dev/ttyACM0,3
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,3
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,3
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,3
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,3
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,3
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,3
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,3
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,3
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,3
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM0,let's go~
+20250308_174111,/dev/ttyACM1,3
+20250308_174111,/dev/ttyACM1,3
+20250308_174111,/dev/ttyACM1,3
+20250308_174111,/dev/ttyACM1,3
+20250308_174111,/dev/ttyACM1,3
+20250308_174111,/dev/ttyACM1,3
+20250308_174111,/dev/ttyACM1,3
+20250308_174111,/dev/ttyACM1,3
+20250308_174111,/dev/ttyACM1,3
+20250308_174111,/dev/ttyACM1,3
+20250308_174111,/dev/ttyACM2,3
+20250308_174111,/dev/ttyACM2,3
+20250308_174111,/dev/ttyACM2,3
+20250308_174111,/dev/ttyACM2,3
+20250308_174111,/dev/ttyACM2,3
+20250308_174111,/dev/ttyACM2,3
+20250308_174111,/dev/ttyACM2,3
+20250308_174111,/dev/ttyACM2,3
+20250308_174111,/dev/ttyACM2,3
+20250308_174111,/dev/ttyACM2,3
+20250308_174111,/dev/ttyACM2,Range: 15.34 m	 RX power: -86.56 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174111,/dev/ttyACM2,Range: 15.42 m	 RX power: -88.78 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174111,/dev/ttyACM2,Sampling rate of  AnchorD: 1.25Hz    Anchor:00:02 
+20250308_174111,/dev/ttyACM3,3
+20250308_174111,/dev/ttyACM3,3
+20250308_174111,/dev/ttyACM3,3
+20250308_174111,/dev/ttyACM3,3
+20250308_174111,/dev/ttyACM3,3
+20250308_174111,/dev/ttyACM3,3
+20250308_174111,/dev/ttyACM3,3
+20250308_174111,/dev/ttyACM3,3
+20250308_174111,/dev/ttyACM3,3
+20250308_174111,/dev/ttyACM3,3
+20250308_174111,/dev/ttyACM3,Range: 3.38 m	 RX power: -77.19 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174111,/dev/ttyACM3,Range: 3.36 m	 RX power: -77.32 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174111,/dev/ttyACM3,Range: 3.39 m	 RX power: -77.05 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174111,/dev/ttyACM3,Range: 3.45 m	 RX power: -82.25 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174111,/dev/ttyACM3,Range: 3.33 m	 RX power: -76.07 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174111,/dev/ttyACM3,Range: 3.38 m	 RX power: -77.31 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174111,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174111,/dev/ttyACM3,Range: 3.46 m	 RX power: -81.84 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174111,/dev/ttyACM3,Range: 0.00 m	 RX power: -79.45 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174111,/dev/ttyACM3,Range: 3.47 m	 RX power: -84.96 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174111,/dev/ttyACM3,Range: 3.39 m	 RX power: -77.79 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174111,/dev/ttyACM3,Range: 3.37 m	 RX power: -77.03 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174113,/dev/ttyACM0,3
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,3
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,3
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,3
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,3
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,3
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,3
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,3
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,3
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,3
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM0,let's go~
+20250308_174113,/dev/ttyACM1,3
+20250308_174113,/dev/ttyACM1,3
+20250308_174113,/dev/ttyACM1,3
+20250308_174113,/dev/ttyACM1,3
+20250308_174113,/dev/ttyACM1,3
+20250308_174113,/dev/ttyACM1,3
+20250308_174113,/dev/ttyACM1,3
+20250308_174113,/dev/ttyACM1,3
+20250308_174113,/dev/ttyACM1,3
+20250308_174113,/dev/ttyACM1,3
+20250308_174113,/dev/ttyACM1,Range: 3.58 m	 RX power: -83.22 dBm distance between anchor/tag:40 from Anchor 00:03 
+20250308_174113,/dev/ttyACM1,Sampling rate of  AnchorD: 0.10Hz    Anchor:00:03 
+20250308_174113,/dev/ttyACM2,3
+20250308_174113,/dev/ttyACM2,3
+20250308_174113,/dev/ttyACM2,3
+20250308_174113,/dev/ttyACM2,3
+20250308_174113,/dev/ttyACM2,3
+20250308_174113,/dev/ttyACM2,3
+20250308_174113,/dev/ttyACM2,3
+20250308_174113,/dev/ttyACM2,3
+20250308_174113,/dev/ttyACM2,3
+20250308_174113,/dev/ttyACM2,3
+20250308_174113,/dev/ttyACM2,Range: 15.37 m	 RX power: -88.36 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174113,/dev/ttyACM2,Range: 15.35 m	 RX power: -84.87 dBm distance between anchor/tag:40 from Anchor 00:02 
+20250308_174113,/dev/ttyACM2,Sampling rate of  AnchorD: 0.81Hz    Anchor:00:02 
+20250308_174113,/dev/ttyACM3,3
+20250308_174113,/dev/ttyACM3,3
+20250308_174113,/dev/ttyACM3,3
+20250308_174113,/dev/ttyACM3,3
+20250308_174113,/dev/ttyACM3,3
+20250308_174113,/dev/ttyACM3,3
+20250308_174113,/dev/ttyACM3,3
+20250308_174113,/dev/ttyACM3,3
+20250308_174113,/dev/ttyACM3,Range: 3.46 m	 RX power: -84.94 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174113,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174113,/dev/ttyACM3,3
+20250308_174113,/dev/ttyACM3,3
+20250308_174113,/dev/ttyACM3,Range: 3.33 m	 RX power: -76.25 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174113,/dev/ttyACM3,Range: 3.44 m	 RX power: -80.14 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174113,/dev/ttyACM3,Range: 3.38 m	 RX power: -77.04 dBm distance between anchor/tag:40 from Anchor 00:01 
+20250308_174113,/dev/ttyACM3,AnchorD Sampling rate: 0.00 Hz
+20250308_174113,/dev/ttyACM3,Range: 3.38 m	 RX power: -79.21 dBm distance between anchor/tag:40 from Anchor 00:01 

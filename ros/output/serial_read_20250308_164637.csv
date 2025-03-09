@@ -1,0 +1,196 @@
+timestamp,portstr,line
+20250308_164642,/dev/ttyACM1,### arduino-DW1000Ng-ranging-anchor-###
+20250308_164642,/dev/ttyACM1,DW1000Ng initialized ...
+20250308_164642,/dev/ttyACM1,Committed configuration ...
+20250308_164642,/dev/ttyACM1,"Device ID: DECA - model: 1, version: 3, revision: 0"
+20250308_164642,/dev/ttyACM1,Unique ID: AA:BB:CC:DD:EE:FF:00:02
+20250308_164642,/dev/ttyACM1,"Network ID & Device Address: PAN: 609A, Short Address: 02"
+20250308_164642,/dev/ttyACM1,"Device mode: Data rate: 850 kb/s, PRF: 64 MHz, Preamble: 1024 symbols, Channel: #4, Preamble code #18"
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,result is right!
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164646,/dev/ttyACM1,1
+20250308_164646,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164648,/dev/ttyACM1,1
+20250308_164648,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,1
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,1
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,1
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,1
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,1
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,1
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,1
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,1
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,1
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,1
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,1
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,1
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,result is right!
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164650,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,1
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,1
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,1
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,1
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,1
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,result is right!
+20250308_164652,/dev/ttyACM1,1
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,1
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,1
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,result is right!
+20250308_164652,/dev/ttyACM1,1
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,1
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,result is right!
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,result is right!
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,result is right!
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~
+20250308_164652,/dev/ttyACM1,let's go~

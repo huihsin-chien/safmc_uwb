@@ -4,7 +4,7 @@ import serial.tools.list_ports
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import QoSDurabilityPolicy, QoSHistoryPolicy, QoSProfile, QoSReliabilityPolicy
-from uwb_msgs.msg import TagPosition # 自定義的 ROS2 Message
+from agent_msgs.msg import TagPosition # 自定義的 ROS2 Message
 
 # 用於透過 USB 讀取 UWB Anchor，與截取資訊
 import serial
@@ -254,8 +254,8 @@ class UWBPublisher(Node):
         # 指定 ROS Topic 的傳輸行為與品質（QoS, Quality of Service)
         qos_profile = QoSProfile(
             reliability=QoSReliabilityPolicy.BEST_EFFORT,   # 不保證傳輸成功
-            durability=QoSDurabilityPolicy.VOLATILE, # 為後期加入的 Subscriber 保留資料
-            history=QoSHistoryPolicy.KEEP_LAST, depth=10     # 只保留最新的 depth (= 1) 筆資料
+            durability=QoSDurabilityPolicy.VOLATILE,        # 不為 Subscriber 保留資料
+            history=QoSHistoryPolicy.KEEP_LAST, depth=10    # 只保留最新的 depth (= 10) 筆資料
         )
 
         # 定義 ROS Topic
@@ -296,10 +296,9 @@ class UWBPublisher(Node):
 
         # 用於判斷 tag-like anchors 到 anchors 之間的資料量已足夠
         def have_enough_data_between(tag_euis: list[str], anchor_euis: list[str]) -> bool:
-            uwb_calibration_data_matrix.clear_outdated_measurements(tag_euis[0], anchor_euis[0])
             dbg("- -", "\n- - ".join(f"from {tag_eui} to {anchor_eui}: {len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui])}" for tag_eui in tag_euis for anchor_eui in anchor_euis))
             return all(
-                len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui]) > 60
+                len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui]) >= 60
                 for tag_eui in tag_euis
                 for anchor_eui in anchor_euis
             )
@@ -439,7 +438,12 @@ class UWBPublisher(Node):
                 while serial_connection.write(f"{self.target_state * 10}".encode('utf-8')) <= 0:
                     time.sleep(0.01)
             except Exception as e:
+                serial_connection.close()
                 print(f"Error sending message to {serial_connection.portstr}: {e}")
+                try: 
+                    serial_connection.open() 
+                except Exception as a:
+                    print(f"Failed to reopen the serial port {serial_connection.portstr}") 
         time.sleep(2) # 以免淹沒 Serial Port
 
     # 透過 USB Serial，讀取並儲存 UWB 裝置距離、採樣率、新狀態遷移
@@ -506,6 +510,7 @@ class UWBPublisher(Node):
             msg = TagPosition()
             msg.eui = tag_eui
             msg.x, msg.y, msg.z = coordinate
+            msg.timestamp = time.time_ns()
             self.tag_position_publisher.publish(msg)
 
             dbg(f"- coordinate for {tag_eui} is {coordinate}")
