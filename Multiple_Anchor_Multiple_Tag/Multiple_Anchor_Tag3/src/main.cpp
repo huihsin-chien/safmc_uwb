@@ -14,11 +14,11 @@ const uint8_t PIN_RST = 15;
 device_configuration_t DEFAULT_CONFIG = {
     false, true, true, true, false,
     SFDMode::STANDARD_SFD,
-    Channel::CHANNEL_4,
-    DataRate::RATE_850KBPS,
-    PulseFrequency::FREQ_64MHZ,
-    PreambleLength::LEN_1024,
-    PreambleCode::CODE_4
+    Channel::CHANNEL_2,
+    DataRate::RATE_6800KBPS,
+    PulseFrequency::FREQ_16MHZ,
+    PreambleLength::LEN_64,
+    PreambleCode::CODE_3
 };
 
 frame_filtering_configuration_t TAG_FRAME_FILTER_CONFIG = {
