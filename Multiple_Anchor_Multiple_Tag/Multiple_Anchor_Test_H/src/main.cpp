@@ -113,7 +113,7 @@ void loop() {
 
 
 void ranging_flying() {  
-    RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor);
+    RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
     if(result.success) {
         uint32_t curMillis = millis();
         delay(4); // Tweak based on your hardware
