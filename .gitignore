@@ -7,3 +7,11 @@ output/*.csv
 .csv
 
 # .pio
+
+# ros
+install/
+build/
+log/
+
+# python
+__pycache__/

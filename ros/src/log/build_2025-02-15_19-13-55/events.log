@@ -1,4 +1,0 @@
-[0.000000] (-) TimerEvent: {}
-[0.000877] (-) JobUnselected: {'identifier': 'msg_folder'}
-[0.000941] (-) JobUnselected: {'identifier': 'uwb'}
-[0.001190] (-) EventReactorShutdown: {}
