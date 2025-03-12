@@ -22,7 +22,7 @@ uint16_t next_anchor_count = 2;
 byte anchor_c[] = {0x03, 0x00};
 
 // ranging counter (per second)
-uint16_t successRangingCount[8] = {0};
+uint16_t successRangingCount[11] = {0};
 uint32_t rangingCountPeriod = 0;
 float samplingRate = 0;
 uint16_t blink_rate = 50;
@@ -372,7 +372,35 @@ void handleRanging() { // for tag, need to be modified
         tag_shortAddress[0] = tag3_shortAddress[0];
         tag_shortAddress[1] = tag3_shortAddress[1];
         successRangingCount[3]++;
-      }else{
+      }else if (recv_data[2] == 4 && recv_data[3] == 4) {  // if received tag3 blink
+        tag_shortAddress[0] = tag3_shortAddress[0];
+        tag_shortAddress[1] = tag3_shortAddress[1];
+        successRangingCount[4]++;
+      }else if (recv_data[2] == 5 && recv_data[3] == 5) {  // if received tag3 blink
+        tag_shortAddress[0] = tag3_shortAddress[0];
+        tag_shortAddress[1] = tag3_shortAddress[1];
+        successRangingCount[5]++;
+      }else if (recv_data[2] == 6 && recv_data[3] == 6) {  // if received tag3 blink
+        tag_shortAddress[0] = tag3_shortAddress[0];
+        tag_shortAddress[1] = tag3_shortAddress[1];
+        successRangingCount[6]++;
+      }else if (recv_data[2] == 7 && recv_data[3] == 7) {  // if received tag3 blink
+        tag_shortAddress[0] = tag3_shortAddress[0];
+        tag_shortAddress[1] = tag3_shortAddress[1];
+        successRangingCount[7]++;
+      }else if (recv_data[2] == 8 && recv_data[3] == 8) {  // if received tag3 blink
+        tag_shortAddress[0] = tag3_shortAddress[0];
+        tag_shortAddress[1] = tag3_shortAddress[1];
+        successRangingCount[8]++;
+      }else if (recv_data[2] == 9 && recv_data[3] == 9) {  // if received tag3 blink
+        tag_shortAddress[0] = tag3_shortAddress[0];
+        tag_shortAddress[1] = tag3_shortAddress[1];
+        successRangingCount[9]++;
+      }else if (recv_data[2] == 9 && recv_data[3] == 9) {  // if received tag3 blink
+        tag_shortAddress[0] = tag3_shortAddress[0];
+        tag_shortAddress[1] = tag3_shortAddress[1];
+        successRangingCount[10]++;
+      }{
         Serial.println("Not a correct tag blink");
         return;
       }
@@ -402,10 +430,25 @@ void handleRanging() { // for tag, need to be modified
         Serial.print("Sampling rate 2: "); Serial.print(samplingRate); Serial.println(" Hz");
         samplingRate = (1000.0f * successRangingCount[3]) / (curMillis - rangingCountPeriod);
         Serial.print("Sampling rate 3: "); Serial.print(samplingRate); Serial.println(" Hz");
-          rangingCountPeriod = curMillis;
-          successRangingCount[1] = 0;
-          successRangingCount[2] = 0;
-          successRangingCount[3] = 0;
+        samplingRate = (1000.0f * successRangingCount[4]) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 4: "); Serial.print(samplingRate); Serial.println(" Hz");
+        samplingRate = (1000.0f * successRangingCount[5]) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 5: "); Serial.print(samplingRate); Serial.println(" Hz");
+        samplingRate = (1000.0f * successRangingCount[6]) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 6: "); Serial.print(samplingRate); Serial.println(" Hz");
+        samplingRate = (1000.0f * successRangingCount[7]) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 7: "); Serial.print(samplingRate); Serial.println(" Hz");
+        samplingRate = (1000.0f * successRangingCount[8]) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 8: "); Serial.print(samplingRate); Serial.println(" Hz");
+        samplingRate = (1000.0f * successRangingCount[9]) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 9: "); Serial.print(samplingRate); Serial.println(" Hz");
+        samplingRate = (1000.0f * successRangingCount[10]) / (curMillis - rangingCountPeriod);
+        Serial.print("Sampling rate 10: "); Serial.print(samplingRate); Serial.println(" Hz");
+        rangingCountPeriod = curMillis;
+
+          for (int j = 0; j < 11; j++) {
+            successRangingCount[j] = 0;
+          }
       }
     } 
 
