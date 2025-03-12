@@ -14,7 +14,13 @@ boolean received_B = false;
 byte tag1_shortAddress[] = {0x01, 0x01};
 byte tag2_shortAddress[] = {0x02, 0x02};
 byte tag3_shortAddress[] = {0x03, 0x03};
-
+byte tag4_shortAddress[] = {0x04, 0x04};
+byte tag5_shortAddress[] = {0x05, 0x05};
+byte tag6_shortAddress[] = {0x06, 0x06};
+byte tag7_shortAddress[] = {0x07, 0x07};
+byte tag8_shortAddress[] = {0x08, 0x08};
+byte tag9_shortAddress[] = {0x09, 0x09};
+byte tag10_shortAddress[] = {0x10, 0x10};
 
 byte anchor_b[] = {0x02, 0x00};
 uint16_t next_anchor = 2;
@@ -22,7 +28,6 @@ uint16_t next_anchor_count = 2;
 byte anchor_c[] = {0x03, 0x00};
 
 // ranging counter (per second)
-uint16_t successRangingCount[11] = {0};
 uint32_t rangingCountPeriod = 0;
 float samplingRate = 0;
 uint16_t blink_rate = 50;
@@ -71,7 +76,6 @@ class StateMachine{
           state = State::built_coord_2;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
-            successRangingCount[i] = 0;
           }
           startTime = millis();
           Serial.println("State changed to built_coord_2");
@@ -79,7 +83,6 @@ class StateMachine{
           state = State::built_coord_3;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
-            successRangingCount[i] = 0;
           }
           startTime = millis();
           Serial.println("State changed to built_coord_3");
@@ -87,7 +90,6 @@ class StateMachine{
           state = State::self_calibration;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
-            successRangingCount[i] = 0;
           }
           startTime = millis();
           Serial.println("State changed to self_calibration");
@@ -95,7 +97,6 @@ class StateMachine{
           state = State::flying;
           sample_count = 0;
           for(int i = 0; i < 8; i++){
-            successRangingCount[i] = 0;
           }
           startTime = millis();
           Serial.println("State changed to flying");
@@ -142,15 +143,12 @@ void handleRanging_coord_1() {
       if (recv_data[2] == 2 && recv_data[3] == 0) { // if received AnchorB blink
         tag_shortAddress[0] = (byte)0x02;
         tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[1]++;
       } else if (recv_data[2] == 3 && recv_data[3] == 0) { // if received AnchorC blink
         tag_shortAddress[0] = (byte)0x03;
         tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[2]++;
       }else if (recv_data[2] == 4 && recv_data[3] == 0) { // if received AnchorD blink
         tag_shortAddress[0] = (byte)0x04;
         tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[3]++;
       } 
       else{ // if received other anchor blink
         return; 
@@ -169,20 +167,6 @@ void handleRanging_coord_1() {
       rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
       Serial.println(rangeString);
 
-
-      if (curMillis - rangingCountPeriod > 1000) {
-        
-        samplingRate = (1000.0f * successRangingCount[1]) / (curMillis - rangingCountPeriod);
-        Serial.print("AnchorB Sampling rate: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[2]) / (curMillis - rangingCountPeriod);
-        Serial.print("AnchorC Sampling rate: "); Serial.print(samplingRate); Serial.println(" Hz");
-        rangingCountPeriod = curMillis;
-        Serial.print("AnchorD Sampling rate: ");  Serial.print(samplingRate); Serial.println(" Hz");
-        rangingCountPeriod = curMillis;
-        successRangingCount[1] = 0;
-        successRangingCount[2] = 0;
-        successRangingCount[3] = 0;
-      }
     } 
   }
 }
@@ -201,11 +185,9 @@ void handleRanging_coord_2() {
       if (recv_data[2] == 3 && recv_data[3] == 0) { // if received AnchorC blink
         tag_shortAddress[0] = (byte)0x03;
         tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[2]++;
       }else if (recv_data[2] == 4 && recv_data[3] == 0) { // if received AnchorD blink
         tag_shortAddress[0] = (byte)0x04;
         tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[3]++;
       }
       else{
         return;
@@ -224,17 +206,6 @@ void handleRanging_coord_2() {
       rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
       Serial.println(rangeString);
 
-
-      if (curMillis - rangingCountPeriod > 1000) {
-        
-        samplingRate = (1000.0f * successRangingCount[2]) / (curMillis - rangingCountPeriod);
-        Serial.print("AnchorC Sampling rate: "); Serial.print(samplingRate); Serial.println(" Hz");
-        rangingCountPeriod = curMillis;
-        Serial.print("AnchorD Sampling rate: ");  Serial.print(samplingRate); Serial.println(" Hz");
-        rangingCountPeriod = curMillis;
-        successRangingCount[2] = 0;
-        successRangingCount[3] = 0;
-      }
     } 
   }
 }
@@ -252,7 +223,6 @@ void handleRanging_coord_3() {
       if (recv_data[2] == 4 && recv_data[3] == 0) { // if received AnchorD blink
         tag_shortAddress[0] = (byte)0x04;
         tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[3]++;
       }
       else{
         return;
@@ -271,15 +241,6 @@ void handleRanging_coord_3() {
       rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
       Serial.println(rangeString);
 
-
-      if (curMillis - rangingCountPeriod > 1000) {
-        
-        samplingRate = (1000.0f * successRangingCount[2]) / (curMillis - rangingCountPeriod);
-        
-        Serial.print("AnchorD Sampling rate: ");  Serial.print(samplingRate); Serial.println(" Hz");
-        rangingCountPeriod = curMillis;
-        successRangingCount[3] = 0;
-      }
     } 
   }
 }
@@ -299,24 +260,20 @@ void handleRanging_otherAnchor(){
       if (recv_data[2] == 5 && recv_data[3] == 0) { // if received AnchorE blink
         tag_shortAddress[0] = (byte)0x05;
         tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[4]++;
       }else if (recv_data[2] == 6 && recv_data[3] == 0) { // if received AnchorF blink
         tag_shortAddress[0] = (byte)0x06;
         tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[5]++;
       } else if (recv_data[2] == 7 && recv_data[3] == 0) { // if received AnchorG blink
         tag_shortAddress[0] = (byte)0x07;
         tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[6]++;
       }else if (recv_data[2] == 8 && recv_data[3] == 0) { // if received AnchorH blink
         tag_shortAddress[0] = (byte)0x08;
-        tag_shortAddress[1] = (byte)0x00;
-        successRangingCount[7]++;}
+        tag_shortAddress[1] = (byte)0x00;}
 
       // Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission();
-      // ranginginitiation 有成功
+      
       next_anchor_count ++;
       next_anchor_count = next_anchor_count%3;
       
@@ -329,21 +286,6 @@ void handleRanging_otherAnchor(){
       rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
       Serial.println(rangeString);
 
-      if (curMillis - rangingCountPeriod > 1000) {
-        samplingRate = (1000.0f * successRangingCount[4]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate AnchorE: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[5]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate AnchorF: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[6]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate AnchorG: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[7]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate AnchorH: "); Serial.print(samplingRate); Serial.println(" Hz");
-        rangingCountPeriod = curMillis;
-        successRangingCount[4] = 0;
-        successRangingCount[5] = 0;
-        successRangingCount[6] = 0;
-        successRangingCount[7] = 0;
-      }
     } 
   }
 }
@@ -363,43 +305,33 @@ void handleRanging() { // for tag, need to be modified
       if (recv_data[2] == 0 && recv_data[3] == 0) { // if received tag1 blink
         tag_shortAddress[0] = tag1_shortAddress[0];
         tag_shortAddress[1] = tag1_shortAddress[1];
-        successRangingCount[1]++;
       } else if (recv_data[2] == 2 && recv_data[3] == 2) { // if received tag2 blink
         tag_shortAddress[0] = tag2_shortAddress[0];
         tag_shortAddress[1] = tag2_shortAddress[1];
-        successRangingCount[2]++;
       }else if (recv_data[2] == 3 && recv_data[3] == 3) {  // if received tag3 blink
         tag_shortAddress[0] = tag3_shortAddress[0];
         tag_shortAddress[1] = tag3_shortAddress[1];
-        successRangingCount[3]++;
-      }else if (recv_data[2] == 4 && recv_data[3] == 4) {  // if received tag3 blink
-        tag_shortAddress[0] = tag3_shortAddress[0];
-        tag_shortAddress[1] = tag3_shortAddress[1];
-        successRangingCount[4]++;
-      }else if (recv_data[2] == 5 && recv_data[3] == 5) {  // if received tag3 blink
-        tag_shortAddress[0] = tag3_shortAddress[0];
-        tag_shortAddress[1] = tag3_shortAddress[1];
-        successRangingCount[5]++;
-      }else if (recv_data[2] == 6 && recv_data[3] == 6) {  // if received tag3 blink
-        tag_shortAddress[0] = tag3_shortAddress[0];
-        tag_shortAddress[1] = tag3_shortAddress[1];
-        successRangingCount[6]++;
-      }else if (recv_data[2] == 7 && recv_data[3] == 7) {  // if received tag3 blink
-        tag_shortAddress[0] = tag3_shortAddress[0];
-        tag_shortAddress[1] = tag3_shortAddress[1];
-        successRangingCount[7]++;
-      }else if (recv_data[2] == 8 && recv_data[3] == 8) {  // if received tag3 blink
-        tag_shortAddress[0] = tag3_shortAddress[0];
-        tag_shortAddress[1] = tag3_shortAddress[1];
-        successRangingCount[8]++;
-      }else if (recv_data[2] == 9 && recv_data[3] == 9) {  // if received tag3 blink
-        tag_shortAddress[0] = tag3_shortAddress[0];
-        tag_shortAddress[1] = tag3_shortAddress[1];
-        successRangingCount[9]++;
-      }else if (recv_data[2] == 9 && recv_data[3] == 9) {  // if received tag3 blink
-        tag_shortAddress[0] = tag3_shortAddress[0];
-        tag_shortAddress[1] = tag3_shortAddress[1];
-        successRangingCount[10]++;
+      }else if (recv_data[2] == 4 && recv_data[3] == 4) {  // if received tag4 blink
+        tag_shortAddress[0] = tag4_shortAddress[0];
+        tag_shortAddress[1] = tag4_shortAddress[1];
+      }else if (recv_data[2] == 5 && recv_data[3] == 5) {  // if received tag5 blink
+        tag_shortAddress[0] = tag5_shortAddress[0];
+        tag_shortAddress[1] = tag5_shortAddress[1];
+      }else if (recv_data[2] == 6 && recv_data[3] == 6) {  // if received tag6 blink
+        tag_shortAddress[0] = tag6_shortAddress[0];
+        tag_shortAddress[1] = tag6_shortAddress[1];
+      }else if (recv_data[2] == 7 && recv_data[3] == 7) {  // if received tag7 blink
+        tag_shortAddress[0] = tag7_shortAddress[0];
+        tag_shortAddress[1] = tag7_shortAddress[1];
+      }else if (recv_data[2] == 8 && recv_data[3] == 8) {  // if received tag8 blink
+        tag_shortAddress[0] = tag8_shortAddress[0];
+        tag_shortAddress[1] = tag8_shortAddress[1];
+      }else if (recv_data[2] == 9 && recv_data[3] == 9) {  // if received tag9 blink
+        tag_shortAddress[0] = tag9_shortAddress[0];
+        tag_shortAddress[1] = tag9_shortAddress[1];
+      }else if (recv_data[2] == 9 && recv_data[3] == 9) {  // if received tag10 blink
+        tag_shortAddress[0] = tag10_shortAddress[0];
+        tag_shortAddress[1] = tag10_shortAddress[1];
       }{
         Serial.println("Not a correct tag blink");
         return;
@@ -408,8 +340,11 @@ void handleRanging() { // for tag, need to be modified
       // Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission();
-      // ranginginitiation 有成功
-      RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor);
+      
+      next_anchor_count ++;
+      next_anchor_count = next_anchor_count%3;
+
+      RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor_count +2);
       if(!result.success) return;
       range_self = result.range;
       // Serial.println("Data from tag: ");
@@ -422,34 +357,6 @@ void handleRanging() { // for tag, need to be modified
       rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
       Serial.println(rangeString);
 
-      if (curMillis - rangingCountPeriod > 1000) {
-        
-        samplingRate = (1000.0f * successRangingCount[1]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate 1: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[2]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate 2: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[3]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate 3: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[4]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate 4: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[5]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate 5: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[6]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate 6: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[7]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate 7: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[8]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate 8: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[9]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate 9: "); Serial.print(samplingRate); Serial.println(" Hz");
-        samplingRate = (1000.0f * successRangingCount[10]) / (curMillis - rangingCountPeriod);
-        Serial.print("Sampling rate 10: "); Serial.print(samplingRate); Serial.println(" Hz");
-        rangingCountPeriod = curMillis;
-
-          for (int j = 0; j < 11; j++) {
-            successRangingCount[j] = 0;
-          }
-      }
     } 
 
   }
