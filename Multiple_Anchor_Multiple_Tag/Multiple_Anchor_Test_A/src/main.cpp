@@ -329,10 +329,12 @@ void handleRanging() { // for tag, need to be modified
       }else if (recv_data[2] == 9 && recv_data[3] == 9) {  // if received tag9 blink
         tag_shortAddress[0] = tag9_shortAddress[0];
         tag_shortAddress[1] = tag9_shortAddress[1];
-      }else if (recv_data[2] == 9 && recv_data[3] == 9) {  // if received tag10 blink
+      }else if (recv_data[2] == 10 && recv_data[3] == 10) {  // if received tag10 blink
         tag_shortAddress[0] = tag10_shortAddress[0];
         tag_shortAddress[1] = tag10_shortAddress[1];
-      }{
+      }
+      
+      else{
         Serial.println("Not a correct tag blink");
         return;
       }
@@ -340,24 +342,17 @@ void handleRanging() { // for tag, need to be modified
       // Serial.print("Tag short address: "); Serial.print(tag_shortAddress[0]); Serial.println(tag_shortAddress[1]);
       DW1000NgRTLS::transmitRangingInitiation(&recv_data[2], tag_shortAddress);
       DW1000NgRTLS::waitForTransmission();
-      
-      next_anchor_count ++;
-      next_anchor_count = next_anchor_count%3;
-
-      RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor_count +2);
+      // ranginginitiation 有成功
+      RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor);
       if(!result.success) return;
       range_self = result.range;
-      // Serial.println("Data from tag: ");
-      // for (uint16_t i = 0; i < 18; i++) {
-      //   Serial.print(" 0x"); Serial.print(recv_data[i], HEX);
-      // }
+
       String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
       rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
       rangeString += recv_data[2]; rangeString += recv_data[3];
       rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
       Serial.println(rangeString);
-
+      
     } 
-
   }
 }
