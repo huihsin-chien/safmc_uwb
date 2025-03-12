@@ -115,10 +115,9 @@ class StateMachine{
 
 
 void setup() {
-    delay(5000);
+    delay(3000);
     Serial.begin(9600);
     setupUWB(EUI, self_device_address, ANCHOR_FRAME_FILTER_CONFIG);
-    delay(5000);
 }
 
 StateMachine anchorStateMachine;
@@ -346,7 +345,7 @@ void handleRanging() { // for tag, need to be modified
 
 
       next_anchor_count ++;
-      next_anchor_count = next_anchor_count%3;
+      next_anchor_count = next_anchor_count%7;
 
       RangeAcceptResult result = DW1000NgRTLS::anchorRangeAccept(NextActivity::RANGING_CONFIRM, next_anchor_count+ 2);
       if(!result.success) return;

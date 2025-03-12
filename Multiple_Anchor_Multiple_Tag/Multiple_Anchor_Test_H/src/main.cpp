@@ -98,10 +98,9 @@ class StateMachine{
 };
 
 void setup() {
-    delay(5000);
+    delay(3000);
     Serial.begin(9600);
     setupUWB(&EUI[0], self_device_address, TAG_FRAME_FILTER_CONFIG); 
-    delay(5000); 
 }
 
 StateMachine anchorTagStateMachine;
@@ -153,10 +152,7 @@ void ranging_flying() {
             successRangingCount[1] = 0;
             successRangingCount[2] = 0;
             successRangingCount[3] = 0;
-
         }
-
-
     }
 }
 

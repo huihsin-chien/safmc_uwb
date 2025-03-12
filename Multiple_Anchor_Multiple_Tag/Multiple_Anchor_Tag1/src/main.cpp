@@ -50,7 +50,7 @@ volatile uint32_t blink_rate = 50;
 // }
 
 void setup() {
-  delay(5000);
+  delay(3000);
     // DEBUG monitoring
     Serial.begin(9600);
     Serial.println(F("### DW1000Ng-arduino-ranging-tag1 ###"));
@@ -96,7 +96,6 @@ void setup() {
     DW1000Ng::setGPIOMode(10, LED_MODE);
     DW1000Ng::setGPIOMode(12, LED_MODE);
 
-    delay(5000); // 等待 5 秒
 }
 
 void loop() {

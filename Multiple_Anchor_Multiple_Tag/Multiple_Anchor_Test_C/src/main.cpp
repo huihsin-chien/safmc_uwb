@@ -106,10 +106,9 @@ class StateMachine{
 };
 
 void setup() {
-    delay(5000);
+    delay(3000);
     Serial.begin(9600);
     setupUWB(&EUI[0], self_device_address, TAG_FRAME_FILTER_CONFIG); 
-    delay(5000); 
 }
 
 StateMachine anchorTagStateMachine;
