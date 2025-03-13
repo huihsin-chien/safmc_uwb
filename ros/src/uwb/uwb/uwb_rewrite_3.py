@@ -329,6 +329,7 @@ class UWBPublisher(Node):
             # dbg("- - reading serial")
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:02", "00:03", "00:04"], ["00:01"]):
+                self.state = "build_coord_2"
                 self.target_state = "2"
                 ## 假定 UWB Anchors 此時不會移動，故預先把距離資料儲存，以免稍後遭清除
                 for i in range(1, 4):
@@ -336,10 +337,6 @@ class UWBPublisher(Node):
                     = distance_matrix[i][0] \
                     = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:01")
                 break
-
-        while self.state == "built_coord_1":
-            self.broadcast_target_state()
-            self.read_serial(uwb_calibration_data_matrix)
         
         dbg("- built_coord_2")
 
@@ -348,16 +345,13 @@ class UWBPublisher(Node):
             self.broadcast_target_state()
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:03", "00:04"], ["00:02"]):
+                self.state = "build_coord_3"
                 self.target_state = "3"
                 for i in range(2, 4):
                     distance_matrix[1][i] \
                     = distance_matrix[i][1] \
                     = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:02")
                 break
-        
-        while self.state == "built_coord_2":
-            self.broadcast_target_state()
-            self.read_serial(uwb_calibration_data_matrix)
             
         dbg("- built_coord_3")
 
@@ -366,16 +360,13 @@ class UWBPublisher(Node):
             self.broadcast_target_state()
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:04"], ["00:03"]):
+                # self.state = "self_calibration"
                 # self.target_state = "s"
                 for i in range(3, 4):
                     distance_matrix[2][i] \
                     = distance_matrix[i][2] \
                     = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:03")
                 break
-        
-        # while self.state == "built_coord_3":
-        #     self.broadcast_target_state()
-        #     self.read_serial(uwb_calibration_data_matrix)
 
         ## 重試到 build_3D_coord 成功
         while True:
@@ -403,16 +394,7 @@ class UWBPublisher(Node):
         
         # 跳過 self_calibration 階段
         self.target_state = "f"
-
-        while self.state != "flying":
-            self.broadcast_target_state()
-            self.read_serial(uwb_calibration_data_matrix) 
-                # uwb_calibration_data_matrix 不重要，這裡只是等待 self_calibration 結束
-
-        # for i in range(10):
-        #     time.sleep(0.1)
-        #     self.broadcast_target_state()
-        #     self.read_serial(uwb_calibration_data_matrix) 
+        self.state = "flying"
 
     def get_eui_from_id(self, id) -> Optional[str]:
         id_to_eui = {
@@ -528,10 +510,10 @@ class UWBPublisher(Node):
 
                     uwb_data_matrix.update_anchor_sample_rate(anchor_eui, float(sample_rate))
 
-                else: # 對於狀態遷移資料，更新狀態機的狀態
-                    for state in ["built_coord_1", "built_coord_2", "built_coord_3", "self_calibration", "flying"]:
-                        if state in line:
-                            self.state = state
+                # else: # 對於狀態遷移資料，更新狀態機的狀態
+                #     for state in ["built_coord_1", "built_coord_2", "built_coord_3", "self_calibration", "flying"]:
+                #         if state in line:
+                #             self.state = state
                     
                 # dbg(f"- - - Read Serial: {line}")
     
