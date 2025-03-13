@@ -1,7 +1,7 @@
 #include <DW1000Ng.hpp>
 #include <DW1000NgUtils.hpp>
 #include <DW1000NgRanging.hpp>
-#include <DW1000NgRTLS.hpp>
+#include "DW1000NgRTLS_ext.hpp"
 
 // connection pins
 #if defined(ESP8266)
@@ -38,16 +38,18 @@ sleep_configuration_t SLEEP_CONFIG = {
 };
 
 
-byte tag_short_address[] = {0x02, 0x02}; // 設定當前 tag 的短地址
-byte main_anchor_address[] = {0x01, 0x00};
+// byte tag_short_address[] = {0x01, 0x01}; // 設定當前 tag 的短地址
+uint16_t tag_short_address = 0x0202;
+
+// byte main_anchor_address[] = {0x01, 0x00};
 char EUI[] = "AA:BB:CC:DD:EE:FF:02:02";
 // byte RANGING_RESPONSE = 0x60;
-volatile uint32_t blink_rate = 50 ;
+volatile uint32_t blink_rate = 50;
 
-int calculateRange(byte response_data[]) {
-    uint16_t range_raw = DW1000NgUtils::bytesAsValue(&response_data[10], 2);
-    return range_raw / 1000;
-}
+// int calculateRange(byte response_data[]) {
+//     uint16_t range_raw = DW1000NgUtils::bytesAsValue(&response_data[10], 2);
+//     return range_raw / 1000;
+// }
 
 void setup() {
   delay(3000);
@@ -94,19 +96,28 @@ void setup() {
     DW1000Ng::setGPIOMode(6, LED_MODE);
     DW1000Ng::setGPIOMode(8, LED_MODE);
     DW1000Ng::setGPIOMode(10, LED_MODE);
-    DW1000Ng::setGPIOMode(12,   LED_MODE);
+    DW1000Ng::setGPIOMode(12, LED_MODE);
+
+    DW1000Ng::setDeviceAddress(tag_short_address);
 }
 
 void loop() {
-    Serial.println("let's go~");
+    // Serial.println("let's go~");
     DW1000Ng::deepSleep();
     delay(blink_rate);
     DW1000Ng::spiWakeup();
-    DW1000Ng::setEUI(EUI);
 
-    RangeInfrastructureResult res = DW1000NgRTLS::tagTwrLocalize(1500);
-    if(res.success){
-        Serial.println("result is right!");
-        blink_rate = res.new_blink_rate;
+    // RangeInfrastructureResult res = DW1000NgRTLS::tagTwrLocalize(1500);
+    // if(res.success){
+    //     Serial.println("result is right!");
+    //     blink_rate = res.new_blink_rate;
+    // }
+
+    for (uint16_t target_anchor = 1; target_anchor <= 8; target_anchor++) {
+        RangeResult result = DW1000NgRTLS_ext::tagFinishRange(target_anchor, 1500);
+        if(result.success) {
+            Serial.println("result is right!");
+            blink_rate = result.new_blink_rate;
+        }
     }
 }
