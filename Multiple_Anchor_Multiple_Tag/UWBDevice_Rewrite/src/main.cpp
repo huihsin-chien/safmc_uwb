@@ -133,6 +133,9 @@ void setup() {
 }
 
 void try_to_change_state() {
+    // 先記錄新狀態而不轉換，直到 Serial 空了時再轉換，以減少頻繁的 enableFrameFiltering()
+    bool newIsAnchor = isAnchor;
+
     // 讀取狀態轉換指令
     char ch = '\0';
     while(Serial.available()){
@@ -144,26 +147,30 @@ void try_to_change_state() {
             continue;
         }
 
-        // 依照指令轉換狀態
+        // 依照指令設定新狀態
         // 是 anchor 就判斷轉換成 tag，是 tag 就判斷轉換成 anchor
-        if(isAnchor) {
+        if(newIsAnchor) {
             for(int i = 0; becomeTagSymbols[i] != '\0'; i++){
-                if(ch == becomeTagSymbols[i]) {
-                    isAnchor = false;
-                    DW1000Ng::enableFrameFiltering(TAG_FRAME_FILTER_CONFIG);
-                    // Serial.print(becomeTagSuccessMessage);
-                }
+                if(ch == becomeTagSymbols[i])
+                    newIsAnchor = false;
             }
         } else {
             for(int i = 0; becomeAnchorSymbols[i] != '\0'; i++){
-                if(ch == becomeAnchorSymbols[i]) {
-                    isAnchor = true;
-                    DW1000Ng::enableFrameFiltering(ANCHOR_FRAME_FILTER_CONFIG);
-                    // Serial.print(becomeAnchorSuccessMessage);
-                }
+                if(ch == becomeAnchorSymbols[i])
+                    newIsAnchor = true;
             }
         }
-    }
+    } // end of while(Serial.available())
+
+    // 如果狀態不變，就提早離開
+    if(newIsAnchor == isAnchor) 
+        return;
+
+    isAnchor = newIsAnchor;
+    if(isAnchor)
+        DW1000Ng::enableFrameFiltering(TAG_FRAME_FILTER_CONFIG);
+    else
+        DW1000Ng::enableFrameFiltering(ANCHOR_FRAME_FILTER_CONFIG);
 }
 
 void loop() {
