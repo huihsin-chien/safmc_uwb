@@ -370,7 +370,7 @@ class UWBPublisher(Node):
 
         ## 重試到 build_3D_coord 成功
         while True:
-            ### 設定 Anchor 00:01~00:04 座標
+            # 設定 Anchor 00:01~00:04 座標
             dbg("distance_matrix is", distance_matrix)
             anchor_coords = build_3D_coord(distance_matrix)
             if not all(
@@ -455,6 +455,7 @@ class UWBPublisher(Node):
 
         for serial_connection in self.serials:
             try: 
+                # 消息發三次以免有訛漏
                 while serial_connection.write(f"{self.target_state * 10}".encode('utf-8')) <= 0:
                     time.sleep(0.01)
             except Exception as e:

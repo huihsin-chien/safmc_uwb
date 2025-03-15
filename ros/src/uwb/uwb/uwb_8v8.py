@@ -97,7 +97,7 @@ class UWBDevice:
 # - 設定 Anchor 的座標
 # - 多點定位計算 Tag 座標並儲存
 class UWBDataMatrix:
-    time_threshold: float = 0.5                     # 資料過時的時間門檻（秒）
+    time_threshold: float = 0.1                     # 資料過時的時間門檻（秒）
     anchors: dict[str, UWBDevice] = {}              # Anchor 的 EUI 對應到 Anchor 物件
     tags: dict[str, UWBDevice] = {}                 # Tag 的 EUI 對應到 Tag 物件
     data: dict[str, dict[str, list[UWBData]]] = {}  # { TAG_EUI: { ANCHOR_EUI: [UWBData, UWBData, ...] } }
@@ -203,7 +203,7 @@ class UWBDataMatrix:
         except Exception as e:
             print(f"Error locating tag {tag_eui}: {e}")
             return None
-        
+
         # 如果有 inf/-inf/nan，則回傳 None
         if any(str(num) in ["inf", "-inf", "nan"] for num in coordinate):
             return None
@@ -222,9 +222,15 @@ class UWBPublisher(Node):
     serials: list[serial.Serial] = []
     uwb_data_matrix: UWBDataMatrix = None
     state: str = "built_coord_1" 
-        # 狀態機的狀態。其他的狀態：get_calib_data_2, get_calib_data_3, self_calibration, flying
-    target_state: str = "1" 
-        # 狀態機的目標狀態，將透過 Serial 發給 UWB Devices。其他是 "2", "3", "s", "f"，與 state 對應
+        # 狀態機的狀態。其他的狀態：build_coord_2, build_coord_3, self_calibration, flying
+    target_state: str = "11" 
+        # 狀態機的目標狀態，將透過 Serial 發給 UWB Devices。
+        # 為減少突波的影響，UWBDevice_Rewrite 要讀取連續兩個相同的 char，故我們要連續發送
+        # 其他值可能是 "22", "33", "44", "55", "66", "77", "88", "ff" 等，對應的 state 為
+        # - build_coord_1~3 跟 "11"~"33" 對應。
+        # - self_calibration 對應多個 target_state。變化規則是：
+        #   - 先進入 "44"
+        #   - 當 00:05~00:08 任一進入其 anchor_state 後，由 "55", "66", "77", "88" 的各種組合（如 "5588", "886677"）來通知 anchor 切換 state
     anchors: list[UWBDevice] = []
     tags: list[UWBDevice] = []
    
@@ -259,8 +265,8 @@ class UWBPublisher(Node):
         # 指定 ROS Topic 的傳輸行為與品質（QoS, Quality of Service)
         qos_profile = QoSProfile(
             reliability=QoSReliabilityPolicy.BEST_EFFORT,   # 不保證傳輸成功
-            durability=QoSDurabilityPolicy.VOLATILE, # 為後期加入的 Subscriber 保留資料
-            history=QoSHistoryPolicy.KEEP_LAST, depth=10     # 只保留最新的 depth (= 1) 筆資料
+            durability=QoSDurabilityPolicy.VOLATILE,        # 不為 Subscriber 保留資料
+            history=QoSHistoryPolicy.KEEP_LAST, depth=10    # 只保留最新的 depth (= 10) 筆資料
         )
 
         # 定義 ROS Topic
@@ -303,10 +309,10 @@ class UWBPublisher(Node):
 
         # 用於判斷 tag-like anchors 到 anchors 之間的資料量已足夠
         def have_enough_data_between(tag_euis: list[str], anchor_euis: list[str]) -> bool:
-            uwb_calibration_data_matrix.clear_outdated_measurements(tag_euis[0], anchor_euis[0])
+            # uwb_calibration_data_matrix.clear_outdated_measurements(tag_euis[0], anchor_euis[0])
             dbg("- -", "\n- - ".join(f"from {tag_eui} to {anchor_eui}: {len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui])}" for tag_eui in tag_euis for anchor_eui in anchor_euis))
             return all(
-                len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui]) > 60
+                len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui]) >= 60
                 for tag_eui in tag_euis
                 for anchor_eui in anchor_euis
             )
@@ -322,24 +328,21 @@ class UWBPublisher(Node):
 
         ## get_calib_data_1 階段
         self.state = "built_coord_1"
-        self.target_state = "1"
+        self.target_state = "11"
         while self.state == "built_coord_1":
             # dbg("- - broadcasting target state")
             self.broadcast_target_state()
             # dbg("- - reading serial")
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:02", "00:03", "00:04"], ["00:01"]):
-                self.target_state = "2"
+                self.state = "build_coord_2"
+                self.target_state = "22"
                 ## 假定 UWB Anchors 此時不會移動，故預先把距離資料儲存，以免稍後遭清除
                 for i in range(1, 4):
                     distance_matrix[0][i] \
                     = distance_matrix[i][0] \
                     = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:01")
                 break
-
-        while self.state == "built_coord_1":
-            self.broadcast_target_state()
-            self.read_serial(uwb_calibration_data_matrix)
         
         dbg("- built_coord_2")
 
@@ -348,16 +351,13 @@ class UWBPublisher(Node):
             self.broadcast_target_state()
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:03", "00:04"], ["00:02"]):
-                self.target_state = "3"
+                self.state = "build_coord_3"
+                self.target_state = "33"
                 for i in range(2, 4):
                     distance_matrix[1][i] \
                     = distance_matrix[i][1] \
                     = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:02")
                 break
-        
-        while self.state == "built_coord_2":
-            self.broadcast_target_state()
-            self.read_serial(uwb_calibration_data_matrix)
             
         dbg("- built_coord_3")
 
@@ -366,6 +366,8 @@ class UWBPublisher(Node):
             self.broadcast_target_state()
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:04"], ["00:03"]):
+                # self.state = "self_calibration"
+                # self.target_state = "s"         # don't change state yyet
                 for i in range(3, 4):
                     distance_matrix[2][i] \
                     = distance_matrix[i][2] \
@@ -374,7 +376,7 @@ class UWBPublisher(Node):
 
         ## 重試到 build_3D_coord 成功
         while True:
-            ## 設定 Anchor 00:01~00:04 座標
+            # 設定 Anchor 00:01~00:04 座標
             dbg("distance_matrix is", distance_matrix)
             anchor_coords = build_3D_coord(distance_matrix)
             if not all(
@@ -391,44 +393,53 @@ class UWBPublisher(Node):
                     = distance_matrix[i][2] \
                     = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:03")
                 continue
-
             print("anchor_coords are", anchor_coords)
             for i in range(4):
                 self.anchors[i].update_coordinate(anchor_coords[i])
-            self.target_state = "s"
             break
+
+        self.target_state = "ss"
+        self.state = "self_calibration"
         
-        #在完成前四個anchor定位後, 定位後四個EFHG
+        # 在完成前四個anchor定位後, 定位後四個EFHG
 
         dbg("- self_calibration")
 
         ## self_calibration 階段
         
-        while True:
-            self.broadcast_target_state()
-            self.read_serial(uwb_calibration_data_matrix)
-            if have_enough_data_between(["00:05", "00:06", "00:07", "00:08"], ["00:01", "00:02", "00:03", "00:04"]):
-                last_four_anchor_coords = [
-                    uwb_calibration_data_matrix.locate_tag("00:05"),
-                    uwb_calibration_data_matrix.locate_tag("00:06"),
-                    uwb_calibration_data_matrix.locate_tag("00:07"),
-                    uwb_calibration_data_matrix.locate_tag("00:08")
-                ]
-                
-                if all(all(coord) for coord in last_four_anchor_coords):
-                    break
-                
-        self.target_state = "f"
+        is_in_anchor_state = {
+            "00:05": False,
+            "00:06": False,
+            "00:07": False,
+            "00:08": False
+        }
 
-        while self.state != "flying":
-            self.broadcast_target_state()
-            self.read_serial(uwb_calibration_data_matrix) 
-                # uwb_calibration_data_matrix 不重要，這裡只是等待 self_calibration 結束
+        turn_into_anchor_symbol = {
+            "00:05": "55",
+            "00:06": "66",
+            "00:07": "77",
+            "00:08": "88"
+        }
 
-        # for i in range(10):
-        #     time.sleep(0.1)
-        #     self.broadcast_target_state()
-        #     self.read_serial(uwb_calibration_data_matrix) 
+        # 重試直到 Anchor 5~8 都從 Tag State 進入 Anchor State
+        while not all(is_in_anchor_state.values()):
+            # 針對 Anchor 5~8 各自檢查定位數據足夠與否
+            # 足夠就試圖定位，定位成功就轉為 Anchor
+            for anchor_eui in is_in_anchor_state.keys():
+                if is_in_anchor_state[anchor_eui]:
+                    continue
+                if have_enough_data_between(anchor_eui, ["00:01", "00:02", "00:03", "00:04"]):
+                    coord = uwb_calibration_data_matrix.locate_tag(anchor_eui)
+                    if all(coord):
+                        # self.target_state = "".join(turn_into_anchor_symbol[eui] for eui in is_in_anchor_state.keys() if is_in_anchor_state[eui])
+                        self.target_state += turn_into_anchor_symbol[anchor_eui]
+                        is_in_anchor_state[anchor_eui] = True
+
+                self.broadcast_target_state()
+                self.read_serial(uwb_calibration_data_matrix)
+                
+        self.target_state = "ff"
+        self.state = "flying"
 
     def get_eui_from_id(self, id) -> Optional[str]:
         id_to_eui = {
@@ -486,16 +497,13 @@ class UWBPublisher(Node):
     def broadcast_target_state(self, sleep: float = 2) -> None:
         # 更新 Serial Ports 以免寫時出包
         self.update_serial_list()
-        
+
         for serial_connection in self.serials:
             try: 
-                while serial_connection.write(f"{self.target_state * 10}".encode('utf-8')) <= 0:
+                # 消息發三次以免有訛漏
+                while serial_connection.write(f"{self.target_state * 3}".encode('utf-8')) <= 0:
                     time.sleep(0.01)
             except Exception as e:
-                # ports = [port.device for port in serial.tools.list_ports.comports() if "ttyACM" in port.device]
-                # dbg("ports:", ports)
-                # for port in ports:
-                #     serial.Serial(port, baudrate=9600, timeout=0.001)
                 serial_connection.close()
                 print(f"Error sending message to {serial_connection.portstr}: {e}")
                 try: 
@@ -512,7 +520,6 @@ class UWBPublisher(Node):
             try: 
                 lines = [line.decode("utf-8").strip() for line in serial_connection.readlines()]
             except Exception as e:
-
                 print(f"- - - Error reading from {serial_connection.portstr}: {e}")
                 continue
             # dbg("- - - Lines are: ", lines)
@@ -549,10 +556,10 @@ class UWBPublisher(Node):
 
                     uwb_data_matrix.update_anchor_sample_rate(anchor_eui, float(sample_rate))
 
-                else: # 對於狀態遷移資料，更新狀態機的狀態
-                    for state in ["built_coord_1", "built_coord_2", "built_coord_3", "self_calibration", "flying"]:
-                        if state in line:
-                            self.state = state
+                # else: # 對於狀態遷移資料，更新狀態機的狀態
+                #     for state in ["built_coord_1", "built_coord_2", "built_coord_3", "self_calibration", "flying"]:
+                #         if state in line:
+                #             self.state = state
                     
                 # dbg(f"- - - Read Serial: {line}")
     
