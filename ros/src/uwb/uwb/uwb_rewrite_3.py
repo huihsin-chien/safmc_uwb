@@ -329,7 +329,7 @@ class UWBPublisher(Node):
             # dbg("- - reading serial")
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:02", "00:03", "00:04"], ["00:01"]):
-                self.state = "build_coord_2"
+                self.state = "built_coord_2"
                 self.target_state = "2"
                 ## 假定 UWB Anchors 此時不會移動，故預先把距離資料儲存，以免稍後遭清除
                 for i in range(1, 4):
@@ -345,7 +345,7 @@ class UWBPublisher(Node):
             self.broadcast_target_state()
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:03", "00:04"], ["00:02"]):
-                self.state = "build_coord_3"
+                self.state = "built_coord_3"
                 self.target_state = "3"
                 for i in range(2, 4):
                     distance_matrix[1][i] \

@@ -335,7 +335,7 @@ class UWBPublisher(Node):
             # dbg("- - reading serial")
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:02", "00:03", "00:04"], ["00:01"]):
-                self.state = "build_coord_2"
+                self.state = "built_coord_2"
                 self.target_state = "22"
                 ## 假定 UWB Anchors 此時不會移動，故預先把距離資料儲存，以免稍後遭清除
                 for i in range(1, 4):
@@ -351,7 +351,7 @@ class UWBPublisher(Node):
             self.broadcast_target_state()
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:03", "00:04"], ["00:02"]):
-                self.state = "build_coord_3"
+                self.state = "built_coord_3"
                 self.target_state = "33"
                 for i in range(2, 4):
                     distance_matrix[1][i] \
@@ -398,7 +398,7 @@ class UWBPublisher(Node):
                 self.anchors[i].update_coordinate(anchor_coords[i])
             break
 
-        self.target_state = "ss"
+        self.target_state = "44"
         self.state = "self_calibration"
         
         # 在完成前四個anchor定位後, 定位後四個EFHG
@@ -428,15 +428,15 @@ class UWBPublisher(Node):
             for anchor_eui in is_in_anchor_state.keys():
                 if is_in_anchor_state[anchor_eui]:
                     continue
-                if have_enough_data_between(anchor_eui, ["00:01", "00:02", "00:03", "00:04"]):
+                if have_enough_data_between([anchor_eui], ["00:01", "00:02", "00:03", "00:04"]):
                     coord = uwb_calibration_data_matrix.locate_tag(anchor_eui)
                     if all(coord):
                         # self.target_state = "".join(turn_into_anchor_symbol[eui] for eui in is_in_anchor_state.keys() if is_in_anchor_state[eui])
                         self.target_state += turn_into_anchor_symbol[anchor_eui]
                         is_in_anchor_state[anchor_eui] = True
 
-                self.broadcast_target_state()
                 self.read_serial(uwb_calibration_data_matrix)
+            self.broadcast_target_state()
                 
         self.target_state = "ff"
         self.state = "flying"
