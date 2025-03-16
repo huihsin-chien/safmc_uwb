@@ -30,14 +30,14 @@ def dbg(*args, **kwargs):
     print(*args, **kwargs)
 
 # 一些設定
-SAVE_DATA = True # 是否儲存 UWB 設備的位置資訊用於 debug
+SAVE_DATA = False # 是否儲存 UWB 設備的位置資訊用於 debug
 DATA_FOLDER = os.path.join(os.getcwd(), "output") # 儲存資料的資料夾
 
 # 為了幾乎沒有的效能差異，我們預先編譯正則表達式（Regular Expression）
 range_data_regexp = re.compile(
     r'Range:\s(-?\d*\.\d*|-?\binf\b)\sm\t\sRX\spower:\s(-?\d*\.\d*|-?\binf\b)\sdBm\sdistance\sbetween\sanchor\/tag:(\d{2,4})\sfrom\sAnchor\s(\d{2}:\d{2})')
-sample_rate_data_regexp = re.compile(
-    r'Sampling\srate\sof\s{2}Anchor[A-H]:\s(-?\d*\.\d*|-?\binf\b)Hz\s{4}Anchor:(\d{2}:\d{2})')
+# sample_rate_data_regexp = re.compile(
+#     r'Sampling\srate\sof\s{2}Anchor[A-H]:\s(-?\d*\.\d*|-?\binf\b)Hz\s{4}Anchor:(\d{2}:\d{2})')
 
 # 多點定位算法
 # ref: https://github.com/glucee/Multilateration/blob/master/Python/example.py
@@ -102,7 +102,7 @@ class UWBDataMatrix:
     anchors: dict[str, UWBDevice] = {}              # Anchor 的 EUI 對應到 Anchor 物件
     tags: dict[str, UWBDevice] = {}                 # Tag 的 EUI 對應到 Tag 物件
     data: dict[str, dict[str, deque[UWBData]]] = {}  # { TAG_EUI: { ANCHOR_EUI: [UWBData, UWBData, ...] } }
-    anchor_sample_rate: dict[str, str] = {}
+    # anchor_sample_rate: dict[str, str] = {}
 
     def __init__(self, time_threshold: float, anchors: list[UWBDevice] = [], tags: list[UWBDevice] = []):
         self.time_threshold = time_threshold
@@ -121,7 +121,7 @@ class UWBDataMatrix:
                 anchor_file_path = os.path.join(DATA_FOLDER, f"Anchor{anchor_eui_encoded}_{self.timestamp_str}.csv")
                 with open(anchor_file_path, mode='w') as file:
                     csv_writer = csv.writer(file, escapechar='"')
-                    csv_writer.writerow(["timestamp", "tag_eui", "distance", "sample_rate"]) # 標題
+                    csv_writer.writerow(["timestamp", "tag_eui", "distance"]) # 標題
             
             # 建立檔案，用以儲存定位結果
             self.multilateration_file = os.path.join(DATA_FOLDER, f"multilateration_results_{self.timestamp_str}.csv")
@@ -146,7 +146,7 @@ class UWBDataMatrix:
             anchor_file_path = os.path.join(DATA_FOLDER, f"Device_{anchor_eui_encoded}_{self.timestamp_str}.csv")
             with open(anchor_file_path, mode='a') as file:
                 csv_writer = csv.writer(file, escapechar='"')
-                csv_writer.writerow([timestamp_str, tag_eui, distance, self.anchor_sample_rate[anchor_eui] if anchor_eui in self.anchor_sample_rate else "N/A"])
+                csv_writer.writerow([timestamp_str, tag_eui, distance])
 
     # 清除過時的測量資訊
     def clear_outdated_measurements(self, tag_eui: str, anchor_eui: str) -> None:
@@ -214,9 +214,9 @@ class UWBDataMatrix:
 
         return coordinate
 
-    # 更新 Anchor Sample Rate
-    def update_anchor_sample_rate(self, anchor_eui: str, sample_rate: float) -> None:
-        self.anchor_sample_rate[anchor_eui] = sample_rate
+    # # 更新 Anchor Sample Rate
+    # def update_anchor_sample_rate(self, anchor_eui: str, sample_rate: float) -> None:
+    #     self.anchor_sample_rate[anchor_eui] = sample_rate
 
 # 主要的 Node，用於讀取 UWB 設備的資訊、計算 3D 座標後，發布到 ROS Topic
 class UWBPublisher(Node):
@@ -291,7 +291,7 @@ class UWBPublisher(Node):
         dbg("Starting Loops")
 
         # 用於儲存估計各 tag 位置
-        self.uwb_data_matrix = UWBDataMatrix(time_threshold=0.2, anchors=self.anchors, tags=self.tags)
+        self.uwb_data_matrix = UWBDataMatrix(time_threshold=0.5, anchors=self.anchors, tags=self.tags)
 
         # 定期更新 Serial & 透過 USB Serial 讀取 UWB 裝置距離 & 發佈 Tag 的位置
         self.update_serial_loop = self.create_timer(2, self.update_serial_list)
@@ -441,7 +441,7 @@ class UWBPublisher(Node):
                         dbg("- - Anchor", eui, "is built successfully!")
         print("Final anchor coords are: ")
         for anchor in self.anchors:
-            print(anchor.eui, anchor.coordinate, sep="\t")
+            print(anchor.eui, anchor.coordinate, sum(x ** 2 for x in anchor.coordinate) ** 0.5, sep="\t")
         self.target_state = "ff"
         self.state = "flying"
 
@@ -486,7 +486,7 @@ class UWBPublisher(Node):
         # 找出新的 ports 並開啟新的 Serial Connection
         new_ports = existing_ports - opened_ports
         for port in new_ports:
-            new_serial = serial.Serial(port, baudrate=9600, timeout=0.001)
+            new_serial = serial.Serial(port, baudrate=9600, timeout=0.000001)
             updated_serials.append(new_serial)
             try:
                 # 消息發三次以免有訛漏，重試到發送成功
@@ -550,7 +550,7 @@ class UWBPublisher(Node):
                 # - 採樣率資料 e.g. `Sampling rate of  AnchorA: 10.0Hz     Anchor:00:01`
                 # - 狀態遷移資料：太複雜了，請看 `anchor output.txt`
                 range_data_match = range_data_regexp.search(line)
-                sample_rate_data_match = sample_rate_data_regexp.search(line)
+                # sample_rate_data_match = sample_rate_data_regexp.search(line)
                 
                 if range_data_match: # 對於距離資料，新增測距結果到 UWB Data Matrix
                     distance, power, from_id, to_eui = range_data_match.groups()
@@ -562,10 +562,10 @@ class UWBPublisher(Node):
 
                     uwb_data_matrix.add_measurement(from_eui, to_eui, float(distance))
 
-                elif sample_rate_data_match: # 對於採樣率資料，更新 Anchor 的採樣率到 UWB Data Matrix
-                    sample_rate, anchor_eui = sample_rate_data_match.groups()
+                # elif sample_rate_data_match: # 對於採樣率資料，更新 Anchor 的採樣率到 UWB Data Matrix
+                #     sample_rate, anchor_eui = sample_rate_data_match.groups()
 
-                    uwb_data_matrix.update_anchor_sample_rate(anchor_eui, float(sample_rate))
+                #     uwb_data_matrix.update_anchor_sample_rate(anchor_eui, float(sample_rate))
 
                 # else: # 對於狀態遷移資料，更新狀態機的狀態
                 #     for state in ["built_coord_1", "built_coord_2", "built_coord_3", "self_calibration", "flying"]:
