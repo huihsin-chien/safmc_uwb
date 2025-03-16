@@ -130,7 +130,7 @@ class UWBDataMatrix:
 
     # 將測量資訊加入資料庫
     def add_measurement(self, tag_eui: str, anchor_eui: str, distance: float) -> None:
-        dbg(f"- - - adding measurement from {tag_eui} to {anchor_eui}: {distance}m")
+        # dbg(f"- - - adding measurement from {tag_eui} to {anchor_eui}: {distance}m")
         if tag_eui not in self.data:
             # dbg(f"- - - no tag_eui {tag_eui} in data")
             return
@@ -290,7 +290,7 @@ class UWBPublisher(Node):
         dbg("Starting Loops")
 
         # 用於儲存估計各 tag 位置
-        self.uwb_data_matrix = UWBDataMatrix(time_threshold=1.5, anchors=self.anchors, tags=self.tags)
+        self.uwb_data_matrix = UWBDataMatrix(time_threshold=0.1, anchors=self.anchors, tags=self.tags)
 
         # 定期更新 Serial & 透過 USB Serial 讀取 UWB 裝置距離 & 發佈 Tag 的位置
         self.update_serial_loop = self.create_timer(2, self.update_serial_list)
@@ -301,8 +301,8 @@ class UWBPublisher(Node):
     # 進行 Self Calibration：取得 Calibration Data，建立 Coordinate 並設定 Anchors 座標
     def build_coord(self):
         uwb_calibration_data_matrix = UWBDataMatrix(
-            time_threshold=180, 
-            anchors=self.anchors[0:4], 
+            time_threshold=180,
+            anchors=self.anchors, 
             tags=self.anchors[1:8] 
                 # 在 Self Calibration 階段，Anchor 00:02~00:08 都可能暫時作為 Tag
         )
@@ -379,7 +379,8 @@ class UWBPublisher(Node):
             # 設定 Anchor 00:01~00:04 座標
             dbg("distance_matrix is", distance_matrix)
             anchor_coords = build_3D_coord(distance_matrix)
-            if not all(
+            if not all(anchor_coord is not None for anchor_coord in anchor_coords) \
+            or not all(
                 all(
                     str(num) not in ["inf", "-inf", "nan"] 
                     for num in anchor_coord
@@ -423,20 +424,20 @@ class UWBPublisher(Node):
 
         # 重試直到 Anchor 5~8 都從 Tag State 進入 Anchor State
         while not all(is_in_anchor_state.values()):
+            self.broadcast_target_state()
             # 針對 Anchor 5~8 各自檢查定位數據足夠與否
             # 足夠就試圖定位，定位成功就轉為 Anchor
-            for anchor_eui in is_in_anchor_state.keys():
-                if is_in_anchor_state[anchor_eui]:
-                    continue
-                if have_enough_data_between([anchor_eui], ["00:01", "00:02", "00:03", "00:04"]):
-                    coord = uwb_calibration_data_matrix.locate_tag(anchor_eui)
-                    if all(coord):
-                        # self.target_state = "".join(turn_into_anchor_symbol[eui] for eui in is_in_anchor_state.keys() if is_in_anchor_state[eui])
-                        self.target_state += turn_into_anchor_symbol[anchor_eui]
-                        is_in_anchor_state[anchor_eui] = True
-
+            for eui in is_in_anchor_state.keys():
                 self.read_serial(uwb_calibration_data_matrix)
-            self.broadcast_target_state()
+                if is_in_anchor_state[eui]:
+                    continue
+                if sum(1 for anchor in self.anchors if have_enough_data_between([eui], [anchor.eui])):
+                    coord = uwb_calibration_data_matrix.locate_tag(eui)
+                    if coord is not None and all(coord):
+                        # self.target_state = "".join(turn_into_anchor_symbol[eui] for eui in is_in_anchor_state.keys() if is_in_anchor_state[eui])
+                        self.target_state += turn_into_anchor_symbol[eui]
+                        is_in_anchor_state[eui] = True
+                        dbg("- - Anchor", eui, "is built successfully!")
                 
         self.target_state = "ff"
         self.state = "flying"
@@ -589,6 +590,8 @@ def main(args=None):
 
     try: # 試圖保持程式運行。如果程式被強制終止，以 finally 正確結束程式
         rclpy.spin(position_publisher)
+    except KeyboardInterrupt:
+        pass
     finally:
         position_publisher.destroy_node()
         rclpy.shutdown()
