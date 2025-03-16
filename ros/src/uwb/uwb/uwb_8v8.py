@@ -16,6 +16,7 @@ import time
 # 用於儲存資料
 import os
 import csv
+from collections import deque
 
 # 用於統計上排除極值、與 3D 定位
 import numpy as np
@@ -100,14 +101,14 @@ class UWBDataMatrix:
     time_threshold: float = 0.1                     # 資料過時的時間門檻（秒）
     anchors: dict[str, UWBDevice] = {}              # Anchor 的 EUI 對應到 Anchor 物件
     tags: dict[str, UWBDevice] = {}                 # Tag 的 EUI 對應到 Tag 物件
-    data: dict[str, dict[str, list[UWBData]]] = {}  # { TAG_EUI: { ANCHOR_EUI: [UWBData, UWBData, ...] } }
+    data: dict[str, dict[str, deque[UWBData]]] = {}  # { TAG_EUI: { ANCHOR_EUI: [UWBData, UWBData, ...] } }
     anchor_sample_rate: dict[str, str] = {}
 
     def __init__(self, time_threshold: float, anchors: list[UWBDevice] = [], tags: list[UWBDevice] = []):
         self.time_threshold = time_threshold
         self.anchors = { anchor.eui: anchor for anchor in anchors }
         self.tags = { tag.eui: tag for tag in tags }
-        self.data = { tag.eui: { anchor.eui: [] for anchor in anchors } for tag in tags }
+        self.data = { tag.eui: { anchor.eui: deque() for anchor in anchors } for tag in tags }
         
 
         # 如果要為了 Debug 而儲存資料，則建立檔案
@@ -130,7 +131,7 @@ class UWBDataMatrix:
 
     # 將測量資訊加入資料庫
     def add_measurement(self, tag_eui: str, anchor_eui: str, distance: float) -> None:
-        dbg(f"- - - adding measurement from {tag_eui} to {anchor_eui}: {distance}m")
+        # dbg(f"- - - adding measurement from {tag_eui} to {anchor_eui}: {distance}m")
         if tag_eui not in self.data:
             # dbg(f"- - - no tag_eui {tag_eui} in data")
             return
@@ -151,7 +152,7 @@ class UWBDataMatrix:
     def clear_outdated_measurements(self, tag_eui: str, anchor_eui: str) -> None:
         measurements = self.data[tag_eui][anchor_eui]
         while len(measurements) > 0 and measurements[0].timestamp < time.time() - self.time_threshold:
-            self.data[tag_eui][anchor_eui].pop(0)
+            self.data[tag_eui][anchor_eui].popleft()
 
     # 取得去極值後的距離
     def get_distance(self, tag_eui: str, anchor_eui: str) -> Optional[float]:
@@ -159,7 +160,7 @@ class UWBDataMatrix:
         self.clear_outdated_measurements(tag_eui, anchor_eui)
 
         # 取得所測得距離陣列
-        measurements: list[UWBData] = self.data[tag_eui][anchor_eui]
+        measurements: deque[UWBData] = self.data[tag_eui][anchor_eui]
         distances: list[float] = [measurement.distance for measurement in measurements]
 
         # 去除極值
@@ -290,7 +291,7 @@ class UWBPublisher(Node):
         dbg("Starting Loops")
 
         # 用於儲存估計各 tag 位置
-        self.uwb_data_matrix = UWBDataMatrix(time_threshold=0.1, anchors=self.anchors, tags=self.tags)
+        self.uwb_data_matrix = UWBDataMatrix(time_threshold=0.2, anchors=self.anchors, tags=self.tags)
 
         # 定期更新 Serial & 透過 USB Serial 讀取 UWB 裝置距離 & 發佈 Tag 的位置
         self.update_serial_loop = self.create_timer(2, self.update_serial_list)
