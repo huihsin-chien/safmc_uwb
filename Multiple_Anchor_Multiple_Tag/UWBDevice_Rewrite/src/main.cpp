@@ -1,7 +1,7 @@
 #include "uwb_common.hpp"
 
 // == START OF Device Config ==
-#define TAG_1
+#define ANCHOR_1
 
 // const char becomeTagSuccessMessage[] = "";
 // const char becomeAnchorSuccessMessage[] = "";
@@ -227,8 +227,14 @@ void as_anchor(){
     byte recv_data[recv_len];
     DW1000Ng::getReceivedData(recv_data, recv_len);
 
+    // 如果計算結果明顯不合理，則提早進入下一個迴圈
+    if(result.range < 0.001 || result.range > 500) 
+        return;
+
     // 印出距離訊息
-    String rangeString = "Range: "; rangeString += result.range; rangeString += " m";
+    char rangeNumString[32];
+    snprintf(rangeNumString, 32, "%lf", result.range);
+    String rangeString = "Range: "; rangeString += rangeNumString; rangeString += " m";
     rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
     rangeString += recv_data[7]; rangeString += recv_data[8]; // tag 的短 EUI
     rangeString += " from Anchor "; rangeString += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20]; rangeString += EUI[21]; rangeString += EUI[22]; rangeString += EUI[23];
