@@ -117,6 +117,16 @@ const char EUI[] = "AA:BB:CC:DD:EE:FF:08:08";
 const uint16_t self_device_address = 0x0808;
 #endif
 
+#ifdef TAG_9
+const char EUI[] = "AA:BB:CC:DD:EE:FF:09:09";
+const uint16_t self_device_address = 0x0909;
+#endif
+
+#ifdef TAG_10
+const char EUI[] = "AA:BB:CC:DD:EE:FF:10:10";
+const uint16_t self_device_address = 0x1010;
+#endif
+
 // ==  END OF Device Config  ==
 
 uint32_t blink_rate = 50;
