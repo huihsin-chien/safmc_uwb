@@ -130,7 +130,7 @@ class UWBDataMatrix:
 
     # 將測量資訊加入資料庫
     def add_measurement(self, tag_eui: str, anchor_eui: str, distance: float) -> None:
-        # dbg(f"- - - adding measurement from {tag_eui} to {anchor_eui}: {distance}m")
+        dbg(f"- - - adding measurement from {tag_eui} to {anchor_eui}: {distance}m")
         if tag_eui not in self.data:
             # dbg(f"- - - no tag_eui {tag_eui} in data")
             return
@@ -431,7 +431,7 @@ class UWBPublisher(Node):
                 self.read_serial(uwb_calibration_data_matrix)
                 if is_in_anchor_state[eui]:
                     continue
-                if sum(1 for anchor in self.anchors if have_enough_data_between([eui], [anchor.eui])):
+                if sum(1 for anchor in self.anchors if have_enough_data_between([eui], [anchor.eui])) >= 4:
                     coord = uwb_calibration_data_matrix.locate_tag(eui)
                     if coord is not None and all(coord):
                         # self.target_state = "".join(turn_into_anchor_symbol[eui] for eui in is_in_anchor_state.keys() if is_in_anchor_state[eui])
@@ -483,7 +483,14 @@ class UWBPublisher(Node):
         # 找出新的 ports 並開啟新的 Serial Connection
         new_ports = existing_ports - opened_ports
         for port in new_ports:
-            updated_serials.append(serial.Serial(port, baudrate=9600, timeout=0.001))
+            new_serial = serial.Serial(port, baudrate=9600, timeout=0.001)
+            updated_serials.append(new_serial)
+            try:
+                # 消息發三次以免有訛漏，重試到發送成功
+                while serial_connection.write(f"{self.target_state * 3}".encode('utf-8')) <= 0:
+                    time.sleep(0.01)
+            except Exception as e:
+                pass
 
         # 更新並顯示 Ports 變化
         self.serials = updated_serials
@@ -501,13 +508,13 @@ class UWBPublisher(Node):
 
         for serial_connection in self.serials:
             try: 
-                # 消息發三次以免有訛漏
+                # 消息發三次以免有訛漏，重試到發送成功
                 while serial_connection.write(f"{self.target_state * 3}".encode('utf-8')) <= 0:
                     time.sleep(0.01)
             except Exception as e:
                 serial_connection.close()
                 print(f"Error sending message to {serial_connection.portstr}: {e}")
-                try: 
+                try:
                     serial_connection.open() 
                 except Exception as a:
                     print(f"Failed to reopen the serial port {serial_connection.portstr}") 
