@@ -70,13 +70,6 @@ const char becomeTagSymbols[] = "1234";
 const char becomeAnchorSymbols[] = "8f";
 #endif
 
-#ifdef ANCHOR_ALWAYS
-const char EUI[] = "AA:BB:CC:DD:EE:FF:00:09";
-const uint16_t self_device_address = 0x0009;
-const bool isAnchorByDefault = true;
-const char becomeTagSymbols[] = "";
-const char becomeAnchorSymbols[] = "12345678f";
-#endif
 
 #if defined(TAG_1) || defined(TAG_2) || defined(TAG_3) || defined(TAG_4) \
     || defined(TAG_5) || defined(TAG_6) || defined(TAG_7) || defined(TAG_8) \
