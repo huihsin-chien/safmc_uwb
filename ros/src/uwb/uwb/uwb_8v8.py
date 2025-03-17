@@ -201,6 +201,8 @@ class UWBDataMatrix:
             if distance is not None:
                 distances_to_stations.append(distance)
                 stations_coordinates.append(self.anchors[anchor_eui].coordinate)
+            if len(distances_to_stations) > 4: # 一旦有五筆資料便提早離開，以加速進程
+                break
 
         # 如果資訊不足，致無法定位，則回傳 None
         if len(distances_to_stations) < 4:
@@ -304,8 +306,8 @@ class UWBPublisher(Node):
         # 定期更新 Serial & 透過 USB Serial 讀取 UWB 裝置距離 & 發佈 Tag 的位置
         self.update_serial_loop = self.create_timer(2, self.update_serial_list)
         self.broadcast_target_state_loop = self.create_timer(2, lambda: self.broadcast_target_state(sleep=0))
-        self.read_serial_loop = self.create_timer(0.01, lambda: self.read_serial(self.uwb_data_matrix))
-        self.publish_tag_position_loop = self.create_timer(0.01, self.publish_tag_position)
+        self.read_serial_loop = self.create_timer(0.05, lambda: self.read_serial(self.uwb_data_matrix))
+        self.publish_tag_position_loop = self.create_timer(0, self.publish_tag_position)
     
     # 進行 Self Calibration：取得 Calibration Data，建立 Coordinate 並設定 Anchors 座標
     def build_coord(self):
