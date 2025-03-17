@@ -22,6 +22,7 @@ from collections import deque
 import numpy as np
 from typing import Optional, Tuple
 from .build_3D_coord import build_3D_coord
+import math
 
 # 用於多點定位
 from scipy.optimize import minimize
@@ -140,8 +141,8 @@ class UWBDataMatrix:
             return
 
         self.data[tag_eui][anchor_eui].append(UWBData(distance))
-        timestamp_str = time.strftime('%Y-%m-%d %H:%M:%S')
         if SAVE_DATA:
+            timestamp_str = time.strftime('%Y-%m-%d %H:%M:%S')
             anchor_eui_encoded = anchor_eui.replace(":", "-")
             anchor_file_path = os.path.join(DATA_FOLDER, f"Device_{anchor_eui_encoded}_{self.timestamp_str}.csv")
             with open(anchor_file_path, mode='a') as file:
@@ -163,21 +164,28 @@ class UWBDataMatrix:
         measurements: deque[UWBData] = self.data[tag_eui][anchor_eui]
         distances: list[float] = [measurement.distance for measurement in measurements]
 
-        # 去除極值
-        q1 = np.percentile(distances, 25) if distances else float("-inf")
-        q3 = np.percentile(distances, 75) if distances else float("inf")
-        filtered_distances = [distance for distance in distances if q1 <= distance <= q3]
+        # # 去除極值
+        # q1 = np.percentile(distances, 25) if distances else float("-inf")
+        # q3 = np.percentile(distances, 75) if distances else float("inf")
+        # filtered_distances = [distance for distance in distances if q1 <= distance <= q3]
 
+        # # 資料不足提早離開
+        # if len(filtered_distances) <= 0:
+        #     return None
+
+        # # 線性修正固定偏差值 & 縮放比例，來提高精準度
+        # trimmed_mean = np.mean(filtered_distances)
+        # estimated_real_distance = (trimmed_mean - 0.1766) / 1.0349
+
+        # # 計算並回傳平均值
+        # return estimated_real_distance
+    
         # 資料不足提早離開
-        if len(filtered_distances) <= 0:
+        if len(distances) <= 0:
             return None
-
-        # 線性修正固定偏差值 & 縮放比例，來提高精準度
-        trimmed_mean = np.mean(filtered_distances)
-        estimated_real_distance = (trimmed_mean - 0.1766) / 1.0349
-
-        # 計算並回傳平均值
-        return estimated_real_distance
+        
+        distances.sort()
+        return distances[len(distances) // 2]
 
     # 計算多點定位（multilateration）的結果
     def locate_tag(self, tag_eui) -> Optional[Tuple[float, float, float]]:
@@ -206,7 +214,7 @@ class UWBDataMatrix:
             return None
 
         # 如果有 inf/-inf/nan，則回傳 None
-        if any(str(num) in ["inf", "-inf", "nan"] for num in coordinate):
+        if any(math.isinf(num) or math.isnan(num) for num in coordinate):
             return None
 
         if coordinate is not None:
@@ -383,7 +391,7 @@ class UWBPublisher(Node):
             if not all(anchor_coord is not None for anchor_coord in anchor_coords) \
             or not all(
                 all(
-                    str(num) not in ["inf", "-inf", "nan"] 
+                    not math.isinf(num) and not math.isnan(num)
                     for num in anchor_coord
                 ) for anchor_coord in anchor_coords
             ):
