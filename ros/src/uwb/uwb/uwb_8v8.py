@@ -586,15 +586,18 @@ class UWBPublisher(Node):
                 # sample_rate_data_match = sample_rate_data_regexp.search(line)
                 
                 if line.startswith("anchor_range,"): # 對於距離資料，新增測距結果到 UWB Data Matrix
-                    _, distance, from_eui, to_eui = line.split(",")
+                    try: 
+                        _, distance, from_eui, to_eui = line.split(",")
                     
                     # from_eui: str = self.get_eui_from_id(from_id) # somehow get the anchor_eui from from_id
                     # if from_eui is None:
                     #     dbg(f"- - - from_id {from_id} is an unknown id")
                     #     continue
 
-                    uwb_data_matrix.add_measurement(from_eui, to_eui, float(distance))
+                        uwb_data_matrix.add_measurement(from_eui, to_eui, float(distance))
 
+                    except Exception as e:
+                        print(f"Error reading range data: {e}")
                 # elif sample_rate_data_match: # 對於採樣率資料，更新 Anchor 的採樣率到 UWB Data Matrix
                 #     sample_rate, anchor_eui = sample_rate_data_match.groups()
 
