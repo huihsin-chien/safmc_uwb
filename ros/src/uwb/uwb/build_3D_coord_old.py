@@ -38,6 +38,7 @@ def align_coordinates(X: np.ndarray) -> np.ndarray: # Rodrigues' rotation formul
     3. 以 X[0]X[2] 為基準向量（0,y,0），旋轉所有座標向量（anchor 0->2 做為 Y 軸正向）
     4. repeat 2.~3. for 20 times
     5. 因已知 anchor4 有正 z 座標，故如果 X[3][2] 是負數，將所有座標對 XY 平面做鏡像，以確保 Z 軸在上
+    6. 因已知 anchor4 有正 z 座標，故如果 X[3][2] 是負數，將所有座標對 XY 平面做鏡像，以確保 Z 軸在上
     '''
     X_aligned = X - X[0]
 
@@ -119,15 +120,15 @@ def align_coordinates(X: np.ndarray) -> np.ndarray: # Rodrigues' rotation formul
 
     # # plot3D(X_aligned)
 
-    # # 5. 因已知 anchor4 有正 z 座標，故如果 X[3][2] 是負數，將所有座標對 XY 平面做鏡像，以確保 Z 軸在上
-    # if X_aligned[3][2] < 0:
-    #     for idx in range(4):
-    #         X_aligned[idx][2] = - X_aligned[idx][2]
-
-    # 5. 因已知 anchor 3 有正 y 座標，故如果 X[2][1] 是負數，將所有座標對 XZ 平面做鏡像，以確保 Y 軸在上
+    # 5. 因已知 anchor 3 有正 y 座標，故如果 X[2][1] 是負數，將所有座標對 XZ 平面做鏡像，以確保 Y 軸在正
     if X_aligned[2][1] < 0:
         for idx in range(4):
             X_aligned[idx][1] = - X_aligned[idx][1]
+
+    # 6. 因已知 anchor4 有正 z 座標，故如果 X[3][2] 是負數，將所有座標對 XY 平面做鏡像，以確保 Z 軸在上
+    if X_aligned[3][2] < 0:
+        for idx in range(4):
+            X_aligned[idx][2] = - X_aligned[idx][2]
 
     print ( "(", X_aligned[0][0], ",", X_aligned[0][1], ",", X_aligned[0][2], ")\n","(", X_aligned[1][0], ",", X_aligned[1][1], ",", X_aligned[1][2], ")\n", "(", X_aligned[2][0], ",", X_aligned[2][1], ",", X_aligned[2][2], ")\n", "(", X_aligned[3][0], ",", X_aligned[3][1], ",", X_aligned[3][2], ")\n")
     return X_aligned
