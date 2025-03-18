@@ -1,7 +1,7 @@
 #include "uwb_common.hpp"
 
 // == START OF Device Config ==
-#define ANCHOR_1
+#define TAG_10
 
 // const char becomeTagSuccessMessage[] = "";
 // const char becomeAnchorSuccessMessage[] = "";
@@ -70,13 +70,17 @@ const char becomeTagSymbols[] = "1234";
 const char becomeAnchorSymbols[] = "8f";
 #endif
 
-
 #if defined(TAG_1) || defined(TAG_2) || defined(TAG_3) || defined(TAG_4) \
     || defined(TAG_5) || defined(TAG_6) || defined(TAG_7) || defined(TAG_8) \
     || defined(TAG_9) || defined(TAG_10)
 const bool isAnchorByDefault = false;
 const char becomeTagSymbols[] = "";
 const char becomeAnchorSymbols[] = "";
+#endif
+
+#if defined(TAG_5) || defined(TAG_6) || defined(TAG_7) || defined(TAG_8) \
+    || defined(TAG_9) || defined(TAG_10)
+#define FIXED_BLINK_RATE 1000
 #endif
 
 #ifdef TAG_1
@@ -131,8 +135,12 @@ const uint16_t self_device_address = 0x1010;
 
 
 // ==  END OF Device Config  ==
-
+#ifdef FIXED_BLINK_RATE
+uint32_t blink_rate = FIXED_BLINK_RATE;
+#else
 uint32_t blink_rate = 50;
+#endif
+
 bool isAnchor = false;
 
 void as_tag();
@@ -212,7 +220,9 @@ void as_tag() {
         RangeResult result = DW1000NgRTLS_ext::tagFinishRange(target_anchor, 1500);
         if(result.success) {
             Serial.println("result is right!");
+            #ifndef FIXED_BLINK_RATE
             blink_rate = result.new_blink_rate;
+            #endif
         }
     }
 }
