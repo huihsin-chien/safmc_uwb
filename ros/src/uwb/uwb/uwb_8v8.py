@@ -35,8 +35,8 @@ SAVE_DATA = False # 是否儲存 UWB 設備的位置資訊用於 debug
 DATA_FOLDER = os.path.join(os.getcwd(), "output") # 儲存資料的資料夾
 
 # 為了幾乎沒有的效能差異，我們預先編譯正則表達式（Regular Expression）
-range_data_regexp = re.compile(
-    r'Range:\s(-?\d*\.\d*|-?\binf\b)\sm\t\sRX\spower:\s(-?\d*\.\d*|-?\binf\b)\sdBm\sdistance\sbetween\sanchor\/tag:(\d{2,4})\sfrom\sAnchor\s(\d{2}:\d{2})')
+# range_data_regexp = re.compile(
+#     r'Range:\s(-?\d*\.\d*|-?\binf\b)\sm\t\sRX\spower:\s(-?\d*\.\d*|-?\binf\b)\sdBm\sdistance\sbetween\sanchor\/tag:(\d{2,4})\sfrom\sAnchor\s(\d{2}:\d{2})')
 # sample_rate_data_regexp = re.compile(
 #     r'Sampling\srate\sof\s{2}Anchor[A-H]:\s(-?\d*\.\d*|-?\binf\b)Hz\s{4}Anchor:(\d{2}:\d{2})')
 
@@ -324,7 +324,7 @@ class UWBPublisher(Node):
         drone_tag_euis = [tag.eui for tag in self.tags[0:4]]
         target_tag_euis = [tag.eui for tag in self.tags[4:]]
         self.publish_drone_tag_position_loop = self.create_timer(0, lambda: self.publish_tag_position(drone_tag_euis))
-        self.publish_target_tag_position_loop = self.create_timer(0.1, lambda: self.publish_tag_position(target_tag_euis, force_output=True))
+        self.publish_target_tag_position_loop = self.create_timer(1, lambda: self.publish_tag_position(target_tag_euis, force_output=True))
     
     # 進行 Self Calibration：取得 Calibration Data，建立 Coordinate 並設定 Anchors 座標
     def build_coord(self):
@@ -338,7 +338,11 @@ class UWBPublisher(Node):
         # 用於判斷 tag-like anchors 到 anchors 之間的資料量已足夠
         def have_enough_data_between(tag_euis: list[str], anchor_euis: list[str]) -> bool:
             # uwb_calibration_data_matrix.clear_outdated_measurements(tag_euis[0], anchor_euis[0])
-            dbg("- -", "\n- - ".join(f"from {tag_eui} to {anchor_eui}: {len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui])}" for tag_eui in tag_euis for anchor_eui in anchor_euis))
+            dbg("- -", "\n- - ".join(
+                f"from {tag_eui} to {anchor_eui}: {len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui])}" 
+                for tag_eui in tag_euis 
+                for anchor_eui in anchor_euis
+            ))
             return all(
                 len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui]) >= 20
                 for tag_eui in tag_euis
@@ -515,7 +519,7 @@ class UWBPublisher(Node):
         # 找出新的 ports 並開啟新的 Serial Connection
         new_ports = existing_ports - opened_ports
         for port in new_ports:
-            new_serial = serial.Serial(port, baudrate=9600, timeout=0.000001)
+            new_serial = serial.Serial(port, baudrate=9600, timeout=0.)
             updated_serials.append(new_serial)
             try:
                 # 消息發三次以免有訛漏，重試到發送成功
@@ -578,16 +582,16 @@ class UWBPublisher(Node):
                 # - 距離資料 e.g. `Range: 1.23 m     RX power: -45.67 dBm distance between anchor/tag:01:01 from Anchor 00:01`
                 # - 採樣率資料 e.g. `Sampling rate of  AnchorA: 10.0Hz     Anchor:00:01`
                 # - 狀態遷移資料：太複雜了，請看 `anchor output.txt`
-                range_data_match = range_data_regexp.search(line)
+                # range_data_match = range_data_regexp.search(line)
                 # sample_rate_data_match = sample_rate_data_regexp.search(line)
                 
-                if range_data_match: # 對於距離資料，新增測距結果到 UWB Data Matrix
-                    distance, power, from_id, to_eui = range_data_match.groups()
+                if line.startswith("anchor_range,"): # 對於距離資料，新增測距結果到 UWB Data Matrix
+                    _, distance, from_eui, to_eui = line.split(",")
                     
-                    from_eui: str = self.get_eui_from_id(from_id) # somehow get the anchor_eui from from_id
-                    if from_eui is None:
-                        dbg(f"- - - from_id {from_id} is an unknown id")
-                        continue
+                    # from_eui: str = self.get_eui_from_id(from_id) # somehow get the anchor_eui from from_id
+                    # if from_eui is None:
+                    #     dbg(f"- - - from_id {from_id} is an unknown id")
+                    #     continue
 
                     uwb_data_matrix.add_measurement(from_eui, to_eui, float(distance))
 

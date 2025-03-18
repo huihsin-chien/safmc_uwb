@@ -1,7 +1,7 @@
 #include "uwb_common.hpp"
 
 // == START OF Device Config ==
-#define TAG_10
+#define TAG_4
 
 // const char becomeTagSuccessMessage[] = "";
 // const char becomeAnchorSuccessMessage[] = "";
@@ -219,10 +219,14 @@ void as_tag() {
     for (uint16_t target_anchor = 1; target_anchor <= 8; target_anchor++) {
         RangeResult result = DW1000NgRTLS_ext::tagFinishRange(target_anchor, 1500);
         if(result.success) {
-            Serial.println("result is right!");
+            // Serial.println("result is right!");
             #ifndef FIXED_BLINK_RATE
             blink_rate = result.new_blink_rate;
             #endif
+        } else {
+            // 未成功的話，印出失敗訊息。格式為：`tag_range,${tag_eui},failed,${anchorDeviceAddress}`
+            Serial.print("tag_range,"); Serial.print(&EUI[18]); 
+            Serial.print(",failed,"); Serial.println(target_anchor);
         }
     }
 }
@@ -245,11 +249,16 @@ void as_anchor(){
         return;
 
     // 印出距離訊息
-    char rangeNumString[32];
-    snprintf(rangeNumString, 32, "%lf", result.range);
-    String rangeString = "Range: "; rangeString += rangeNumString; rangeString += " m";
-    rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
-    rangeString += recv_data[7]; rangeString += recv_data[8]; // tag 的短 EUI
-    rangeString += " from Anchor "; rangeString += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20]; rangeString += EUI[21]; rangeString += EUI[22]; rangeString += EUI[23];
-    Serial.println(rangeString);
+    // char rangeNumString[32];
+    // snprintf(rangeNumString, 32, "%lf", result.range);
+    // String rangeString = "Range: "; rangeString += rangeNumString; rangeString += " m";
+    // rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
+    // rangeString += recv_data[7]; rangeString += recv_data[8]; // tag 的短 EUI
+    // rangeString += " from Anchor "; rangeString += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20]; rangeString += EUI[21]; rangeString += EUI[22]; rangeString += EUI[23];
+    // Serial.println(rangeString);
+
+    // 印出距離訊息。格式為：`anchor_range,${distance},${tagEUI},${anchorEUI}`
+    char rangeCharArr[256];
+    snprintf(rangeCharArr, 256, "anchor_range,%lf,%02x:%02x,%s", result.range, recv_data[8], recv_data[7], &EUI[18]);
+    Serial.println(rangeCharArr);
 }
