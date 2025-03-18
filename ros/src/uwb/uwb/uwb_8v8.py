@@ -587,12 +587,15 @@ class UWBPublisher(Node):
                 
                 if line.startswith("anchor_range,"): # 對於距離資料，新增測距結果到 UWB Data Matrix
                     try: 
-                        _, distance, from_eui, to_eui = line.split(",")
+                        values = line.split(",")
+                        if len(values) != 4:
+                            continue
+                        _, distance, from_eui, to_eui = values
                     
-                    # from_eui: str = self.get_eui_from_id(from_id) # somehow get the anchor_eui from from_id
-                    # if from_eui is None:
-                    #     dbg(f"- - - from_id {from_id} is an unknown id")
-                    #     continue
+                        # from_eui: str = self.get_eui_from_id(from_id) # somehow get the anchor_eui from from_id
+                        # if from_eui is None:
+                        #     dbg(f"- - - from_id {from_id} is an unknown id")
+                        #     continue
 
                         uwb_data_matrix.add_measurement(from_eui, to_eui, float(distance))
 
