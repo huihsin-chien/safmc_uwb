@@ -212,7 +212,7 @@ class UWBDataMatrix:
         stations_coordinates = []
         for anchor_eui in self.anchors.keys():
             distance = self.get_distance(tag_eui, anchor_eui)
-            if distance is not None:
+            if distance is not None and self.anchors[anchor_eui].coordinate is not None:
                 distances_to_stations.append(distance)
                 stations_coordinates.append(self.anchors[anchor_eui].coordinate)
             if len(distances_to_stations) > 4: # 一旦有五筆資料便提早離開，以加速進程
