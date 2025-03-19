@@ -4,7 +4,7 @@ import serial.tools.list_ports
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import QoSDurabilityPolicy, QoSHistoryPolicy, QoSProfile, QoSReliabilityPolicy
-from safmc_msgs.msg import TagPosition # 自定義的 ROS2 Message
+from agent_msgs.msg import TagPosition # 自定義的 ROS2 Message
 
 # 用於透過 USB 讀取 UWB Anchor，與截取資訊
 import serial
@@ -34,7 +34,7 @@ def dbg(*args, **kwargs):
 SAVE_DATA = False # 是否儲存 UWB 設備的位置資訊用於 debug
 DATA_FOLDER = os.path.join(os.getcwd(), "output") # 儲存資料的資料夾
 
-# 為了幾乎沒有的效能差異，我們預先編譯正則表達式（Regular Expression）
+# # 為了幾乎沒有的效能差異，我們預先編譯正則表達式（Regular Expression）
 # range_data_regexp = re.compile(
 #     r'Range:\s(-?\d*\.\d*|-?\binf\b)\sm\t\sRX\spower:\s(-?\d*\.\d*|-?\binf\b)\sdBm\sdistance\sbetween\sanchor\/tag:(\d{2,4})\sfrom\sAnchor\s(\d{2}:\d{2})')
 # sample_rate_data_regexp = re.compile(
@@ -191,7 +191,7 @@ class UWBDataMatrix:
 
         # # 計算並回傳平均值
         # return estimated_real_distance
-    
+
         # 資料不足提早離開
         if len(distances) <= 0:
             return None
@@ -331,7 +331,7 @@ class UWBPublisher(Node):
         uwb_calibration_data_matrix = UWBDataMatrix(
             time_threshold=180,
             anchors=self.anchors, 
-            tags=self.anchors[1:8] 
+            tags=self.anchors[1:8]
                 # 在 Self Calibration 階段，Anchor 00:02~00:08 都可能暫時作為 Tag
         )
 
@@ -340,7 +340,7 @@ class UWBPublisher(Node):
             # uwb_calibration_data_matrix.clear_outdated_measurements(tag_euis[0], anchor_euis[0])
             dbg("- -", "\n- - ".join(
                 f"from {tag_eui} to {anchor_eui}: {len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui])}" 
-                for tag_eui in tag_euis 
+                for tag_eui in tag_euis
                 for anchor_eui in anchor_euis
             ))
             return all(
@@ -399,7 +399,7 @@ class UWBPublisher(Node):
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:04"], ["00:03"]):
                 # self.state = "self_calibration"
-                # self.target_state = "s"         # don't change state yyet
+                # self.target_state = "s"         # don't change state yet
                 for i in range(3, 4):
                     distance_matrix[2][i] \
                     = distance_matrix[i][2] \
@@ -443,14 +443,12 @@ class UWBPublisher(Node):
         is_in_anchor_state = {
             "00:05": False,
             "00:06": False,
-            "00:07": False,
             "00:08": False
         }
 
         turn_into_anchor_symbol = {
             "00:05": "55",
             "00:06": "66",
-            "00:07": "77",
             "00:08": "88"
         }
 
@@ -471,34 +469,32 @@ class UWBPublisher(Node):
                         is_in_anchor_state[eui] = True
                         dbg("- - Anchor", eui, "is built successfully!")
         print("Final anchor coords are: ")
-        for anchor in self.anchors:
-            print(anchor.eui, anchor.coordinate, sum(x ** 2 for x in anchor.coordinate) ** 0.5, sep="\t")
         self.target_state = "ff"
         self.state = "flying"
 
-    def get_eui_from_id(self, id) -> Optional[str]:
-        id_to_eui = {
-            "10": "00:01",
-            "20": "00:02",
-            "30": "00:03",
-            "40": "00:04",
-            "50": "00:05",
-            "60": "00:06",
-            "70": "00:07",
-            "80": "00:08",
-            "00": "01:01",
-            "11": "01:01",
-            "22": "02:02",
-            "33": "03:03",
-            "44": "04:04",
-            "55": "05:05",
-            "66": "06:06",
-            "77": "07:07",
-            "88": "08:08",
-            "99": "09:09",
-            "1616": "10:10"
-        }
-        return id_to_eui[id] if id in id_to_eui else None
+    # def get_eui_from_id(self, id) -> Optional[str]:
+    #     id_to_eui = {
+    #         "10": "00:01",
+    #         "20": "00:02",
+    #         "30": "00:03",
+    #         "40": "00:04",
+    #         "50": "00:05",
+    #         "60": "00:06",
+    #         "70": "00:07",
+    #         "80": "00:08",
+    #         "00": "01:01",
+    #         "11": "01:01",
+    #         "22": "02:02",
+    #         "33": "03:03",
+    #         "44": "04:04",
+    #         "55": "05:05",
+    #         "66": "06:06",
+    #         "77": "07:07",
+    #         "88": "08:08",
+    #         "99": "09:09",
+    #         "1616": "10:10"
+    #     }
+    #     return id_to_eui[id] if id in id_to_eui else None
     
     # 重新讀取 Ports 列表，並移除／新增 Serial Connections
     def update_serial_list(self) -> None:

@@ -16,11 +16,13 @@ import time
 # 用於儲存資料
 import os
 import csv
+from collections import deque
 
 # 用於統計上排除極值、與 3D 定位
 import numpy as np
 from typing import Optional, Tuple
 from .build_3D_coord import build_3D_coord
+import math
 
 # 用於多點定位
 from scipy.optimize import minimize
@@ -29,43 +31,55 @@ def dbg(*args, **kwargs):
     print(*args, **kwargs)
 
 # 一些設定
-SAVE_DATA = True # 是否儲存 UWB 設備的位置資訊用於 debug
+SAVE_DATA = False # 是否儲存 UWB 設備的位置資訊用於 debug
 DATA_FOLDER = os.path.join(os.getcwd(), "output") # 儲存資料的資料夾
 
-# 為了幾乎沒有的效能差異，我們預先編譯正則表達式（Regular Expression）
-range_data_regexp = re.compile(
-    r'Range:\s(-?\d*\.\d*|-?\binf\b)\sm\t\sRX\spower:\s(-?\d*\.\d*|-?\binf\b)\sdBm\sdistance\sbetween\sanchor\/tag:(\d{2,4})\sfrom\sAnchor\s(\d{2}:\d{2})')
-sample_rate_data_regexp = re.compile(
-    r'Sampling\srate\sof\s{2}Anchor[A-H]:\s(-?\d*\.\d*|-?\binf\b)Hz\s{4}Anchor:(\d{2}:\d{2})')
+# # 為了幾乎沒有的效能差異，我們預先編譯正則表達式（Regular Expression）
+# range_data_regexp = re.compile(
+#     r'Range:\s(-?\d*\.\d*|-?\binf\b)\sm\t\sRX\spower:\s(-?\d*\.\d*|-?\binf\b)\sdBm\sdistance\sbetween\sanchor\/tag:(\d{2,4})\sfrom\sAnchor\s(\d{2}:\d{2})')
+# sample_rate_data_regexp = re.compile(
+#     r'Sampling\srate\sof\s{2}Anchor[A-H]:\s(-?\d*\.\d*|-?\binf\b)Hz\s{4}Anchor:(\d{2}:\d{2})')
 
 # 多點定位算法
 # ref: https://github.com/glucee/Multilateration/blob/master/Python/example.py
-def gps_solve(distances_to_station: list[float], stations_coordinates: list[np.ndarray]) -> np.ndarray or None:
+
+def gps_solve(distances_to_station: list[float], stations_coordinates: list[np.ndarray], initial_guess: np.ndarray=None, tol:float=0.0009) -> np.ndarray or None:
     """多邊定位算法 若有
     :param distances_to_station: list[float], 到各個 anchor 的距離
     :param stations_coordinates: list[np.ndarray], 各 anchor 的座標（每個 anchor 座標都是 len = 3 的 np.ndarray）
+    :param initial_guess: np.ndarray=None
+    :param tol: float=0.0009
     :return: np.ndarray, 估計的位置, len = 3
     """
     def error(x, c, r):
-        return sum([(np.linalg.norm(x - c[i]) - r[i]) ** 2 for i in range(min(len(c), len(r)))])
+        # return sum([(np.linalg.norm(x - c[i]) - r[i]) ** 2 for i in range(min(len(c), len(r)))])
+        return sum((np.linalg.norm(x - c[i]) - r[i]) ** 2 for i in range(len(c)))
+        # return sum((x[0] - c[i][0]) ** 2 + (x[1] - c[i][1]) ** 2 + (x[2] - c[i][2]) ** 2 for i in range(len(c)))
 
-    l = len(stations_coordinates)
-    S = sum(distances_to_station)
-
-    # 為初始推測計算權重
-    W = []
-    if all(S - w != 0 for w in distances_to_station):
-        W = [((l - 1) * S) / (S - w) for w in distances_to_station]
+    # 如果沒有初始推測    
+    if initial_guess is None:
+        # 為初始推測計算權重
+        l = len(stations_coordinates)
+        S = sum(distances_to_station)
+        W = []
+        if all(S - w != 0 for w in distances_to_station):
+            W = [((l - 1) * S) / (S - w) for w in distances_to_station]
+        else:
+            print("Error: Only one distance provided")
+            return None
+            
+        # 取得初始推測
+        Length = len(W)
+        x0 = sum([W[i] * stations_coordinates[i] for i in range(Length)])
     else:
-        print("Error: Only one distance provided")
-        return None
-        
-    # get initial guess of point location
-    Length = len(W)
-    x0 = sum([W[i] * stations_coordinates[i] for i in range(Length)])
+        x0 = initial_guess
     
     # optimize distance from signal origin to border of spheres
-    return minimize(error, x0, args=(stations_coordinates, distances_to_station), method='Nelder-Mead').x
+    return minimize(
+        error, x0, 
+        args=(stations_coordinates, distances_to_station), method='Nelder-Mead',
+        tol=tol
+    ).x 
 
 # 用於記錄 UWB 的各 Anchor & Tag 之間的測得距離與時間
 class UWBData:
@@ -100,14 +114,14 @@ class UWBDataMatrix:
     time_threshold: float = 0.1                     # 資料過時的時間門檻（秒）
     anchors: dict[str, UWBDevice] = {}              # Anchor 的 EUI 對應到 Anchor 物件
     tags: dict[str, UWBDevice] = {}                 # Tag 的 EUI 對應到 Tag 物件
-    data: dict[str, dict[str, list[UWBData]]] = {}  # { TAG_EUI: { ANCHOR_EUI: [UWBData, UWBData, ...] } }
-    anchor_sample_rate: dict[str, str] = {}
+    data: dict[str, dict[str, deque[UWBData]]] = {}  # { TAG_EUI: { ANCHOR_EUI: [UWBData, UWBData, ...] } }
+    # anchor_sample_rate: dict[str, str] = {}
 
     def __init__(self, time_threshold: float, anchors: list[UWBDevice] = [], tags: list[UWBDevice] = []):
         self.time_threshold = time_threshold
         self.anchors = { anchor.eui: anchor for anchor in anchors }
         self.tags = { tag.eui: tag for tag in tags }
-        self.data = { tag.eui: { anchor.eui: [] for anchor in anchors } for tag in tags }
+        self.data = { tag.eui: { anchor.eui: deque() for anchor in anchors } for tag in tags }
         
 
         # 如果要為了 Debug 而儲存資料，則建立檔案
@@ -120,7 +134,7 @@ class UWBDataMatrix:
                 anchor_file_path = os.path.join(DATA_FOLDER, f"Anchor{anchor_eui_encoded}_{self.timestamp_str}.csv")
                 with open(anchor_file_path, mode='w') as file:
                     csv_writer = csv.writer(file, escapechar='"')
-                    csv_writer.writerow(["timestamp", "tag_eui", "distance", "sample_rate"]) # 標題
+                    csv_writer.writerow(["timestamp", "tag_eui", "distance"]) # 標題
             
             # 建立檔案，用以儲存定位結果
             self.multilateration_file = os.path.join(DATA_FOLDER, f"multilateration_results_{self.timestamp_str}.csv")
@@ -130,7 +144,7 @@ class UWBDataMatrix:
 
     # 將測量資訊加入資料庫
     def add_measurement(self, tag_eui: str, anchor_eui: str, distance: float) -> None:
-        dbg(f"- - - adding measurement from {tag_eui} to {anchor_eui}: {distance}m")
+        # dbg(f"- - - adding measurement from {tag_eui} to {anchor_eui}: {distance}m")
         if tag_eui not in self.data:
             # dbg(f"- - - no tag_eui {tag_eui} in data")
             return
@@ -139,19 +153,19 @@ class UWBDataMatrix:
             return
 
         self.data[tag_eui][anchor_eui].append(UWBData(distance))
-        timestamp_str = time.strftime('%Y-%m-%d %H:%M:%S')
         if SAVE_DATA:
+            timestamp_str = time.strftime('%Y-%m-%d %H:%M:%S')
             anchor_eui_encoded = anchor_eui.replace(":", "-")
             anchor_file_path = os.path.join(DATA_FOLDER, f"Device_{anchor_eui_encoded}_{self.timestamp_str}.csv")
             with open(anchor_file_path, mode='a') as file:
                 csv_writer = csv.writer(file, escapechar='"')
-                csv_writer.writerow([timestamp_str, tag_eui, distance, self.anchor_sample_rate[anchor_eui] if anchor_eui in self.anchor_sample_rate else "N/A"])
+                csv_writer.writerow([timestamp_str, tag_eui, distance])
 
     # 清除過時的測量資訊
     def clear_outdated_measurements(self, tag_eui: str, anchor_eui: str) -> None:
         measurements = self.data[tag_eui][anchor_eui]
         while len(measurements) > 0 and measurements[0].timestamp < time.time() - self.time_threshold:
-            self.data[tag_eui][anchor_eui].pop(0)
+            self.data[tag_eui][anchor_eui].popleft()
 
     # 取得去極值後的距離
     def get_distance(self, tag_eui: str, anchor_eui: str) -> Optional[float]:
@@ -159,27 +173,36 @@ class UWBDataMatrix:
         self.clear_outdated_measurements(tag_eui, anchor_eui)
 
         # 取得所測得距離陣列
-        measurements: list[UWBData] = self.data[tag_eui][anchor_eui]
+        measurements: deque[UWBData] = self.data[tag_eui][anchor_eui]
         distances: list[float] = [measurement.distance for measurement in measurements]
 
-        # 去除極值
-        q1 = np.percentile(distances, 25) if distances else float("-inf")
-        q3 = np.percentile(distances, 75) if distances else float("inf")
-        filtered_distances = [distance for distance in distances if q1 <= distance <= q3]
+        # # 去除極值
+        # q1 = np.percentile(distances, 25) if distances else float("-inf")
+        # q3 = np.percentile(distances, 75) if distances else float("inf")
+        # filtered_distances = [distance for distance in distances if q1 <= distance <= q3]
+
+        # # 資料不足提早離開
+        # if len(filtered_distances) <= 0:
+        #     return None
+
+        # # 線性修正固定偏差值 & 縮放比例，來提高精準度
+        # trimmed_mean = np.mean(filtered_distances)
+        # estimated_real_distance = (trimmed_mean - 0.1766) / 1.0349
+
+        # # 計算並回傳平均值
+        # return estimated_real_distance
 
         # 資料不足提早離開
-        if len(filtered_distances) <= 0:
+        if len(distances) <= 0:
             return None
-
-        # 線性修正固定偏差值 & 縮放比例，來提高精準度
-        trimmed_mean = np.mean(filtered_distances)
-        estimated_real_distance = (trimmed_mean - 0.1766) / 1.0349
-
-        # 計算並回傳平均值
-        return estimated_real_distance
+        
+        distances.sort()
+        return distances[len(distances) // 2]
 
     # 計算多點定位（multilateration）的結果
-    def locate_tag(self, tag_eui) -> Optional[Tuple[float, float, float]]:
+    def locate_tag(self, tag_eui: str, tol: float=0.0009) -> Optional[Tuple[float, float, float]]:
+        # tol: 0.0009 m^2 = (3 cm)^2
+
         # 如果沒有這個 Tag 的資料，則回傳 None
         if tag_eui not in self.data:
             return None 
@@ -192,6 +215,8 @@ class UWBDataMatrix:
             if distance is not None:
                 distances_to_stations.append(distance)
                 stations_coordinates.append(self.anchors[anchor_eui].coordinate)
+            if len(distances_to_stations) > 4: # 一旦有五筆資料便提早離開，以加速進程
+                break
 
         # 如果資訊不足，致無法定位，則回傳 None
         if len(distances_to_stations) < 4:
@@ -199,13 +224,13 @@ class UWBDataMatrix:
         
         # 若出現奇怪的數學問題，回傳 None
         try:
-            coordinate = gps_solve(distances_to_stations, stations_coordinates)
+            coordinate = gps_solve(distances_to_stations, stations_coordinates, initial_guess=self.tags[tag_eui].coordinate, tol=tol)
         except Exception as e:
             print(f"Error locating tag {tag_eui}: {e}")
             return None
 
         # 如果有 inf/-inf/nan，則回傳 None
-        if any(str(num) in ["inf", "-inf", "nan"] for num in coordinate):
+        if any(math.isinf(num) or math.isnan(num) for num in coordinate):
             return None
 
         if coordinate is not None:
@@ -213,18 +238,24 @@ class UWBDataMatrix:
 
         return coordinate
 
-    # 更新 Anchor Sample Rate
-    def update_anchor_sample_rate(self, anchor_eui: str, sample_rate: float) -> None:
-        self.anchor_sample_rate[anchor_eui] = sample_rate
+    # # 更新 Anchor Sample Rate
+    # def update_anchor_sample_rate(self, anchor_eui: str, sample_rate: float) -> None:
+    #     self.anchor_sample_rate[anchor_eui] = sample_rate
 
 # 主要的 Node，用於讀取 UWB 設備的資訊、計算 3D 座標後，發布到 ROS Topic
 class UWBPublisher(Node):
     serials: list[serial.Serial] = []
     uwb_data_matrix: UWBDataMatrix = None
     state: str = "built_coord_1" 
-        # 狀態機的狀態。其他的狀態：get_calib_data_2, get_calib_data_3, self_calibration, flying
-    target_state: str = "1" 
-        # 狀態機的目標狀態，將透過 Serial 發給 UWB Devices。其他是 "2", "3", "s", "f"，與 state 對應
+        # 狀態機的狀態。其他的狀態：build_coord_2, build_coord_3, self_calibration, flying
+    target_state: str = "11" 
+        # 狀態機的目標狀態，將透過 Serial 發給 UWB Devices。
+        # 為減少突波的影響，UWBDevice_Rewrite 要讀取連續兩個相同的 char，故我們要連續發送
+        # 其他值可能是 "22", "33", "44", "55", "66", "77", "88", "ff" 等，對應的 state 為
+        # - build_coord_1~3 跟 "11"~"33" 對應。
+        # - self_calibration 對應多個 target_state。變化規則是：
+        #   - 先進入 "44"
+        #   - 當 00:05~00:08 任一進入其 anchor_state 後，由 "55", "66", "77", "88" 的各種組合（如 "5588", "886677"）來通知 anchor 切換 state
     anchors: list[UWBDevice] = []
     tags: list[UWBDevice] = []
    
@@ -273,8 +304,8 @@ class UWBPublisher(Node):
         dbg("Generating UWB Devices")
 
         # 產生 UWB 設備的代表物件
-        self.anchors = [UWBDevice(f"00:0{i + 1}") for i in range(8)]    # Anchor "00:0i"，其中 i = 1, 2, ..., 8
-        self.tags = [UWBDevice(f"0{i + 1}:0{i + 1}") for i in range(8)]  # Tag "0i:0i"，其中 i = 1, 2, ..., 8
+        self.anchors = [UWBDevice(f"00:0{i + 1}") for i in range(4)]    # Anchor "00:0i"，其中 i = 1, 2, ..., 8
+        self.tags = [UWBDevice(f"0{i + 1}:0{i + 1}") for i in range(10)]  # Tag "0i:0i"，其中 i = 1, 2, ..., 8
         
         dbg("Starting Self Calibration")
 
@@ -284,27 +315,34 @@ class UWBPublisher(Node):
         dbg("Starting Loops")
 
         # 用於儲存估計各 tag 位置
-        self.uwb_data_matrix = UWBDataMatrix(time_threshold=1.5, anchors=self.anchors, tags=self.tags)
+        self.uwb_data_matrix = UWBDataMatrix(time_threshold=0.2, anchors=self.anchors, tags=self.tags)
 
         # 定期更新 Serial & 透過 USB Serial 讀取 UWB 裝置距離 & 發佈 Tag 的位置
         self.update_serial_loop = self.create_timer(2, self.update_serial_list)
         self.broadcast_target_state_loop = self.create_timer(2, lambda: self.broadcast_target_state(sleep=0))
-        self.read_serial_loop = self.create_timer(0.01, lambda: self.read_serial(self.uwb_data_matrix))
-        self.publish_tag_position_loop = self.create_timer(0.01, self.publish_tag_position)
+        self.read_serial_loop = self.create_timer(0.05, lambda: self.read_serial(self.uwb_data_matrix))
+        drone_tag_euis = [tag.eui for tag in self.tags[0:4]]
+        target_tag_euis = [tag.eui for tag in self.tags[4:]]
+        self.publish_drone_tag_position_loop = self.create_timer(0, lambda: self.publish_tag_position(drone_tag_euis))
+        self.publish_target_tag_position_loop = self.create_timer(1, lambda: self.publish_tag_position(target_tag_euis, force_output=True))
     
     # 進行 Self Calibration：取得 Calibration Data，建立 Coordinate 並設定 Anchors 座標
     def build_coord(self):
         uwb_calibration_data_matrix = UWBDataMatrix(
             time_threshold=180, 
             anchors=self.anchors[0:4], 
-            tags=self.anchors[1:4]     
+            tags=self.anchors[1:4]
                 # 在 Self Calibration 階段，Anchor 00:02~00:04 都可能暫時作為 Tag
         )
 
         # 用於判斷 tag-like anchors 到 anchors 之間的資料量已足夠
         def have_enough_data_between(tag_euis: list[str], anchor_euis: list[str]) -> bool:
             # uwb_calibration_data_matrix.clear_outdated_measurements(tag_euis[0], anchor_euis[0])
-            dbg("- -", "\n- - ".join(f"from {tag_eui} to {anchor_eui}: {len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui])}" for tag_eui in tag_euis for anchor_eui in anchor_euis))
+            dbg("- -", "\n- - ".join(
+                f"from {tag_eui} to {anchor_eui}: {len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui])}" 
+                for tag_eui in tag_euis
+                for anchor_eui in anchor_euis
+            ))
             return all(
                 len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui]) >= 60
                 for tag_eui in tag_euis
@@ -322,7 +360,7 @@ class UWBPublisher(Node):
 
         ## get_calib_data_1 階段
         self.state = "built_coord_1"
-        self.target_state = "1"
+        self.target_state = "11"
         while self.state == "built_coord_1":
             # dbg("- - broadcasting target state")
             self.broadcast_target_state()
@@ -330,7 +368,7 @@ class UWBPublisher(Node):
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:02", "00:03", "00:04"], ["00:01"]):
                 self.state = "built_coord_2"
-                self.target_state = "2"
+                self.target_state = "22"
                 ## 假定 UWB Anchors 此時不會移動，故預先把距離資料儲存，以免稍後遭清除
                 for i in range(1, 4):
                     distance_matrix[0][i] \
@@ -346,7 +384,7 @@ class UWBPublisher(Node):
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:03", "00:04"], ["00:02"]):
                 self.state = "built_coord_3"
-                self.target_state = "3"
+                self.target_state = "33"
                 for i in range(2, 4):
                     distance_matrix[1][i] \
                     = distance_matrix[i][1] \
@@ -361,7 +399,7 @@ class UWBPublisher(Node):
             self.read_serial(uwb_calibration_data_matrix)
             if have_enough_data_between(["00:04"], ["00:03"]):
                 # self.state = "self_calibration"
-                # self.target_state = "s"
+                # self.target_state = "s"         # don't change state yet
                 for i in range(3, 4):
                     distance_matrix[2][i] \
                     = distance_matrix[i][2] \
@@ -373,9 +411,10 @@ class UWBPublisher(Node):
             # 設定 Anchor 00:01~00:04 座標
             dbg("distance_matrix is", distance_matrix)
             anchor_coords = build_3D_coord(distance_matrix)
-            if not all(
+            if not all(anchor_coord is not None for anchor_coord in anchor_coords) \
+            or not all(
                 all(
-                    str(num) not in ["inf", "-inf", "nan"] 
+                    not math.isinf(num) and not math.isnan(num)
                     for num in anchor_coord
                 ) for anchor_coord in anchor_coords
             ):
@@ -396,27 +435,29 @@ class UWBPublisher(Node):
         self.target_state = "f"
         self.state = "flying"
 
-    def get_eui_from_id(self, id) -> Optional[str]:
-        id_to_eui = {
-            "10": "00:01",
-            "20": "00:02",
-            "30": "00:03",
-            "40": "00:04",
-            "50": "00:05",
-            "60": "00:06",
-            "70": "00:07",
-            "80": "00:08",
-            "00": "01:01",
-            "11": "01:01",
-            "22": "02:02",
-            "33": "03:03",
-            "44": "04:04",
-            "55": "05:05",
-            "66": "06:06",
-            "77": "07:07",
-            "88": "08:08",
-        }
-        return id_to_eui[id] if id in id_to_eui else None
+    # def get_eui_from_id(self, id) -> Optional[str]:
+    #     id_to_eui = {
+    #         "10": "00:01",
+    #         "20": "00:02",
+    #         "30": "00:03",
+    #         "40": "00:04",
+    #         "50": "00:05",
+    #         "60": "00:06",
+    #         "70": "00:07",
+    #         "80": "00:08",
+    #         "00": "01:01",
+    #         "11": "01:01",
+    #         "22": "02:02",
+    #         "33": "03:03",
+    #         "44": "04:04",
+    #         "55": "05:05",
+    #         "66": "06:06",
+    #         "77": "07:07",
+    #         "88": "08:08",
+    #         "99": "09:09",
+    #         "1616": "10:10"
+    #     }
+    #     return id_to_eui[id] if id in id_to_eui else None
     
     # 重新讀取 Ports 列表，並移除／新增 Serial Connections
     def update_serial_list(self) -> None:
@@ -437,7 +478,14 @@ class UWBPublisher(Node):
         # 找出新的 ports 並開啟新的 Serial Connection
         new_ports = existing_ports - opened_ports
         for port in new_ports:
-            updated_serials.append(serial.Serial(port, baudrate=9600, timeout=0.001))
+            new_serial = serial.Serial(port, baudrate=9600, timeout=0.)
+            updated_serials.append(new_serial)
+            try:
+                # 消息發三次以免有訛漏，重試到發送成功
+                while serial_connection.write(f"{self.target_state * 3}".encode('utf-8')) <= 0:
+                    time.sleep(0.01)
+            except Exception as e:
+                pass
 
         # 更新並顯示 Ports 變化
         self.serials = updated_serials
@@ -455,13 +503,13 @@ class UWBPublisher(Node):
 
         for serial_connection in self.serials:
             try: 
-                # 消息發三次以免有訛漏
-                while serial_connection.write(f"{self.target_state * 10}".encode('utf-8')) <= 0:
+                # 消息發三次以免有訛漏，重試到發送成功
+                while serial_connection.write(f"{self.target_state * 3}".encode('utf-8')) <= 0:
                     time.sleep(0.01)
             except Exception as e:
                 serial_connection.close()
                 print(f"Error sending message to {serial_connection.portstr}: {e}")
-                try: 
+                try:
                     serial_connection.open() 
                 except Exception as a:
                     print(f"Failed to reopen the serial port {serial_connection.portstr}") 
@@ -493,23 +541,29 @@ class UWBPublisher(Node):
                 # - 距離資料 e.g. `Range: 1.23 m     RX power: -45.67 dBm distance between anchor/tag:01:01 from Anchor 00:01`
                 # - 採樣率資料 e.g. `Sampling rate of  AnchorA: 10.0Hz     Anchor:00:01`
                 # - 狀態遷移資料：太複雜了，請看 `anchor output.txt`
-                range_data_match = range_data_regexp.search(line)
-                sample_rate_data_match = sample_rate_data_regexp.search(line)
+                # range_data_match = range_data_regexp.search(line)
+                # sample_rate_data_match = sample_rate_data_regexp.search(line)
                 
-                if range_data_match: # 對於距離資料，新增測距結果到 UWB Data Matrix
-                    distance, power, from_id, to_eui = range_data_match.groups()
+                if line.startswith("anchor_range,"): # 對於距離資料，新增測距結果到 UWB Data Matrix
+                    try: 
+                        values = line.split(",")
+                        if len(values) != 4:
+                            continue
+                        _, distance, from_eui, to_eui = values
                     
-                    from_eui: str = self.get_eui_from_id(from_id) # somehow get the anchor_eui from from_id
-                    if from_eui is None:
-                        dbg(f"- - - from_id {from_id} is an unknown id")
-                        continue
+                        # from_eui: str = self.get_eui_from_id(from_id) # somehow get the anchor_eui from from_id
+                        # if from_eui is None:
+                        #     dbg(f"- - - from_id {from_id} is an unknown id")
+                        #     continue
 
-                    uwb_data_matrix.add_measurement(from_eui, to_eui, float(distance))
+                        uwb_data_matrix.add_measurement(from_eui, to_eui, float(distance))
 
-                elif sample_rate_data_match: # 對於採樣率資料，更新 Anchor 的採樣率到 UWB Data Matrix
-                    sample_rate, anchor_eui = sample_rate_data_match.groups()
+                    except Exception as e:
+                        print(f"Error reading range data: {e}")
+                # elif sample_rate_data_match: # 對於採樣率資料，更新 Anchor 的採樣率到 UWB Data Matrix
+                #     sample_rate, anchor_eui = sample_rate_data_match.groups()
 
-                    uwb_data_matrix.update_anchor_sample_rate(anchor_eui, float(sample_rate))
+                #     uwb_data_matrix.update_anchor_sample_rate(anchor_eui, float(sample_rate))
 
                 # else: # 對於狀態遷移資料，更新狀態機的狀態
                 #     for state in ["built_coord_1", "built_coord_2", "built_coord_3", "self_calibration", "flying"]:
@@ -519,15 +573,17 @@ class UWBPublisher(Node):
                 # dbg(f"- - - Read Serial: {line}")
     
     # 定期發佈 Tag 的位置
-    def publish_tag_position(self) -> None:
-        for tag_eui in self.uwb_data_matrix.tags.keys():
+    def publish_tag_position(self, tag_euis, force_output=False) -> None:
+        for tag_eui in tag_euis:
             coordinate = self.uwb_data_matrix.locate_tag(tag_eui)
 
             if coordinate is None:
-                # dbg(f"- no coordinate for {tag_eui}, skipping")
-                # dbg(f"- no coordinate for {tag_eui}, skipping")
-                # TODO: 試著用 (速度 * 時間 + 舊位置) 或其他 Sensor 估算
-                continue
+                # 強制印出下，試圖印出舊資訊；否則跳下一步
+                if not force_output or self.uwb_data_matrix.tags[tag_eui].coordinate is None:
+                    # dbg("- - - No info to publish for tag_eui=", tag_eui)
+                    continue
+
+                coordinate = self.uwb_data_matrix.tags[tag_eui].coordinate
 
             msg = TagPosition()
             msg.eui = tag_eui
@@ -544,6 +600,8 @@ def main(args=None):
 
     try: # 試圖保持程式運行。如果程式被強制終止，以 finally 正確結束程式
         rclpy.spin(position_publisher)
+    except KeyboardInterrupt:
+        pass
     finally:
         position_publisher.destroy_node()
         rclpy.shutdown()
