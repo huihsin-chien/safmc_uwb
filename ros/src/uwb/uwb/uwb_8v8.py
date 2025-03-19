@@ -469,6 +469,8 @@ class UWBPublisher(Node):
                         is_in_anchor_state[eui] = True
                         dbg("- - Anchor", eui, "is built successfully!")
         print("Final anchor coords are: ")
+        for anchor in self.anchors:
+            print(anchor.eui, anchor.coordinate, sep="\t")
         self.target_state = "ff"
         self.state = "flying"
 
