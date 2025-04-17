@@ -187,7 +187,7 @@ void as_tag() {
     }
 }
 
-byte MediatorUWB_device_address[2] = {0x01, 0x00}; // MediatorUWB_device_address先設定 10 (eui 10:10)
+byte MediatorUWB_device_address[2] = {0x02, 0x02}; // MediatorUWB_device_address先設定 10 (eui 10:10)
 
 void as_anchor(){
     // Serial.println("u stupid");
