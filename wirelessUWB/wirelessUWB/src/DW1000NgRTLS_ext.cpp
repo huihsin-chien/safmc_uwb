@@ -299,7 +299,6 @@ namespace DW1000NgRTLS_ext {
                 DW1000NgRTLS_ext::waitForTransmission();
                 uint64_t timeResponseToPoll = DW1000Ng::getTransmitTimestamp();
                 delayMicroseconds(1500);
-
                 if(!DW1000NgRTLS_ext::receiveFrame()) {
                     returnValue = {false, 0};
                 } else {
@@ -309,7 +308,6 @@ namespace DW1000NgRTLS_ext {
                     DW1000Ng::getReceivedData(rfinal_data, rfinal_len);
                     if(rfinal_len > 18 && rfinal_data[9] == RANGING_TAG_FINAL_RESPONSE_EMBEDDED) {
                         uint64_t timeFinalMessageReceive = DW1000Ng::getReceiveTimestamp();
-
                         byte finishValue[2];
                         DW1000NgUtils::writeValueToBytes(finishValue, value, 2);
 
@@ -368,6 +366,7 @@ namespace DW1000NgRTLS_ext {
         DW1000Ng::getDeviceAddress(&Poll[7]);
         DW1000Ng::setTransmitData(Poll, sizeof(Poll));
         DW1000Ng::startTransmit();
+        Serial.println("send to mediator uwb");
     }
 }
 

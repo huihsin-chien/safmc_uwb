@@ -1,7 +1,7 @@
 #include "uwb_common.hpp"
 
 // == START OF Device Config ==
-#define TAG_4
+#define ANCHOR_1
 
 #ifdef ANCHOR_1
 const char EUI[] = "AA:BB:CC:DD:EE:FF:00:01";
@@ -145,11 +145,11 @@ void as_anchor();
 
 void setup() {
     // 為了測試方便，先不使用 Change state，跳過 self-calibration，讓所有 anchor 一開始就是 anchor。
-    if (!isAnchorByDefault && sizeof(becomeTagSymbols) != 0){
-        isAnchorByDefault = true;
-    }
-
+    // if ((!isAnchorByDefault && sizeof(becomeTagSymbols) != 0) || isAnchorByDefault){
+    //     isAnchor = true;
+    // }
     isAnchor = isAnchorByDefault;
+
     Serial.begin(9600);
     setupUWB(&EUI[0], self_device_address, isAnchor ? ANCHOR_FRAME_FILTER_CONFIG : TAG_FRAME_FILTER_CONFIG); // 2 is the device address of the anchorB
 }
@@ -163,6 +163,7 @@ void loop() {
         }
     }
     catch(const std::exception& e){
+        Serial.println("catch an exception!");
     }
 }
 
@@ -176,6 +177,7 @@ void as_tag() {
             #ifndef FIXED_BLINK_RATE
             blink_rate = result.new_blink_rate;
             #endif
+            Serial.println("weee~");
         } else {
             // 未成功的話，印出失敗訊息。格式為：`tag_range,${tag_eui},failed,${anchorDeviceAddress}`
             // TODO: 補印強度 dB 資料
@@ -186,7 +188,9 @@ void as_tag() {
 }
 
 byte MediatorUWB_device_address[2] = {0x01, 0x00}; // MediatorUWB_device_address先設定 10 (eui 10:10)
+
 void as_anchor(){
+    // Serial.println("u stupid");
     // 取得 tagFinishRange() 傳出的封包，並回傳接受
     RangeAcceptResult result = DW1000NgRTLS_ext::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
     if(!result.success) 
@@ -204,9 +208,6 @@ void as_anchor(){
     // 如果計算結果明顯不合理，則提早進入下一個迴圈
     if(result.range < 0.001 || result.range > 500) 
         return;
-
-  
-
 
     // 印出距離訊息。格式為：`anchor_range,${distance},${tagEUI},${anchorEUI}, RX power:${RX_power}`
     char rangeCharArr[256];
