@@ -63,6 +63,7 @@ class StateMachine{
           startTime = millis();
           Serial.println("State changed to built_coord_2");
         }if(receivedChar == '3' && state != State::built_coord_3){
+
           state = State::built_coord_3;
           sample_count = 0;
           for(int i = 0; i < 8; i++){

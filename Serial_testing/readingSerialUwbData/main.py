@@ -288,6 +288,10 @@ class UWBdata(Position):
         elif state_machine.status == "self_calibration":
             
 
+            #todo: store dAE, dAF, dAG, dAH, dBE, dBF, dBG, dBH, dCE, dCF, dCG, dCH, dDE, dDF, dDG, DDH
+
+            data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
+
             match = data_pattern.search(line)
             print(f"{serial_port}: {line}")
             if match:
@@ -417,7 +421,8 @@ def multilateration(anchor_list, multilateration_file):
         csv_writer = csv.writer(file)
         # csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S'), pos.x, pos.y, pos.z])
         for tag, pos in tag_pos.items():
-            csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(time.time())), tag, pos.x, pos.y, pos.z])
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
+            csv_writer.writerow([timestamp, time.localtime(time.time()), tag, pos.x, pos.y, pos.z])
     return tag_pos
 
 def multilateration_for_self_calibration(anchor_list, distance_between_anchors_and_anchors = distance_between_anchors_and_anchors):
@@ -598,7 +603,7 @@ def processing_thread(anchor_list, multilateration_file, ser, selected_ports, ou
         print("len(distance_between_anchors_and_anchors[AB]): ",len(distance_between_anchors_and_anchors["AB"]))
         print(f"target state: {targetstate}")
         time.sleep(1)
-        if state_machine.status == "flying" and enterflying:
+        if state_machine.status == "flying":
             # time.sleep(0.1) 
             # print("multilateration")
             targetstate = 'f'
@@ -652,7 +657,7 @@ def main():
     # 初始化 multilateration CSV 檔案
     with open(multilateration_file, mode='w', newline='') as file:
         csv_writer = csv.writer(file)
-        csv_writer.writerow(["timestamp", "x", "y", "z"])
+        csv_writer.writerow(["timestamp", "Tag name", "x", "y", "z"])
 
     data_pattern = re.compile(r'Range:\s([0-9.]+)\s*m\s+RX power:\s*(-?[0-9.]+)\s*dBm\s*distance between anchor\/tag:\s*([0-9]+)\s*from Anchor\s*([0-9]+):([0-9]+)')
     # Range: 0.00 m      RX power: -59.80 dBm distance between anchor/tag:30 from Anchor 00:01
