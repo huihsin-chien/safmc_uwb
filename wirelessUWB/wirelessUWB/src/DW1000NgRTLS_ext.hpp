@@ -132,4 +132,5 @@ namespace DW1000NgRTLS_ext {
         Finalmessagedelay is the same as in function tagRangeInfrastructure
     */
     RangeInfrastructureResult tagTwrLocalize(uint16_t finalMessageDelay);
+    void transmitDataToMediatorUWB(byte mediatorUWB_address[], byte tagDeviceAddress[], double tag_range, float RX_power) ;
 }

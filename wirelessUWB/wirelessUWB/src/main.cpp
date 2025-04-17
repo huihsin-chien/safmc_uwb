@@ -222,35 +222,8 @@ void as_anchor(){
     Serial.println(rangeCharArr);
 
     // 將距離資料送給 MediatorUWB
-    transmitDataToMediatorUWB(MediatorUWB_device_address, {recv_data[8], recv_data[7]}, result.range, DW1000Ng::getReceivePower());
+    byte tagDeviceAddress[] = {recv_data[8], recv_data[7]};
+    DW1000NgRTLS_ext::transmitDataToMediatorUWB(MediatorUWB_device_address, tagDeviceAddress, result.range, DW1000Ng::getReceivePower());
 
 }
 
-// Range: 9.04 m	 RX power: -82.30 dBm distance between anchor/tag:40 from Anchor 00:01
-
-// tag_range： 取小數點後 2 位數，範圍可能為 0.01 ~ 500.00，留 5 個 byte 
-// RX_power：  取小數點後 2 位數，範圍可能為 -128.00 ~ 0.00，留 5 個 byte
-// 經由 transmitPoll() 修改成 transmitDataToMediatorUWB
-void transmitDataToMediatorUWB(byte mediatorUWB_address[], byte tagDeviceAddress[], double tag_range, float RX_power) {
-    // byte tag_range_arr[5];
-    // byte RX_power_arr[5];
-    // DW1000NgUtils::writeValueToBytes(tag_range_arr, tag_range, 5);
-    // DW1000NgUtils::writeValueToBytes(RX_power_arr, RX_power, 5);
-    RX_power = constrain(RX_power, -128.00, 0.00);
-    RX_power = abs(RX_power);
-    tag_range *= 100; // 將 tag_range 乘上 100，使其成為整數，使用 writeValueToBytes
-    RX_power *= 100; 
-    tatic_cast<uint16_t>(tag_range);
-    tatic_cast<uint16_t>(RX_power);
-
-    byte Poll[] = {DATA, SHORT_SRC_AND_DEST, SEQ_NUMBER++, 0,0, 0,0, 0,0 , RANGING_TAG_POLL, 
-        tagDeviceAddress[0], tagDeviceAddress[1], 0,0,0,0,0, 0,0,0,0,0,};
-    DW1000NgUtils::writeValueToBytes(&Poll[10], tag_range, 5);
-    DW1000NgUtils::writeValueToBytes(&Poll[15], RX_power, 5);
-
-    DW1000Ng::getNetworkId(&Poll[3]);
-    memcpy(&Poll[5], mediatorUWB_address, 2);
-    DW1000Ng::getDeviceAddress(&Poll[7]);
-    DW1000Ng::setTransmitData(Poll, sizeof(Poll));
-    DW1000Ng::startTransmit();
-}
