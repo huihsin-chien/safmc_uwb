@@ -2,6 +2,7 @@
 
 // == START OF Device Config ==
 #define TAG_4
+
 #ifdef ANCHOR_1
 const char EUI[] = "AA:BB:CC:DD:EE:FF:00:01";
 const uint16_t self_device_address = 0x0001;
@@ -144,11 +145,10 @@ void as_anchor();
 
 void setup() {
     // 為了測試方便，先不使用 Change state，跳過 self-calibration，讓所有 anchor 一開始就是 anchor。
-    if (!isAnchorByDefault && sizeof(becomeTagSymbols) == 0){
-        isAnchor = true;
+    if (!isAnchorByDefault && sizeof(becomeTagSymbols) != 0){
+        isAnchorByDefault = true;
     }
 
-    Serial.println("### DW1000Ng-arduino-ranging-tag2 ###");
     isAnchor = isAnchorByDefault;
     Serial.begin(9600);
     setupUWB(&EUI[0], self_device_address, isAnchor ? ANCHOR_FRAME_FILTER_CONFIG : TAG_FRAME_FILTER_CONFIG); // 2 is the device address of the anchorB
@@ -185,9 +185,7 @@ void as_tag() {
     }
 }
 
-byte MediatorUWB_device_address[2] = {0x01, 0x00}; // MediatorUWB_device_address[0] = 1, MediatorUWB_device_address[1] = 0
-
-
+byte MediatorUWB_device_address[2] = {0x01, 0x00}; // MediatorUWB_device_address先設定 10 (eui 10:10)
 void as_anchor(){
     // 取得 tagFinishRange() 傳出的封包，並回傳接受
     RangeAcceptResult result = DW1000NgRTLS_ext::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
@@ -207,18 +205,13 @@ void as_anchor(){
     if(result.range < 0.001 || result.range > 500) 
         return;
 
-    // 印出距離訊息
-    // char rangeNumString[32];
-    // snprintf(rangeNumString, 32, "%lf", result.range);
-    // String rangeString = "Range: "; rangeString += rangeNumString; rangeString += " m";
-    // rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
-    // rangeString += recv_data[7]; rangeString += recv_data[8]; // tag 的短 EUI
-    // rangeString += " from Anchor "; rangeString += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20]; rangeString += EUI[21]; rangeString += EUI[22]; rangeString += EUI[23];
-    // Serial.println(rangeString);
+  
 
-    // 印出距離訊息。格式為：`anchor_range,${distance},${tagEUI},${anchorEUI}`
+
+    // 印出距離訊息。格式為：`anchor_range,${distance},${tagEUI},${anchorEUI}, RX power:${RX_power}`
     char rangeCharArr[256];
-    snprintf(rangeCharArr, 256, "anchor_range,%lf,%02x:%02x,%s", result.range, recv_data[8], recv_data[7], &EUI[18]);
+    snprintf(rangeCharArr, 256, "anchor_range,%lf,%02x:%02x,%s, RX power: %f", 
+        result.range, recv_data[8], recv_data[7], &EUI[18], DW1000Ng::getReceivePower());
     Serial.println(rangeCharArr);
 
     // 將距離資料送給 MediatorUWB
