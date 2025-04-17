@@ -1,0 +1,299 @@
+[0.000000] (-) TimerEvent: {}
+[0.001029] (-) JobUnselected: {'identifier': 'msg_folder'}
+[0.001187] (-) JobUnselected: {'identifier': 'uwb'}
+[0.001229] (-) JobUnselected: {'identifier': 'uwb'}
+[0.001271] (uwb_msgs) JobQueued: {'identifier': 'uwb_msgs', 'dependencies': OrderedDict()}
+[0.001313] (uwb_msgs) JobStarted: {'identifier': 'uwb_msgs'}
+[0.014591] (uwb_msgs) JobProgress: {'identifier': 'uwb_msgs', 'progress': 'cmake'}
+[0.016897] (uwb_msgs) Command: {'cmd': ['/usr/bin/cmake', '/home/Judy/safmc_uwb/ros_enfu/src/uwb_msgs', '-DCMAKE_INSTALL_PREFIX=/home/Judy/safmc_uwb/install/uwb_msgs'], 'cwd': '/home/Judy/safmc_uwb/build/uwb_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('GIT_ASKPASS', '/root/.vscode-server/bin/e54c774e0add60467559eb0d1e229c6452cf8447/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/home/Judy/safmc_uwb/ros/src'), ('TERM_PROGRAM_VERSION', '1.97.2'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-8b89a704-2fb1-4892-ad52-b891c955fdb4.sock'), ('DEBUGPY_ADAPTER_ENDPOINTS', '/root/.vscode-server/extensions/ms-python.debugpy-2025.0.1-linux-x64/.noConfigDebugAdapterEndpoints/endpoint-1b9ba39508a97ae3.txt'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/e54c774e0add60467559eb0d1e229c6452cf8447/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/e54c774e0add60467559eb0d1e229c6452cf8447/node'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/root/.vscode-server/extensions/ms-python.debugpy-2025.0.1-linux-x64/bundled/libs/debugpy'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', 'truecolor'), ('WSL_DISTRO_NAME', 'Ubuntu'), ('DEBUGINFOD_URLS', ''), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/Judy/safmc_uwb/ros/src/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'LAPTOP-K96KR7IV'), ('WSL_INTEROP', '/run/WSL/421_interop'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/root/.vscode-server/bin/e54c774e0add60467559eb0d1e229c6452cf8447/bin/remote-cli:/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Users/Judy/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/Judy/AppData/Local/Programs/Python/Python310/:/mnt/c/Python38/Scripts/:/mnt/c/Python38/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/:/mnt/c/Program Files/IVI Foundation/VISA/Win64/Bin/:/mnt/c/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/CMake/bin:/mnt/c/ProgramData/chocolatey/lib/cunit/lib:/mnt/c/ProgramData/chocolatey/lib/tinyxml2/lib:/mnt/c/ProgramData/chocolatey/lib/bullet/lib:/mnt/c/MinGW/bin:/mnt/c/Program Files/rti_connext_dds-5.3.1/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files (x86)/National Instruments/Shared/LabVIEW CLI:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/Judy/AppData/Local/Programs/Python/Python310/:/mnt/c/Users/Judy/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/Judy/anaconda3:/mnt/c/Users/Judy/anaconda3/Library/mingw-w64/bin:/mnt/c/Users/Judy/anaconda3/Library/usr/bin:/mnt/c/Users/Judy/anaconda3/Library/bin:/mnt/c/Users/Judy/anaconda3/Scripts:/mnt/c/Users/Judy/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Judy/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/OpenSSL-Win64/bin:/mnt/c/MinGW/bin:/mnt/c/Program Files/rti_connext_dds-5.3.1/resource/scripts:/snap/bin:/root/.vscode-server/extensions/ms-python.debugpy-2025.0.1-linux-x64/bundled/scripts/noConfigScripts:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/0/vscode-git-2fa7b702d8.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/Judy/safmc_uwb/build/uwb_msgs'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[0.099488] (-) TimerEvent: {}
+[0.199838] (-) TimerEvent: {}
+[0.300197] (-) TimerEvent: {}
+[0.327129] (uwb_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.400303] (-) TimerEvent: {}
+[0.500679] (-) TimerEvent: {}
+[0.601132] (-) TimerEvent: {}
+[0.701616] (-) TimerEvent: {}
+[0.801939] (-) TimerEvent: {}
+[0.902287] (-) TimerEvent: {}
+[0.986544] (uwb_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[1.002379] (-) TimerEvent: {}
+[1.102743] (-) TimerEvent: {}
+[1.203081] (-) TimerEvent: {}
+[1.303433] (-) TimerEvent: {}
+[1.403855] (-) TimerEvent: {}
+[1.433767] (uwb_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[1.503977] (-) TimerEvent: {}
+[1.604425] (-) TimerEvent: {}
+[1.606926] (uwb_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[1.611920] (uwb_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[1.612621] (uwb_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[1.613671] (uwb_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[1.617554] (uwb_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[1.704539] (-) TimerEvent: {}
+[1.793665] (uwb_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[1.799234] (uwb_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[1.799687] (uwb_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[1.800076] (uwb_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[1.804693] (-) TimerEvent: {}
+[1.816245] (uwb_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[1.904771] (-) TimerEvent: {}
+[1.937974] (uwb_msgs) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[2.004882] (-) TimerEvent: {}
+[2.044775] (uwb_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[2.051884] (uwb_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.061698] (uwb_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[2.105002] (-) TimerEvent: {}
+[2.205367] (-) TimerEvent: {}
+[2.299204] (uwb_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[2.305422] (-) TimerEvent: {}
+[2.347802] (uwb_msgs) StdoutLine: {'line': b'-- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[2.405545] (-) TimerEvent: {}
+[2.505990] (-) TimerEvent: {}
+[2.606447] (-) TimerEvent: {}
+[2.619366] (uwb_msgs) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[2.706562] (-) TimerEvent: {}
+[2.806921] (-) TimerEvent: {}
+[2.812875] (uwb_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[2.907104] (-) TimerEvent: {}
+[3.007612] (-) TimerEvent: {}
+[3.070859] (uwb_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[3.107718] (-) TimerEvent: {}
+[3.208137] (-) TimerEvent: {}
+[3.228733] (uwb_msgs) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") \n'}
+[3.231004] (uwb_msgs) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[3.308248] (-) TimerEvent: {}
+[3.408708] (-) TimerEvent: {}
+[3.509134] (-) TimerEvent: {}
+[3.609692] (-) TimerEvent: {}
+[3.689273] (uwb_msgs) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") \n'}
+[3.689618] (uwb_msgs) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[3.689711] (uwb_msgs) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[3.689786] (uwb_msgs) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so\n'}
+[3.706586] (uwb_msgs) StdoutLine: {'line': b'-- Found PythonExtra: .so  \n'}
+[3.709761] (-) TimerEvent: {}
+[3.799724] (uwb_msgs) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.11 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[3.809835] (-) TimerEvent: {}
+[3.838806] (uwb_msgs) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[3.841548] (uwb_msgs) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[3.845319] (uwb_msgs) StdoutLine: {'line': b'-- Configuring done\n'}
+[3.910112] (uwb_msgs) StdoutLine: {'line': b'-- Generating done\n'}
+[3.910338] (-) TimerEvent: {}
+[3.920632] (uwb_msgs) StdoutLine: {'line': b'-- Build files have been written to: /home/Judy/safmc_uwb/build/uwb_msgs\n'}
+[3.932113] (uwb_msgs) CommandEnded: {'returncode': 0}
+[3.934184] (uwb_msgs) JobProgress: {'identifier': 'uwb_msgs', 'progress': 'build'}
+[3.934408] (uwb_msgs) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/Judy/safmc_uwb/build/uwb_msgs', '--', '-j12', '-l12'], 'cwd': '/home/Judy/safmc_uwb/build/uwb_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('GIT_ASKPASS', '/root/.vscode-server/bin/e54c774e0add60467559eb0d1e229c6452cf8447/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/home/Judy/safmc_uwb/ros/src'), ('TERM_PROGRAM_VERSION', '1.97.2'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-8b89a704-2fb1-4892-ad52-b891c955fdb4.sock'), ('DEBUGPY_ADAPTER_ENDPOINTS', '/root/.vscode-server/extensions/ms-python.debugpy-2025.0.1-linux-x64/.noConfigDebugAdapterEndpoints/endpoint-1b9ba39508a97ae3.txt'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/e54c774e0add60467559eb0d1e229c6452cf8447/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/e54c774e0add60467559eb0d1e229c6452cf8447/node'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/root/.vscode-server/extensions/ms-python.debugpy-2025.0.1-linux-x64/bundled/libs/debugpy'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', 'truecolor'), ('WSL_DISTRO_NAME', 'Ubuntu'), ('DEBUGINFOD_URLS', ''), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/Judy/safmc_uwb/ros/src/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'LAPTOP-K96KR7IV'), ('WSL_INTEROP', '/run/WSL/421_interop'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/root/.vscode-server/bin/e54c774e0add60467559eb0d1e229c6452cf8447/bin/remote-cli:/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Users/Judy/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/Judy/AppData/Local/Programs/Python/Python310/:/mnt/c/Python38/Scripts/:/mnt/c/Python38/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/:/mnt/c/Program Files/IVI Foundation/VISA/Win64/Bin/:/mnt/c/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/CMake/bin:/mnt/c/ProgramData/chocolatey/lib/cunit/lib:/mnt/c/ProgramData/chocolatey/lib/tinyxml2/lib:/mnt/c/ProgramData/chocolatey/lib/bullet/lib:/mnt/c/MinGW/bin:/mnt/c/Program Files/rti_connext_dds-5.3.1/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files (x86)/National Instruments/Shared/LabVIEW CLI:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/Judy/AppData/Local/Programs/Python/Python310/:/mnt/c/Users/Judy/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/Judy/anaconda3:/mnt/c/Users/Judy/anaconda3/Library/mingw-w64/bin:/mnt/c/Users/Judy/anaconda3/Library/usr/bin:/mnt/c/Users/Judy/anaconda3/Library/bin:/mnt/c/Users/Judy/anaconda3/Scripts:/mnt/c/Users/Judy/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Judy/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/OpenSSL-Win64/bin:/mnt/c/MinGW/bin:/mnt/c/Program Files/rti_connext_dds-5.3.1/resource/scripts:/snap/bin:/root/.vscode-server/extensions/ms-python.debugpy-2025.0.1-linux-x64/bundled/scripts/noConfigScripts:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/0/vscode-git-2fa7b702d8.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/Judy/safmc_uwb/build/uwb_msgs'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[3.965341] (uwb_msgs) StdoutLine: {'line': b'[  3%] \x1b[34m\x1b[1mGenerating C code for ROS interfaces\x1b[0m\n'}
+[3.972293] (uwb_msgs) StdoutLine: {'line': b'[  6%] \x1b[34m\x1b[1mGenerating C++ code for ROS interfaces\x1b[0m\n'}
+[3.979901] (uwb_msgs) StdoutLine: {'line': b'[  6%] Built target ament_cmake_python_copy_uwb_msgs\n'}
+[4.010685] (-) TimerEvent: {}
+[4.111019] (-) TimerEvent: {}
+[4.169641] (uwb_msgs) StdoutLine: {'line': b'[  6%] Built target uwb_msgs__cpp\n'}
+[4.177863] (uwb_msgs) StdoutLine: {'line': b'[ 12%] \x1b[32mBuilding C object CMakeFiles/uwb_msgs__rosidl_generator_c.dir/rosidl_generator_c/uwb_msgs/msg/detail/range__functions.c.o\x1b[0m\n'}
+[4.178165] (uwb_msgs) StdoutLine: {'line': b'[ 12%] \x1b[34m\x1b[1mGenerating C++ type support for eProsima Fast-RTPS\x1b[0m\n'}
+[4.178257] (uwb_msgs) StdoutLine: {'line': b'[ 16%] \x1b[34m\x1b[1mGenerating C++ type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.178404] (uwb_msgs) StdoutLine: {'line': b'[ 19%] \x1b[34m\x1b[1mGenerating C++ introspection for ROS interfaces\x1b[0m\n'}
+[4.210258] (uwb_msgs) StdoutLine: {'line': b'running egg_info\n'}
+[4.211109] (uwb_msgs) StdoutLine: {'line': b'creating uwb_msgs.egg-info\n'}
+[4.211278] (-) TimerEvent: {}
+[4.212126] (uwb_msgs) StdoutLine: {'line': b'writing uwb_msgs.egg-info/PKG-INFO\n'}
+[4.212459] (uwb_msgs) StdoutLine: {'line': b'writing dependency_links to uwb_msgs.egg-info/dependency_links.txt\n'}
+[4.212780] (uwb_msgs) StdoutLine: {'line': b'writing top-level names to uwb_msgs.egg-info/top_level.txt\n'}
+[4.213121] (uwb_msgs) StdoutLine: {'line': b"writing manifest file 'uwb_msgs.egg-info/SOURCES.txt'\n"}
+[4.216569] (uwb_msgs) StdoutLine: {'line': b"reading manifest file 'uwb_msgs.egg-info/SOURCES.txt'\n"}
+[4.217024] (uwb_msgs) StdoutLine: {'line': b"writing manifest file 'uwb_msgs.egg-info/SOURCES.txt'\n"}
+[4.268881] (uwb_msgs) StdoutLine: {'line': b'[ 22%] Built target ament_cmake_python_build_uwb_msgs_egg\n'}
+[4.269271] (uwb_msgs) StdoutLine: {'line': b'[ 22%] \x1b[32m\x1b[1mLinking C shared library libuwb_msgs__rosidl_generator_c.so\x1b[0m\n'}
+[4.311401] (-) TimerEvent: {}
+[4.371429] (uwb_msgs) StdoutLine: {'line': b'[ 25%] \x1b[32mBuilding CXX object CMakeFiles/uwb_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/uwb_msgs/msg/range__type_support.cpp.o\x1b[0m\n'}
+[4.386912] (uwb_msgs) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/uwb_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/uwb_msgs/msg/detail/range__type_support.cpp.o\x1b[0m\n'}
+[4.387214] (uwb_msgs) StdoutLine: {'line': b'[ 32%] \x1b[32mBuilding CXX object CMakeFiles/uwb_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/uwb_msgs/msg/detail/dds_fastrtps/range__type_support.cpp.o\x1b[0m\n'}
+[4.398617] (uwb_msgs) StdoutLine: {'line': b'[ 32%] Built target uwb_msgs__rosidl_generator_c\n'}
+[4.406774] (uwb_msgs) StdoutLine: {'line': b'[ 41%] \x1b[34m\x1b[1mGenerating C type support for eProsima Fast-RTPS\x1b[0m\n'}
+[4.407060] (uwb_msgs) StdoutLine: {'line': b'[ 41%] \x1b[34m\x1b[1mGenerating C introspection for ROS interfaces\x1b[0m\n'}
+[4.407139] (uwb_msgs) StdoutLine: {'line': b'[ 41%] \x1b[34m\x1b[1mGenerating C type support dispatch for ROS interfaces\x1b[0m\n'}
+[4.411491] (-) TimerEvent: {}
+[4.511856] (-) TimerEvent: {}
+[4.612332] (-) TimerEvent: {}
+[4.623001] (uwb_msgs) StdoutLine: {'line': b'[ 45%] \x1b[32mBuilding CXX object CMakeFiles/uwb_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/uwb_msgs/msg/range__type_support.cpp.o\x1b[0m\n'}
+[4.655484] (uwb_msgs) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding CXX object CMakeFiles/uwb_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/uwb_msgs/msg/detail/range__type_support_c.cpp.o\x1b[0m\n'}
+[4.655854] (uwb_msgs) StdoutLine: {'line': b'[ 51%] \x1b[32mBuilding C object CMakeFiles/uwb_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/uwb_msgs/msg/detail/range__type_support.c.o\x1b[0m\n'}
+[4.662331] (uwb_msgs) StdoutLine: {'line': b'[ 54%] \x1b[32m\x1b[1mLinking CXX shared library libuwb_msgs__rosidl_typesupport_c.so\x1b[0m\n'}
+[4.697913] (uwb_msgs) StdoutLine: {'line': b'[ 58%] \x1b[32m\x1b[1mLinking C shared library libuwb_msgs__rosidl_typesupport_introspection_c.so\x1b[0m\n'}
+[4.705169] (uwb_msgs) StdoutLine: {'line': b'[ 61%] \x1b[32m\x1b[1mLinking CXX shared library libuwb_msgs__rosidl_typesupport_cpp.so\x1b[0m\n'}
+[4.712445] (-) TimerEvent: {}
+[4.812927] (-) TimerEvent: {}
+[4.831084] (uwb_msgs) StdoutLine: {'line': b'[ 61%] Built target uwb_msgs__rosidl_typesupport_c\n'}
+[4.848687] (uwb_msgs) StdoutLine: {'line': b'[ 61%] Built target uwb_msgs__rosidl_typesupport_introspection_c\n'}
+[4.864739] (uwb_msgs) StdoutLine: {'line': b'[ 64%] \x1b[32m\x1b[1mLinking CXX shared library libuwb_msgs__rosidl_typesupport_introspection_cpp.so\x1b[0m\n'}
+[4.865062] (uwb_msgs) StdoutLine: {'line': b'[ 64%] Built target uwb_msgs__rosidl_typesupport_cpp\n'}
+[4.867014] (uwb_msgs) StdoutLine: {'line': b'[ 67%] \x1b[32m\x1b[1mLinking CXX shared library libuwb_msgs__rosidl_typesupport_fastrtps_cpp.so\x1b[0m\n'}
+[4.913032] (-) TimerEvent: {}
+[4.985717] (uwb_msgs) StdoutLine: {'line': b'[ 70%] \x1b[32m\x1b[1mLinking CXX shared library libuwb_msgs__rosidl_typesupport_fastrtps_c.so\x1b[0m\n'}
+[5.001307] (uwb_msgs) StdoutLine: {'line': b'[ 70%] Built target uwb_msgs__rosidl_typesupport_introspection_cpp\n'}
+[5.003796] (uwb_msgs) StdoutLine: {'line': b'[ 70%] Built target uwb_msgs__rosidl_typesupport_fastrtps_cpp\n'}
+[5.013083] (-) TimerEvent: {}
+[5.113486] (-) TimerEvent: {}
+[5.150434] (uwb_msgs) StdoutLine: {'line': b'[ 70%] Built target uwb_msgs__rosidl_typesupport_fastrtps_c\n'}
+[5.166938] (uwb_msgs) StdoutLine: {'line': b'[ 70%] Built target uwb_msgs\n'}
+[5.184451] (uwb_msgs) StdoutLine: {'line': b'[ 74%] \x1b[34m\x1b[1mGenerating Python code for ROS interfaces\x1b[0m\n'}
+[5.213619] (-) TimerEvent: {}
+[5.314076] (-) TimerEvent: {}
+[5.414378] (uwb_msgs) StdoutLine: {'line': b'[ 74%] Built target uwb_msgs__py\n'}
+[5.414687] (-) TimerEvent: {}
+[5.431349] (uwb_msgs) StdoutLine: {'line': b'[ 77%] \x1b[32mBuilding C object CMakeFiles/uwb_msgs__rosidl_generator_py.dir/rosidl_generator_py/uwb_msgs/msg/_range_s.c.o\x1b[0m\n'}
+[5.514801] (-) TimerEvent: {}
+[5.548493] (uwb_msgs) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/uwb_msgs/libuwb_msgs__rosidl_generator_py.so\x1b[0m\n'}
+[5.614880] (-) TimerEvent: {}
+[5.675076] (uwb_msgs) StdoutLine: {'line': b'[ 80%] Built target uwb_msgs__rosidl_generator_py\n'}
+[5.691018] (uwb_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/uwb_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/uwb_msgs/_uwb_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o\x1b[0m\n'}
+[5.691299] (uwb_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/uwb_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/uwb_msgs/_uwb_msgs_s.ep.rosidl_typesupport_c.c.o\x1b[0m\n'}
+[5.691368] (uwb_msgs) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding C object CMakeFiles/uwb_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/uwb_msgs/_uwb_msgs_s.ep.rosidl_typesupport_introspection_c.c.o\x1b[0m\n'}
+[5.714951] (-) TimerEvent: {}
+[5.769461] (uwb_msgs) StdoutLine: {'line': b'[ 96%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/uwb_msgs/uwb_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[5.769757] (uwb_msgs) StdoutLine: {'line': b'[ 96%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/uwb_msgs/uwb_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[5.776832] (uwb_msgs) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking C shared library rosidl_generator_py/uwb_msgs/uwb_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\x1b[0m\n'}
+[5.815029] (-) TimerEvent: {}
+[5.871985] (uwb_msgs) StdoutLine: {'line': b'[100%] Built target uwb_msgs__rosidl_typesupport_fastrtps_c__pyext\n'}
+[5.872253] (uwb_msgs) StdoutLine: {'line': b'[100%] Built target uwb_msgs__rosidl_typesupport_introspection_c__pyext\n'}
+[5.911527] (uwb_msgs) StdoutLine: {'line': b'[100%] Built target uwb_msgs__rosidl_typesupport_c__pyext\n'}
+[5.915128] (-) TimerEvent: {}
+[5.920618] (uwb_msgs) CommandEnded: {'returncode': 0}
+[5.921828] (uwb_msgs) JobProgress: {'identifier': 'uwb_msgs', 'progress': 'install'}
+[5.928590] (uwb_msgs) Command: {'cmd': ['/usr/bin/cmake', '--install', '/home/Judy/safmc_uwb/build/uwb_msgs'], 'cwd': '/home/Judy/safmc_uwb/build/uwb_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'root'), ('GIT_ASKPASS', '/root/.vscode-server/bin/e54c774e0add60467559eb0d1e229c6452cf8447/extensions/git/dist/askpass.sh'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib'), ('HOME', '/root'), ('OLDPWD', '/home/Judy/safmc_uwb/ros/src'), ('TERM_PROGRAM_VERSION', '1.97.2'), ('VSCODE_IPC_HOOK_CLI', '/run/user/0/vscode-ipc-8b89a704-2fb1-4892-ad52-b891c955fdb4.sock'), ('DEBUGPY_ADAPTER_ENDPOINTS', '/root/.vscode-server/extensions/ms-python.debugpy-2025.0.1-linux-x64/.noConfigDebugAdapterEndpoints/endpoint-1b9ba39508a97ae3.txt'), ('ROS_PYTHON_VERSION', '3'), ('VSCODE_GIT_ASKPASS_MAIN', '/root/.vscode-server/bin/e54c774e0add60467559eb0d1e229c6452cf8447/extensions/git/dist/askpass-main.js'), ('VSCODE_GIT_ASKPASS_NODE', '/root/.vscode-server/bin/e54c774e0add60467559eb0d1e229c6452cf8447/node'), ('PYDEVD_DISABLE_FILE_VALIDATION', '1'), ('BUNDLED_DEBUGPY_PATH', '/root/.vscode-server/extensions/ms-python.debugpy-2025.0.1-linux-x64/bundled/libs/debugpy'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/0/bus'), ('COLORTERM', 'truecolor'), ('WSL_DISTRO_NAME', 'Ubuntu'), ('DEBUGINFOD_URLS', ''), ('WAYLAND_DISPLAY', 'wayland-0'), ('COLCON_PREFIX_PATH', '/home/Judy/safmc_uwb/ros/src/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'root'), ('NAME', 'LAPTOP-K96KR7IV'), ('WSL_INTEROP', '/run/WSL/421_interop'), ('PULSE_SERVER', 'unix:/mnt/wslg/PulseServer'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('TERM', 'xterm-256color'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/root/.vscode-server/bin/e54c774e0add60467559eb0d1e229c6452cf8447/bin/remote-cli:/opt/gcc-arm-none-eabi-9-2020-q2-update/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Users/Judy/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/Judy/AppData/Local/Programs/Python/Python310/:/mnt/c/Python38/Scripts/:/mnt/c/Python38/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin/:/mnt/c/Program Files/IVI Foundation/VISA/Win64/Bin/:/mnt/c/Program Files (x86)/IVI Foundation/VISA/WinNT/Bin:/mnt/c/ProgramData/chocolatey/bin:/mnt/c/Program Files/CMake/bin:/mnt/c/ProgramData/chocolatey/lib/cunit/lib:/mnt/c/ProgramData/chocolatey/lib/tinyxml2/lib:/mnt/c/ProgramData/chocolatey/lib/bullet/lib:/mnt/c/MinGW/bin:/mnt/c/Program Files/rti_connext_dds-5.3.1/:/mnt/c/Program Files/dotnet/:/mnt/c/Program Files (x86)/National Instruments/Shared/LabVIEW CLI:/mnt/c/Program Files/Git/cmd:/mnt/c/Program Files/Docker/Docker/resources/bin:/mnt/c/Users/Judy/AppData/Local/Programs/Python/Python310/:/mnt/c/Users/Judy/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/Judy/anaconda3:/mnt/c/Users/Judy/anaconda3/Library/mingw-w64/bin:/mnt/c/Users/Judy/anaconda3/Library/usr/bin:/mnt/c/Users/Judy/anaconda3/Library/bin:/mnt/c/Users/Judy/anaconda3/Scripts:/mnt/c/Users/Judy/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Judy/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/OpenSSL-Win64/bin:/mnt/c/MinGW/bin:/mnt/c/Program Files/rti_connext_dds-5.3.1/resource/scripts:/snap/bin:/root/.vscode-server/extensions/ms-python.debugpy-2025.0.1-linux-x64/bundled/scripts/noConfigScripts:/root/.vscode-server/data/User/globalStorage/github.copilot-chat/debugCommand'), ('XDG_RUNTIME_DIR', '/run/user/0/'), ('DISPLAY', ':0'), ('LANG', 'en_US.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('VSCODE_GIT_IPC_HANDLE', '/run/user/0/vscode-git-2fa7b702d8.sock'), ('TERM_PROGRAM', 'vscode'), ('AMENT_PREFIX_PATH', '/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('VSCODE_GIT_ASKPASS_EXTRA_ARGS', ''), ('PWD', '/home/Judy/safmc_uwb/build/uwb_msgs'), ('XDG_DATA_DIRS', '/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('WSL2_GUI_APPS_ENABLED', '1'), ('HOSTTYPE', 'x86_64'), ('WSLENV', 'VSCODE_WSL_EXT_LOCATION/up'), ('CMAKE_PREFIX_PATH', '/opt/ros/humble')]), 'shell': False}
+[5.936146] (uwb_msgs) StdoutLine: {'line': b'-- Install configuration: ""\n'}
+[5.938013] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/ament_index/resource_index/rosidl_interfaces/uwb_msgs\n'}
+[5.938251] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs\n'}
+[5.939099] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg\n'}
+[5.939541] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail\n'}
+[5.939945] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__type_support.h\n'}
+[5.940138] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__functions.c\n'}
+[5.940299] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__functions.h\n'}
+[5.940480] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__struct.h\n'}
+[5.940622] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/range.h\n'}
+[5.940780] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_generator_c__visibility_control.h\n'}
+[5.941801] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/environment/library_path.sh\n'}
+[5.941999] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/environment/library_path.dsv\n'}
+[5.942549] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_generator_c.so\n'}
+[5.942931] (uwb_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_generator_c.so" to ""\n'}
+[5.943148] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs\n'}
+[5.943204] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg\n'}
+[5.943455] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h\n'}
+[5.943658] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail\n'}
+[5.943749] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__rosidl_typesupport_fastrtps_c.h\n'}
+[5.943910] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_fastrtps_c.so\n'}
+[5.944221] (uwb_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_fastrtps_c.so" to ""\n'}
+[5.944361] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs\n'}
+[5.944492] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg\n'}
+[5.944542] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail\n'}
+[5.944648] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__type_support.c\n'}
+[5.944696] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__rosidl_typesupport_introspection_c.h\n'}
+[5.944739] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h\n'}
+[5.944779] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_introspection_c.so\n'}
+[5.944891] (uwb_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_introspection_c.so" to ""\n'}
+[5.945116] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_c.so\n'}
+[5.945256] (uwb_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_c.so" to ""\n'}
+[5.945444] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs\n'}
+[5.945672] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg\n'}
+[5.945972] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail\n'}
+[5.946041] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__struct.hpp\n'}
+[5.946100] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__traits.hpp\n'}
+[5.946279] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__type_support.hpp\n'}
+[5.946515] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__builder.hpp\n'}
+[5.946657] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/range.hpp\n'}
+[5.946787] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_generator_cpp__visibility_control.hpp\n'}
+[5.946837] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs\n'}
+[5.946881] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg\n'}
+[5.946924] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h\n'}
+[5.946965] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail\n'}
+[5.947005] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__rosidl_typesupport_fastrtps_cpp.hpp\n'}
+[5.947044] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/dds_fastrtps\n'}
+[5.947182] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_fastrtps_cpp.so\n'}
+[5.947579] (uwb_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""\n'}
+[5.947803] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs\n'}
+[5.948114] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg\n'}
+[5.948202] (uwb_msgs) StdoutLine: {'line': b'-- Up-to-date: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail\n'}
+[5.948370] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__rosidl_typesupport_introspection_cpp.hpp\n'}
+[5.948425] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/include/uwb_msgs/uwb_msgs/msg/detail/range__type_support.cpp\n'}
+[5.948473] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_introspection_cpp.so\n'}
+[5.948575] (uwb_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_introspection_cpp.so" to ""\n'}
+[5.948709] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_cpp.so\n'}
+[5.948998] (uwb_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_typesupport_cpp.so" to ""\n'}
+[5.949212] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/environment/pythonpath.sh\n'}
+[5.949286] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/environment/pythonpath.dsv\n'}
+[5.949414] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs-0.0.0-py3.10.egg-info\n'}
+[5.951136] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs-0.0.0-py3.10.egg-info/top_level.txt\n'}
+[5.951358] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs-0.0.0-py3.10.egg-info/SOURCES.txt\n'}
+[5.951551] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs-0.0.0-py3.10.egg-info/PKG-INFO\n'}
+[5.951760] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs-0.0.0-py3.10.egg-info/dependency_links.txt\n'}
+[5.952009] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs\n'}
+[5.952282] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[5.952441] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg\n'}
+[5.952918] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/_range_s.c\n'}
+[5.953062] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/_range.py\n'}
+[5.953315] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/__init__.py\n'}
+[5.953529] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/_uwb_msgs_s.ep.rosidl_typesupport_introspection_c.c\n'}
+[5.953723] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[5.953939] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/libuwb_msgs__rosidl_generator_py.so\n'}
+[5.954032] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/_uwb_msgs_s.ep.rosidl_typesupport_c.c\n'}
+[5.954208] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/_uwb_msgs_s.ep.rosidl_typesupport_fastrtps_c.c\n'}
+[5.954381] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[5.960128] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/__init__.py\n'}
+[5.986231] (uwb_msgs) StdoutLine: {'line': b"Listing '/home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs'...\n"}
+[5.986512] (uwb_msgs) StdoutLine: {'line': b"Compiling '/home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/__init__.py'...\n"}
+[5.986632] (uwb_msgs) StdoutLine: {'line': b"Listing '/home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg'...\n"}
+[5.986738] (uwb_msgs) StdoutLine: {'line': b"Compiling '/home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/__init__.py'...\n"}
+[5.986828] (uwb_msgs) StdoutLine: {'line': b"Compiling '/home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/msg/_range.py'...\n"}
+[5.990322] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so\n'}
+[5.990627] (uwb_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[5.990830] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so\n'}
+[5.991139] (uwb_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[5.991352] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so\n'}
+[5.991607] (uwb_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/Judy/safmc_uwb/install/uwb_msgs/local/lib/python3.10/dist-packages/uwb_msgs/uwb_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""\n'}
+[5.991843] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_generator_py.so\n'}
+[5.992037] (uwb_msgs) StdoutLine: {'line': b'-- Set runtime path of "/home/Judy/safmc_uwb/install/uwb_msgs/lib/libuwb_msgs__rosidl_generator_py.so" to ""\n'}
+[5.992530] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/msg/Range.idl\n'}
+[5.992757] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/msg/Range.msg\n'}
+[5.993117] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/ament_index/resource_index/package_run_dependencies/uwb_msgs\n'}
+[5.993701] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/ament_index/resource_index/parent_prefix_path/uwb_msgs\n'}
+[5.993895] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/environment/ament_prefix_path.sh\n'}
+[5.994102] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/environment/ament_prefix_path.dsv\n'}
+[5.994373] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/environment/path.sh\n'}
+[5.994544] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/environment/path.dsv\n'}
+[5.994723] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/local_setup.bash\n'}
+[5.994887] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/local_setup.sh\n'}
+[5.995088] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/local_setup.zsh\n'}
+[5.995247] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/local_setup.dsv\n'}
+[5.995403] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/package.dsv\n'}
+[5.996104] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/ament_index/resource_index/packages/uwb_msgs\n'}
+[5.996706] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_cExport.cmake\n'}
+[5.996895] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_cExport-noconfig.cmake\n'}
+[5.997100] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_typesupport_fastrtps_cExport.cmake\n'}
+[5.997257] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake\n'}
+[5.997428] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_introspection_cExport.cmake\n'}
+[5.997572] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake\n'}
+[5.997729] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_cExport.cmake\n'}
+[5.997883] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_cExport-noconfig.cmake\n'}
+[5.998043] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_cppExport.cmake\n'}
+[5.998211] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_typesupport_fastrtps_cppExport.cmake\n'}
+[5.998360] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake\n'}
+[5.998521] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_introspection_cppExport.cmake\n'}
+[5.998675] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake\n'}
+[5.998831] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_cppExport.cmake\n'}
+[5.999052] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgs__rosidl_typesupport_cppExport-noconfig.cmake\n'}
+[5.999184] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_pyExport.cmake\n'}
+[5.999330] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/export_uwb_msgs__rosidl_generator_pyExport-noconfig.cmake\n'}
+[5.999494] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/rosidl_cmake-extras.cmake\n'}
+[5.999703] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/ament_cmake_export_dependencies-extras.cmake\n'}
+[5.999892] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/ament_cmake_export_include_directories-extras.cmake\n'}
+[6.000101] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/ament_cmake_export_libraries-extras.cmake\n'}
+[6.000169] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/ament_cmake_export_targets-extras.cmake\n'}
+[6.000315] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake\n'}
+[6.000521] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake\n'}
+[6.000685] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgsConfig.cmake\n'}
+[6.000857] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/cmake/uwb_msgsConfig-version.cmake\n'}
+[6.001025] (uwb_msgs) StdoutLine: {'line': b'-- Installing: /home/Judy/safmc_uwb/install/uwb_msgs/share/uwb_msgs/package.xml\n'}
+[6.003402] (uwb_msgs) CommandEnded: {'returncode': 0}
+[6.015391] (-) TimerEvent: {}
+[6.035119] (uwb_msgs) JobEnded: {'identifier': 'uwb_msgs', 'rc': 0}
+[6.036166] (-) EventReactorShutdown: {}

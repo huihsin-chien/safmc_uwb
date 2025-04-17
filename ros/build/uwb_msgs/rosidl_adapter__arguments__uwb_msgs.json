@@ -1,0 +1,8 @@
+{
+  "package_name": "uwb_msgs",
+  "non_idl_tuples": [
+    "/home/Judy/safmc_uwb/ros/src/uwb_msgs:msg/Range.msg",
+    "/home/Judy/safmc_uwb/ros/src/uwb_msgs:msg/Pose.msg",
+    "/home/Judy/safmc_uwb/ros/src/uwb_msgs:msg/TagPosition.msg"
+  ]
+}

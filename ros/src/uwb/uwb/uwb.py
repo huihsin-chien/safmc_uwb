@@ -71,7 +71,7 @@ class UWBdata(Position):
     def get_pooled_distances(self) -> dict:
         """回傳平均距離且濾除第一四分位數與第三四分位數以外的數據"""
         result = {}
-        for tag, data in self.pooling_data.items():
+        for tag, data in self.X.items():
             if data:
                 print(f"Original data for {tag}: {data}, avg: {sum([r for r, _ in data]) / len(data)}")
                 distances = [r for r, _ in data]

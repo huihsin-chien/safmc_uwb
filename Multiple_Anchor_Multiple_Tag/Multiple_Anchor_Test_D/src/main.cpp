@@ -5,14 +5,13 @@
 char EUI[] = "AA:BB:CC:DD:EE:FF:00:04"; 
 uint16_t next_anchor = 5 ;
 
-byte currentTagShortaddress[2];
 // ranging counter (per second)
 uint16_t successRangingCount[8] = {0};
 uint32_t rangingCountPeriod = 0;
 float samplingRate = 0;
 
 uint16_t blink_rate = 50;
-uint16_t self_device_address = 3;
+uint16_t self_device_address = 4;
 
 double range_self;
 
@@ -33,10 +32,10 @@ class StateMachine{
     void ranging(){
       switch(state){
         case State::built_coord_1:
-            tagTWR(blink_rate, &EUI[0]);               
-            break;
+          tagTWR(blink_rate, &EUI[0]);               
+          break;
         case State::built_coord_2:
-            tagTWR(blink_rate, &EUI[0]);
+          tagTWR(blink_rate, &EUI[0]);
           break;
         case State::built_coord_3:
           tagTWR(blink_rate, &EUI[0]);
@@ -137,7 +136,6 @@ void handleRanging_self_calibration(){
       size_t recv_len = DW1000Ng::getReceivedDataLength();
       byte recv_data[recv_len];
       DW1000Ng::getReceivedData(recv_data, recv_len);
-      memcpy(currentTagShortaddress, &recv_data[7], 2); // EUI starts at position 2 (assuming EUI is 8 bytes long)
       if ( recv_data[7] == 0x05 && recv_data[8] == 0x00){ // recieved Anchor E's blink
           successRangingCount[4]++;
       }else if (recv_data[7] == 0x06 && recv_data[8] == 0x00){
@@ -204,9 +202,6 @@ void ranging_flying() {
         size_t recv_len = DW1000Ng::getReceivedDataLength();
         byte recv_data[recv_len];
         DW1000Ng::getReceivedData(recv_data, recv_len);
-        // memcpy(currentTagShortAddress, &recv_data[16], 2); // position: see void transmitRangingInitiation(byte tag_eui[], byte tag_short_address[]);
-        memcpy(currentTagEUI, &recv_data[2], 8); // EUI starts at position 2 (assuming EUI is 8 bytes long)
-        memcpy(currentTagShortaddress, &recv_data[7], 2);
    
         String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
         rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";

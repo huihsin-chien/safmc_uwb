@@ -1,0 +1,6 @@
+Invoking command in '/home/Judy/safmc_uwb/build/uwb_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/Judy/safmc_uwb/ros_enfu/src/uwb_msgs -DCMAKE_INSTALL_PREFIX=/home/Judy/safmc_uwb/install/uwb_msgs
+Invoked command in '/home/Judy/safmc_uwb/build/uwb_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/Judy/safmc_uwb/ros_enfu/src/uwb_msgs -DCMAKE_INSTALL_PREFIX=/home/Judy/safmc_uwb/install/uwb_msgs
+Invoking command in '/home/Judy/safmc_uwb/build/uwb_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/Judy/safmc_uwb/build/uwb_msgs -- -j12 -l12
+Invoked command in '/home/Judy/safmc_uwb/build/uwb_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/Judy/safmc_uwb/build/uwb_msgs -- -j12 -l12
+Invoking command in '/home/Judy/safmc_uwb/build/uwb_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/Judy/safmc_uwb/build/uwb_msgs
+Invoked command in '/home/Judy/safmc_uwb/build/uwb_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/Judy/safmc_uwb/build/uwb_msgs
