@@ -349,17 +349,19 @@ namespace DW1000NgRTLS_ext {
     // 經由 transmitPoll() 修改成 transmitDataToMediatorUWB，傳送 range、anchor & tag eui、RX power 資料給 mediator UWB；
     //（目前）不會有mediator UWB 回傳 Poll Ack
     void transmitDataToMediatorUWB(byte mediatorUWB_address[], byte tagDeviceAddress[], double tag_range, float RX_power) {
-        RX_power = abs(RX_power);
-        tag_range *= 100; // 將 tag_range 乘上 100，使其成為整數，使用 writeValueToBytes
-        RX_power *= 100; 
+        tag_range *= 10000; // 將 tag_range 乘上 100，使其成為整數，使用 writeValueToBytes
+        RX_power = 10* abs(RX_power); 
         static_cast<uint16_t>(tag_range); 
         static_cast<uint16_t>(RX_power);
 
-        // TODO 要不要改成 16 進位
+
         byte Poll[] = {DATA, SHORT_SRC_AND_DEST, SEQ_NUMBER++, 0,0, 0,0, 0,0 , RANGING_TAG_POLL, 
-            tagDeviceAddress[0], tagDeviceAddress[1], 0,0,0,0,0, 0,0,0,0,0};
-        DW1000NgUtils::writeValueToBytes(&Poll[12], tag_range, 5);
-        DW1000NgUtils::writeValueToBytes(&Poll[17], RX_power, 5);
+            tagDeviceAddress[0], tagDeviceAddress[1], 0,0,0,0,0};
+        DW1000NgUtils::writeValueToBytes(&Poll[12], tag_range/256, 1);
+        DW1000NgUtils::writeValueToBytes(&Poll[13], (int)tag_range%256, 1);
+        DW1000NgUtils::writeValueToBytes(&Poll[16], (int)RX_power%256, 1);
+        DW1000NgUtils::writeValueToBytes(&Poll[15], ((int)RX_power%65536)/256, 1);
+        DW1000NgUtils::writeValueToBytes(&Poll[14], RX_power/65536, 1);
 
         DW1000Ng::getNetworkId(&Poll[3]);
         memcpy(&Poll[5], mediatorUWB_address, 2);

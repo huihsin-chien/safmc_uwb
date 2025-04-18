@@ -19,9 +19,8 @@ void loop() {
 }
 
 void getAnchorRangeReport(){
-    double range;
     if(!DW1000NgRTLS_ext::receiveFrame()){
-        Serial.println("no frame recieved");
+        // Serial.println("no frame recieved");
         return;
     }else{
         size_t poll_len = DW1000Ng::getReceivedDataLength();
@@ -32,15 +31,27 @@ void getAnchorRangeReport(){
         // uint64_t timePollReceived = DW1000Ng::getReceiveTimestamp();
 
         // 印出距離訊息
+        char temp_buff[256];
+        snprintf(temp_buff, 256, "data10: %x, data11: %x, data12: %x, data13: %x,data14: %x, data15: %x, data16: %x\n", 
+            poll_data[10], poll_data[11],
+            poll_data[12],poll_data[13], 
+            poll_data[14],poll_data[15],poll_data[16]);
+        Serial.println(temp_buff);
+
+        double range_scale = 0.0001;
+        double power_scale = 0.1;
         char rangeCharArr[256];
-        snprintf(rangeCharArr, 256, "anchor_range,%x%x%x.%x%x,\ntagEUI: %x:%x,\nanchorEUI: %x:%x,\nRX_power: -%x%x%x.%x%x dBm\n", 
-            poll_data[12], poll_data[13], poll_data[14], poll_data[15], poll_data[16], 
+        double range = 256.0 * (double)poll_data[12] + (double)poll_data[13];
+        range *= range_scale;
+        double rx_power = pow(256,2) * (double)poll_data[14] + 256 * (double)poll_data[15] + (double)poll_data[16];
+        rx_power *= power_scale;
+        snprintf(rangeCharArr, 256, "anchor_range:%fm,\ntagEUI: %x:%x,\nanchorEUI: %x:%x,\nRX_power: -%f dBm\n", 
+            range, 
             poll_data[10], poll_data[11], 
-            poll_data[7],poll_data[8], 
-            poll_data[17], poll_data[18], poll_data[19], poll_data[20], poll_data[21]);
+            poll_data[8],poll_data[7], 
+            rx_power);
         Serial.println(rangeCharArr);
         }
     }
-
 }
 
