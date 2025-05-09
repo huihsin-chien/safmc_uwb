@@ -1,7 +1,7 @@
 #include "uwb_common.hpp"
 
 // == START OF Device Config ==
-#define ANCHOR_1
+#define ANCHOR_4
 
 #ifdef ANCHOR_1
 const char EUI[] = "AA:BB:CC:DD:EE:FF:00:01";

@@ -148,7 +148,7 @@ class UWBDataMatrix:
             dbg(f"- - - no anchor_eui {anchor_eui} in data")
             return
 
-        self.data[tag_eui][anchor_eui].append(UWBData(distance))
+        self.data[tag_eui][anchor_eui].append(UWBData(distance, RX_power))
         if SAVE_DATA:
             timestamp_str = time.strftime('%Y-%m-%d %H:%M:%S')
             anchor_eui_encoded = anchor_eui.replace(":", "-")
@@ -247,9 +247,9 @@ class UWBDataMatrix:
 class UWBPublisher():
     serials: list[serial.Serial] = []
     uwb_data_matrix: UWBDataMatrix = None
-    state: str = "scan_UWB" 
+    state: str = "build_coord_1" 
         # 狀態機的狀態。其他的狀態：build_coord_2, build_coord_3, self_calibration, flying
-    target_state: str = "00" 
+    target_state: str = "11" 
         # 狀態機的目標狀態，將透過 Serial 發給 UWB Devices。
         # 為減少突波的影響，UWBDevice_Rewrite 要讀取連續兩個相同的 char，故我們要連續發送
         # 其他值可能是 "22", "33", "44", "55", "66", "77", "88", "ff" 等，對應的 state 為
@@ -257,7 +257,7 @@ class UWBPublisher():
         # - self_calibration 對應多個 target_state。變化規則是：
         #   - 先進入 "44"
         #   - 當 00:05~00:08 任一進入其 anchor_state 後，由 "55", "66", "77", "88" 的各種組合（如 "5588", "886677"）來通知 anchor 切換 state
-
+    build_coord_anchors = [] # 用於build_coord的 anchors
    
     
     def __init__(self):
@@ -293,7 +293,10 @@ class UWBPublisher():
         # 產生 UWB 設備的代表物件
         self.anchors = [UWBDevice(f"00:{i + 1:02}") for i in range(8)]    # Anchor "00:0i"，其中 i = 1, 2, ..., 8
         self.tags = [UWBDevice(f"{i + 1:02}:{i + 1:02}") for i in range(10)]  # Tag "0i:0i"，其中 i = 1, 2, ..., 10
-        
+        self.build_coord_anchors = self.anchors[0:8] # 00:01~00:08，使用anchorA~anchorD 作為建立初始座標的四個 anchor，如果其中有 anchor 失聯，則使用 eui 序號較小的 anchor 遞補
+        self.start_state_time = time.time() # 記錄 State 開始時間，用於將超過一定時間、卻尚未取得足夠資料的 Anchor 從建立座標的四個 anchor 中移除
+        self.remove_anchor_time = 20 # 設定移除 anchor 的時間門檻（秒）
+
         dbg("Starting Self Calibration")
 
         # 進行 Self Calibration
@@ -324,7 +327,7 @@ class UWBPublisher():
         )
 
         # 用於判斷 tag-like anchors 到 anchors 之間的資料量已足夠
-        def have_enough_data_between(tag_euis: list[str], anchor_euis: list[str]) -> bool:
+        def have_enough_data_between(tag_euis: list[str], anchor_euis: list[str], data_number=20) -> bool:
             # uwb_calibration_data_matrix.clear_outdated_measurements(tag_euis[0], anchor_euis[0])
             dbg("- -", "\n- - ".join(
                 f"from {tag_eui} to {anchor_eui}: {len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui])}" 
@@ -332,7 +335,7 @@ class UWBPublisher():
                 for anchor_eui in anchor_euis
             ))
             return all(
-                len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui]) >= 20
+                len(uwb_calibration_data_matrix.data[tag_eui][anchor_eui]) >= data_number
                 for tag_eui in tag_euis
                 for anchor_eui in anchor_euis
             )
@@ -345,16 +348,6 @@ class UWBPublisher():
         #       read_serial() 會讀到回覆，並且更改 self.state，進而進入下一步
 
         
-        dbg("- scan_UWB")
-        ## anchorA ↔all other anchors (& tags)，得到現在有哪些 anchor 活著
-        ##- 寫進UWBPublisher 的 anchors: list[UWBDevice] = []
-        self.state = "scan_UWB"
-        self.target_state: str = "00" 
-        while self.state == "scan_UWB":
-            # self.broadcast_target_state()
-
-            # 讀取 serial，如果 anchor eui 還不在 self.anchor 中，把此 anchor 加入
-            
 
 
         dbg("- built_coord_1")
@@ -367,30 +360,50 @@ class UWBPublisher():
             self.broadcast_target_state()
             # dbg("- - reading serial")
             self.read_serial(uwb_calibration_data_matrix)
-            if have_enough_data_between(["00:02", "00:03", "00:04"], ["00:01"]):
+            # if have_enough_data_between(["00:02", "00:03", "00:04"], ["00:01"]):
+            if have_enough_data_between([self.build_coord_anchors[i].eui for i in range(1, 4)], ["00:01"]): 
                 self.state = "built_coord_2"
                 self.target_state = "22"
                 ## 假定 UWB Anchors 此時不會移動，故預先把距離資料儲存，以免稍後遭清除
                 for i in range(1, 4):
                     distance_matrix[0][i] \
                     = distance_matrix[i][0] \
-                    = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:01")
+                    = uwb_calibration_data_matrix.get_distance(self.build_coord_anchors[i].eui, "00:01")    
                 break
-        
-        dbg("- built_coord_2")
+            if time.time() - self.start_state_time > self.remove_anchor_time:
+                # 如果在 20 秒內資料小於五，則將該 anchor 從建立座標的四個 anchor 中移除
+                for j in range(1, 4):
+                    if not have_enough_data_between([self.build_coord_anchors[j].eui], ["00:01"], data_number=5):
+                        if len(self.build_coord_anchors) <5: #如果只剩下 4 個 anchor，則不移除 
+                            break
+                        self.build_coord_anchors.remove(self.build_coord_anchors[1])
+                self.start_state_time = time.time()
 
+     # 如果在 20 秒內沒有取得足夠資料，則將該 anchor 從建立座標的四個 anchor 中移除 
+        dbg("- built_coord_2")
+        self.start_state_time = time.time() # 重設 State 開始時間
         ## get_calib_data_2 階段
         while self.state == "built_coord_2":
             self.broadcast_target_state()
             self.read_serial(uwb_calibration_data_matrix)
-            if have_enough_data_between(["00:03", "00:04"], ["00:02"]):
+            if have_enough_data_between([self.build_coord_anchors[i].eui for i in range(2, 3
+            )], [self.build_coord_anchors[1].eui]):
                 self.state = "built_coord_3"
                 self.target_state = "33"
                 for i in range(2, 4):
                     distance_matrix[1][i] \
                     = distance_matrix[i][1] \
-                    = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:02")
+                    = uwb_calibration_data_matrix.get_distance(self.build_coord_anchors[i].eui, self.build_coord_anchors[1].eui)
+                    # = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:02")
                 break
+            if time.time() - self.start_state_time > self.remove_anchor_time:
+                # 如果在 20 秒內資料小於五，則將該 anchor 從建立座標的四個 anchor 中移除
+                for j in range(2, 4):
+                    if not have_enough_data_between([self.build_coord_anchors[j].eui], [self.build_coord_anchors[1].eui], data_number=5):
+                        if len(self.build_coord_anchors) <5: #如果只剩下 4 個 anchor，則不移除 
+                            break
+                        self.build_coord_anchors.remove(self.build_coord_anchors[2])
+                self.start_state_time = time.time()
             
         dbg("- built_coord_3")
 
@@ -398,14 +411,25 @@ class UWBPublisher():
         while self.state == "built_coord_3":
             self.broadcast_target_state()
             self.read_serial(uwb_calibration_data_matrix)
-            if have_enough_data_between(["00:04"], ["00:03"]):
+            if have_enough_data_between([self.build_coord_anchors[3].eui], [self.build_coord_anchors[2].eui]):
                 # self.state = "self_calibration"
                 # self.target_state = "s"         # don't change state yet
-                for i in range(3, 4):
-                    distance_matrix[2][i] \
-                    = distance_matrix[i][2] \
-                    = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:03")
-                break
+                distance_matrix[2][i] \
+                = distance_matrix[i][2] \
+                = uwb_calibration_data_matrix.get_distance(self.build_coord_anchors[3].eui, self.build_coord_anchors[2].eui)
+                
+            if time.time() - self.start_state_time > self.remove_anchor_time:
+                if len(self.build_coord_anchors) <5:
+                    break
+                else:
+                    if not have_enough_data_between([self.build_coord_anchors[3].eui], [self.build_coord_anchors[2].eui], data_number=5):
+                        self.build_coord_anchors.remove(self.build_coord_anchors[3])
+
+            # 將沒有在 build_coord 中變成定位用的 4 個之一的 anchor pop 掉
+            while len(self.build_coord_anchors)>4:
+                self.build_coord_anchors.pop()
+                    
+
 
         ## 重試到 build_3D_coord 成功
         while True:
@@ -425,7 +449,7 @@ class UWBPublisher():
                 for i in range(3, 4):
                     distance_matrix[2][i] \
                     = distance_matrix[i][2] \
-                    = uwb_calibration_data_matrix.get_distance(f"00:0{i + 1}", "00:03")
+                    = uwb_calibration_data_matrix.get_distance(self.build_coord_anchors[3].eui, self.build_coord_anchors[2].eui)
                 continue
             print("anchor_coords are", anchor_coords)
             for i in range(4):
@@ -438,22 +462,33 @@ class UWBPublisher():
         # self.target_state = "ff"
         # self.state = "flying"
 
-    is_in_anchor_state = {
-        "00:05": False,
-        "00:06": False,
-        "00:07": False,
-        "00:08": False
-    }
+    # is_in_anchor_state = {
+    #     "00:05": False,
+    #     "00:06": False,
+    #     "00:07": False,
+    #     "00:08": False
+    # }
 
-    turn_into_anchor_symbol = {
-        "00:05": "55",
-        "00:06": "66",
-        "00:07": "77",
-        "00:08": "88"
-    }
+    # turn_into_anchor_symbol = {
+    #     "00:05": "55",
+    #     "00:06": "66",
+    #     "00:07": "77",
+    #     "00:08": "88"
+    # }
+
+
+
+    is_in_anchor_state = {}
+    turn_into_anchor_symbol = {}
+    # print(len(build_coord_anchors))
+    if len(build_coord_anchors) > 5:
+        for i in range(1, 8):
+            if f"00:0{i}" not in [build_coord_anchors[1].eui, build_coord_anchors[2].eui, build_coord_anchors[3].eui]:
+                is_in_anchor_state[f"00:0{i}"] = False
+                turn_into_anchor_symbol[f"00:0{i}"] = False
 
     def self_calibration(self, uwb_data_matrix) -> None:
-        # 在完成前四個anchor定位後, 定位後四個EFHG
+        # 在完成前四個anchor定位後, 定位後四個anchor
 
         ## self_calibration 階段
 
@@ -496,7 +531,8 @@ class UWBPublisher():
     
     # 重新讀取 Ports 列表，並移除／新增 Serial Connections
     def update_serial_list(self) -> None:
-        existing_ports = set(port.device for port in serial.tools.list_ports.comports() if "ttyACM" in port.device)
+        # existing_ports = set(port.device for port in serial.tools.list_ports.comports() if "ttyACM" in port.device)
+        existing_ports = set(port.device for port in serial.tools.list_ports.comports())
 
         # 關閉不再存在的 Serial Connection，留下現存的並記錄已開啟的 Ports
         opened_ports = set()
@@ -582,10 +618,11 @@ class UWBPublisher():
                 if line.startswith("anchor_range,"): # 對於距離資料，新增測距結果到 UWB Data Matrix
                     try: 
                         values = line.split(",")
-                        if len(values) != 4:
+                        if len(values) != 5:
+                            print(f"Invalid range data format: {line}")
                             continue
                         _, distance, from_eui, to_eui, RX_power = values
-                    
+                        print(f"distance: {distance}, from_eui: {from_eui}, to_eui: {to_eui},{RX_power}")
                         # from_eui: str = self.get_eui_from_id(from_id) # somehow get the anchor_eui from from_id
                         # if from_eui is None:
                         #     dbg(f"- - - from_id {from_id} is an unknown id")

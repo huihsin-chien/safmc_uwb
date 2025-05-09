@@ -31,12 +31,12 @@ void getAnchorRangeReport(){
         // uint64_t timePollReceived = DW1000Ng::getReceiveTimestamp();
 
         // 印出距離訊息
-        char temp_buff[256];
-        snprintf(temp_buff, 256, "data10: %x, data11: %x, data12: %x, data13: %x,data14: %x, data15: %x, data16: %x\n", 
-            poll_data[10], poll_data[11],
-            poll_data[12],poll_data[13], 
-            poll_data[14],poll_data[15],poll_data[16]);
-        Serial.println(temp_buff);
+        // char temp_buff[256];
+        // snprintf(temp_buff, 256, "data10: %x, data11: %x, data12: %x, data13: %x,data14: %x, data15: %x, data16: %x\n", 
+        //     poll_data[10], poll_data[11],
+        //     poll_data[12],poll_data[13], 
+        //     poll_data[14],poll_data[15],poll_data[16]);
+        // Serial.println(temp_buff);
 
         double range_scale = 0.0001;
         double power_scale = 0.1;
@@ -45,7 +45,7 @@ void getAnchorRangeReport(){
         range *= range_scale;
         double rx_power = pow(256,2) * (double)poll_data[14] + 256 * (double)poll_data[15] + (double)poll_data[16];
         rx_power *= power_scale;
-        snprintf(rangeCharArr, 256, "anchor_range:%fm,\ntagEUI: %x:%x,\nanchorEUI: %x:%x,\nRX_power: -%f dBm\n", 
+        snprintf(rangeCharArr, 256, "anchor_range,%f,%02x:%02x,%02x:%02x,-%f", //"anchor_range:%fm,tagEUI: %02x:%02x,anchorEUI: %02x:%02x,RX_power: -%f dBm"
             range, 
             poll_data[10], poll_data[11], 
             poll_data[8],poll_data[7], 
