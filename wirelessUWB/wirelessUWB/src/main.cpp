@@ -144,15 +144,11 @@ void as_tag();
 void as_anchor();
 
 void setup() {
-    // 為了測試方便，先不使用 Change state，跳過 self-calibration，讓所有 anchor 一開始就是 anchor。
-    // if ((!isAnchorByDefault && sizeof(becomeTagSymbols) != 0) || isAnchorByDefault){
-    //     isAnchor = true;
-    // }
     isAnchor = isAnchorByDefault;
-
     Serial.begin(9600);
     setupUWB(&EUI[0], self_device_address, isAnchor ? ANCHOR_FRAME_FILTER_CONFIG : TAG_FRAME_FILTER_CONFIG); // 2 is the device address of the anchorB
 }
+
 
 void loop() {
     try{
@@ -187,7 +183,7 @@ void as_tag() {
     }
 }
 
-byte MediatorUWB_device_address[2] = {0x02, 0x02}; // MediatorUWB_device_address先設定 10 (eui 10:10)
+byte MediatorUWB_device_address[2] = {0x02, 0x02}; // MediatorUWB_device_address先設定 0202 (eui 02:02)
 
 void as_anchor(){
     // Serial.println("u stupid");
@@ -220,4 +216,3 @@ void as_anchor(){
     DW1000NgRTLS_ext::transmitDataToMediatorUWB(MediatorUWB_device_address, tagDeviceAddress, result.range, DW1000Ng::getReceivePower());
 
 }
-
