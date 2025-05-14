@@ -31,7 +31,7 @@ def dbg(*args, **kwargs):
     print(*args, **kwargs)
 
 # 一些設定
-SAVE_DATA = False # 是否儲存 UWB 設備的位置資訊用於 debug
+SAVE_DATA = True # 是否儲存 UWB 設備的位置資訊用於 debug
 DATA_FOLDER = os.path.join(os.getcwd(), "output") # 儲存資料的資料夾
 
 # # 為了幾乎沒有的效能差異，我們預先編譯正則表達式（Regular Expression）
@@ -136,11 +136,11 @@ class UWBDataMatrix:
                     csv_writer = csv.writer(file, escapechar='"')
                     csv_writer.writerow(["timestamp", "tag_eui", "distance"]) # 標題
             
-            # 建立檔案，用以儲存定位結果
-            self.multilateration_file = os.path.join(DATA_FOLDER, f"multilateration_results_{self.timestamp_str}.csv")
-            with open(self.multilateration_file, mode='w', newline='') as file:
-                csv_writer = csv.writer(file, escapechar='"')
-                csv_writer.writerow(["timestamp", "x", "y", "z"])
+            # # 建立檔案，用以儲存定位結果
+            # self.multilateration_file = os.path.join(DATA_FOLDER, f"multilateration_results_{self.timestamp_str}.csv")
+            # with open(self.multilateration_file, mode='w', newline='') as file:
+            #     csv_writer = csv.writer(file, escapechar='"')
+            #     csv_writer.writerow(["timestamp","tag_eui","x", "y", "z"])
 
     # 將測量資訊加入資料庫
     def add_measurement(self, tag_eui: str, anchor_eui: str, distance: float) -> None:
@@ -176,28 +176,29 @@ class UWBDataMatrix:
         measurements: deque[UWBData] = self.data[tag_eui][anchor_eui]
         distances: list[float] = [measurement.distance for measurement in measurements]
 
-        # # 去除極值
-        # q1 = np.percentile(distances, 25) if distances else float("-inf")
-        # q3 = np.percentile(distances, 75) if distances else float("inf")
-        # filtered_distances = [distance for distance in distances if q1 <= distance <= q3]
-
-        # # 資料不足提早離開
-        # if len(filtered_distances) <= 0:
-        #     return None
-
-        # # 線性修正固定偏差值 & 縮放比例，來提高精準度
-        # trimmed_mean = np.mean(filtered_distances)
-        # estimated_real_distance = (trimmed_mean - 0.1766) / 1.0349
-
-        # # 計算並回傳平均值
-        # return estimated_real_distance
-
         # 資料不足提早離開
         if len(distances) <= 0:
             return None
+        # 去除極值
+        q1 = np.percentile(distances, 25) if distances else float("-inf")
+        q3 = np.percentile(distances, 75) if distances else float("inf")
+        filtered_distances = [distance for distance in distances if q1 <= distance <= q3]
+
+        # 資料不足提早離開
+        if len(filtered_distances) <= 0:
+            return None
+
+        # 線性修正固定偏差值 & 縮放比例，來提高精準度
+        trimmed_mean = np.mean(filtered_distances)
+        estimated_real_distance = (trimmed_mean - 0.1766) / 1.0349
+
+        # 計算並回傳平均值
+        return estimated_real_distance
+
         
-        distances.sort()
-        return distances[len(distances) // 2]
+        
+        # distances.sort()
+        # return distances[len(distances) // 2]
 
     # 計算多點定位（multilateration）的結果
     def locate_tag(self, tag_eui: str, tol: float=0.0009) -> Optional[Tuple[float, float, float]]:
@@ -273,7 +274,7 @@ class UWBPublisher(Node):
             self.multilateration_file = os.path.join(DATA_FOLDER, f"multilateration_results_{time.strftime('%Y%m%d_%H%M%S')}.csv")
             with open(self.multilateration_file, mode='w', newline='') as file:
                 csv_writer = csv.writer(file, escapechar='"')
-                csv_writer.writerow(["timestamp", "x", "y", "z"]) # 標題
+                csv_writer.writerow(["timestamp","tag_eui", "x", "y", "z"]) # 標題
 
             # 儲存 Serial Read 的結果
             self.serial_read_file = os.path.join(DATA_FOLDER, f"serial_read_{time.strftime('%Y%m%d_%H%M%S')}.csv")
@@ -592,6 +593,10 @@ class UWBPublisher(Node):
             self.tag_position_publisher.publish(msg)
 
             dbg(f"- coordinate for {tag_eui} is {coordinate}")
+            with open(self.multilateration_file, mode='a', newline='') as file:
+                csv_writer = csv.writer(file, escapechar='"')
+                csv_writer.writerow([time.strftime('%Y-%m-%d %H:%M:%S'), tag_eui, msg.x, msg.y, msg.z])
+
 
 # main 函數，僅在直接執行這個檔案時才執行
 def main(args=None):

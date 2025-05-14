@@ -1,7 +1,7 @@
 #include "uwb_common.hpp"
 
 // == START OF Device Config ==
-#define TAG_4
+#define ANCHOR_4
 
 // const char becomeTagSuccessMessage[] = "";
 // const char becomeAnchorSuccessMessage[] = "";
