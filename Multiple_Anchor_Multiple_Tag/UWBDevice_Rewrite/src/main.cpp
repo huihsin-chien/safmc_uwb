@@ -1,7 +1,8 @@
 #include "uwb_common.hpp"
+#include <ESP.h>
 
 // == START OF Device Config ==
-#define ANCHOR_4
+#define ANCHOR_2
 
 // const char becomeTagSuccessMessage[] = "";
 // const char becomeAnchorSuccessMessage[] = "";
@@ -143,6 +144,11 @@ uint32_t blink_rate = 50;
 
 bool isAnchor = false;
 
+// 新加的新加的
+unsigned long lastSerialOutput = 0;
+unsigned long lastCheck = 0;
+int serialOutputCount = 0;
+
 void as_tag();
 void as_anchor();
 
@@ -206,6 +212,15 @@ void loop() {
         }
     } catch (const std::exception& e) {
     }
+
+    // 每10秒檢查一次
+    if(millis() - lastCheck > 10000) {
+        lastCheck = millis();
+        if(serialOutputCount < 3) { // 10秒內少於3次輸出就當死掉
+            ESP.restart();
+        }
+        serialOutputCount = 0; // reset counter
+    }
 }
 
 
@@ -248,17 +263,12 @@ void as_anchor(){
     if(result.range < 0.001 || result.range > 500) 
         return;
 
-    // 印出距離訊息
-    // char rangeNumString[32];
-    // snprintf(rangeNumString, 32, "%lf", result.range);
-    // String rangeString = "Range: "; rangeString += rangeNumString; rangeString += " m";
-    // rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
-    // rangeString += recv_data[7]; rangeString += recv_data[8]; // tag 的短 EUI
-    // rangeString += " from Anchor "; rangeString += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20]; rangeString += EUI[21]; rangeString += EUI[22]; rangeString += EUI[23];
-    // Serial.println(rangeString);
-
     // 印出距離訊息。格式為：`anchor_range,${distance},${tagEUI},${anchorEUI}`
     char rangeCharArr[256];
     snprintf(rangeCharArr, 256, "anchor_range,%lf,%02x:%02x,%s", result.range, recv_data[8], recv_data[7], &EUI[18]);
     Serial.println(rangeCharArr);
+
+    // 記錄 serial 輸出
+    lastSerialOutput = millis();
+    serialOutputCount++;
 }
