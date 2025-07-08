@@ -29,9 +29,9 @@ device_configuration_t DEFAULT_CONFIG = {
 
     SFDMode::STANDARD_SFD,
     Channel::CHANNEL_2,
-    DataRate::RATE_6800KBPS,
+    DataRate::RATE_110KBPS,
     PulseFrequency::FREQ_16MHZ,
-    PreambleLength::LEN_64,
+    PreambleLength::LEN_2048,
     PreambleCode::CODE_3
 };
 
@@ -84,4 +84,7 @@ void setupUWB(const char* EUI, uint16_t device_address, frame_filtering_configur
     DW1000Ng::setGPIOMode(8, LED_MODE);
     DW1000Ng::setGPIOMode(10, LED_MODE);
     DW1000Ng::setGPIOMode(12,   LED_MODE);
+
+    DW1000Ng::setTCPGDelay(0xC2);
+    DW1000Ng::setTXPower(0x75757575);
 }
