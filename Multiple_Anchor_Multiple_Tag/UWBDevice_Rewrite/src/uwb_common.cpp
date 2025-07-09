@@ -25,13 +25,13 @@ frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
 };
 
 device_configuration_t DEFAULT_CONFIG = {
-    false, true, true, true, false,
+    false, true, false, true, false,
 
     SFDMode::STANDARD_SFD,
     Channel::CHANNEL_2,
-    DataRate::RATE_110KBPS,
+    DataRate::RATE_6800KBPS,
     PulseFrequency::FREQ_16MHZ,
-    PreambleLength::LEN_2048,
+    PreambleLength::LEN_64,
     PreambleCode::CODE_3
 };
 
@@ -85,6 +85,9 @@ void setupUWB(const char* EUI, uint16_t device_address, frame_filtering_configur
     DW1000Ng::setGPIOMode(10, LED_MODE);
     DW1000Ng::setGPIOMode(12,   LED_MODE);
 
-    DW1000Ng::setTCPGDelay(0xC2);
-    DW1000Ng::setTXPower(0x75757575);
+    DW1000Ng::setTXPower(0x801F1F00);
+
+   
+
+
 }

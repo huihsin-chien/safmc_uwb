@@ -1,8 +1,16 @@
 #include "uwb_common.hpp"
 #include <ESP.h>
+#include <map>
+#include <deque>
+#include <utility>
+
+typedef std::pair<float, unsigned long> RangeTimePair;
+typedef std::deque<RangeTimePair> RangeQueue;
+std::map<uint16_t, RangeQueue> tagRangeQueues;
+std::map<uint16_t, double> averageDistanceMap; // key: tag address, value: distance
 
 // == START OF Device Config ==
-#define TAG_1
+#define TAG_2
 
 // const char becomeTagSuccessMessage[] = "";
 // const char becomeAnchorSuccessMessage[] = "";
@@ -13,63 +21,10 @@ const uint16_t self_device_address = 0x0001;
 const bool isAnchorByDefault = true;
 const char becomeTagSymbols[] = "";
 const char becomeAnchorSymbols[] = "";
+
 #endif
 
-#ifdef ANCHOR_2
-const char EUI[] = "AA:BB:CC:DD:EE:FF:00:02";
-const uint16_t self_device_address = 0x0002;
-const bool isAnchorByDefault = false;
-const char becomeTagSymbols[] = "1";
-const char becomeAnchorSymbols[] = "234567f";
-#endif
 
-#ifdef ANCHOR_3
-const char EUI[] = "AA:BB:CC:DD:EE:FF:00:03";
-const uint16_t self_device_address = 0x0003;
-const bool isAnchorByDefault = false;
-const char becomeTagSymbols[] = "12";
-const char becomeAnchorSymbols[] = "34567f";
-#endif
-
-#ifdef ANCHOR_4
-const char EUI[] = "AA:BB:CC:DD:EE:FF:00:04";
-const uint16_t self_device_address = 0x0004;
-const bool isAnchorByDefault = false;
-const char becomeTagSymbols[] = "123";
-const char becomeAnchorSymbols[] = "4567f";
-#endif
-
-#ifdef ANCHOR_5
-const char EUI[] = "AA:BB:CC:DD:EE:FF:00:05";
-const uint16_t self_device_address = 0x0005;
-const bool isAnchorByDefault = false;
-const char becomeTagSymbols[] = "1234";
-const char becomeAnchorSymbols[] = "5f";
-#endif
-
-#ifdef ANCHOR_6
-const char EUI[] = "AA:BB:CC:DD:EE:FF:00:06";
-const uint16_t self_device_address = 0x0006;
-const bool isAnchorByDefault = false;
-const char becomeTagSymbols[] = "1234";
-const char becomeAnchorSymbols[] = "6f";
-#endif
-
-#ifdef ANCHOR_7
-const char EUI[] = "AA:BB:CC:DD:EE:FF:00:07";
-const uint16_t self_device_address = 0x0007;
-const bool isAnchorByDefault = false;
-const char becomeTagSymbols[] = "1234";
-const char becomeAnchorSymbols[] = "7f";
-#endif
-
-#ifdef ANCHOR_8
-const char EUI[] = "AA:BB:CC:DD:EE:FF:00:08";
-const uint16_t self_device_address = 0x0008;
-const bool isAnchorByDefault = false;
-const char becomeTagSymbols[] = "1234";
-const char becomeAnchorSymbols[] = "8f";
-#endif
 
 #if defined(TAG_1) || defined(TAG_2) || defined(TAG_3) || defined(TAG_4) \
     || defined(TAG_5) || defined(TAG_6) || defined(TAG_7) || defined(TAG_8) \
@@ -79,10 +34,6 @@ const char becomeTagSymbols[] = "";
 const char becomeAnchorSymbols[] = "";
 #endif
 
-#if defined(TAG_5) || defined(TAG_6) || defined(TAG_7) || defined(TAG_8) \
-    || defined(TAG_9) || defined(TAG_10)
-#define FIXED_BLINK_RATE 1000
-#endif
 
 #ifdef TAG_1
 const char EUI[] = "AA:BB:CC:DD:EE:FF:01:01";
@@ -94,48 +45,9 @@ const char EUI[] = "AA:BB:CC:DD:EE:FF:02:02";
 const uint16_t self_device_address = 0x0202;
 #endif
 
-#ifdef TAG_3
-const char EUI[] = "AA:BB:CC:DD:EE:FF:03:03";
-const uint16_t self_device_address = 0x0303;
-#endif
-
-#ifdef TAG_4
-const char EUI[] = "AA:BB:CC:DD:EE:FF:04:04";
-const uint16_t self_device_address = 0x0404;
-#endif
-
-#ifdef TAG_5
-const char EUI[] = "AA:BB:CC:DD:EE:FF:05:05";
-const uint16_t self_device_address = 0x0505;
-#endif
-
-#ifdef TAG_6
-const char EUI[] = "AA:BB:CC:DD:EE:FF:06:06";
-const uint16_t self_device_address = 0x0606;
-#endif
-
-#ifdef TAG_7
-const char EUI[] = "AA:BB:CC:DD:EE:FF:07:07";
-const uint16_t self_device_address = 0x0707;
-#endif
-
-#ifdef TAG_8
-const char EUI[] = "AA:BB:CC:DD:EE:FF:08:08";
-const uint16_t self_device_address = 0x0808;
-#endif
-
-#ifdef TAG_9
-const char EUI[] = "AA:BB:CC:DD:EE:FF:09:09";
-const uint16_t self_device_address = 0x0909;
-#endif
-
-#ifdef TAG_10
-const char EUI[] = "AA:BB:CC:DD:EE:FF:10:10";
-const uint16_t self_device_address = 0x1010;
-#endif
-
-
 // ==  END OF Device Config  ==
+
+
 #ifdef FIXED_BLINK_RATE
 uint32_t blink_rate = FIXED_BLINK_RATE;
 #else
@@ -144,7 +56,9 @@ uint32_t blink_rate = 50;
 
 bool isAnchor = false;
 
-// 新加的新加的
+double a = 0.0; // 地上兩個tag的位置
+
+
 unsigned long lastSerialOutput = 0;
 unsigned long lastCheck = 0;
 int serialOutputCount = 0;
@@ -246,6 +160,16 @@ void as_tag() {
     }
 }
 
+
+void calculateXY(double a, double b, double c) {
+    double x=(a*a+c*c-b*b)/(2*a);
+    double y=sqrt(abs(c*c-x*x));
+    Serial.print("x: "); 
+    Serial.print(x);
+    Serial.print(" y: ");
+    Serial.println(y);
+}
+
 void as_anchor(){
     // 取得 tagFinishRange() 傳出的封包，並回傳接受
     RangeAcceptResult result = DW1000NgRTLS_ext::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
@@ -281,4 +205,43 @@ void as_anchor(){
     // 記錄 serial 輸出
     lastSerialOutput = millis();
     serialOutputCount++;
+
+
+    //7/8 edit
+    // 將距離和時間的pair存入tagRangeQueues
+
+    uint16_t tag_id = (recv_data[8] << 8) | recv_data[7];
+    unsigned long now = millis();
+    tagRangeQueues[tag_id].emplace_back(result.range, now);
+
+    //如果超過1.5秒的訊息就刪掉
+    RangeQueue& q = tagRangeQueues[tag_id];
+
+    Serial.print("Tag ID: ");
+    Serial.print(tag_id);
+    while (!q.empty() && q.front().second + 1500 < now) {
+        q.pop_front();
+        Serial.print(q.front().first);
+    }
+    
+    double total =0;
+   
+    for (const auto& data : q) {
+        total += data.first;
+    }
+    double average = q.empty() ? 0 : total / q.size();
+    //Average range for tag 0101: 2.5 m
+    Serial.print("Average range for tag "); 
+    Serial.print(tag_id);
+
+    Serial.print(": "); 
+    Serial.print(average);
+    Serial.println(" m");
+
+    // 計算 x 和 y
+    averageDistanceMap[tag_id] = average; 
+    calculateXY(0.6, averageDistanceMap[0x0101], averageDistanceMap[0x0202]); // 假設 a 是 8.0，tag_id 是 0x0101
+
+    
+
 }
