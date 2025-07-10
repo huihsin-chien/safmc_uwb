@@ -10,37 +10,51 @@ void setup() {
     setupUWB(&EUI[0], self_device_address, ANCHOR_FRAME_FILTER_CONFIG);
 }
 
+void call_brodcast(char broadcast_char) {
+    // 建立廣播訊息陣列
+    char broadcast_state[5] = {broadcast_char, broadcast_char, '\0', '\0', '\0'};
+    
+    // 發送廣播訊息
+    DW1000Ng::setTransmitData((byte*)broadcast_state, 5);
+    DW1000Ng::startTransmit();
+    Serial.print("Broadcasting: ");
+    Serial.println(broadcast_state);
+    delay(10);
+}
 
-void change_broadcast_state(byte* broadcast_state) {
+void change_broadcast_state() {
     // 讀取狀態轉換指令
-    char ch = '\0';
+    static char prev_ch = '\0';  // 使用 static 變數記住上一個字元
+    
     while(Serial.available()){
         char newCh = Serial.read();
-
+        
         // 收到的訊息可能為 11 or 22 or 33 等單個數字重複兩次，也有可能是 556677 or 5588 等多個數字重複兩次
         
         // 僅在連續輸入相同字元時才判斷，以避免雜訊
-        if(newCh != ch) {
-            ch = newCh;
-            continue;
-        }
-        
+        if(newCh == prev_ch && newCh != '\0') {
+            call_brodcast(newCh);
+            prev_ch = '\0';  // 重置，避免重複觸發
 
-        
-       
+            
+        } else {
+            prev_ch = newCh;
+        }
     } // end of while(Serial.available())
 }
 
 void loop() {
     // 讀取狀態轉換指令 TODO
-    byte broadcast_state[5] = {0x00, 0x00, 0x00, 0x00, 0x00}; 
+    
     if(Serial.available() > 0)
-        change_broadcast_state(broadcast_state);
+        change_broadcast_state();
 
     try{
         getAnchorRangeReport();
     }
     catch(const std::exception& e){
+
+        Serial.println("Exception in getAnchorRangeReport");
     }
 }
 

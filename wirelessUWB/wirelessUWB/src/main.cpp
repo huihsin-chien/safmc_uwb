@@ -1,7 +1,7 @@
 #include "uwb_common.hpp"
 
 // == START OF Device Config ==
-#define ANCHOR_4
+#define ANCHOR_3
 
 #ifdef ANCHOR_1
 const char EUI[] = "AA:BB:CC:DD:EE:FF:00:01";
@@ -148,9 +148,73 @@ void setup() {
     Serial.begin(9600);
     setupUWB(&EUI[0], self_device_address, isAnchor ? ANCHOR_FRAME_FILTER_CONFIG : TAG_FRAME_FILTER_CONFIG); // 2 is the device address of the anchorB
 }
+void try_to_change_state() {
+    size_t poll_len = DW1000Ng::getReceivedDataLength();
+    if (poll_len > 6 ) return;
+
+    byte poll_data[poll_len];
+    DW1000Ng::getReceivedData(poll_data, poll_len);
+
+    char ch1 = poll_data[0];
+    char ch2 = poll_data[1];
+
+   
+        
+
+    if (ch1 == ch2 && ch1 != '\0') {
+        char ch = ch1;
+        bool newIsAnchor = isAnchor;
+
+        if (isAnchor) {
+            for (int i = 0; becomeTagSymbols[i] != '\0'; i++) {
+                if (ch == becomeTagSymbols[i]) {
+                    newIsAnchor = false;
+                    break;
+                }
+            }
+        } else {
+            for (int i = 0; becomeAnchorSymbols[i] != '\0'; i++) {
+                if (ch == becomeAnchorSymbols[i]) {
+                    newIsAnchor = true;
+                    break;
+                }
+            }
+        }
+
+       
+        //////////
+        Serial.print("Received change state command: ");
+        Serial.println(poll_data);
+
+        if (newIsAnchor != isAnchor) {
+            Serial.print("State changed: ");
+            Serial.println(newIsAnchor ? "Anchor" : "Tag");
+
+            isAnchor = newIsAnchor;
+            DW1000Ng::enableFrameFiltering(isAnchor ? ANCHOR_FRAME_FILTER_CONFIG : TAG_FRAME_FILTER_CONFIG);
+        } else {
+            Serial.println("State unchanged.");
+        }
+
+
+    }
+}
 
 
 void loop() {
+   
+    try_to_change_state();
+    
+
+    ///////
+    static unsigned long lastPrint = 0;
+    unsigned long now = millis();
+    if(now - lastPrint > 5000) {  // 每5秒印一次
+        Serial.print("Current state: ");
+        Serial.println(isAnchor ? "Anchor" : "Tag");
+        lastPrint = now;
+    }
+
     try{
         if (isAnchor) {
             as_anchor();
@@ -177,8 +241,10 @@ void as_tag() {
         } else {
             // 未成功的話，印出失敗訊息。格式為：`tag_range,${tag_eui},failed,${anchorDeviceAddress}`
             // TODO: 補印強度 dB 資料
-            Serial.print("tag_range,"); Serial.print(&EUI[18]); 
-            Serial.print(",failed,"); Serial.println(target_anchor);
+            
+            //7/10 暫時註解掉
+            // Serial.print("tag_range,"); Serial.print(&EUI[18]); 
+            // Serial.print(",failed,"); Serial.println(target_anchor);
         }
     }
 }
