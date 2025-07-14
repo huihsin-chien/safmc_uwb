@@ -1,58 +1,17 @@
 #include "uwb_common.hpp"
+#include "config.hpp"
 #include <ESP.h>
 #include <map>
 #include <deque>
 #include <utility>
+
 
 typedef std::pair<float, unsigned long> RangeTimePair;
 typedef std::deque<RangeTimePair> RangeQueue;
 std::map<uint16_t, RangeQueue> tagRangeQueues;
 std::map<uint16_t, double> averageDistanceMap; // key: tag address, value: distance
 
-// == START OF Device Config ==
-#define TAG_2
 
-// const char becomeTagSuccessMessage[] = "";
-// const char becomeAnchorSuccessMessage[] = "";
-
-#ifdef ANCHOR_1
-const char EUI[] = "AA:BB:CC:DD:EE:FF:00:01";
-const uint16_t self_device_address = 0x0001;
-const bool isAnchorByDefault = true;
-const char becomeTagSymbols[] = "";
-const char becomeAnchorSymbols[] = "";
-
-#endif
-
-
-
-#if defined(TAG_1) || defined(TAG_2) || defined(TAG_3) || defined(TAG_4) \
-    || defined(TAG_5) || defined(TAG_6) || defined(TAG_7) || defined(TAG_8) \
-    || defined(TAG_9) || defined(TAG_10)
-const bool isAnchorByDefault = false;
-const char becomeTagSymbols[] = "";
-const char becomeAnchorSymbols[] = "";
-#endif
-
-
-#ifdef TAG_1
-const char EUI[] = "AA:BB:CC:DD:EE:FF:01:01";
-const uint16_t self_device_address = 0x0101;
-#endif
-
-#ifdef TAG_2
-const char EUI[] = "AA:BB:CC:DD:EE:FF:02:02";
-const uint16_t self_device_address = 0x0202;
-#endif
-
-// ==  END OF Device Config  ==
-
-
-#ifdef FIXED_BLINK_RATE
-uint32_t blink_rate = FIXED_BLINK_RATE;
-#else
-uint32_t blink_rate = 50;
-#endif
 
 bool isAnchor = false;
 
@@ -127,13 +86,15 @@ void loop() {
     } catch (const std::exception& e) {
     }
 
-    // 每10秒檢查一次
-    if(millis() - lastCheck > 10000) {
-        lastCheck = millis();
-        if(serialOutputCount < 3) { // 10秒內少於3次輸出就當死掉
-            ESP.restart();
+    if(AUTO_RESTART){
+        // 每10秒檢查一次
+        if(millis() - lastCheck > 10000) {
+            lastCheck = millis();
+            if(serialOutputCount < 3) { // 10秒內少於3次輸出就當死掉
+                ESP.restart();
+            }
+            serialOutputCount = 0; // reset counter
         }
-        serialOutputCount = 0; // reset counter
     }
 }
 
