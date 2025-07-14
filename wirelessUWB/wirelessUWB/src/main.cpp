@@ -1,7 +1,8 @@
 #include "uwb_common.hpp"
+#include <ESP.h>
 
 // == START OF Device Config ==
-#define ANCHOR_3
+#define ANCHOR_2
 
 #ifdef ANCHOR_1
 const char EUI[] = "AA:BB:CC:DD:EE:FF:00:01";
@@ -140,6 +141,10 @@ uint32_t blink_rate = 50;
 
 bool isAnchor = false;
 
+unsigned long lastSerialOutput = 0;
+unsigned long lastCheck = 0;
+int serialOutputCount = 0;
+
 void as_tag();
 void as_anchor();
 
@@ -184,7 +189,7 @@ void try_to_change_state() {
        
         //////////
         Serial.print("Received change state command: ");
-        Serial.println(poll_data);
+        //Serial.println(poll_data);
 
         if (newIsAnchor != isAnchor) {
             Serial.print("State changed: ");
@@ -224,6 +229,15 @@ void loop() {
     }
     catch(const std::exception& e){
         Serial.println("catch an exception!");
+    }
+
+    // 每10秒檢查一次
+    if(millis() - lastCheck > 10000) {
+        lastCheck = millis();
+        if(serialOutputCount < 3) { // 10秒內少於3次輸出就當死掉
+            ESP.restart();
+        }
+        serialOutputCount = 0; // reset counter
     }
 }
 
