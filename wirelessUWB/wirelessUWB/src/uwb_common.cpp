@@ -1,5 +1,6 @@
 #include "uwb_common.hpp"
 #include "DW1000NgRTLS_ext.hpp"
+#include "config.hpp"
 #include <Arduino.h>
 
 frame_filtering_configuration_t TAG_FRAME_FILTER_CONFIG = {
@@ -25,7 +26,7 @@ frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
 };
 
 device_configuration_t DEFAULT_CONFIG = {
-    false, true, true, true, false,
+    false, true, SMART_POWER, true, false,
 
     SFDMode::STANDARD_SFD,
     Channel::CHANNEL_2,
@@ -84,4 +85,8 @@ void setupUWB(const char* EUI, uint16_t device_address, frame_filtering_configur
     DW1000Ng::setGPIOMode(8, LED_MODE);
     DW1000Ng::setGPIOMode(10, LED_MODE);
     DW1000Ng::setGPIOMode(12,   LED_MODE);
+
+    if (!SMART_POWER){
+        DW1000Ng::setTXPower(0x801F1F00);
+    }
 }
