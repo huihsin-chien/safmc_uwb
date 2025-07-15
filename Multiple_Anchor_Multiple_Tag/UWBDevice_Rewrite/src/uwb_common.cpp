@@ -25,7 +25,7 @@ frame_filtering_configuration_t ANCHOR_FRAME_FILTER_CONFIG = {
 };
 
 device_configuration_t DEFAULT_CONFIG = {
-    false, true, false, true, false,
+    false, true, true, true, false,
 
     SFDMode::STANDARD_SFD,
     Channel::CHANNEL_2,
@@ -85,7 +85,7 @@ void setupUWB(const char* EUI, uint16_t device_address, frame_filtering_configur
     DW1000Ng::setGPIOMode(10, LED_MODE);
     DW1000Ng::setGPIOMode(12,   LED_MODE);
 
-    DW1000Ng::setTXPower(0x801F1F00);
+    // DW1000Ng::setTXPower(0x801F1F00);
 
    
 

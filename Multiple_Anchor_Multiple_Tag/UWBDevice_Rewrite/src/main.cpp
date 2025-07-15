@@ -17,7 +17,6 @@ bool isAnchor = false;
 
 double a = 0.0; // 地上兩個tag的位置
 
-
 unsigned long lastSerialOutput = 0;
 unsigned long lastCheck = 0;
 int serialOutputCount = 0;
@@ -123,13 +122,18 @@ void as_tag() {
 
 
 void calculateXY(double a, double b, double c) {
-    double x=(a*a+c*c-b*b)/(2*a);
-    double y=sqrt(abs(c*c-x*x));
+    double x=(a*a-c*c+b*b)/(2*a);
+    double y=sqrt(abs(b*b-x*x));
     Serial.print("x: "); 
     Serial.print(x);
     Serial.print(" y: ");
-    Serial.println(y);
+    Serial.println(y); 
 }
+//                  /\ 
+//               b /  \ c
+//                /    \ 
+//      tag 0101 -------- tag 0202
+//                   a
 
 void as_anchor(){
     // 取得 tagFinishRange() 傳出的封包，並回傳接受
@@ -179,10 +183,10 @@ void as_anchor(){
     RangeQueue& q = tagRangeQueues[tag_id];
 
     Serial.print("Tag ID: ");
-    Serial.print(tag_id);
+    Serial.print(tag_id, HEX);
     while (!q.empty() && q.front().second + 1500 < now) {
         q.pop_front();
-        Serial.print(q.front().first);
+        // Serial.print(q.front().first);
     }
     
     double total =0;
@@ -193,7 +197,7 @@ void as_anchor(){
     double average = q.empty() ? 0 : total / q.size();
     //Average range for tag 0101: 2.5 m
     Serial.print("Average range for tag "); 
-    Serial.print(tag_id);
+    Serial.print(tag_id, HEX);
 
     // TODO: 測量線性修正固定偏差值 & 縮放比例(0-60m)
     average = (average - 0.1766) / 1.0349; // 線性修正固定偏差值 & 縮放比例
@@ -203,8 +207,6 @@ void as_anchor(){
 
     // 計算 x 和 y
     averageDistanceMap[tag_id] = average; 
-    calculateXY(0.6, averageDistanceMap[0x0101], averageDistanceMap[0x0202]); // 假設 a 是 8.0，tag_id 是 0x0101
-
-    
+    calculateXY(1.3, averageDistanceMap[0x0101], averageDistanceMap[0x0202]); // 假設 a 是 8.0，tag_id 是 0x0101
 
 }
