@@ -3,9 +3,9 @@
 #pragma once
 #endif // CONFIG_HPP
 
-#define TAG_1
-bool AUTO_RESTART = false;
-
+#define TAG_2
+static bool AUTO_RESTART = false;
+static bool SMART_POWER = false;
 
 #include <DW1000NgUtils.hpp>
 #include <DW1000NgRanging.hpp>
@@ -49,7 +49,7 @@ const uint16_t self_device_address = 0x0202;
 
 
 #ifdef FIXED_BLINK_RATE
-uint32_t blink_rate = FIXED_BLINK_RATE;
+static uint32_t blink_rate = FIXED_BLINK_RATE;
 #else
-uint32_t blink_rate = 50;
+static uint32_t blink_rate = 50;
 #endif
