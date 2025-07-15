@@ -195,6 +195,8 @@ void as_anchor(){
     Serial.print("Average range for tag "); 
     Serial.print(tag_id);
 
+    // TODO: 測量線性修正固定偏差值 & 縮放比例(0-60m)
+    average = (average - 0.1766) / 1.0349; // 線性修正固定偏差值 & 縮放比例
     Serial.print(": "); 
     Serial.print(average);
     Serial.println(" m");

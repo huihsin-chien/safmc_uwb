@@ -3,7 +3,7 @@
 #pragma once
 #endif // CONFIG_HPP
 
-#define ANCHOR_1
+#define TAG_1
 bool AUTO_RESTART = false;
 
 #include <DW1000NgUtils.hpp>
