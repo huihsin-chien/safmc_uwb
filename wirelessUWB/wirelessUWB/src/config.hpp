@@ -3,7 +3,7 @@
 #pragma once
 #endif // CONFIG_HPP
 
-#define TAG_2
+#define ANCHOR_1
 static bool AUTO_RESTART = false;
 static bool SMART_POWER = false;
 

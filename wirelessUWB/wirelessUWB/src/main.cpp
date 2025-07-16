@@ -2,8 +2,6 @@
 #include "config.hpp"
 #include <ESP.h>
 
-
-
 bool isAnchor = false;
 
 unsigned long lastSerialOutput = 0;
@@ -24,13 +22,15 @@ void try_to_change_state() {
 
     byte poll_data[poll_len];
     DW1000Ng::getReceivedData(poll_data, poll_len);
+    
+    // Serial.println(poll_data);
+    char toPrint[6];
+    // snprintf(toPrint, 6, "%02x%02x%02x%02x%02x", poll_data[0], poll_data[1], poll_data[2], poll_data[3], poll_data[4]);
 
-    char ch1 = poll_data[0];
-    char ch2 = poll_data[1];
+    char ch1 = poll_data[1];
+    char ch2 = poll_data[2];
 
-   
         
-
     if (ch1 == ch2 && ch1 != '\0') {
         char ch = ch1;
         bool newIsAnchor = isAnchor;
@@ -73,7 +73,6 @@ void try_to_change_state() {
 
 void loop() {
    
-    try_to_change_state();
     
 
     ///////
@@ -134,14 +133,27 @@ byte MediatorUWB_device_address[2] = {0x02, 0x02}; // MediatorUWB_device_address
 void as_anchor(){
     // Serial.println("u stupid");
     // 取得 tagFinishRange() 傳出的封包，並回傳接受
+
     RangeAcceptResult result = DW1000NgRTLS_ext::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
-    if(!result.success) 
+    // if(!result.success) 
+    //     return;
+    // RangeAcceptResult result = DW1000NgRTLS_ext::acceptChangeStateRanging(NextActivity::ACTIVITY_FINISHED, blink_rate);
+    if(!result.success) {
+        // for debugging
+        // size_t recv_len = DW1000Ng::getReceivedDataLength();
+        // byte recv_data[recv_len];
+        // char toPrint[256];
+        // // snprintf(toPrint,6, "%02x%02x%02x%02x%02x%02x", recv_data[0], recv_data[1], recv_data[2], recv_data[3], recv_data[4]);
+        // Serial.println(toPrint);
+        
         return;
+    }
+    // if(result.range == -1){
+    //     Serial.print('S');
+    //     try_to_change_state();
+    // }
     
     delay(2); // Tweak based on your hardware
-
-    // 取得 tagFinishRange() 呼叫的 transmitPoll() 傳出的封包的資料 
-    // 疑問：這是transmitPoll() 還是 transmitFinalMessage() 的資料？
 
     size_t recv_len = DW1000Ng::getReceivedDataLength();
     byte recv_data[recv_len];
@@ -159,6 +171,9 @@ void as_anchor(){
 
     // 將距離資料送給 MediatorUWB
     byte tagDeviceAddress[] = {recv_data[8], recv_data[7]};
-    DW1000NgRTLS_ext::transmitDataToMediatorUWB(MediatorUWB_device_address, tagDeviceAddress, result.range, DW1000Ng::getReceivePower());
-
+    bool changeState = DW1000NgRTLS_ext::transmitDataToMediatorUWB(MediatorUWB_device_address, tagDeviceAddress, result.range, DW1000Ng::getReceivePower());
+    if (changeState) {
+        try_to_change_state;
+        Serial.println("change state");
+    }
 }

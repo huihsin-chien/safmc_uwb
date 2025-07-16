@@ -343,12 +343,78 @@ namespace DW1000NgRTLS_ext {
         return returnValue;
     }
 
+    RangeAcceptResult acceptChangeStateRanging(NextActivity next, uint16_t value) {
+        RangeAcceptResult returnValue;
+
+        double range;
+        if(!DW1000NgRTLS_ext::receiveFrame()) {
+            returnValue = {false, 0};
+        } else {
+
+            size_t poll_len = DW1000Ng::getReceivedDataLength();
+            byte poll_data[poll_len];
+            DW1000Ng::getReceivedData(poll_data, poll_len);
+
+            if(poll_len > 9 && poll_data[9] == RANGING_TAG_POLL) {
+                uint64_t timePollReceived = DW1000Ng::getReceiveTimestamp();
+                DW1000NgRTLS_ext::transmitResponseToPoll(&poll_data[7]);
+                DW1000NgRTLS_ext::waitForTransmission();
+                uint64_t timeResponseToPoll = DW1000Ng::getTransmitTimestamp();
+                delayMicroseconds(1500);
+                if(!DW1000NgRTLS_ext::receiveFrame()) {
+                    returnValue = {false, 0};
+                } else {
+
+                    size_t rfinal_len = DW1000Ng::getReceivedDataLength();
+                    byte rfinal_data[rfinal_len];
+                    DW1000Ng::getReceivedData(rfinal_data, rfinal_len);
+                    if(rfinal_len > 18 && rfinal_data[9] == RANGING_TAG_FINAL_RESPONSE_EMBEDDED) {
+                        uint64_t timeFinalMessageReceive = DW1000Ng::getReceiveTimestamp();
+                        byte finishValue[2];
+                        DW1000NgUtils::writeValueToBytes(finishValue, value, 2);
+
+                        if(next == NextActivity::RANGING_CONFIRM) {
+                            DW1000NgRTLS_ext::transmitRangingConfirm(&rfinal_data[7], finishValue);
+                        } else {
+                            DW1000NgRTLS_ext::transmitActivityFinished(&rfinal_data[7], finishValue);
+                        }
+                        
+                        DW1000NgRTLS_ext::waitForTransmission();
+
+                        range = DW1000NgRanging::computeRangeAsymmetric(
+                            DW1000NgUtils::bytesAsValue(rfinal_data + 10, LENGTH_TIMESTAMP), // Poll send time
+                            timePollReceived, 
+                            timeResponseToPoll, // Response to poll sent time
+                            DW1000NgUtils::bytesAsValue(rfinal_data + 14, LENGTH_TIMESTAMP), // Response to Poll Received
+                            DW1000NgUtils::bytesAsValue(rfinal_data + 18, LENGTH_TIMESTAMP), // Final Message send time
+                            timeFinalMessageReceive // Final message receive time
+                        );
+
+                        range = DW1000NgRanging::correctRange(range);
+
+                        /* In case of wrong read due to bad device calibration */
+                        if(range <= 0) 
+                            range = 0.000001;
+
+                        returnValue = {true, range};
+                    }
+                }
+            }else if (poll_data[0] == 'a'){
+                returnValue = {true, -1};
+                return returnValue;
+            } 
+        }
+
+        return returnValue;
+    }
+
+
 
     // tag_range： 取小數點後 2 位數，範圍可能為 0.01 ~ 500.00，留 5 個 byte 
     // RX_power：  取小數點後 2 位數，範圍可能為 -128.00 ~ 0.00，留 5 個 byte TODO 需確刃
     // 經由 transmitPoll() 修改成 transmitDataToMediatorUWB，傳送 range、anchor & tag eui、RX power 資料給 mediator UWB；
-    //（目前）不會有mediator UWB 回傳 Poll Ack
-    void transmitDataToMediatorUWB(byte mediatorUWB_address[], byte tagDeviceAddress[], double tag_range, float RX_power) {
+    //（目前）不會有mediator UWB 回傳 Poll Ack -> 正在進行中
+    bool transmitDataToMediatorUWB(byte mediatorUWB_address[], byte tagDeviceAddress[], double tag_range, float RX_power) {
         tag_range *= 10000; // 將 tag_range 乘上 100，使其成為整數，使用 writeValueToBytes
         RX_power = 10* abs(RX_power); 
         static_cast<uint16_t>(tag_range); 
@@ -369,8 +435,28 @@ namespace DW1000NgRTLS_ext {
         DW1000Ng::setTransmitData(Poll, sizeof(Poll));
         DW1000Ng::startTransmit();
         Serial.println("send to mediator uwb");
+
+
+        // recieve change state info from mediator_uwb
+        if(!DW1000NgRTLS_ext::waitForNextRangingStep()){
+             return false;
+            }
+        else {
+            size_t cont_len = DW1000Ng::getReceivedDataLength();
+            byte cont_recv[cont_len];
+            DW1000Ng::getReceivedData(cont_recv, cont_len);
+            if(cont_len>9 && cont_recv[9] == ACTIVITY_CONTROL)//符合格式
+            {   return true;
+            }
+            else return false;
+        }
     }
 }
+
+
+
+
+
 
 
 /* namespace DW1000NgRTLS_ext_ext {

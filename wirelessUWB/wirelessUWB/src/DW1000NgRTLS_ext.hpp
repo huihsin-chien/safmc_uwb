@@ -120,7 +120,7 @@ namespace DW1000NgRTLS_ext {
        value is the value relative to the next activity (Activity finished = new blink rante, continue range = new anchor address)
     */
     RangeAcceptResult anchorRangeAccept(NextActivity next, uint16_t value);
-
+    RangeAcceptResult acceptChangeStateRanging(NextActivity next, uint16_t value);
     /* Used by tag to range after range request accept of the infrastructure 
        Target anchor is given after a range request success
        Finalmessagedelay is used in the process of TWR, a value of 1500 works on 8mhz-80mhz range devices,
@@ -132,5 +132,5 @@ namespace DW1000NgRTLS_ext {
         Finalmessagedelay is the same as in function tagRangeInfrastructure
     */
     RangeInfrastructureResult tagTwrLocalize(uint16_t finalMessageDelay);
-    void transmitDataToMediatorUWB(byte mediatorUWB_address[], byte tagDeviceAddress[], double tag_range, float RX_power) ;
+    bool transmitDataToMediatorUWB(byte mediatorUWB_address[], byte tagDeviceAddress[], double tag_range, float RX_power) ;
 }
