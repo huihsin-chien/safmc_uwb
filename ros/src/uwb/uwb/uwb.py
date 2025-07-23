@@ -27,7 +27,7 @@ class UWBPublisher(Node):
         self.tag_position_publisher = self.create_publisher(TagPosition, '/tag_position', qos_profile)
         
         # File path for position data from main.py
-        self.position_file = '/tmp/uwb_positions.json'
+        self.position_file = './uwb_positions.json'
         self.last_modified = 0
         
         # Timer to check for new position data every 100ms
