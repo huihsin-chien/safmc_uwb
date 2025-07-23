@@ -1,3 +1,4 @@
+import json
 import math
 import numpy as np
 import time
@@ -73,12 +74,12 @@ class runner():
         
         self.anchors = [UWBDevice(f"00:{i + 1:02}") for i in range(NUM_ANCHORS)]
         self.tags = [UWBDevice(f"{i + 1:02}:{i + 1:02}") for i in range(NUM_TAGS)]
-        
+        print("1")
         self.uwb_data_matrix = UWBDataMatrix(time_threshold=0.2, anchors=self.anchors, tags=self.tags)
         self.uwb_calibration_data_matrix = UWBDataMatrix(time_threshold=180, anchors=self.anchors, tags=self.anchors[1:NUM_ANCHORS])
-        
+        print("2")
         self.uwb_data_manager = UWBDataManager(self.uwb_data_matrix, self.uwb_calibration_data_matrix,self.data_manager)
-        
+        print ("3")
         self.serial_manager = SerialManager(data_manager=self.data_manager)
         self.calib_serial_manager = self.serial_manager
         
@@ -103,6 +104,9 @@ class runner():
         self.publish_drone_tag_position_loop = Timer(0.1, lambda: self.publish_tag_position(drone_tag_euis))  # Changed from 0 to 0.1
         self.publish_target_tag_position_loop = Timer(0.1, lambda: self.publish_tag_position(target_tag_euis, force_output=True))
         self.self_calibration_loop = Timer(1.0, lambda: self.self_calibration_handler())
+        
+        self.position_file = './uwb_positions.json'
+        self.position_buffer = []
         
         self.timers = [
             self.read_serial_loop1,
@@ -146,6 +150,17 @@ class runner():
             timer.stop()
         
         dbg("UWB system stopped")
+        
+    def save_positions_to_file(self):
+        """Save current positions to file for ROS publisher"""
+        if self.position_buffer:
+            try:
+                with open(self.position_file, 'w') as f:
+                    json.dump(self.position_buffer, f)
+                self.position_buffer = []  # Clear buffer after saving
+            except Exception as e:
+                dbg(f"Error saving positions to file: {e}")
+                
     
     def publish_tag_position(self, tag_euis: list[str], force_output: bool = False):
         
@@ -160,9 +175,16 @@ class runner():
             
                 if position is not None or force_output:
                     print("(", position[0], ",", position[1], ")")
+                    self.position_buffer.append({
+                        'eui': eui,
+                        'coordinate': position.tolist() if isinstance(position, np.ndarray) else position,
+                        'timestamp': time.time()
+                    })
             except Exception as e:
                 if force_output:
                     dbg(f"Error getting position for tag {eui}: {e}")
+            
+            self.save_positions_to_file()        
     
     def self_calibration_handler(self):
         """Wrapper for self_calibration to handle it in timer context"""
