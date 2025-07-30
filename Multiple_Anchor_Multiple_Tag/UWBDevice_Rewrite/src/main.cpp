@@ -4,6 +4,16 @@
 #include <map>
 #include <deque>
 #include <utility>
+#include <vector>
+#include <iostream>
+#include <cmath>
+#include <limits>
+#include <functional>
+#include <ArduinoEigen.h>
+
+using namespace Eigen;
+using namespace std;
+
 
 
 typedef std::pair<float, unsigned long> RangeTimePair;
@@ -135,6 +145,54 @@ void calculateXY(double a, double b, double c) {
 //      tag 0101 -------- tag 0202
 //                   a
 
+
+double errorFunction(const Vector2d& x,
+                     const vector<Vector2d>& anchors,
+                     const vector<double>& distances)
+{
+    double error = 0.0;
+    for (size_t i = 0; i < anchors.size(); ++i) {
+        double dist = (x - anchors[i]).norm();
+        error += pow(dist - distances[i], 2);
+    }
+    return error;
+}
+
+Vector2d gpsSolve(const vector<Vector2d>& anchors,
+                  const vector<double>& distances,
+                  const Vector2d& initial_guess = Vector2d::Zero(),
+                  double tol = 1e-4,
+                  int max_iter = 1000)
+{
+    // 使用梯度下降作為優化器 (TODO: 實作 Nelder-Mead）
+    Vector2d x = initial_guess;
+    double alpha = 0.01; // 學習率
+
+    for (int iter = 0; iter < max_iter; ++iter) {
+        Vector2d grad = Vector2d::Zero();
+
+        // 數值估計梯度
+        double h = 1e-6;
+        for (int d = 0; d < 2; ++d) {
+            Vector2d x1 = x;
+            x1[d] += h;
+            Vector2d x2 = x;
+            x2[d] -= h;
+            grad[d] = (errorFunction(x1, anchors, distances) - errorFunction(x2, anchors, distances)) / (2 * h);
+        }
+
+        Vector2d x_new = x - alpha * grad;
+
+        if ((x_new - x).norm() < tol)
+            break;
+
+        x = x_new;
+    }
+
+    return x;
+}
+
+    
 void as_anchor(){
     // 取得 tagFinishRange() 傳出的封包，並回傳接受
     RangeAcceptResult result = DW1000NgRTLS_ext::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
@@ -207,6 +265,42 @@ void as_anchor(){
 
     // 計算 x 和 y
     averageDistanceMap[tag_id] = average; 
-    calculateXY(1.3, averageDistanceMap[0x0101], averageDistanceMap[0x0202]); // 假設 a 是 8.0，tag_id 是 0x0101
+    // calculateXY(1.3, averageDistanceMap[0x0101], averageDistanceMap[0x0202]); // 假設 a 是 8.0，tag_id 是 0x0101
+    try{
 
+        vector<Vector2d> available_anchors;
+        vector<double> available_distances;
+
+        if (averageDistanceMap.find(0x0101) != averageDistanceMap.end()) {
+            available_anchors.push_back(Vector2d(0, 0));  // Anchor 1 position
+            available_distances.push_back(averageDistanceMap[0x0101]);
+            // Serial.println("Using anchor 0x0101");
+        }
+
+        if (averageDistanceMap.find(0x0202) != averageDistanceMap.end()) {
+            available_anchors.push_back(Vector2d(1.4, 0));  // Anchor 2 position  
+            available_distances.push_back(averageDistanceMap[0x0202]);
+            // Serial.println("Using anchor 0x0202");
+        }
+
+        if (averageDistanceMap.find(0x0303) != averageDistanceMap.end()) {
+            available_anchors.push_back(Vector2d(0.6, 0.6)); // Anchor 3 position
+            available_distances.push_back(averageDistanceMap[0x0303]);
+            // Serial.println("Using anchor 0x0303");
+        }
+
+        // Only proceed if we have at least 2 anchors
+        if (available_anchors.size() >= 2) {
+            Vector2d position_result = gpsSolve(available_anchors, available_distances, Vector2d::Zero());
+            
+            Serial.print("Estimated position: (");
+            Serial.print(position_result.x());
+            Serial.print(", ");
+            Serial.print(position_result.y());
+            Serial.println(")");
+        }
+    }
+    catch (const std::exception& e) {
+        Serial.print("Error in GPS calculation: ");
+    }
 }

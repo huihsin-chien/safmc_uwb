@@ -3,7 +3,7 @@
 #pragma once
 #endif // CONFIG_HPP
 
-#define TAG_2
+#define ANCHOR_1
 static bool AUTO_RESTART = false;
 static bool SMART_POWER = false;
 
@@ -45,6 +45,11 @@ const char EUI[] = "AA:BB:CC:DD:EE:FF:02:02";
 const uint16_t self_device_address = 0x0202;
 #endif
 
+
+#ifdef TAG_3
+const char EUI[] = "AA:BB:CC:DD:EE:FF:03:03";
+const uint16_t self_device_address = 0x0303;
+#endif
 // ==  END OF Device Config  ==
 
 
