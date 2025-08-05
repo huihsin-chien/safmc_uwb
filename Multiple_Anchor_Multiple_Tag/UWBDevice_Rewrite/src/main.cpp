@@ -192,7 +192,7 @@ Vector2d gpsSolve(const vector<Vector2d>& anchors,
     return x;
 }
 
-    
+Vector2d previous_position_result(0, 4);
 void as_anchor(){
     // 取得 tagFinishRange() 傳出的封包，並回傳接受
     RangeAcceptResult result = DW1000NgRTLS_ext::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
@@ -291,8 +291,8 @@ void as_anchor(){
 
         // Only proceed if we have at least 2 anchors
         if (available_anchors.size() >= 2) {
-            Vector2d position_result = gpsSolve(available_anchors, available_distances, Vector2d::Zero());
-            
+            Vector2d position_result = gpsSolve(available_anchors, available_distances, previous_position_result);
+            previous_position_result = position_result;
             Serial.print("Estimated position: (");
             Serial.print(position_result.x());
             Serial.print(", ");
