@@ -6,7 +6,7 @@
 #define ANCHOR_1
 static bool AUTO_RESTART = false;
 static bool SMART_POWER = false;
-
+static bool useGpsSolve = true; // 是否使用 GPS 解算位置
 #include <DW1000NgUtils.hpp>
 #include <DW1000NgRanging.hpp>
 #include "DW1000NgRTLS_ext.hpp"

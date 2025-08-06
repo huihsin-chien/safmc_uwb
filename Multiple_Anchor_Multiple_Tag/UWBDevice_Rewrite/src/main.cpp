@@ -258,49 +258,58 @@ void as_anchor(){
     Serial.print(tag_id, HEX);
 
     // TODO: 測量線性修正固定偏差值 & 縮放比例(0-60m)
-    average = (average - 0.1766) / 1.0349; // 線性修正固定偏差值 & 縮放比例
+    // average = (average - 0.1766) / 1.0349; // 線性修正固定偏差值 & 縮放比例
     Serial.print(": "); 
     Serial.print(average);
     Serial.println(" m");
 
     // 計算 x 和 y
     averageDistanceMap[tag_id] = average; 
-    // calculateXY(1.3, averageDistanceMap[0x0101], averageDistanceMap[0x0202]); // 假設 a 是 8.0，tag_id 是 0x0101
-    try{
 
-        vector<Vector2d> available_anchors;
-        vector<double> available_distances;
+    if (!useGpsSolve){
+        calculateXY(1.3, averageDistanceMap[0x0101], averageDistanceMap[0x0202]); // 假設 a 是 8.0，tag_id 是 0x0101
 
-        if (averageDistanceMap.find(0x0101) != averageDistanceMap.end()) {
-            available_anchors.push_back(Vector2d(0, 0));  // Anchor 1 position
-            available_distances.push_back(averageDistanceMap[0x0101]);
-            // Serial.println("Using anchor 0x0101");
+    }
+    else {
+        try{
+
+            vector<Vector2d> available_anchors;
+            vector<double> available_distances;
+
+            if (averageDistanceMap.find(0x0101) != averageDistanceMap.end()) {
+                available_anchors.push_back(Vector2d(0, 0));  // Anchor 1 position
+                available_distances.push_back(averageDistanceMap[0x0101]);
+                // Serial.println("Using anchor 0x0101");
+            }
+
+            if (averageDistanceMap.find(0x0202) != averageDistanceMap.end()) {
+                available_anchors.push_back(Vector2d(8, 0));  // Anchor 2 position  
+                available_distances.push_back(averageDistanceMap[0x0202]);
+                // Serial.println("Using anchor 0x0202");
+            }
+
+            if (averageDistanceMap.find(0x0303) != averageDistanceMap.end()) {
+                available_anchors.push_back(Vector2d(4, -5)); // Anchor 3 position
+                available_distances.push_back(averageDistanceMap[0x0303]);
+                // Serial.println("Using anchor 0x0303");
+            }
+
+            // Only proceed if we have at least 2 anchors
+            if (available_anchors.size() >= 2) {
+                Vector2d position_result = gpsSolve(available_anchors, available_distances, Vector2d::Zero());
+                
+                Serial.print("Estimated position: (");
+                Serial.print(position_result.x());
+                Serial.print(", ");
+                Serial.print(position_result.y());
+                Serial.println(")");
+            }
         }
-
-        if (averageDistanceMap.find(0x0202) != averageDistanceMap.end()) {
-            available_anchors.push_back(Vector2d(1.4, 0));  // Anchor 2 position  
-            available_distances.push_back(averageDistanceMap[0x0202]);
-            // Serial.println("Using anchor 0x0202");
-        }
-
-        if (averageDistanceMap.find(0x0303) != averageDistanceMap.end()) {
-            available_anchors.push_back(Vector2d(0.6, 0.6)); // Anchor 3 position
-            available_distances.push_back(averageDistanceMap[0x0303]);
-            // Serial.println("Using anchor 0x0303");
-        }
-
-        // Only proceed if we have at least 2 anchors
-        if (available_anchors.size() >= 2) {
-            Vector2d position_result = gpsSolve(available_anchors, available_distances, Vector2d::Zero());
-            
-            Serial.print("Estimated position: (");
-            Serial.print(position_result.x());
-            Serial.print(", ");
-            Serial.print(position_result.y());
-            Serial.println(")");
+        catch (const std::exception& e) {
+            Serial.print("Error in GPS calculation: ");
         }
     }
-    catch (const std::exception& e) {
-        Serial.print("Error in GPS calculation: ");
+
+
     }
-}
+    
