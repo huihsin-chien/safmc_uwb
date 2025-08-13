@@ -131,13 +131,11 @@ void as_tag() {
 }
 
 
-void calculateXY(double a, double b, double c) {
+Vector2d calculateXY(double a, double b, double c) {
     double x=(a*a-c*c+b*b)/(2*a);
     double y=sqrt(abs(b*b-x*x));
-    Serial.print("x: "); 
-    Serial.print(x);
-    Serial.print(" y: ");
-    Serial.println(y); 
+    Vector2d result(x, y);
+    return result;
 }
 //                  /\ 
 //               b /  \ c
@@ -160,7 +158,7 @@ double errorFunction(const Vector2d& x,
 
 Vector2d gpsSolve(const vector<Vector2d>& anchors,
                   const vector<double>& distances,
-                  const Vector2d& initial_guess = Vector2d::Zero(),
+                  const Vector2d& initial_guess,
                   double tol = 1e-4,
                   int max_iter = 1000)
 {
@@ -192,7 +190,7 @@ Vector2d gpsSolve(const vector<Vector2d>& anchors,
     return x;
 }
 
-    
+Vector2d previous_position_result(0, 4);
 void as_anchor(){
     // 取得 tagFinishRange() 傳出的封包，並回傳接受
     RangeAcceptResult result = DW1000NgRTLS_ext::anchorRangeAccept(NextActivity::ACTIVITY_FINISHED, blink_rate);
@@ -296,7 +294,7 @@ void as_anchor(){
 
             // Only proceed if we have at least 2 anchors
             if (available_anchors.size() >= 2) {
-                Vector2d position_result = gpsSolve(available_anchors, available_distances, Vector2d::Zero());
+                Vector2d position_result = gpsSolve(available_anchors, available_distances, calculateXY( 8, available_distances[0], available_distances[1]));
                 
                 Serial.print("Estimated position: (");
                 Serial.print(position_result.x());
