@@ -19,7 +19,7 @@ class VehicleVisualOdometry(Node):
         )
         
         # Serial port configuration 
-        self.serial_port = "/dev/ttyUSB0"  # TODO 需要再調整
+        self.serial_port = "/dev/ttyACM0"  # TODO 需要再調整
         self.baud_rate = 9600  
         self.serial_conn = None
         
@@ -73,14 +73,14 @@ class VehicleVisualOdometry(Node):
             # 解析格式: "x: 1.2, y: 4.2"
             position = self.parse_position_string(data_line)
             if position:
-                self.__set_vehicle_odometry(position['x'], position['y'], 0.0) # TODO 從lidar拿到z
+                self.__set_vehicle_odometry(position['x'], position['y'], float('nan')) # z will be fuse to px4 through another interface of optical flow
         except Exception as e:
             self.get_logger().error(f"Error parsing position data: {e}")
 
     def parse_position_string(self, data_string):
         """解析位置字串"""
         # regx
-        pattern = r'x:\s*([-+]?\d*\.?\d+),\s*y:\s*([-+]?\d*\.?\d+)'
+        pattern = r"Estimated position:\s*\(\s*([-+]?\d*\.?\d+),\s*([-+]?\d*\.?\d+)\s*\)"
         match = re.search(pattern, data_string)
         
         if match:
