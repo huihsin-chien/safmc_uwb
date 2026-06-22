@@ -1,51 +1,44 @@
-# Anchors and Tags EUI naming rules
+# SAFMC UWB Multi-UAV Indoor Localization
 
-## Anchors
+Indoor positioning system for multi-UAV coordination using Ultra-Wideband (UWB) ranging.
+**Result: <10 cm accuracy · 4th Place, Singapore Amazing Flying Machine Competition (SAFMC 2025)**
 
-char EUI[] = "AA:BB:CC:DD:EE:FF:00:0X";
+## Overview
 
-## Tags
+GPS fails indoors. This system uses UWB radio ranging between anchor nodes to localize multiple UAVs simultaneously in a 20 m × 20 m space — no external infrastructure needed beyond the anchor nodes.
 
-char EUI[] = "AA:BB:CC:DD:EE:FF:0Y:0Y";
+## System Architecture
 
-# Ranging data form
-
-Range: 0.00 m    RX power: -60.77 dBm distance between anchor/tag:11 from Anchor 00:03
-
-```c
-String rangeString = "Range: "; rangeString += range_self; rangeString += " m";
-rangeString += "\t RX power: "; rangeString += DW1000Ng::getReceivePower(); rangeString += " dBm distance between anchor/tag:";
-rangeString += recv_data[2]; rangeString += recv_data[3];
-rangeString += " from Anchor ";rangeString  += EUI[18]; rangeString += EUI[19]; rangeString += EUI[20];rangeString += EUI[21];rangeString += EUI[22];rangeString += EUI[23];
+```
+[UAV tag] ──TWR──> [Anchor A]
+                   [Anchor B]  →  Multilateration (least-squares)  →  XYZ position
+                   [Anchor C]
 ```
 
-# States
+1. **Two-Way Ranging (TWR)** — ESP32-controlled UWB modules exchange timestamps to compute precise inter-node distance, cancelling clock drift
+2. **Multilateration** — distances from ≥3 anchors solved via least-squares optimization in Python
+3. **ROS publisher** — real-time XYZ position broadcast for UAV flight controller
 
-built_coord_1, --> Anchor A 當anchor v.s. TWR of Anchor B & C 當tag
+## Hardware
 
-build_coord_2, --> Anchor A & B 當anchor v.s TWR of Anchor C 當tag( after this we can get a 3D coordinate)
+- ESP32 microcontrollers + UWB radio modules (one per UAV + fixed anchors)
+- Fixed anchor nodes at known positions in the space
 
-self_calibration --> Anchor A & B & C & D 當anchor v.s. TWR of other Anchors 當tag( After this we get all Anchors' position and hence self calibration cpmplete)
+## Stack
 
-flying --> All Anchors v.s TWR of Tags
+- **Python** — least-squares multilateration solver, ROS topic publisher
+- **ESP32 firmware** — Two-Way Ranging (TWR) protocol
+- **ROS** — inter-system position broadcast
 
+## Results
 
-* [ ]  add class stateMchine into uwb_common
+| Metric | Value |
+|--------|-------|
+| Positioning accuracy | **< 10 cm** |
+| Coverage area | 20 m × 20 m |
+| Competition | SAFMC 2025 — Multi-UAV Collaboration |
+| Final standing | **4th Place** |
 
+## Competition
 
-Error Message:
-Exception in thread Thread-12 (processing_thread):
-Traceback (most recent call last):
-  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1075, in _bootstrap_inner
-    self.run()
-  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\threading.py", line 1012, in run
-    self._target(*self._args, **self._kwargs)
-  File "c:\Gozzz\2025SAFMC\safmc_uwb\Serial_testing\readingSerialUwbData\main.py", line 432, in processing_thread
-    build_3D_coord.build_3D_coord(anchor_list)
-  File "c:\Gozzz\2025SAFMC\safmc_uwb\Serial_testing\readingSerialUwbData\build_3D_coord.py", line 121, in build_3D_coord
-    D = build_distance_matrix(anchorABCD_distance)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "c:\Gozzz\2025SAFMC\safmc_uwb\Serial_testing\readingSerialUwbData\build_3D_coord.py", line 20, in build_distance_matrix
-    D[i,j] = anchorABCD_distance[(chr(i+65), chr(j+65))]
-             ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
-TypeError: list indices must be integers or slices, not tuple
+Developed for the [Singapore Amazing Flying Machine Competition (SAFMC) 2025](https://www.safmc.sg/), placing **4th** in the Multi-UAV Collaboration category.
